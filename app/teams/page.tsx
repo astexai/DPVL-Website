@@ -4,6 +4,7 @@ import FooterGrad from "@/components/footergrad"
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
 import DPVLTeams from "@/components/dpvlteams"
+import Socials from "@/components/socials";
 
 const page = () => {
   return (
@@ -77,12 +78,7 @@ const page = () => {
             </div>
       
  
-            <div className="hidden md:flex flex-col gap-5 absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-[#0d1033] py-6 px-3 rounded-l-2xl border-l border-white/10 shadow-2xl">
-              <a href="#" className="text-white hover:text-pink-500 transition-colors transform hover:scale-110"><FaInstagram size={22} /></a>
-              <a href="#" className="text-white hover:text-blue-500 transition-colors transform hover:scale-110"><FaFacebookF size={22} /></a>
-              <a href="#" className="text-white hover:text-green-500 transition-colors transform hover:scale-110"><FaWhatsapp size={22} /></a>
-              <a href="#" className="text-white hover:text-gray-400 transition-colors transform hover:scale-110"><FaTimes size={22} /></a>
-            </div>
+            <Socials/>
       
           </section>
           <DPVLTeams />

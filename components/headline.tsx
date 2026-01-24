@@ -22,7 +22,7 @@ const Headline: React.FC = () => {
 								<span className="text-white text-[18px] md:text-[20px] font-normal px-4">{msg}</span>
 								{idx !== messages.length-1 && (
 									<span className="inline-block align-middle mx-2">
-										<span className="w-3 h-3 bg-pink-400 rounded-full inline-block" />
+										<span className="w-3 h-3 bg-[#D159A3] rounded-full inline-block" />
 									</span>
 								)}
 							</React.Fragment>

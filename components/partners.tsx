@@ -46,7 +46,7 @@ export default function PartnersSponsors() {
         </div>
 
   
-        <div className="flex flex-col items-center justify-center mb-16">
+        <div className="flex flex-col items-center justify-center mb-10">
           <span className="text-[10px] md:text-xs font-semibold text-gray-400 uppercase tracking-[0.2em] mb-4">
             Title Sponsor
           </span>
@@ -63,7 +63,7 @@ export default function PartnersSponsors() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-12 md:gap-y-16 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-5 md:gap-y-4 text-center">
           {sponsors.map((sponsor, index) => (
             <div key={index} className="flex flex-col items-center justify-start h-full group">
              

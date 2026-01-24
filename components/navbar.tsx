@@ -14,9 +14,8 @@ const Navbar = () => {
     { name: "NEWS", href: "/news" },
     { name: "BLOGS", href: "/blogs" },
     { name: "GALLERY", href: "/gallery" },
-    // new links
     { name: "FIXTURES", href: "/fixtures" },
-    {name:"AUCTION", href:"/dpvl-auction" },
+    { name:"AUCTION", href:"/dpvl-auction" },
     {name:"POINTSTAB", href:"/points-table" },
     {name:"DPVLTV", href:"/dpvl-tv" },
 
@@ -51,16 +50,16 @@ const Navbar = () => {
         aria-label="Main Navigation"
       >
     <Headline />
-        <div className="mx-auto w-full max-w-[1350px] px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20 w-full">
+        <div className="mx-auto w-full max-w-345 ">
+          <div className="flex items-center justify-between gap-2 h-16 md:h-20 w-full">
             
             <Link href="/" className="shrink-0 flex items-center">
               <Image
-                src="/assets/logo.jpg"
+                src="/assets/Logo-final-1.png"
                 alt="DPVL Logo"
-                width={90}
-                height={50}
-                className="h-10 w-auto"
+                width={100}
+                height={70}
+                className="h-18 w-auto"
                 priority
               />
             </Link>
@@ -116,7 +115,7 @@ const Navbar = () => {
                 
                 <Link href="/" className="shrink-0" onClick={closeMenu}>
                   <Image
-                    src="/assets/logo.jpg"
+                    src="/assets/Logo-final-1.png"
                     alt="DPVL Logo"
                     width={70}
                     height={32}

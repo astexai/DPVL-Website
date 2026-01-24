@@ -86,7 +86,7 @@ export default function LatestNews() {
           <h2 className="text-4xl md:text-5xl font-bold uppercase italic text-white mb-2" style={{ fontFamily: 'sans-serif' }}>
             Latest News
           </h2>
-          <div className="w-24 h-1 bg-[#d66095] shadow-[0_0_10px_#d66095]" />
+          <div className="w-85 h-1 bg-[#d66095] shadow-[0_0_10px_#d66095]" />
         </div>
 
         <div className="relative group">

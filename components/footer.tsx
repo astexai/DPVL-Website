@@ -29,14 +29,16 @@ export default function Footer() {
           
  
           <div className="md:col-span-4 flex flex-col items-center md:items-start space-y-6">
-            <div className="relative w-32 h-20 md:w-40 md:h-24">
-              <Image 
-                src="/assets/logo.jpg" 
-                alt="DPVL Logo" 
-                fill
-                className="object-contain"
-              />
-            </div>
+            <div className="relative w-64 h-32 md:w-80 md:h-40 -ml-2"> 
+    <Image 
+      src="/assets/white_logo.png" 
+      alt="DPVL Logo" 
+      fill
+      className="object-contain object-left"
+      priority
+    />
+  </div>
+
             <p className="text-white/90 font-light leading-relaxed max-w-sm text-sm md:text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
             </p>

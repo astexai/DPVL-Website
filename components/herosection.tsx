@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaTimes } from 'react-icons/fa';
+import Socials from './socials';
 
 
 
@@ -60,12 +61,7 @@ export default function Heroo({
       </div>
 
 
-      <div className="hidden md:flex flex-col gap-4 absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-[#0d1033] py-6 px-3 rounded-l-2xl border-l border-white/10 shadow-xl">
-        <a href="#" className="text-white hover:text-pink-500 transition-colors"><FaInstagram size={20} /></a>
-        <a href="#" className="text-white hover:text-blue-500 transition-colors"><FaFacebookF size={20} /></a>
-        <a href="#" className="text-white hover:text-green-500 transition-colors"><FaWhatsapp size={20} /></a>
-        <a href="#" className="text-white hover:text-gray-400 transition-colors"><FaTimes size={20} /></a>
-      </div>
+     <Socials/>
 
     
 

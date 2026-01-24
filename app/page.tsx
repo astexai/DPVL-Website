@@ -4,13 +4,14 @@ import Footer from "../components/footer";
 import FooterGrad from "../components/footergrad";
 import  { useState } from 'react';
 import Image from 'next/image';
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaTimes } from 'react-icons/fa'; 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { FaCalendarAlt, FaMapMarkerAlt, FaPlay } from 'react-icons/fa';
 import Pointstable from '../components/pointstable';
 import TeamsCarousel from "@/components/teams";
 import LatestNews from "@/components/latestnews";
 import PartnersSponsors from "@/components/partners";
+import LatestVideos from "@/components/latestvideos";
+import Socials from "@/components/socials";
 
 export default function Home() {
 
@@ -21,14 +22,14 @@ const slides = [
     id: 1,
     title: ["WELCOME TO THE", "OFFICIAL WEBSITE", "OF DPVL."],
     subtitle: "The league that fuels ambition, celebrates skill, and brings volleyball to life.",
-    image: "/assets/footerimg.jpg", 
+    image: "/assets/bg/Hero.png", 
     accent: "from-blue-600 to-pink-500"
   },
   {
     id: 2,
     title: ["UNLEASH YOUR", "TRUE POTENTIAL", "ON COURT."],
     subtitle: "Join the community of champions and elevate your game to the next level.",
-    image: "/assets/footerimg.jpg", 
+    image: "/assets/bg/Hero.png", 
     accent: "from-purple-600 to-blue-500"
   },
 ];
@@ -47,100 +48,83 @@ const slides = [
   return (
     <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
-      <section className={`relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[650px] flex items-center overflow-hidden bg-[#0d1b3e] `}>
-      
-
-      <div className="absolute inset-0 w-full h-full z-0">
-
-        <div className="absolute inset-0 bg-gradient-to-r from-[#051038] via-[#1a237e] to-[#c2185b]" />
-        
-      
-        <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-[#c2185b]/60 to-transparent mix-blend-overlay" />
-        <div className="absolute bottom-[35%] w-full h-[2px] bg-white/20 blur-[1px]" /> {/* The white court line */}
-
+      <section className="relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[725px] flex items-center overflow-hidden bg-[#0d1b3e]">
   
-        <svg className="absolute inset-0 w-full h-full mix-blend-overlay opacity-40" viewBox="0 0 100 100" preserveAspectRatio="none">
-     
-          <path d="M20 100 L40 0 L55 0 L35 100 Z" fill="#00aaff" fillOpacity="0.5" />
-          <path d="M5 100 L25 0 L30 0 L10 100 Z" fill="#00aaff" fillOpacity="0.3" />
-          
-   
-          <path d="M60 100 L80 0 L95 0 L75 100 Z" fill="#ff00cc" fillOpacity="0.5" />
-          <path d="M85 100 L95 0 L100 0 L90 100 Z" fill="#ff00cc" fillOpacity="0.6" />
-        </svg>
-      </div>
-
-      <div className="w-full max-w-[1400px] mx-auto px-4 md:px-10 lg:px-16 relative z-10 h-full flex items-center">
-        {slides.map((slide, index) => (
-          <div 
-            key={slide.id}
-            className={`flex flex-col md:flex-row items-center justify-between w-full transition-opacity duration-700 ease-in-out ${index === current ? 'opacity-100 relative' : 'opacity-0 absolute inset-0'}`}
-          >
-            
-            <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left pt-10 md:pt-0 z-20">
-              <h1 className="text-white font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-wide mb-6">
-                {slide.title.map((line, i) => (
-                  <span key={i} className="block">{line}</span>
-                ))}
-              </h1>
-              <p className="text-white/90 text-sm sm:text-base md:text-lg font-light mb-8 max-w-lg leading-relaxed">
-                {slide.subtitle}
-              </p>
-              <button className="relative overflow-hidden group border border-white text-white rounded-full px-8 py-3 font-medium text-lg transition-all hover:bg-white hover:text-[#1a237e]">
-                <span className="relative z-10">Explore Now</span>
-              </button>
-            </div>
-
-       
-            <div className="flex-1 w-full h-[300px] md:h-[500px] lg:h-[600px] relative flex items-center justify-center md:justify-end mt-8 md:mt-0">
-             
-               <div className="relative w-full h-full">
-                  <Image
-                    src={slide.image} 
-                    alt="Volleyball Player"
-                    fill
-                    className="object-contain object-bottom md:object-right-bottom animate-fadeIn"
-                    priority={index === 0}
-                  />
-               </div>
-            </div>
-
-          </div>
-        ))}
-      </div>
-
-      
-      <div className="hidden md:flex flex-col gap-5 absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-[#120f38]/90 backdrop-blur-sm py-6 px-3 rounded-l-2xl border-l border-white/10 shadow-2xl">
-        <FaInstagram /> 
-        <FaFacebookF /> 
-         <FaWhatsapp /> 
-         <FaTimes /> 
-      </div>
-
+  {/* BACKGROUND WRAPPER */}
+  <div className="absolute inset-0 w-full h-full z-0">
     
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-30">
-        <button 
-          onClick={prevSlide}
-          className="w-10 h-10 rounded-full bg-white text-[#a259e6] flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95"
-        >
-          <FaChevronLeft size={14} />
-        </button>
-        <button 
-          onClick={nextSlide}
-          className="w-10 h-10 rounded-full bg-white text-[#a259e6] flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95"
-        >
-          <FaChevronRight size={14} />
-        </button>
-      </div>
+    {/* 1. IMAGE: Visible on sm and up, hidden on mobile */}
+    <div className="hidden sm:block absolute inset-0 w-full h-full">
+      <Image
+        src="/assets/bg/Hero.png" 
+        alt="Hero Background"
+        fill
+        priority
+        className="object-center"
+      />
+      {/* Gradient for Desktop Image */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#051038]/90 via-[#051038]/60 to-transparent" />
+    </div>
 
-      <div className="flex md:hidden gap-4 absolute left-0 w-full justify-center bottom-24 z-30">
-         <FaInstagram /> 
-        <FaFacebookF /> 
-         <FaWhatsapp /> 
-         <FaTimes /> 
-      </div>
+    {/* 2. SVG: Visible on mobile, hidden on sm and up */}
+    <div className="block sm:hidden absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#051038] via-[#1a237e] to-[#c2185b]" />
+      <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-[#c2185b]/60 to-transparent mix-blend-overlay" />
+      <svg className="absolute inset-0 w-full h-full mix-blend-overlay opacity-40" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M20 100 L40 0 L55 0 L35 100 Z" fill="#00aaff" fillOpacity="0.5" />
+        <path d="M5 100 L25 0 L30 0 L10 100 Z" fill="#00aaff" fillOpacity="0.3" />
+        <path d="M60 100 L80 0 L95 0 L75 100 Z" fill="#ff00cc" fillOpacity="0.5" />
+        <path d="M85 100 L95 0 L100 0 L90 100 Z" fill="#ff00cc" fillOpacity="0.6" />
+      </svg>
+    </div>
+    
+    {/* Decorative court line (Shared for both) */}
+    <div className="absolute bottom-[35%] w-full h-[2px] bg-white/20 blur-[1px]" />
+  </div>
 
-    </section>
+  {/* Content Layer */}
+  <div className="w-full max-w-[1400px] mx-auto px-4 md:px-10 lg:px-16 relative z-10 h-full flex items-center">
+    {slides.map((slide, index) => (
+      <div 
+        key={slide.id}
+        className={`flex flex-col md:flex-row items-center justify-between w-full transition-opacity duration-700 ease-in-out ${index === current ? 'opacity-100 relative' : 'opacity-0 absolute inset-0'}`}
+      >
+        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left pt-10 md:pt-0 z-20">
+          <h1 className="text-white font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-wide mb-6">
+            {slide.title.map((line, i) => (
+              <span key={i} className="block">{line}</span>
+            ))}
+          </h1>
+          <p className="text-white/90 text-sm sm:text-base md:text-lg font-light mb-8 max-w-lg leading-relaxed">
+            {slide.subtitle}
+          </p>
+          <button className="relative overflow-hidden group border border-white text-white rounded-full px-8 py-3 font-medium text-lg transition-all hover:bg-white hover:text-[#1a237e]">
+            <span className="relative z-10">Explore Now</span>
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <Socials/>
+
+
+
+  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-30">
+    <button 
+      onClick={prevSlide}
+      className="w-10 h-10 rounded-full bg-white text-[#a259e6] flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95"
+    >
+      <FaChevronLeft size={14} />
+    </button>
+    <button 
+      onClick={nextSlide}
+      className="w-10 h-10 rounded-full bg-white text-[#a259e6] flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95"
+    >
+      <FaChevronRight size={14} />
+    </button>
+  </div>
+</section>
 
     <div className="w-full bg-gray-50">
       
@@ -148,11 +132,11 @@ const slides = [
       <div className="w-full h-32 md:h-48 bg-gray-50"  />
 
     
-      <section className="relative w-full bg-gradient-to-br from-[#d66095] via-[#a259e6] to-[#4a148c] rounded-t-[40px] md:rounded-t-[60px] pb-16 px-4 md:px-0">
+      <section className="relative w-full bg-gradient-to-br from-[#d66095] via-[#a259e6] to-[#4a148c] rounded-t-none md:rounded-t-[60px] pb-16 px-4 md:px-0">
         
    
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-4xl z-20">
-          <div className="relative mt-15 sm:mt-0 bg-[#1d2472] rounded-xl overflow-hidden shadow-2xl border-[3px] border-[#d66095]/50">
+          <div className="relative mt-15 sm:mt-0 bg-[#1d2472] rounded-xl overflow-hidden shadow-2xl border-[3px] border-[#D159A3]">
         
             <div className="absolute inset-0">
          
@@ -207,72 +191,7 @@ const slides = [
           </div>
         </div>
 
-        <div className="pt-48 md:pt-40 max-w-6xl mx-auto px-4 md:px-8">
-   
-          <div className="flex flex-col items-center md:items-start mb-10">
-            <h2 className="text-3xl md:text-5xl text-white font-bold uppercase italic tracking-tighter mb-2" style={{ fontFamily: 'sans-serif' }}>
-              Latest Videos
-            </h2>
-            <div className="w-24 h-1 bg-white rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-           
-            <div className="group relative aspect-[4/5] md:aspect-[3/4] rounded-2xl overflow-hidden bg-black shadow-xl cursor-pointer">
-              <Image 
-                src="/assets/footerimg.jpg" 
-                alt="Video Thumbnail" 
-                fill 
-                className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-       
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition-transform">
-                  <FaPlay className="text-[#a259e6] text-2xl" />
-                </div>
-              </div>
-              
-             
-              <div className="absolute bottom-0 left-0 p-6 text-left">
-                <p className="text-white text-lg font-bold leading-tight">
-                  DPVL Set for Biggest Season Yet as Teams Gear Up for Action.
-                </p>
-              </div>
-            </div>
-
-            <div className="relative aspect-[4/5] md:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-800 shadow-xl">
-              <Image 
-                src="/assets/logo.jpg" 
-                alt="Trophy" 
-                fill 
-                className="object-cover group-hover:scale-105 transition-transform duration-500" 
-              />
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#efc94c] text-black px-4 py-1 rounded shadow font-bold text-xs uppercase">
-                1st Position
-              </div>
-            </div>
-
-    
-            <div className="relative aspect-[4/5] md:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-800 shadow-xl">
-               <Image 
-                src="/assets/footerimg.jpg"
-                alt="Game Action" 
-                fill 
-                className="object-cover group-hover:scale-105 transition-transform duration-500" 
-              />
-            </div>
-
-          </div>
-
-      
-          <div className="flex justify-center mt-10 gap-2">
-            <button className="w-8 h-2 rounded-full bg-blue-800 transition-colors"></button>
-            <button className="w-8 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-            <button className="w-8 h-2 rounded-full bg-white/50 hover:bg-white transition-colors"></button>
-          </div>
-
-        </div>
+       <LatestVideos/>
       </section>
     </div>
     <Pointstable />
