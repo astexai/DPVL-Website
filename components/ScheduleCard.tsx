@@ -19,7 +19,7 @@ export default function ScheduleCard()
     <div className="relative mt-15 sm:mt-0 rounded-xl overflow-hidden shadow-2xl border-[3px] border-[#D159A3]">
       
       <div className="absolute inset-0 overflow-hidden">
-        <Image src="/assets/bg/PlayCard.png" alt="bg" fill className="object-cover mix-blend-overlay" />
+        <Image src="/assets/bg/PlayCard.png" alt="bg" fill priority className="object-cover mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 opacity-25 to-blue-800/90" />
       </div>
 
