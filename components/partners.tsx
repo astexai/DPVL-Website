@@ -27,10 +27,10 @@ export default function PartnersSponsors() {
      
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/Partners.png"
           alt="Texture"
           fill
-          className="object-cover opacity-[0.03] pointer-events-none" 
+          className=" pointer-events-none" 
         />
        
         <div className="absolute inset-0 bg-gradient-to-r from-pink-50/50 via-white to-blue-50/20 mix-blend-multiply" />
@@ -50,11 +50,9 @@ export default function PartnersSponsors() {
           <span className="text-[10px] md:text-xs font-semibold text-gray-400 uppercase tracking-[0.2em] mb-4">
             Title Sponsor
           </span>
-          <div className="relative w-48 h-24 md:w-64 md:h-32 flex items-center justify-center bg-white shadow-sm border border-gray-100 rounded-xl overflow-hidden">
+          <div className="relative w-48 h-24 md:w-64 md:h-32 flex items-center justify-center  rounded-xl overflow-hidden">
           
-             <div className="absolute inset-0 opacity-10">
-                <Image src="/assets/footerimg.jpg" alt="tex" fill className="object-cover" />
-             </div>
+             
     
              <div className="relative z-10 flex items-center gap-1">
                 <span className="text-5xl md:text-6xl font-black italic text-black tracking-tighter">AA</span>

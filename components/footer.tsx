@@ -7,16 +7,16 @@ import { HiArrowRight } from 'react-icons/hi';
 export default function Footer() {
   return (
 
-    <footer className="relative w-full text-white pt-16 opacity-100 pb-8 bg-gradient-to-r from-[#a364df] to-[#3e3ec5]">
+    <footer className="relative w-full text-white pt-16  pb-8 ">
       
     
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
 
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/Footer.png"
           alt="Footer Background"
           fill
-          className="object-cover opacity-40 mix-blend-overlay"
+          className="object-cover"
           priority
         />
   

@@ -31,15 +31,15 @@ export default function PointsTable(): JSX.Element {
   }));
 
   return (
-    <section className="relative w-full min-h-screen py-16 px-4 overflow-hidden bg-[#3b3bb7]">
+    <section className="relative w-full z-10 -mt-20 pt-32 min-h-screen py-16 px-4 overflow-hidden ">
 
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#4a7acdf5] via-[#3b3bb7] to-[#a259e6] opacity-60" />
+        <div className="absolute inset-0" />
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/PointsTable.png"
           alt="Background Texture"
           fill
-          className="object-cover opacity-50 mix-blend-overlay"
+          className="object-cover "
         />
       </div>
 

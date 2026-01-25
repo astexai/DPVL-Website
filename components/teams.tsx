@@ -72,16 +72,16 @@ export default function TeamsCarousel() {
   };
 
   return (
-    <section className="relative w-full py-16 overflow-hidden bg-gray-100">
+    <section className="relative w-full py-16 overflow-hidden ">
       {/* Background Section remains same */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/TeamBg.png"
           alt="Background Texture"
           fill
-          className="object-cover opacity-40 grayscale mix-blend-multiply"
+          className=" "
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/80" />
+        <div className="absolute inset-0 " />
       </div>
 
       <div className="relative z-10 max-w-[1600px] mx-auto px-4">

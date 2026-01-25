@@ -67,10 +67,10 @@ export default function LatestNews() {
    
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/LatestNews.png"
           alt="Background"
           fill
-          className="object-cover opacity-30 mix-blend-overlay"
+          className=""
         />
       
         <div className="absolute inset-0 bg-gradient-to-r from-[#512da8]/90 via-[#311b92]/80 to-[#512da8]/90 mix-blend-multiply" />
