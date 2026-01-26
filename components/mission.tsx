@@ -18,20 +18,14 @@ export default function MissionFounder() {
     <div className="relative w-full py-16 px-6 md:px-12 bg-[#3b3bb7] overflow-hidden font-sans">
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2a2a72] via-[#3b3bb7] to-[#1a237e]" />
+        <div className="absolute inset-0 " />
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/InfoBg.png"
           alt="Texture"
           fill
-          className="object-cover opacity-10 mix-blend-overlay"
+          className=""
         />
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 10px)",
-          }}
-        />
+       
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">

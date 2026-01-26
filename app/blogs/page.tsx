@@ -30,18 +30,13 @@ const blogPosts = [
         
    
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/Blog.png"
           alt="Background Texture"
           fill
-          className="object-cover opacity-50 mix-blend-multiply"
+          className=""
         />
         
-        <div 
-          className="absolute inset-0 opacity-10"
-          style={{ 
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 11px)' 
-          }}
-        />
+      
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">

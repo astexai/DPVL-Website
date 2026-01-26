@@ -16,15 +16,14 @@ export default function Heroo({
       <div className="absolute inset-0 w-full h-full z-0  bg-[#1a237e]">
       
         <Image
-          src="/assets/footerimg.jpg" 
+          src="/assets/bg/Banner.png" 
           alt="Background"
           fill
-          className="object-cover opacity-50 mix-blend-overlay"
+          className="object-cover"
           priority
         />
         
     
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2a2a72]/95 opacity-80 via-[#1a237e]/80 to-[#4a148c]/60" />
         
        
         <div 
@@ -46,18 +45,6 @@ export default function Heroo({
           </p>
         </div>
 
-       
-        <div className="absolute bottom-4 right-4 md:right-20 md:bottom-10 w-32 h-32 md:w-64 md:h-64 animate-float">
-          
-           <div className="relative w-full h-full drop-shadow-2xl">
-              <Image 
-                src="/assets/footerimg.jpg" 
-                alt="Volleyball"
-                fill
-                className="object-contain"
-              />
-           </div>
-        </div>
       </div>
 
 

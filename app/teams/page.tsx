@@ -15,22 +15,14 @@ const page = () => {
         
             <div className="absolute inset-0 w-full h-full z-0">
        
-              <div className="absolute inset-0 bg-gradient-to-r from-[#5338d6] via-[#2a2a72] to-[#1a237e]" />
+              <div className="absolute inset-0 " />
               
              
               <Image
-                src="/assets/footerimg.jpg" 
+                src="/assets/bg/Banner.png" 
                 alt="Background Texture"
                 fill
-                className="object-cover opacity-20 mix-blend-overlay"
-              />
-      
-            
-              <div 
-                className="absolute top-0 left-0 w-1/3 h-full opacity-30" 
-                style={{ 
-                  background: 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(214, 96, 149, 0.3) 2px, rgba(214, 96, 149, 0.3) 4px)' 
-                }}
+                className="object-cover "
               />
             </div>
       
@@ -64,14 +56,7 @@ const page = () => {
       
                 <div className="relative w-48 h-48 md:w-72 md:h-72 z-10 animate-float">
             
-                   <div className="relative w-full h-full drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]">
-                      <Image 
-                        src="/assets/footerimg.jpg" 
-                        alt="Volleyball"
-                        fill
-                        className="object-contain"
-                      />
-                   </div>
+                  
                 </div>
               </div>
       

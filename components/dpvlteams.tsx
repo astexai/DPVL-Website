@@ -1,109 +1,88 @@
 'use client';
+
 import Image from 'next/image';
 
-const teams = [
-  { id: 1, color: 'bg-[#ffc107]' },  
-  { id: 2, color: 'bg-[#d67bb0]' }, 
-  { id: 3, color: 'bg-[#e0cfa0]' }, 
-  { id: 4, color: 'bg-[#d9534f]' }, 
-  { id: 5, color: 'bg-[#311b92]' }, 
-  { id: 6, color: 'bg-[#ffc107]' }, 
-  { id: 7, color: 'bg-[#d67bb0]' }, 
-  { id: 8, color: 'bg-[#e0cfa0]' }, 
-  { id: 9, color: 'bg-[#e0cfa0]' }, 
-  { id: 10, color: 'bg-[#d9534f]' }, 
-];
+// Updated interface to remove bgColor
+interface Team {
+  id: number;
+  name: string;
+  bgImage: string;
+}
 
-export default function DpvlTeams() {
+interface DpvlTeamsProps {
+  teamsData?: Team[]; 
+}
+
+export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
+  // Default data without bgColor
+  const teams = teamsData || [
+    { id: 1, name: 'Team Eastern Eagles', bgImage: '/assets/teams/EasternEagles.jpeg' },
+    { id: 2, name: 'Team New Delhi Titans', bgImage: '/assets/teams/NewDelhi.jpeg' },
+    { id: 3, name: 'Team Northern Ninjas', bgImage: '/assets/teams/NorthernNinjas.jpeg' },
+    { id: 4, name: 'Team Delta', bgImage: '/assets/teams/PuraniDilli.jpeg' },
+    { id: 5, name: 'Team Southern Spikers', bgImage: '/assets/teams/SouthernSpikers.jpeg' },
+    { id: 6, name: 'Team Western Warriors', bgImage: '/assets/teams/WesternWarriors.jpeg' },
+  ];
+
   return (
     <div className="w-full font-sans">
- 
+      {/* Header Section */}
       <section className="relative w-full py-12 px-6 bg-[#f5f5f5] text-center border-b border-gray-200">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase text-black mb-2 tracking-tight" style={{ fontFamily: 'sans-serif' }}>
+          <h2 className="text-3xl md:text-5xl font-bold uppercase text-black mb-2 tracking-tight">
             DPVL TEAMS
           </h2>
-  
           <div className="w-24 h-1 bg-[#1a237e] mb-6" />
-          
           <p className="text-gray-700 text-sm md:text-lg font-medium italic">
             “Lorem ipsum dolor sit amet, consectetur”
           </p>
         </div>
       </section>
 
- 
-      <section className="relative w-full py-16 px-4 md:px-8 bg-[#3b3bb7] overflow-hidden">
-        
-      
+      {/* Teams Grid Section */}
+      <section className="relative w-full py-16 px-4 md:px-8 overflow-hidden">
+        {/* Main Background Texture */}
         <div className="absolute inset-0 w-full h-full z-0">
-        
-          <div className="absolute inset-0 bg-gradient-to-b from-[#7b1fa2] via-[#3b3bb7] to-[#1a237e]" />
-          
-          <div 
-            className="absolute inset-0 opacity-10"
-            style={{ 
-              backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 20px)' 
-            }}
-          />
-     
           <Image
-            src="/assets/footerimg.jpg" 
+            src="/assets/bg/Teams.png" 
             alt="Texture"
             fill
-            className="object-cover opacity-10 mix-blend-overlay"
+            className="object-cover"
+            priority
           />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto">
-        
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 justify-items-center">
-            
-            {teams.map((team, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 justify-items-center">
+            {teams.map((team) => (
               <div 
-                key={index}
-                className={`
-                  relative w-full aspect-square rounded-lg overflow-hidden shadow-2xl 
-                  transition-transform duration-300 hover:scale-105 group cursor-pointer
-                  ${team.color}
-                `}
+                key={team.id}
+                className="relative w-full aspect-square rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105 group cursor-pointer"
+                /* Removed inline style background color */
               >
-           
-                <div className="absolute inset-0 opacity-20 mix-blend-overlay">
-                  <Image
-                    src="/assets/footerimg.jpg"
-                    alt="Card Texture"
+                {/* Team Mascot/Logo as the primary visual */}
+                <div className="absolute inset-0">
+                  <Image 
+                    src={team.bgImage} 
+                    alt={team.name}
                     fill
-                    className="object-cover"
+                    className="object-cover" /* Changed to object-cover to fill the card space */
                   />
                 </div>
 
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-white opacity-20 rounded-full blur-xl" />
-
-           
-                <div className="absolute inset-0 flex items-center justify-center p-4">
-                  <div className="relative w-3/4 h-3/4 drop-shadow-lg">
-       
-                    <Image 
-                      src="/assets/footerimg.jpg" 
-                      alt="Team Mascot"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                  <span className="text-white font-bold uppercase tracking-wider text-xs md:text-sm mb-2">
+                    {team.name}
+                  </span>
+                  <span className="text-white border border-white px-3 py-1 text-[10px] md:text-xs uppercase">
+                    View Team
+                  </span>
                 </div>
-
-     
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-white font-bold uppercase tracking-wider text-sm md:text-lg">View Team</span>
-                </div>
-
               </div>
             ))}
-
           </div>
         </div>
-
       </section>
     </div>
   );

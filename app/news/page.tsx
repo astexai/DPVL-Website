@@ -28,7 +28,7 @@ const newsItems = [
         <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a72] to-[#1a237e]" />
      
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/js.jpg"
           alt="Background Texture"
           fill
           className="object-cover opacity-10 mix-blend-overlay"
@@ -59,16 +59,13 @@ const newsItems = [
             <div className="absolute inset-0 bg-gradient-to-br from-[#d66095]/30 via-[#a259e6]/20 to-[#3b3bb7]/30 backdrop-blur-sm" />
      
             <Image
-              src="/assets/footerimg.jpg"
+              src="/assets/bg/LatestVideo.png"
               alt="Inner Texture"
               fill
               className="object-cover opacity-10 mix-blend-overlay"
             />
       
-            <div 
-              className="absolute inset-0 opacity-10" 
-              style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)', backgroundSize: '10px 10px' }} 
-            />
+            
           </div>
 
           
