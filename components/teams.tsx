@@ -6,7 +6,7 @@ const teams = [
   { id: 2, name: 'Team New Delhi Titans', bgColor: '#d67bb0', bgImage: '/assets/teams/NewDelhi.jpeg' },
   { id: 3, name: 'Team Northern Ninjas', bgColor: '#e0cfa0', bgImage: '/assets/teams/NorthernNinjas.jpeg' },
   { id: 4, name: 'Team Delta', bgColor: '#d9534f', bgImage: '/assets/teams/PuraniDilli.jpeg' },
-  { id: 5, name: 'Team Southern Spikers', bgColor: '#311b92', bgImage: '/assets/teams/SouthernSpikers.jpeg' },
+  { id: 5, name: 'Team Southern Spikers', bgColor: '#000000', bgImage: '/assets/teams/SouthernSpiker.jpeg' },
   { id: 6, name: 'Team Western Warriors', bgColor: '#ffc107', bgImage: '/assets/teams/WesternWarriors.jpeg' },
 ];
 

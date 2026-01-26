@@ -20,7 +20,7 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
     { id: 2, name: 'Team New Delhi Titans', bgImage: '/assets/teams/NewDelhi.jpeg' },
     { id: 3, name: 'Team Northern Ninjas', bgImage: '/assets/teams/NorthernNinjas.jpeg' },
     { id: 4, name: 'Team Delta', bgImage: '/assets/teams/PuraniDilli.jpeg' },
-    { id: 5, name: 'Team Southern Spikers', bgImage: '/assets/teams/SouthernSpikers.jpeg' },
+    { id: 5, name: 'Team Southern Spikers', bgImage: '/assets/teams/SouthernSpiker.jpeg' },
     { id: 6, name: 'Team Western Warriors', bgImage: '/assets/teams/WesternWarriors.jpeg' },
   ];
 
@@ -66,7 +66,7 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
                     src={team.bgImage} 
                     alt={team.name}
                     fill
-                    className="object-cover" /* Changed to object-cover to fill the card space */
+                    className="object-fit" /* Changed to object-cover to fill the card space */
                   />
                 </div>
 
