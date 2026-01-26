@@ -33,8 +33,8 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
             DPVL TEAMS
           </h2>
           <div className="w-24 h-1 bg-[#1a237e] mb-6" />
-          <p className="text-gray-700 text-sm md:text-lg font-medium italic">
-            “Lorem ipsum dolor sit amet, consectetur”
+          <p className="text-gray-700 text-sm md:text-xl font-semibold ">
+            Skilled. United. Competitive.
           </p>
         </div>
       </section>

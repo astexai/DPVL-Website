@@ -14,7 +14,7 @@ const page = () => {
   return (
      <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
-      <section className={`relative w-full h-[500px] md:h-[450px] overflow-hidden bg-[#1a237e]`}>
+      <section className={`relative w-full h-[500px] md:h-[510px] overflow-hidden bg-[#1a237e]`}>
       
      
       <div className="absolute inset-0 w-full h-full z-0">
@@ -54,22 +54,6 @@ const page = () => {
           </button>
         </div>
 
-        <div className="flex-1 relative w-full h-full flex items-end justify-center md:justify-end pb-8 md:pb-12">
-          
-          <div 
-            className="absolute bottom-4 md:bottom-8 right-0 md:right-10 text-[100px] md:text-[140px] font-black text-white/10 leading-none select-none pointer-events-none"
-            style={{ 
-              transform: 'perspective(500px) rotateX(60deg) scaleY(1.5)', 
-              fontFamily: 'sans-serif',
-              transformOrigin: 'bottom center'
-            }}
-          >
-            ABOUT
-          </div>
-
-     
-          
-        </div>
 
       </div>
 

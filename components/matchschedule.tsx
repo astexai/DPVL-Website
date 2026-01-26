@@ -18,14 +18,14 @@ export default function MatchSchedule() {
       
       <div className="absolute inset-0 w-full h-full z-0">
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#4a7acdf5] via-[#3b3bb7] to-[#a259e6]" />
+        <div className="absolute inset-0 " />
         
     
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/InfoBg.png"
           alt="Texture"
           fill
-          className="object-cover opacity-20 mix-blend-overlay"
+          className="object-fit rotate-180"
         />
       </div>
 

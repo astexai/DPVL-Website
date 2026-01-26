@@ -9,43 +9,18 @@ export default function WhoWeAre() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-pink-100" />
 
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/WhoAre.png"
           alt="Court Texture"
           fill
-          className="object-cover opacity-10 mix-blend-multiply"
+          className="object-cover "
         />
 
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 2px, transparent 2px), linear-gradient(90deg, #fff 2px, transparent 2px)",
-            backgroundSize: "100px 100px",
-          }}
-        />
+     
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
-          <div className="w-full md:w-1/3 flex flex-col items-center justify-center relative">
-            <div className="relative w-48 h-48 md:w-64 md:h-64 z-10 drop-shadow-2xl">
-              <Image
-                src="/assets/footerimg.jpg"
-                alt="Volleyball"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            <div className="relative w-40 h-20 md:w-52 md:h-24 -mt-6 z-20">
-              <Image
-                src="/assets/logo.jpg"
-                alt="DPVL Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-25">
+          <div className="w-full md:w-1/3 flex flex-col items-center justify-center relative"></div>
 
           <div className="w-full md:w-2/3 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-3 mb-1">

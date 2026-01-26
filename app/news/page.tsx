@@ -25,13 +25,13 @@ const newsItems = [
       
   
       <div className="absolute inset-0 w-full h-full z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a72] to-[#1a237e]" />
+        <div className="absolute inset-0 " />
      
         <Image
-          src="/assets/js.jpg"
+          src="/assets/bg/InfoBg.png"
           alt="Background Texture"
           fill
-          className="object-cover opacity-10 mix-blend-overlay"
+          className="object-cover opacity-80 mix-blend-overlay rotate-180"
         />
       </div>
 
@@ -56,13 +56,12 @@ const newsItems = [
    
           <div className="absolute inset-0 z-0">
      
-            <div className="absolute inset-0 bg-gradient-to-br from-[#d66095]/30 via-[#a259e6]/20 to-[#3b3bb7]/30 backdrop-blur-sm" />
-     
+         <div className="absolute inset-0 bg-gradient-to-br from-[#f472b6] via-[#d66095] to-[#db2777] opacity-30 backdrop-blur-sm" />
             <Image
-              src="/assets/bg/LatestVideo.png"
+              src="/assets/bg/LatestNews.png"
               alt="Inner Texture"
               fill
-              className="object-cover opacity-10 mix-blend-overlay"
+              className="object-cover opacity-40 mix-blend-overlay"
             />
       
             

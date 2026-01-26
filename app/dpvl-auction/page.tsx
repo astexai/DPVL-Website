@@ -70,17 +70,16 @@ const page = () => {
       </section>
 
 
-      <section className="relative w-full py-16 px-6 md:px-12 overflow-hidden bg-[#a259e6]">
+      <section className="relative w-full py-16 px-6 md:px-12 overflow-hidden ">
     
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
-            backgroundSize: "30px 30px",
-          }}
+        <Image
+          src={"/assets/bg/Blog.png"}
+          alt="image"
+          fill
+          className="object-cover"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#d66095]/80 to-[#a259e6]/90 mix-blend-multiply" />
+        <div className="absolute inset-0 mix-blend-multiply" />
 
         <div className="relative z-10 max-w-7xl mx-auto">
     

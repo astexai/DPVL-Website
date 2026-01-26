@@ -43,14 +43,14 @@ const videos = [
    
       <div className="absolute inset-0 w-full h-full z-0">
   
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4a148c] via-[#3b3bb7] to-[#1a237e]" />
+        <div className="absolute inset-0" />
         
      
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/DpvlTv.png"
           alt="Background Texture"
           fill
-          className="object-cover opacity-30 mix-blend-overlay"
+          className="object-fit"
         />
    
         <div 

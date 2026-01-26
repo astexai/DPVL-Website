@@ -40,7 +40,7 @@ export default function Footer() {
   </div>
 
             <p className="text-white/90 font-light leading-relaxed max-w-sm text-sm md:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
+              Where Delhi Rises. Where Champions Play.
             </p>
             
             <div className="flex flex-col items-center md:items-start w-full">
