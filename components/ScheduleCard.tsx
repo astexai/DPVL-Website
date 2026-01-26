@@ -19,7 +19,7 @@ export default function ScheduleCard()
     <div className="relative mt-15 sm:mt-0 rounded-xl overflow-hidden shadow-2xl border-[3px] border-[#D159A3]">
       
       <div className="absolute inset-0 overflow-hidden">
-        <Image src="/assets/bg/PlayCardd.png" alt="bg" fill priority className="object-cover " />
+        <Image src="/assets/bg/Schedule.png" alt="bg" fill priority className="object-fit " />
 
       </div>
 
