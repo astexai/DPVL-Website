@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 export default function WhoWeAre() {
   return (
-    <section className="relative w-full py-5 px-6 md:px-12 bg-[#e3f2fd] overflow-hidden">
+    <section className="relative w-full py-15 px-6 md:px-12 bg-[#e3f2fd] overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-blue-50 to-pink-100" />
 
