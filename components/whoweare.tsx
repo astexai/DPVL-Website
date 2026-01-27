@@ -12,7 +12,7 @@ export default function WhoWeAre() {
           src="/assets/bg/WhoAre.png"
           alt="Court Texture"
           fill
-          className="object-cover "
+          className="object-cover"
         />
 
      
