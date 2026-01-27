@@ -6,7 +6,7 @@ import Socials from "./socials";
 export default function Heroo({ title = "GALLERY", subtitle = "d" }) {
   return (
     <section
-      className={`relative w-full h-[350px] md:h-[510px] overflow-hidden `}
+      className={`relative w-full h-[300px] md:h-[430px] overflow-hidden `}
     >
       <div className="absolute inset-0 w-full h-full z-0">
         <Image

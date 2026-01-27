@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function FooterGrad() {
   return (
-    <div className="relative w-screen ml-[50%] -translate-x-1/2 overflow-hidden">
+    <div className="relative w-full ml-[50%] -translate-x-1/2 overflow-hidden">
       {/* Using <img> with w-full h-auto allows the container to 
         naturally expand its height based on the image's aspect ratio.
       */}

@@ -22,10 +22,10 @@ export default function MatchSchedule() {
         
     
         <Image
-          src="/assets/bg/InfoBg.png"
+          src="/assets/bg/Fixtures.png"
           alt="Texture"
           fill
-          className="object-fit rotate-180"
+          className="object-fit"
         />
       </div>
 
@@ -60,7 +60,7 @@ export default function MatchSchedule() {
                     {match.id}
                   </span>
              
-                  <div className="hidden md:block h-10 w-[3px] bg-[#3b3bb7] ml-auto mr-4"></div>
+                  <div className="hidden md:block h-10 w-[3px] bg-[#3b3bb7] ml-4 mr-4"></div>
                 </div>
               </div>
 
@@ -104,7 +104,7 @@ export default function MatchSchedule() {
               <div className="w-full md:w-[15%] flex justify-center md:justify-end mt-2 md:mt-0">
                 <div className="relative w-16 h-8 md:w-20 md:h-10">
                   <Image 
-                    src="/assets/logo.jpg" 
+                    src="/assets/logo-final-1.png" 
                     alt="League Logo" 
                     fill 
                     className="object-contain opacity-80"

@@ -21,7 +21,7 @@ const page = () => {
   { id: 10, category: 'Trophy Launch', src: '/assets/footerimg.jpg' },
 ];
 
-const categories = ['Match Day', 'Trophy Launch', 'Auction'];
+const categories = ['Auction', 'Trophy Launch', 'Match Day'];
 
   const [activeFilter, setActiveFilter] = useState('Auction');
 
@@ -35,13 +35,13 @@ const categories = ['Match Day', 'Trophy Launch', 'Auction'];
       
    
       <div className="absolute inset-0 w-full h-full z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#c55294] via-[#5c3dbc] to-[#3b3bb7]" />
+        <div className="absolute inset-0 " />
     
         <Image
-          src="/assets/footerimg.jpg"
+          src="/assets/bg/Gallery.png"
           alt="Texture"
           fill
-          className="object-cover opacity-10 mix-blend-overlay"
+          className="object-fit"
         />
       </div>
 

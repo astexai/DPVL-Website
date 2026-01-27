@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ScheduleCard()
 {
     return <div>
-         <section className="relative z-30 w-screen rounded-4xl md:rounded-[100px] pb-16 px-4 md:px-0 " 
+         <section className="relative z-30 w-full rounded-4xl md:rounded-[100px] pb-16 px-4 md:px-0 " 
   style={{ 
     backgroundImage: "url('/assets/bg/LatestVideo.png')", // Path to your footer image
     backgroundSize: 'cover', 
@@ -26,7 +26,7 @@ export default function ScheduleCard()
       <div className="relative z-10 flex flex-col items-center justify-center py-10 px-1 text-white">
         <div className="flex flex-row items-center justify-center gap-4 md:gap-12 w-full mb-6">
           <div className="flex flex-col md:flex-row items-center gap-3 text-center md:text-right">
-            <span className="text-lg md:text-2xl font-bold uppercase tracking-wider">Team 1</span>
+            <span className="text-lg md:text-2xl uppercase tracking-wider font-bebas">Team 1</span>
             <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xs shadow-lg">
               TBD
             </div>
@@ -42,11 +42,11 @@ export default function ScheduleCard()
             <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xs shadow-lg">
               TBD
             </div>
-            <span className="text-lg md:text-2xl font-bold uppercase tracking-wider">Team 2</span>
+            <span className="text-lg md:text-2xl font-bebas uppercase tracking-wider">Team 2</span>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-2 md:gap-8 text-sm md:text-base font-light text-white/80 mb-6 text-center">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-8 text-sm md:text-lg font-bebas text-white mb-6 text-center">
           <div className="flex items-center gap-2">
             <FaCalendarAlt /> <span>JUNE 13, 2025</span>
           </div>

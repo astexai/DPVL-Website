@@ -74,7 +74,7 @@ export default function PointsTable(): JSX.Element {
                   key={team.pos}
                   className="bg-white transition-all duration-200 shadow-sm hover:shadow-lg group"
                 >
-                  <td className="py-3 px-4 text-center font-bold text-xl border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md">
+                  <td className="py-3 px-4 text-center font-bold text-xl border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
                     {team.pos}
                   </td>
 
@@ -89,11 +89,11 @@ export default function PointsTable(): JSX.Element {
                     </div>
                   </td>
 
-                  <td className="py-3 px-2 text-center font-semibold text-lg">{team.p}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg">{team.w}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg">{team.l}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg">{team.nrr}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg">{team.forRuns}</td>
+                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.p}</td>
+                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.w}</td>
+                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.l}</td>
+                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.nrr}</td>
+                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.forRuns}</td>
 
                   <td className="py-3 px-4">
                     <div className="flex items-center justify-center gap-1">

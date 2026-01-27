@@ -11,7 +11,7 @@ const page = () => {
     <main className="min-h-screen bg-zinc-50 font-sans">
       <Navbar />
       <section
-        className={`relative w-full h-[350px] md:h-[510px] overflow-hidden `}
+        className={`relative w-full h-[300px] md:h-[430px] overflow-hidden `}
       >
         <div className="absolute inset-0 w-full h-full z-0">
           <Image

@@ -14,12 +14,11 @@ const page = () => {
   return (
      <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
-      <section className={`relative w-full h-[500px] md:h-[510px] overflow-hidden bg-[#1a237e]`}>
+      <section className={`relative w-full h-[300px] md:h-[430px] overflow-hidden bg-[#1a237e]`}>
       
      
       <div className="absolute inset-0 w-full h-full z-0">
-   
-        <div className="absolute inset-0 " />
+ 
       
         <Image
           src="/assets/bg/Banner.png"
