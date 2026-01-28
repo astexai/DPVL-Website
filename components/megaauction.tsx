@@ -45,45 +45,48 @@ export default function ShowStoppersAndGallery() {
 
   return (
     <div className="w-full font-sans text-white">
-      <section className="relative w-full py-16 px-6 md:px-12 bg-gradient-to-r from-[#2a2a72] to-[#009ffd] overflow-hidden">
-        <div className="absolute inset-0 rounded-lg overflow-hidden">
-          <Image
-            src="/assets/bg/Stopper.png"
-            alt="Venue"
-            fill
-            className="object-cover"
-          />
+     <section className="relative w-full py-12 md:py-16 px-4 md:px-12 bg-gradient-to-r from-[#2a2a72] to-[#009ffd] overflow-hidden">
+  {/* Background */}
+  <div className="absolute inset-0 z-0">
+    <Image
+      src="/assets/bg/Stopper.png"
+      alt="Venue"
+      fill
+      className="object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#2a2a72]/90 via-[#2a2a72]/50 to-transparent" />
+  </div>
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2a2a72] via-transparent to-transparent" />
-        </div>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left z-10">
-            <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2">
-              Show Stoppers of the Mega Auction
-            </h2>
+  {/* Content */}
+  <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
+    <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2 text-white">
+        Show Stoppers of the Mega Auction
+      </h2>
 
-            <div className="w-64 h-1 bg-[#ef4444] mb-8" />
+      <div className="w-40 md:w-64 h-1 bg-[#ef4444] mb-6 md:mb-8" />
 
-            <p className="text-white/90 mb-6 text-sm md:text-base w-150 text-justify">
-              The Mega Auction of the Delhi Pro Volleyball League delivered
-              several show-stopping moments, with franchises locking horns over
-              proven Indian attackers and dynamic all-rounders. Intense bidding
-              wars for top domestic talent became the highlight of the auction,
-              underlining the league’s ambition to showcase the best of Indian
-              volleyball and raise the competition’s overall quality.
-            </p>
+      <p className="text-white/90 mb-4 text-sm md:text-base max-w-xl text-left md:text-justify">
+        The Mega Auction of the Delhi Pro Volleyball League delivered
+        several show-stopping moments, with franchises locking horns over
+        proven Indian attackers and dynamic all-rounders. Intense bidding
+        wars for top domestic talent became the highlight of the auction,
+        underlining the league’s ambition to showcase the best of Indian
+        volleyball and raise the competition’s overall quality.
+      </p>
 
-            <p className="text-white/90 text-sm md:text-base w-150 text-justify">
-              Another major attraction of the auction was the smart acquisition
-              of marquee and emerging players who can change the course of a
-              match. These high-impact signings not only strengthened team
-              combinations but also generated excitement among fans, setting the
-              tone for a competitive and entertaining inaugural season of the
-              league.
-            </p>
-          </div>
-        </div>
-      </section>
+      <p className="text-white/90 text-sm md:text-base max-w-xl text-left md:text-justify">
+        Another major attraction of the auction was the smart acquisition
+        of marquee and emerging players who can change the course of a
+        match. These high-impact signings not only strengthened team
+        combinations but also generated excitement among fans, setting the
+        tone for a competitive and entertaining inaugural season of the
+        league.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       <section className="relative w-full py-16 px-6 md:px-12 overflow-hidden">
         <Image

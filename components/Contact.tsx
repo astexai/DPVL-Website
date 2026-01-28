@@ -38,9 +38,9 @@ const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 rounded-3xl overflow-hidden shadow-2xl">
         
         {/* Upside: Contact Form Section */}
-        <section className="relative py-7 px-5 md:px-10 overflow-hidden">
+        <section className="relative py-7.5 px-5 md:px-10 overflow-hidden">
           {/* Background Image */}
-          <div className="absolute inset-0 h-150 z-0 ">
+          <div className="absolute inset-0 h-250 md:h-150 z-0 ">
             <Image
               src="/assets/bg/ContactUs.png"
               alt="Contact Background"
@@ -53,9 +53,9 @@ const ContactSection: React.FC = () => {
           </div>
 
           <div className="relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 ">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 ">
               {/* Left Content */}
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-0.5 bg-white rounded-full" />
                   <span className="text-white text-sm font-medium tracking-wider uppercase">
@@ -75,7 +75,7 @@ const ContactSection: React.FC = () => {
               <div className=" p-6 md:p-8">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="w-full">
-                    <label htmlFor="fullName" className="block text-white text-xs font-medium mb-2">
+                    <label htmlFor="fullName" className="block text-white text-sm font-medium mb-2">
                       Full Name
                     </label>
                     <input
@@ -92,7 +92,7 @@ const ContactSection: React.FC = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="email" className="block text-white text-xs font-medium mb-2">
+                      <label htmlFor="email" className="block text-white text-sm font-medium mb-2">
                         Email
                       </label>
                       <input
@@ -107,7 +107,7 @@ const ContactSection: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-white text-xs font-medium mb-2">
+                      <label htmlFor="phone" className="block text-white text-sm font-medium mb-2">
                         Phone No.
                       </label>
                       <input
@@ -124,7 +124,7 @@ const ContactSection: React.FC = () => {
                   </div>
 
                   <div className="w-full">
-                    <label htmlFor="date" className="block text-white text-xs font-medium mb-2">
+                    <label htmlFor="date" className="block text-white text-sm font-medium mb-2">
                       Date
                     </label>
                     <input
@@ -139,7 +139,7 @@ const ContactSection: React.FC = () => {
                   </div>
 
                   <div className="w-full">
-                    <label htmlFor="message" className="block text-white text-xs font-medium mb-2">
+                    <label htmlFor="message" className="block text-white text-sm font-medium mb-2">
                       Ask any question
                     </label>
                     <textarea
@@ -153,13 +153,15 @@ const ContactSection: React.FC = () => {
                       className="w-full px-4 py-3 bg-white/15 backdrop-blur-md border-2 border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-white/60 resize-none"
                     />
                   </div>
-
-                  <button
+<div className='flex justify-center items-center'>
+    <button
                     type="submit"
-                    className="w-full md:w-auto bg-[#C04493] text-white font-semibold px-12 py-3 rounded-lg hover:shadow-2xl hover:shadow-pink-500/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm tracking-wide"
+                    className="inline-flex justify-center items-center w-full bg-[#C04493] text-white font-semibold px-12 py-3 rounded-lg hover:shadow-2xl hover:shadow-pink-500/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm tracking-wide"
                   >
                     Submit
                   </button>
+</div>
+                  
                 </form>
               </div>
             </div>
