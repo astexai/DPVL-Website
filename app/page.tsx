@@ -53,7 +53,7 @@ export default function Home() {
         {/* BACKGROUND WRAPPER */}
         <div className="absolute inset-0 w-full h-full z-0">
           {/* 1. IMAGE: Visible on sm and up, hidden on mobile */}
-          <div className="hidden sm:block absolute inset-0 w-full h-full">
+          <div className=" absolute inset-0 w-full h-full">
             <Image
               src="/assets/bg/Hero.png"
               alt="Hero Background"

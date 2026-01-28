@@ -1,4 +1,4 @@
-import Contact from "@/components/Contact";
+import ContactSection from "@/components/Contact";
 import Footer from "@/components/footer";
 import FooterGrad from "@/components/footergrad";
 import Heroo from "@/components/herosection";
@@ -13,7 +13,7 @@ export default function ContactUs()
         title="Contact us"
         subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
         />
-        <Contact/>
+        <ContactSection/>
         <FooterGrad/>
         <Footer/>
         </div>

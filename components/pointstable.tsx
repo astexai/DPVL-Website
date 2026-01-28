@@ -31,7 +31,8 @@ export default function PointsTable(): JSX.Element {
   }));
 
   return (
-    <section className="relative w-full z-10 -mt-20 pt-32 min-h-screen py-16 px-4 overflow-hidden ">
+    <section className="relative w-full z-10 mt-[-5rem]
+ min-h-[70vh] py-32 px-4 overflow-hidden ">
 
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0" />

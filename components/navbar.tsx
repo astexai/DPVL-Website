@@ -62,7 +62,7 @@ const menuItems = [
             </div>
 
             {/* 2. CENTER: Navigation (Takes 2 columns for maximum width) */}
-            <div className="hidden lg:flex lg:col-span-2 items-center justify-center gap-3 xl:gap-5.5">
+            <div className="hidden lg:flex lg:col-span-2 items-center justify-center gap-3 xl:gap-6">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
@@ -111,10 +111,18 @@ const menuItems = [
             </div>
             <div className="flex flex-col p-8 gap-4">
               {menuItems.map((item) => (
-                <Link key={item.name} href={item.href} onClick={closeMenu} className="text-3xl font-bebas text-black hover:text-[#3b3bb7] uppercase border-b border-gray-100 pb-2">
+                <Link key={item.name} href={item.href} onClick={closeMenu} className="text-3xl font-bebas text-black hover:text-[#3b3bb7] uppercase border-b border-gray-100">
                   {item.name}
                 </Link>
               ))}
+              <Link
+  href="/contact-us"
+  className="text-3xl leading-6 font-bebas bg-[#3b3bb7] text-white uppercase border-b border-gray-100 py-2.5 rounded-md hover:opacity-80 text-center"
+>
+  CONTACT US
+</Link>
+
+
             </div>
           </div>
         </div>
