@@ -34,7 +34,7 @@ export default function ScheduleCard()
 
           <div className="flex flex-col items-center">
             <Image
-            src={"/assets/Vs.png"}
+            src={"/assets/others/Vs.png"}
             alt="vs"
             width={55}
             height={55}

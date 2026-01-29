@@ -9,19 +9,19 @@ export default function LatestVideos() {
   const [activeTab, setActiveTab] = useState(0);
     const videoTabs = [
   [
-    { img: "/assets/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
-    { img: "/assets/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
-    { img: "/assets/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
+    { img: "/assets/bg/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
+    { img: "/assets/bg/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
+    { img: "/assets/bg/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
   ],
   [
-    { img: "/assets/footerimg.jpg", title: "Season Highlights & Best Moments" },
-    { img: "/assets/footerimg.jpg", title: "Season Highlights & Best Moments" },
-    { img: "/assets/footerimg.jpg", title: "Season Highlights & Best Moments" },
+    { img: "/assets/bg/footerimg.jpg", title: "Season Highlights & Best Moments" },
+    { img: "/assets/bg/footerimg.jpg", title: "Season Highlights & Best Moments" },
+    { img: "/assets/bg/footerimg.jpg", title: "Season Highlights & Best Moments" },
   ],
   [
-    { img: "/assets/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
-    { img: "/assets/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
-    { img: "/assets/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
+    { img: "/assets/bg/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
+    { img: "/assets/bg/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
+    { img: "/assets/bg/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
  
   ],
 ];

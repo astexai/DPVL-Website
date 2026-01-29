@@ -52,7 +52,7 @@ const menuItems = [
             <div className="flex justify-start">
               <Link href="/" className="shrink-0 flex items-center">
                 <Image
-                  src="/assets/Logo-final-1.png"
+                  src="/assets/logos/Logo-final-1.png"
                   alt="DPVL Logo"
                   width={160}
                   height={120}

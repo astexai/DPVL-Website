@@ -7,27 +7,27 @@ const newsData = [
   {
     id: 1,
     title: "DPVL Set for Biggest Season Yet as Teams Gear Up for Action.",
-    image: "/assets/footerimg.jpg"
+    image: "/assets/bg/footerimg.jpg"
   },
   {
     id: 2,
     title: "Championship Finals: A Historic Showdown Awaits.",
-    image: "/assets/footerimg.jpg"
+    image: "/assets/bg/footerimg.jpg"
   },
   {
     id: 3,
     title: "New Talent Emerges in the League Qualifiers.",
-    image: "/assets/footerimg.jpg"
+    image: "/assets/bg/footerimg.jpg"
   },
   {
     id: 4,
     title: "Behind the Scenes: Training with the Champions.",
-    image: "/assets/footerimg.jpg"
+    image: "/assets/bg/footerimg.jpg"
   },
   {
     id: 5,
     title: "DPVL Announces New Venues for 2026 Season.",
-    image: "/assets/footerimg.jpg"
+    image: "/assets/bg/footerimg.jpg"
   }
 ];
 

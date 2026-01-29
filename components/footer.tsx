@@ -45,7 +45,7 @@ export default function Footer() {
           <div className="md:col-span-4 flex flex-col items-center md:items-start space-y-6">
             <div className="relative w-70 h-40 md:w-80 md:h-40 -ml-13"> 
   <Image
-  src="/assets/white_logo.png"
+  src="/assets/logos/white_logo.png"
   alt="DPVL Logo"
   width={400}
   height={200}

@@ -104,7 +104,7 @@ export default function MatchSchedule() {
               <div className="w-full md:w-[15%] flex justify-center md:justify-end mt-2 md:mt-0">
                 <div className="relative w-16 h-8 md:w-20 md:h-10">
                   <Image 
-                    src="/assets/logo-final-1.png" 
+                    src="/assets/logos/logo-final-1.png" 
                     alt="League Logo" 
                     fill 
                     className="object-contain opacity-80"

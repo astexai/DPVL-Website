@@ -21,7 +21,7 @@ export default function MissionFounder() {
   const founders = [
     {
       name: "Ms. Neeti Rawat",
-      image: "/assets/Founder2.jpg",
+      image: "/assets/others/Founder2.jpg",
       text1:
         "A former Gold Medalist at the European Masters Games and a trusted national sports anchor, Neeti brings unparalleled authenticity to DPVL. Her voice has shaped Indian sports storytelling for years.",
       text2:
@@ -33,7 +33,7 @@ export default function MissionFounder() {
     },
     {
       name: "Ms. Jasoda Gulliya",
-      image: "/assets/Founder1.jpg",
+      image: "/assets/others/Founder1.jpg",
       text1:
         "A powerhouse in sports and corporate strategy, Jasoda has represented Delhi in 20+ national tournaments and won Gold at the European Masters Games, Torino.",
       text2:
