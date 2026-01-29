@@ -10,6 +10,7 @@ const page = () => {
      <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
       <Heroo title="FIXTURES" subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life." />
+      <FooterGrad variant="cropped" height={20}/>
       <MatchSchedule />
       <FooterGrad />
       <Footer />

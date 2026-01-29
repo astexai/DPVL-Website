@@ -19,7 +19,7 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
     { id: 1, name: 'Team Eastern Eagles', bgImage: '/assets/teams/EasternEagles.jpeg' },
     { id: 2, name: 'Team New Delhi Titans', bgImage: '/assets/teams/NewDelhi.jpeg' },
     { id: 3, name: 'Team Northern Ninjas', bgImage: '/assets/teams/NorthernNinjas.jpeg' },
-    { id: 4, name: 'Team Delta', bgImage: '/assets/teams/PuraniDilli.jpeg' },
+    { id: 4, name: 'Team Purani Dilli Panthers', bgImage: '/assets/teams/PuraniDilli.jpeg' },
     { id: 5, name: 'Team Southern Spikers', bgImage: '/assets/teams/SouthernSpiker.jpeg' },
     { id: 6, name: 'Team Western Warriors', bgImage: '/assets/teams/WesternWarriors.jpeg' },
   ];

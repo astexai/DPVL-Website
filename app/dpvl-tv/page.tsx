@@ -108,7 +108,7 @@ const Page = () => {
     <main className="min-h-screen bg-zinc-50 font-sans">
       <Navbar />
       <Heroo title="DPVL TV" subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life." />
-      
+      <FooterGrad variant="cropped" height={20}/>
       <section className="relative w-full py-16 px-4 bg-[#3b3bb7] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src="/assets/bg/DpvlTv.png" alt="Background Texture" fill className="object-cover" />

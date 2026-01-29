@@ -13,12 +13,8 @@ const sponsors = [
   { role: "JERSEY PARTNER", name: "abc", style: "bg-black text-red-500 rounded-full w-12 h-12 flex items-center justify-center font-bold" },
   { role: "HEALTHCARE PARTNER", name: "BVC", style: "text-black font-bold text-2xl flex items-center gap-1 border-l-4 border-red-600 pl-2" },
   { role: "ASSOCIATE PARTNER", name: "BVC", style: "bg-orange-500 text-white px-2 font-bold italic transform -skew-x-12" },
-  { role: "ASSOCIATE PARTNER", name: "AAA", style: "text-black font-thin text-3xl italic" },
-  { role: "EXPERIENCE PARTNER", name: "AA", style: "text-pink-600 font-bold text-3xl" },
-  { role: "BALL & EQUIPMENT PARTNER", name: "ABC", style: "text-orange-500 font-bold text-2xl" },
-  { role: "FM PARTNER", name: "AAA", style: "bg-black text-white rounded-full px-2 font-bold text-xl border-2 border-red-500" },
-  { role: "MEDIA & MARKETING PARTNER", name: "AAA", style: "text-[#3b3bb7] font-bold text-2xl" },
-  { role: "EDUCATION PARTNER", name: "CCC", style: "text-[#1a237e] font-bold text-2xl" },
+
+  
 ];
 
 export default function PartnersSponsors() {
@@ -61,7 +57,7 @@ export default function PartnersSponsors() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-5 md:gap-y-4 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-1 gap-y-5 md:gap-y-3 text-center">
           {sponsors.map((sponsor, index) => (
             <div key={index} className="flex flex-col items-center justify-start h-full group">
              

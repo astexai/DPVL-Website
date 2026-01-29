@@ -1,21 +1,28 @@
-import React from 'react';
-import Image from 'next/image';
+type FooterGradProps = {
+  variant?: 'full' | 'cropped';
+  height?: number;
+};
 
-export default function FooterGrad() {
+export default function FooterGrad({
+  variant = 'full',
+  height = 160,
+}: FooterGradProps) {
   return (
-    <div className="relative w-full ml-[50%] -translate-x-1/2 overflow-hidden">
-      {/* Using <img> with w-full h-auto allows the container to 
-        naturally expand its height based on the image's aspect ratio.
-      */}
-      <img 
-        src="/assets/bg/Strip.png" // Replace with your actual image path
+    <div
+      className="relative w-full overflow-hidden"
+      style={variant === 'cropped' ? { height } : undefined}
+    >
+      <img
+        src="/assets/bg/Strip.png"
         alt="Footer Background"
-        className="w-full h-auto block"
+        className={
+          variant === 'cropped'
+            ? 'w-full h-full object-cover block'
+            : 'w-full h-auto block'
+        }
       />
 
-      {/* Optional: If you still want the subtle pattern overlay from your 
-        previous code, keep this div below. Otherwise, you can delete it.
-      */}
+      {/* Optional overlay */}
       <div className="absolute inset-0 bg-white/5 pointer-events-none mix-blend-soft-light" />
     </div>
   );

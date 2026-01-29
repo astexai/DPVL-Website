@@ -9,6 +9,7 @@ import Image from 'next/image';
 import MissionFounder from '@/components/mission';
 import { FaXTwitter } from 'react-icons/fa6';
 import Socials from '@/components/socials';
+import Heroo from '@/components/herosection';
 
 const page = () => {
   return (
@@ -16,25 +17,7 @@ const page = () => {
      <Navbar />
       <section className={`relative w-full h-[300px] md:h-[430px] overflow-hidden bg-[#1a237e]`}>
       
-     
-      <div className="absolute inset-0 w-full h-full z-0">
- 
-      
-        <Image
-          src="/assets/bg/Banner.png"
-          alt="Background Texture"
-          fill
-          className="object-cover"
-        />
-
-      
-        <div 
-          className="absolute top-0 left-0 w-1/3 h-full opacity-30" 
-          style={{ 
-            background: 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(214, 96, 149, 0.3) 2px, rgba(214, 96, 149, 0.3) 4px)' 
-          }}
-        />
-      </div>
+     <Heroo title='ABOUT US'/>
 
      
       <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-center md:justify-between">

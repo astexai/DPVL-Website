@@ -14,6 +14,7 @@ import LatestVideos from "@/components/latestvideos";
 import Socials from "@/components/socials";
 import ScheduleCard from "@/components/ScheduleCard";
 import MobileSvg from "@/components/MobileSvg";
+import Link from "next/link";
 
 export default function Home() {
   // Carousel Data
@@ -47,29 +48,27 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-zinc-50 font-sans">
+    <main className="min-h-screen font-sans">
       <Navbar />
-      <section className="relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[725px] flex items-center overflow-hidden bg-[#0d1b3e]">
+      <section className="relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[725px] flex items-center overflow-hidden">
         {/* BACKGROUND WRAPPER */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute inset-0 z-0">
           {/* 1. IMAGE: Visible on sm and up, hidden on mobile */}
-          <div className=" absolute inset-0 w-full h-full">
+         
             <Image
               src="/assets/bg/Hero.png"
               alt="Hero Background"
               fill
               priority
-              className="object-center"
+              className="object-cover"
             />
-            {/* Gradient for Desktop Image */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#051038]/90 via-[#051038]/60 to-transparent" />
-          </div>
+
 
           {/* 2. SVG: Visible on mobile, hidden on sm and up */}
           <MobileSvg />
 
           {/* Decorative court line (Shared for both) */}
-          <div className="absolute bottom-[35%] w-full h-[2px] bg-white/20 blur-[1px]" />
+         
         </div>
 
         {/* Content Layer */}
@@ -90,9 +89,11 @@ export default function Home() {
                 <p className="text-white/90 text-sm sm:text-base md:text-lg font-light mb-8 max-w-lg leading-relaxed">
                   {slide.subtitle}
                 </p>
-                <button className="relative overflow-hidden group border border-white text-white rounded-full px-8 py-3 font-medium text-lg transition-all hover:bg-white hover:text-[#1a237e]">
+                <Link href={"/about-us"}>
+                <button className="relative overflow-hidden group border cursor-pointer border-white text-white rounded-full px-8 py-3 font-medium text-lg transition-all hover:bg-white hover:text-[#1a237e]">
                   <span className="relative z-10">Explore Now</span>
                 </button>
+                </Link>
               </div>
             </div>
           ))}

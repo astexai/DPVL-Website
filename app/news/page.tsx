@@ -21,6 +21,7 @@ const newsItems = [
      <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
        <Heroo title="NEWS" subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life." />
+       <FooterGrad variant="cropped" height={20}/>
       <section className="relative w-full py-16 px-4 md:px-8 bg-[#3b3bb7] overflow-hidden">
       
   

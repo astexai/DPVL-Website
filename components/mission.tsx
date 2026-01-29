@@ -85,10 +85,10 @@ export default function MissionFounder() {
               key={item.title}
               className="bg-[#1a237e]/40 backdrop-blur-sm border border-[#D159A3] rounded-xl p-8 text-center shadow-lg"
             >
-              <h3 className="text-2xl font-bold uppercase text-white mb-4">
+              <h3 className="text-2xl font-bold font-robo uppercase text-white mb-4">
                 {item.title}
               </h3>
-              <p className="text-white/80">{item.text}</p>
+              <p className="text-white/80 font-robo">{item.text}</p>
             </div>
           ))}
         </div>
@@ -135,9 +135,9 @@ export default function MissionFounder() {
 
             {/* Text */}
             <div className="flex-1 text-white text-center md:text-left space-y-6">
-              <p>{founders[founderIndex].text1}</p>
-              <p>{founders[founderIndex].text2}</p>
-              <p>{founders[founderIndex].text3}</p>
+              <p className="font-robo">{founders[founderIndex].text1}</p>
+              <p className="font-robo">{founders[founderIndex].text2}</p>
+              <p className="font-robo">{founders[founderIndex].text3}</p>
 
               <div className="mt-4">
                 <p className="italic text-lg mb-4">

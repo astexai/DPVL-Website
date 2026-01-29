@@ -9,6 +9,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = React.useState(false);
   
 const menuItems = [
+  {name: "Home", href:"/"},
   { name: "ABOUT US", href: "/about-us" },
   { name: "OUR TEAMS", href: "/teams" },
   { name: "FIXTURES", href: "/fixtures" },
@@ -53,9 +54,9 @@ const menuItems = [
                 <Image
                   src="/assets/Logo-final-1.png"
                   alt="DPVL Logo"
-                  width={120}
-                  height={80}
-                  className="h-14 md:h-20 w-auto"
+                  width={160}
+                  height={120}
+                  className="h-14 md:h-25 w-auto"
                   priority
                 />
               </Link>

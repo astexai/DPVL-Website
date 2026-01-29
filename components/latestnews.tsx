@@ -73,10 +73,7 @@ export default function LatestNews() {
           className=""
         />
       
-        <div className="absolute inset-0 bg-gradient-to-r from-[#512da8]/90 via-[#311b92]/80 to-[#512da8]/90 mix-blend-multiply" />
-       
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#d66095]/40 to-transparent blur-3xl" />
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#d66095]/40 to-transparent blur-3xl" />
+ 
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">

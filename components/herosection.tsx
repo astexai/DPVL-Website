@@ -14,24 +14,18 @@ export default function Heroo({ title = "GALLERY", subtitle = "d" }) {
           alt="Background"
           fill
           priority
-          className="object-cover"
+          className=" object-cover"
           
         />
       </div>
 
-      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-center md:justify-between">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-lg mt-10 md:mt-0">
-          <h1
-            className="text-white font-sans font-bold  font-mokoto text-4xl sm:text-5xl md:text-6xl tracking-widest mb-4"
-            style={{ fontFamily: "var(--font-orbitron)" }}
-          >
-            {title}
-          </h1>
-          <p className="text-white/90 text-base md:text-lg font-light leading-relaxed">
-            {subtitle}
-          </p>
-        </div>
-      </div>
+      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-center">
+  <div className="text-left w-full">
+    <h1 className="text-white font-norch text-4xl sm:text-5xl md:text-9xl tracking-wide">
+      {title}
+    </h1> 
+  </div>
+</div>
 
       <Socials />
     </section>

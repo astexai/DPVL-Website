@@ -24,7 +24,7 @@ export default function ScheduleCard()
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center py-10 px-1 text-white">
-        <div className="flex flex-row items-center justify-center gap-4 md:gap-12 w-full mb-6">
+        <div className="flex flex-row items-center justify-center gap-4 md:gap-6 w-full mb-6">
           <div className="flex flex-col md:flex-row items-center gap-3 text-center md:text-right">
             <span className="text-lg md:text-2xl uppercase tracking-wider font-bebas">Team 1</span>
             <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xs shadow-lg">
@@ -33,9 +33,12 @@ export default function ScheduleCard()
           </div>
 
           <div className="flex flex-col items-center">
-            <span className="text-4xl md:text-6xl font-black italic transform -skew-x-12 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 drop-shadow-lg">
-              VS
-            </span>
+            <Image
+            src={"/assets/Vs.png"}
+            alt="vs"
+            width={55}
+            height={55}
+            />
           </div>
 
           <div className="flex flex-col-reverse md:flex-row items-center gap-3 text-center md:text-left">

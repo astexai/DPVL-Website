@@ -10,18 +10,19 @@ export default function LatestVideos() {
     const videoTabs = [
   [
     { img: "/assets/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
-    { img: "/assets/logo.jpg", badge: "1st Position" },
-    { img: "/assets/footerimg.jpg" },
+    { img: "/assets/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
+    { img: "/assets/footerimg.jpg", title: "DPVL Set for Biggest Season Yet" },
   ],
   [
-    { img: "/assets/logo.jpg", title: "Season Highlights & Best Moments" },
-    { img: "/assets/footerimg.jpg", badge: "Top Match" },
-    { img: "/assets/logo.jpg" },
+    { img: "/assets/footerimg.jpg", title: "Season Highlights & Best Moments" },
+    { img: "/assets/footerimg.jpg", title: "Season Highlights & Best Moments" },
+    { img: "/assets/footerimg.jpg", title: "Season Highlights & Best Moments" },
   ],
   [
     { img: "/assets/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
-    { img: "/assets/logo.jpg", badge: "Champion" },
-    { img: "/assets/footerimg.jpg" },
+    { img: "/assets/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
+    { img: "/assets/footerimg.jpg", title: "Finals Recap & Trophy Lift" },
+ 
   ],
 ];
 
@@ -43,7 +44,7 @@ export default function LatestVideos() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -40 }}
           transition={{ duration: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-14"
         >
           {videoTabs[activeTab].map((item, index) => (
             <div
@@ -72,19 +73,13 @@ export default function LatestVideos() {
                   </div>
                 </>
               )}
-
-              {item.badge && (
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#efc94c] text-black px-4 py-1 rounded shadow font-bold text-xs uppercase">
-                  {item.badge}
-                </div>
-              )}
             </div>
           ))}
         </motion.div>
       </AnimatePresence>
 
       {/* Pagination Bars */}
-      <div className="flex justify-center mt-10 gap-2">
+      <div className="flex justify-center mt-10 gap-3">
         {videoTabs.map((_, index) => (
           <button
             key={index}

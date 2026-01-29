@@ -3,7 +3,7 @@ import Footer from "@/components/footer";
 import FooterGrad from "@/components/footergrad";
 import Heroo from "@/components/herosection";
 import Image from "next/image";
-import ShowStoppersAndGallery from "@/components/megaauction";
+import ShowStoppersAndGallery from "@/components/Stoppers";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const page = () => {
@@ -51,7 +51,7 @@ const page = () => {
               <h2 className="text-xl md:text-2xl font-semibold italic text-white/90">
                 “Lorem ipsum dolor sit amet, consectetur”
               </h2>
-              <p className="text-white/80 leading-relaxed text-sm md:text-base">
+              <p className="text-white/80 leading-relaxed text-sm md:text-base font-robo">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua...
               </p>

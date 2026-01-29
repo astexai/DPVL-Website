@@ -33,7 +33,7 @@ const Headline: React.FC = () => {
 			<style>{`
 				.marquee {
 					display: inline-flex;
-					animation: marquee-x 18s linear infinite;
+					animation: marquee-x 25s linear infinite;
 				}
 				@keyframes marquee-x {
 					0% { transform: translateX(0); }

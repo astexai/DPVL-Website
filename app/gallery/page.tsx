@@ -8,22 +8,20 @@ import Heroo from "@/components/herosection"
 
 const page = () => {
   const galleryImages = [
-  { id: 1, category: 'Auction', src: '/assets/footerimg.jpg' }, 
-  { id: 2, category: 'Auction', src: '/assets/footerimg.jpg' },
-  { id: 3, category: 'Auction', src: '/assets/footerimg.jpg' },
-  { id: 4, category: 'Auction', src: '/assets/footerimg.jpg' },
-  { id: 5, category: 'Auction', src: '/assets/footerimg.jpg' },
-  { id: 6, category: 'Auction', src: '/assets/footerimg.jpg' },
-  { id: 7, category: 'Auction', src: '/assets/footerimg.jpg' },
-  { id: 8, category: 'Auction', src: '/assets/footerimg.jpg' },
+  { id: 1, category: 'Opening Ceremony', src: '/assets/opening/image1.jpg' }, 
+  { id: 2, category: 'Opening Ceremony', src: '/assets/opening/image2.jpg' }, 
+  { id: 3, category: 'Opening Ceremony', src: '/assets/opening/image3.jpg' }, 
+  { id: 4, category: 'Opening Ceremony', src: '/assets/opening/image4.jpg' }, 
+  { id: 5, category: 'Opening Ceremony', src: '/assets/opening/image5.jpg' }, 
+  { id: 6, category: 'Opening Ceremony', src: '/assets/opening/image6.jpg' }, 
+  { id: 7, category: 'Opening Ceremony', src: '/assets/opening/image7.jpg' }, 
+  { id: 7, category: 'Opening Ceremony', src: '/assets/opening/image9.jpg' }, 
 
-  { id: 9, category: 'Match Day', src: '/assets/footerimg.jpg' },
-  { id: 10, category: 'Trophy Launch', src: '/assets/footerimg.jpg' },
 ];
 
-const categories = ['Auction', 'Trophy Launch', 'Match Day'];
+const categories = ['Opening Ceremony','Auction', 'Trophy Launch', 'Match Day'];
 
-  const [activeFilter, setActiveFilter] = useState('Auction');
+  const [activeFilter, setActiveFilter] = useState('Opening Ceremony');
 
   const filteredImages = galleryImages.filter(img => img.category === activeFilter);
   return (
@@ -43,6 +41,7 @@ const categories = ['Auction', 'Trophy Launch', 'Match Day'];
           fill
           className="object-fit"
         />
+        <FooterGrad variant="cropped" height={20}/>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center">
@@ -75,6 +74,7 @@ const categories = ['Auction', 'Trophy Launch', 'Match Day'];
               <Image
                 src={image.src}
                 alt={image.category}
+                priority
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -85,8 +85,8 @@ const categories = ['Auction', 'Trophy Launch', 'Match Day'];
           ))}
 
           {filteredImages.length === 0 && (
-            <div className="col-span-full text-center text-white/70 py-10">
-              No images available for {activeFilter}
+            <div className="col-span-full mt-20 text-center text-2xl text-white py-10">
+              Coming Soon...
             </div>
           )}
         </div>

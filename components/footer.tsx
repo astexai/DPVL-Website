@@ -3,8 +3,22 @@ import React from 'react';
 import Image from 'next/image';
 import { FaInstagram, FaFacebookF, FaTwitter, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
+import Link from 'next/link';
 
 export default function Footer() {
+  const footerLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Our Teams", href: "/teams" },
+  { name: "Fixtures", href: "/fixtures" },
+  { name: "Auction", href: "/dpvl-auction" },
+  { name: "Points Table", href: "/points-table" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Dpvl Tv", href: "/dpvl-tv" },
+  { name: "News", href: "/news" },
+  { name: "Blogs", href: "/blogs" },
+];
+
   return (
 
     <footer className="relative w-full text-white pt-16  pb-8 ">
@@ -29,19 +43,18 @@ export default function Footer() {
           
  
           <div className="md:col-span-4 flex flex-col items-center md:items-start space-y-6">
-            <div className="relative w-64 h-32 md:w-80 md:h-40 -ml-2"> 
-    <Image 
-      src="/assets/white_logo.png" 
-      alt="DPVL Logo" 
-      fill
-      className="object-contain object-left"
-      priority
-    />
+            <div className="relative w-70 h-40 md:w-80 md:h-40 -ml-13"> 
+  <Image
+  src="/assets/white_logo.png"
+  alt="DPVL Logo"
+  width={400}
+  height={200}
+  priority
+  className="object-contain"
+ />
+
   </div>
 
-            <p className="text-white/90 font-light leading-relaxed max-w-sm text-sm md:text-base">
-              Where Delhi Rises. Where Champions Play.
-            </p>
             
             <div className="flex flex-col items-center md:items-start w-full">
               <span className="text-lg font-medium border-b-2 border-white/30 pb-1 mb-4 inline-block">
@@ -63,16 +76,23 @@ export default function Footer() {
               Quick Links
               <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
             </h3>
-            <ul className="space-y-2 font-light text-white/90 text-sm md:text-base w-full md:w-auto">
-              {['Home', 'Schedule', 'Our Team', 'News', 'Blog', 'Gallery', 'Contact Us'].map((item) => (
-                <li key={item} className="flex items-center justify-center md:justify-start gap-2 group cursor-pointer">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#d66095] transition-colors"></span>
-                  <a href="#" className="hover:text-pink-200 hover:translate-x-1 transition-all duration-300">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <ul className="space-y-1 font-light text-white/90 text-sm md:text-base w-full md:w-auto">
+  {footerLinks.map((item) => (
+    <li
+      key={item.name}
+      className="flex items-center justify-center md:justify-start gap-2 group cursor-pointer"
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#d66095] transition-colors"></span>
+
+      <Link
+        href={item.href}
+        className="hover:text-pink-200 hover:translate-x-1 transition-all duration-300"
+      >
+        {item.name}
+      </Link>
+    </li>
+  ))}
+</ul>
           </div>
 
      

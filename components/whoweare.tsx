@@ -39,7 +39,7 @@ export default function WhoWeAre() {
               “Elevating Volleyball. Empowering Athletes.”
             </h3>
 
-            <p className="text-gray-700 leading-relaxed text-sm md:text-base  max-w-2xl text-justify">
+            <p className="text-gray-700 leading-relaxed font-robo text-sm md:text-base  max-w-2xl text-justify">
               The Delhi Pro Volleyball League (DPVL) is a professionally
               structured league designed to elevate volleyball in Delhi and NCR
               by combining high-level athletic competition with entertainment,

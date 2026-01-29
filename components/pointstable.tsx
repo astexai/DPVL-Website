@@ -5,47 +5,42 @@ import { JSX } from 'react';
 
 type MatchResult = 'W' | 'L';
 
-interface Team {
+interface TeamData {
   pos: number;
   name: string;
+  logo: string;
   p: number;
   w: number;
   l: number;
   nrr: number;
   forRuns: number;
-  against: MatchResult[];
+  against?: MatchResult[];
   pts: number;
 }
 
 export default function PointsTable(): JSX.Element {
-  const teams: Team[] = Array.from({ length: 8 }, (_, index) => ({
-    pos: index + 1,
-    name: 'TEAM NAME',
-    p: 0,
-    w: 0,
-    l: 0,
-    nrr: 0,
-    forRuns: 0,
-    against: ['W', 'W', 'L', 'W'],
-    pts: 0,
-  }));
+  // Integrated your real team names and images
+  const teams: TeamData[] = [
+    { pos: 1, name: 'Eastern Eagles', logo: '/assets/teams/EasternEagles.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 2, name: 'New Delhi Titans', logo: '/assets/teams/NewDelhi.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 3, name: 'Northern Ninjas', logo: '/assets/teams/NorthernNinjas.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 4, name: 'Purani Dilli Panthers', logo: '/assets/teams/PuraniDilli.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 5, name: 'Southern Spikers', logo: '/assets/teams/SouthernSpiker.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 6, name: 'Western Warriors', logo: '/assets/teams/WesternWarriors.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+  ];
 
   return (
-    <section className="relative w-full z-10 mt-[-5rem]
- min-h-[70vh] py-32 px-4 overflow-hidden ">
-
+    <section className="relative w-full z-10 mt-[-5rem] min-h-[70vh] py-32 px-4 overflow-hidden ">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0" />
         <Image
           src="/assets/bg/PointsTable.png"
           alt="Background Texture"
           fill
-          className="object-cover "
+          className="object-cover"
         />
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto w-full flex flex-col items-center">
-    
         <div className="flex flex-col items-center mb-10">
           <h2 className="text-4xl md:text-5xl text-white font-bold uppercase tracking-tight mb-2">
             Points Table
@@ -75,14 +70,19 @@ export default function PointsTable(): JSX.Element {
                   key={team.pos}
                   className="bg-white transition-all duration-200 shadow-sm hover:shadow-lg group"
                 >
-                  <td className="py-3 px-4 text-center font-bold text-xl border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
+                  <td className="py-3 px-4 text-center font-bold md:text-xl text-md border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
                     {team.pos}
                   </td>
 
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-pink-100 border-2 border-[#d66095] flex items-center justify-center text-[10px] font-bold text-[#d66095]">
-                        TBD
+                      <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#d66095] flex-shrink-0">
+                        <Image
+                          src={team.logo}
+                          alt={team.name}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <span className="font-bold text-lg uppercase tracking-tight text-black">
                         {team.name}
@@ -98,16 +98,28 @@ export default function PointsTable(): JSX.Element {
 
                   <td className="py-3 px-4">
                     <div className="flex items-center justify-center gap-1">
-                      {team.against.map((result, i) => (
-                        <div
-                          key={i}
-                          className={`w-8 h-8 rounded-full flex items-center justify-center
-                            text-white font-bold text-sm
-                            ${result === 'W' ? 'bg-[#2ca045]' : 'bg-[#dc3545]'}`}
-                        >
-                          {result}
-                        </div>
-                      ))}
+                      {team.against && team.against.length > 0 ? (
+                        team.against.map((result, i) => (
+                          <div
+                            key={i}
+                            className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${
+                              result === 'W' ? 'bg-[#2ca045]' : 'bg-[#dc3545]'
+                            }`}
+                          >
+                            {result}
+                          </div>
+                        ))
+                      ) : (
+                        /* Default slots when no matches have been played */
+                        [...Array(4)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-8 h-8 rounded-full bg-black/5 border border-gray-200 flex items-center justify-center"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-gray-300" />
+                          </div>
+                        ))
+                      )}
                     </div>
                   </td>
 
