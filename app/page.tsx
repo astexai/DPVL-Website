@@ -79,7 +79,7 @@ export default function Home() {
               className={`flex flex-col md:flex-row items-center justify-between w-full transition-opacity duration-700 ease-in-out ${index === current ? "opacity-100 relative" : "opacity-0 absolute inset-0"}`}
             >
               <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left pt-10 md:pt-0 z-20">
-                <h1 className="text-white font-sans font-bold font-mokoto text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-wide mb-6">
+                <h1 className="text-white font-norch text-3xl sm:text-4xl md:text-5xl lg:text-8xl tracking-wide mb-6">
                   {slide.title.map((line, i) => (
                     <span key={i} className="block">
                       {line}
