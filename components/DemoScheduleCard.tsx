@@ -106,25 +106,4 @@ export default function ScheduleCard() {
     </div>
   );
 }
-'use client';
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// Mock Data
-const galleryImages = [
-  { id: 1, src: "/assets/bg/footerimg.jpg" },
-  { id: 2, src: "/assets/bg/footerimg.jpg" },
-  { id: 3, src: "/assets/bg/footerimg.jpg" },
-  { id: 4, src: "/assets/bg/footerimg.jpg" },
-  { id: 5, src: "/assets/bg/footerimg.jpg" },
-  { id: 6, src: "/assets/bg/footerimg.jpg" },
-];
-
-export default function AuctionGalleryFixed() {
-  
-
-  return (
-    
-  );
-}
