@@ -78,6 +78,7 @@ export default function LatestNews() {
                       src={news.image}
                       alt={news.title}
                       fill
+                      loading='lazy'
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 

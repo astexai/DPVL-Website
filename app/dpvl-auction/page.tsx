@@ -31,7 +31,7 @@ const page = () => {
           alt="Auction Venue Background"
           fill
           className="object-cover"
-          priority // Added priority for faster LCP
+          loading="lazy" // Added priority for faster LCP
         />
 
         {/* FIX: Use relative and z-10 to lift content above the absolute background image */}

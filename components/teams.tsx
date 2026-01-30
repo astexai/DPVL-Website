@@ -61,6 +61,7 @@ export default function TeamsCarousel() {
           src="/assets/bg/TeamBg.png"
           alt="Background"
           className="w-full h-full object-cover"
+          loading='lazy'
         />
       </div>
 

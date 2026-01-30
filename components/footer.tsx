@@ -31,7 +31,7 @@ export default function Footer() {
           alt="Footer Background"
           fill
           className="object-cover"
-          priority
+          loading='lazy'
         />
   
         <div className="absolute inset-0 " />
@@ -49,7 +49,7 @@ export default function Footer() {
   alt="DPVL Logo"
   width={400}
   height={200}
-  priority
+loading='lazy'
   className="object-contain"
  />
 

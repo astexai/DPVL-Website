@@ -15,6 +15,7 @@ export default function FooterGrad({
       <img
         src="/assets/bg/Strip.png"
         alt="Footer Background"
+        loading="lazy"
         className={
           variant === 'cropped'
             ? 'w-full h-full object-cover block'

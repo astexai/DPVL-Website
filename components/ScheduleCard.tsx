@@ -12,6 +12,7 @@ export default function ScheduleCard() {
           backgroundImage: "url('/assets/bg/LatestVideo.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          
         }}
       >
         {/* Overlay */}
@@ -52,6 +53,7 @@ export default function ScheduleCard() {
                   alt="vs"
                   width={55}
                   height={55}
+                  loading="lazy"
                 />
 
                 <div className="flex flex-col items-center gap-3 text-center">

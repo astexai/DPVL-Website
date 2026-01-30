@@ -37,6 +37,7 @@ export default function PointsTable(): JSX.Element {
           alt="Background Texture"
           fill
           className="object-cover"
+          loading='lazy'
         />
       </div>
 

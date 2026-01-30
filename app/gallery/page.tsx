@@ -101,7 +101,7 @@ export default function Page() {
                   src={image.src}
                   alt={image.category}
                   fill
-                  priority
+                  loading='lazy'
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
