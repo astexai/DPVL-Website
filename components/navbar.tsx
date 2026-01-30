@@ -71,7 +71,7 @@ const menuItems = [
                   className="relative px-1 text-2xl xl:text-[26px] font-bebas uppercase text-black hover:text-[#3b3bb7] transition-colors duration-200 tracking-tight group whitespace-nowrap"
                 >
                   {item.name}
-                  <span className="block h-[3px] mt-0 bg-[#a259e6] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200 rounded-full" />
+                  <span className="block h-[3px] mt-0 bg-[#D159A3] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200 rounded-full" />
                 </Link>
               ))}
             </div>
@@ -91,11 +91,14 @@ const menuItems = [
                 className="lg:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none z-[110]"
                 onClick={toggleMenu}
               >
-                <div className="relative w-6 h-6">
-                  <span className={`absolute left-0 w-6 h-0.5 bg-[#3b3bb7] transition-all duration-300 ${open ? 'rotate-45 top-2.5' : 'top-0'}`} />
-                  <span className={`absolute top-2.5 left-0 w-6 h-0.5 bg-[#3b3bb7] transition-all duration-300 ${open ? 'opacity-0' : 'opacity-100'}`} />
-                  <span className={`absolute left-0 w-6 h-0.5 bg-[#3b3bb7] transition-all duration-300 ${open ? '-rotate-45 top-2.5' : 'top-5'}`} />
-                </div>
+               {!open && (
+  <div className="relative w-6 h-6">
+    <span className="absolute left-0 top-0 w-6 h-0.5 bg-[#3b3bb7]" />
+    <span className="absolute left-0 top-2.5 w-6 h-0.5 bg-[#3b3bb7]" />
+    <span className="absolute left-0 top-5 w-6 h-0.5 bg-[#3b3bb7]" />
+  </div>
+)}
+
               </button>
             </div>
           </div>

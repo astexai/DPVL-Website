@@ -9,12 +9,12 @@ import Link from "next/link"
 const page = () => {
 
 const blogPosts = [
-  { id: 1, image: "/assets/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 2, image: "/assets/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 3, image: "/assets/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 4, image: "/assets/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 5, image: "/assets/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 6, image: "/assets/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
+  { id: 1, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
+  { id: 2, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
+  { id: 3, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
+  { id: 4, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
+  { id: 5, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
+  { id: 6, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
 ];
 
   return (

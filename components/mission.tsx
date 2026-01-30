@@ -73,10 +73,10 @@ export default function MissionFounder() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Mission / Vision */}
         <div className="flex flex-col items-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase text-white mb-2">
+          <h2 className="text-3xl md:text-5xl text-center font-bold uppercase text-white mb-2">
             Our Mission & Vision
           </h2>
-          <div className="w-48 h-1 bg-[#d66095] shadow-[0_0_10px_#d66095]" />
+          <div className="md:w-100 w-40 h-1 bg-[#D159A3]" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-20">
@@ -101,7 +101,7 @@ export default function MissionFounder() {
             </h2>
             <FaChevronRight className="text-[#d66095] text-3xl" />
           </div>
-          <div className="w-56 h-1 bg-[#d66095] mt-2 shadow-[0_0_10px_#d66095]" />
+          <div className="md:w-88 w-40 h-1 bg-[#d66095] mt-2 " />
         </div>
 
         {/* Founder Card */}

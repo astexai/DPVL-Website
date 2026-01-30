@@ -17,10 +17,10 @@ const page = () => {
 
       <section className="relative w-full py-10 px-5 md:px-12 bg-[#d66095]">
         <div className="flex flex-col items-center">
-          <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2">
-            UPKL Mega Auction 2025
+          <h1 className="text-3xl md:text-5xl text-center font-bold uppercase tracking-tight mb-2">
+            DPVL Mega Auction 2025
           </h1>
-          <div className="w-32 md:w-150 h-1.5 bg-[#1a237e]" />
+          <div className="w-50 md:w-140 h-1 bg-[#3B2DCD]" />
         </div>
       </section>
 
@@ -48,12 +48,40 @@ const page = () => {
             </div>
 
             <div className="w-full md:w-7/12 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
-              <h2 className="text-xl md:text-2xl font-semibold italic text-white/90">
-                “Lorem ipsum dolor sit amet, consectetur”
+              <h2 className="text-xl md:text-[30px] font-semibold italic text-white/90">
+                “Where Talent Meets the Big Stage.”
               </h2>
+              <p className="text-white/80 leading-relaxed text-sm md:text-base font-robo mb-4">
+                The DPVL Mega Auction is a flagship event of the Delhi Pro
+                Volleyball League, bringing together franchise owners, coaches,
+                and elite volleyball talent under one platform. Players from
+                across the country participate in the auction, offering teams
+                the opportunity to build competitive and balanced squads. The
+                event follows a structured bidding process designed to ensure
+                transparency, fairness, and strategic team formation, laying the
+                foundation for an exciting league season.
+              </p>
+
+              <p className="text-white/80 leading-relaxed text-sm md:text-base font-robo mb-4">
+                As one of the most significant milestones of the league, the
+                Mega Auction plays a vital role in shaping the competitive
+                landscape of DPVL. It enables franchises to identify emerging
+                talent alongside experienced players, using data-driven
+                evaluations and tactical planning. This process not only
+                strengthens team performance but also raises the overall
+                standard of professional volleyball within the league.
+              </p>
+
               <p className="text-white/80 leading-relaxed text-sm md:text-base font-robo">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua...
+                Beyond team selection, the DPVL Mega Auction represents a major
+                career opportunity for athletes, providing national visibility
+                and access to a structured professional ecosystem. It reflects
+                DPVL’s commitment to modern sports management, competitive
+                integrity, and long-term growth of the sport, while generating
+                excitement among fans and stakeholders as the stage is set for
+                an action-packed and competitive season ahead. The auction
+                serves as the starting point where ambition, strategy, and
+                talent come together to define the future of the league.
               </p>
             </div>
           </div>
@@ -70,15 +98,17 @@ const page = () => {
         />
 
         {/* Optional: Dark overlay to make text pop against light backgrounds */}
-        <div className="absolute inset-0 bg-black/30 z-0" />
+        <div className="absolute inset-0  z-0" />
 
         {/* FIX: Wrapper with relative z-10 for visibility */}
         <div className="relative z-10 max-w-7xl mx-auto text-white">
           <div className="flex flex-col md:flex-row items-center md:justify-between mb-10 gap-6 md:gap-0">
             <div className="flex flex-col items-center md:items-start">
-              <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-2">
+              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-2">
                 Top Picks
-              </h2>
+                 </h2>
+                <div className="w-30 md:w-50 h-1 bg-[#3B2DCD] mt-2 " />
+             
               <div className="w-24 h-1 bg]" />
             </div>
 
@@ -93,24 +123,24 @@ const page = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-  {[1, 2, 3,].map((item) => (
-    <div
-      key={item}
-      className="relative w-full aspect-[4/5] bg-gradient-to-b from-[#4a7acd] to-[#1a237e] rounded-sm overflow-hidden shadow-2xl group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
-    >
-      {/* The Image - filling the card */}
-      <Image
-        src="/assets/bg/TopPicks.png"
-        alt={`Top Pick Player ${item}`}
-        fill
-        className="object-cover object-center" 
-      />
+            {[1, 2, 3].map((item) => (
+              <div
+                key={item}
+                className="relative w-full aspect-[4/5]  rounded-sm overflow-hidden group cursor-pointer hover:-translate-y-2 transition-transform duration-300"
+              >
+                {/* The Image - filling the card */}
+                <Image
+                  src="/assets/bg/TopPicks.png"
+                  alt={`Top Pick Player ${item}`}
+                  fill
+                  className="object-cover object-center"
+                />
 
-      {/* Shadow overlay at the bottom so the image feels "grounded" */}
-      <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
-    </div>
-  ))}
-</div>
+                {/* Shadow overlay at the bottom so the image feels "grounded" */}
+                <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

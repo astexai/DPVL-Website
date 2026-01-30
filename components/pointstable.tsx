@@ -45,7 +45,7 @@ export default function PointsTable(): JSX.Element {
           <h2 className="text-4xl md:text-5xl text-white font-bold uppercase tracking-tight mb-2">
             Points Table
           </h2>
-          <div className="w-24 h-1 bg-[#d66095] rounded-full" />
+          <div className="md:w-65 w-45 h-1 bg-[#d66095] rounded-full" />
         </div>
 
         <div className="w-full overflow-x-auto pb-4">
@@ -84,17 +84,17 @@ export default function PointsTable(): JSX.Element {
                           className="object-cover"
                         />
                       </div>
-                      <span className="font-bold text-lg uppercase tracking-tight text-black">
+                      <span className="font-bold md:text-lg text-sm uppercase tracking-tight text-black">
                         {team.name}
                       </span>
                     </div>
                   </td>
 
-                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.p}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.w}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.l}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.nrr}</td>
-                  <td className="py-3 px-2 text-center font-semibold text-lg text-black">{team.forRuns}</td>
+                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.p}</td>
+                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.w}</td>
+                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.l}</td>
+                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.nrr}</td>
+                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.forRuns}</td>
 
                   <td className="py-3 px-4">
                     <div className="flex items-center justify-center gap-1">
@@ -125,7 +125,7 @@ export default function PointsTable(): JSX.Element {
 
                   <td className="py-3 px-4 text-center rounded-r-md relative">
                     <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[2px] bg-gray-300" />
-                    <span className="font-bold text-xl text-black">{team.pts}</span>
+                    <span className="font-bold md:text-xl text-sm text-black">{team.pts}</span>
                   </td>
                 </tr>
               ))}

@@ -34,7 +34,7 @@ export default function Footer() {
           priority
         />
   
-        <div className="absolute inset-0 bg-[#3b3bb7]/40" />
+        <div className="absolute inset-0 " />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -42,8 +42,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mb-12 text-center md:text-left">
           
  
-          <div className="md:col-span-4 flex flex-col items-center md:items-start space-y-6">
-            <div className="relative w-70 h-40 md:w-80 md:h-40 -ml-13"> 
+          <div className="md:col-span-4 flex flex-col items-center justify-center md:items-start space-y-6">
+            <div className=" relative w-70 h-40 md:w-80 md:h-40 md:-ml-13 ml-0"> 
   <Image
   src="/assets/logos/white_logo.png"
   alt="DPVL Logo"
@@ -74,25 +74,26 @@ export default function Footer() {
           <div className="md:col-span-3 md:col-start-6 flex flex-col items-center md:items-start">
             <h3 className="text-xl font-medium mb-6 relative inline-block">
               Quick Links
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
+              <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-white/40"></span>
             </h3>
-            <ul className="space-y-1 font-light text-white/90 text-sm md:text-base w-full md:w-auto">
+            <ul className="space-y-1 font-light text-white/90 text-sm md:text-base flex flex-col items-start w-full max-w-50 ml-30 md:mx-0 md:max-w-none">
   {footerLinks.map((item) => (
     <li
       key={item.name}
-      className="flex items-center justify-center md:justify-start gap-2 group cursor-pointer"
+      className="flex items-center gap-2 group w-full"
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#d66095] transition-colors"></span>
+      <span className="w-1.5 h-1.5 rounded-full bg-white group-hover:bg-[#d66095] transition-colors shrink-0" />
 
       <Link
         href={item.href}
-        className="hover:text-pink-200 hover:translate-x-1 transition-all duration-300"
+        className="block hover:text-pink-200 hover:translate-x-1 transition-all duration-300"
       >
         {item.name}
       </Link>
     </li>
   ))}
 </ul>
+
           </div>
 
      

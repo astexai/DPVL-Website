@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -9,7 +10,10 @@ export default function Socials()
   backdrop-blur-sm py-6 px-3 rounded-l-2xl
   border-l border-white/10 shadow-2xl text-white"
 >
-  <FaInstagram/>
+  <Link href={"https://instagram.com/delhiprovolleyball"}>
+    <FaInstagram/>
+  </Link>
+
   <FaFacebook />
   <FaWhatsapp />
   <FaXTwitter />

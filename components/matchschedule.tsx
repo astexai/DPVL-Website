@@ -36,7 +36,7 @@ export default function MatchSchedule() {
             Match Schedule
           </h2>
  
-          <div className="w-24 h-1 bg-[#d9534f] shadow-lg" />
+          <div className="w-75 h-1 bg-[#D159A3] shadow-lg" />
         </div>
 
      
@@ -73,9 +73,13 @@ export default function MatchSchedule() {
                   <div className="w-8 h-8 rounded-full bg-gray-200 text-[8px] flex items-center justify-center font-bold text-gray-500">TBD</div>
                 </div>
 
-                <div className="text-2xl md:text-3xl font-black italic text-[#3b3bb7] transform -skew-x-12">
-                  VS
-                </div>
+                <Image
+                src={"/assets/bg/PurpleVs.png"}
+                width={40}
+                height={40}
+                alt='Vs'
+                className='object-cover'
+                />
 
              
                 <div className="flex items-center gap-3">
@@ -101,16 +105,18 @@ export default function MatchSchedule() {
               </div>
 
 
-              <div className="w-full md:w-[15%] flex justify-center md:justify-end mt-2 md:mt-0">
-                <div className="relative w-16 h-8 md:w-20 md:h-10">
-                  <Image 
-                    src="/assets/logos/Logo-final-1.png" 
-                    alt="League Logo" 
-                    fill 
-                    className="object-contain opacity-80"
-                  />
-                </div>
-              </div>
+              <div className="w-full md:w-[15%] flex justify-center md:justify-end items-center">
+  <div className="relative w-16 h-8 md:w-36 md:h-10 flex items-center">
+    <Image 
+      src="/assets/logos/Logo-final-1.png" 
+      alt="League Logo" 
+      width={200}
+      height={200}
+      className="object-cover"
+    />
+  </div>
+</div>
+
 
             </div>
           ))}

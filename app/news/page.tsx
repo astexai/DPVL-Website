@@ -46,9 +46,10 @@ const newsItems = [
             </h2>
     
             <FaChevronRight className="text-[#d66095] text-2xl md:text-4xl mt-1" />
+          
           </div>
- 
-          <div className="w-full md:w-64 h-1 bg-[#d66095] mt-2 shadow-[0_0_10px_#d66095]" />
+ <div className="w-40 md:w-70 h-1 bg-[#D159A3] mt-2 " />
+          
         </div>
 
       
@@ -57,12 +58,12 @@ const newsItems = [
    
           <div className="absolute inset-0 z-0">
      
-         <div className="absolute inset-0 bg-gradient-to-br from-[#f472b6] via-[#d66095] to-[#db2777] opacity-30 backdrop-blur-sm" />
+         <div className="absolute inset-0 " />
             <Image
               src="/assets/bg/LatestNews.png"
               alt="Inner Texture"
               fill
-              className="object-cover opacity-40 mix-blend-overlay"
+              className="object-cover "
             />
       
             
@@ -78,7 +79,7 @@ const newsItems = [
               >
              
                 <Image
-                  src="/assets/footerimg.jpg" 
+                  src="/assets/bg/footerimg.jpg" 
                   alt="News Thumbnail"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90"

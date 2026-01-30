@@ -5,27 +5,24 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // Mock Data for Gallery
 const galleryImages = [
-  { id: 1, src: "/assets/footerimg.jpg" }, // Replace with your actual auction images
-  { id: 2, src: "/assets/footerimg.jpg" },
-  { id: 3, src: "/assets/footerimg.jpg" },
-  { id: 4, src: "/assets/footerimg.jpg" },
-  { id: 5, src: "/assets/footerimg.jpg" },
-  { id: 6, src: "/assets/footerimg.jpg" },
+  { id: 1, src: "/assets/bg/footerimg.jpg" }, // Replace with your actual auction images
+  { id: 2, src: "/assets/bg/footerimg.jpg" },
+  { id: 3, src: "/assets/bg/footerimg.jpg" },
+  { id: 4, src: "/assets/bg/footerimg.jpg" },
+  { id: 5, src: "/assets/bg/footerimg.jpg" },
+  { id: 6, src: "/assets/bg/footerimg.jpg" },
 ];
 
 export default function ShowStoppersAndGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(1);
 
+  /* Responsive cards per view */
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setCardsPerView(4);
-      } else if (window.innerWidth >= 768) {
-        setCardsPerView(2);
-      } else {
-        setCardsPerView(1);
-      }
+      if (window.innerWidth >= 1024) setCardsPerView(4);
+      else if (window.innerWidth >= 768) setCardsPerView(2);
+      else setCardsPerView(1);
     };
 
     handleResize();
@@ -33,7 +30,8 @@ export default function ShowStoppersAndGallery() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxIndex = galleryImages.length - cardsPerView;
+  const maxIndex = Math.max(galleryImages.length - cardsPerView, 0);
+  const translatePercent = 100 / cardsPerView;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -42,6 +40,7 @@ export default function ShowStoppersAndGallery() {
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
+  
 
   return (
     <div className="w-full font-sans text-white">
@@ -60,11 +59,11 @@ export default function ShowStoppersAndGallery() {
   {/* Content */}
   <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
     <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
-      <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2 text-white">
+      <h2 className="text-4xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2 text-white">
         Show Stoppers of the Mega Auction
       </h2>
 
-      <div className="w-40 md:w-64 h-1 bg-[#ef4444] mb-6 md:mb-8" />
+      <div className="w-40 md:w-190 h-1 bg-[#D159A3] mb-6 md:mb-8" />
 
       <p className="text-white/90 mb-4 font-robo text-sm md:text-base max-w-xl text-left md:text-justify">
         The Mega Auction of the Delhi Pro Volleyball League delivered
@@ -87,68 +86,69 @@ export default function ShowStoppersAndGallery() {
   </div>
 </section>
 
-
-      <section className="relative w-full py-16 px-6 md:px-12 overflow-hidden">
-        <Image
+<section className="relative w-full py-16 px-6 md:px-12 overflow-hidden">
+  <Image
         src={"/assets/bg/AucGallery.png"}
-        alt="this"
+        alt="Auction Gallery"
         fill
         />
-
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="flex flex-col items-center md:items-start mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase italic tracking-tighter mb-2">
+      <div className="relative max-w-7xl mx-auto">
+        <div className="flex flex-col items-center md:items-start mb-10">
+            <h2 className="text-4xl md:text-5xl font-bold uppercase italic tracking-tighter mb-2">
               Auction Gallery
             </h2>
-            <div className="w-32 h-1 bg-[#ef4444]" />
+            <div className="md:w-90 w-56 h-1 bg-[#D159A3]" />
           </div>
 
-          <div className="relative group px-8 md:px-12">
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white hover:scale-125 transition-all"
-            >
-              <FaChevronLeft size={30} />
-            </button>
 
-            <div className="overflow-hidden">
-              <div
-                className="flex transition-transform duration-500 ease-in-out gap-4"
-                style={{
-                  transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                }}
-              >
-                {galleryImages.map((img, index) => (
-                  <div
-                    key={index}
-                    className="shrink-0 relative rounded-xl overflow-hidden shadow-xl border border-white/10"
-                    style={{
-                      flexBasis: `calc(${100 / cardsPerView}% - ${cardsPerView > 1 ? 12 : 0}px)`,
-                      aspectRatio: "3/4",
-                    }}
-                  >
+        <div className="relative px-8 md:px-12">
+          {/* Left */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white hover:scale-125 transition-all"
+          >
+            <FaChevronLeft size={30} />
+          </button>
+
+          {/* Carousel */}
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * translatePercent}%)`,
+              }}
+            >
+              {galleryImages.map((img, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 px-2"
+                  style={{ width: `${100 / cardsPerView}%` }}
+                >
+                  <div className="relative rounded-xl overflow-hidden shadow-xl border border-white/10 aspect-[3/4]">
                     <Image
                       src={img.src}
                       alt={`Gallery ${index}`}
                       fill
                       className="object-cover hover:scale-110 transition-transform duration-700"
                     />
-
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white hover:scale-125 transition-all"
-            >
-              <FaChevronRight size={30} />
-            </button>
           </div>
+
+          {/* Right */}
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white hover:scale-125 transition-all"
+          >
+            <FaChevronRight size={30} />
+          </button>
         </div>
-      </section>
+      </div>
+    </section>
+      
     </div>
   );
 }

@@ -35,10 +35,10 @@ export default function PartnersSponsors() {
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         
         <div className="flex flex-col items-center mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase text-black mb-3" style={{ fontFamily: 'sans-serif' }}>
+          <h2 className="text-4xl md:text-5xl font-bold uppercase text-black mb-3" style={{ fontFamily: 'sans-serif' }}>
             Partners & Sponsors
           </h2>
-          <div className="w-24 h-1 bg-[#d66095]" />
+          <div className="md:w-120 w-40 h-1 bg-[#D159A3]" />
         </div>
 
   

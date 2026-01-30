@@ -32,7 +32,7 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
           <h2 className="text-3xl md:text-5xl font-bold uppercase text-black mb-2 tracking-tight">
             DPVL TEAMS
           </h2>
-          <div className="w-24 h-1 bg-[#1a237e] mb-6" />
+          <div className="md:w-55 w-30 h-1 bg-[#D159A3] mb-6" />
           <p className="text-gray-700 text-sm md:text-xl font-semibold ">
             Skilled. United. Competitive.
           </p>
@@ -72,12 +72,10 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
-                  <span className="text-white font-bold uppercase tracking-wider text-xs md:text-sm mb-2">
+                  <span className="text-white font-norch uppercase tracking-wider text-xs md:text-4xl mb-2">
                     {team.name}
                   </span>
-                  <span className="text-white border border-white px-3 py-1 text-[10px] md:text-xs uppercase">
-                    View Team
-                  </span>
+                  
                 </div>
               </div>
             ))}
