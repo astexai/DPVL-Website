@@ -128,7 +128,7 @@ export default function MissionFounder() {
                 src={founders[founderIndex].image}
                 alt="Founder"
                 fill
-                priority
+                loading="lazy"
                 className="object-cover"
               />
             </div>
