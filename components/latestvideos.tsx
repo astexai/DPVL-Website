@@ -30,10 +30,10 @@ export default function LatestVideos() {
     <div className="pt-48 md:pt-40 max-w-6xl mx-auto px-4 md:px-8">
       {/* Heading */}
       <div className="flex flex-col items-center md:items-start mb-10 pt-10">
-        <h2 className="text-4xl md:text-5xl text-white font-bold uppercase italic tracking-tighter mb-2">
+        <h2 className="text-5xl md:text-7xl uppercase text-white font-norch mb-2 tracking-wide">
           Latest Videos
         </h2>
-        <div className="md:w-70 w-50 h-1 bg-white rounded-full" />
+        <div className="md:w-60 w-40 h-1 tracking-wide bg-white rounded-full" />
       </div>
 
       {/* Animated Cards */}

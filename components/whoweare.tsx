@@ -25,14 +25,14 @@ export default function WhoWeAre() {
           <div className="w-full md:w-2/3 flex flex-col items-center md:items-start text-center md:text-left">
             {/* Heading */}
             <div className="flex items-center justify-center md:justify-start gap-2 md:gap-4 mb-2 flex-wrap">
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase text-black tracking-tight">
+              <h2 className="text-5xl sm:text-3xl md:text-7xl font-norch tracking-wide uppercase text-black">
                 Who We Are
               </h2>
-              <FaChevronRight className="text-[#3b3bb7] text-xl sm:text-2xl md:text-4xl shrink-0" />
+              <FaChevronRight className="text-[#3b3bb7] text-4xl sm:text-2xl md:text-4xl shrink-0" />
             </div>
 
             {/* Divider */}
-            <div className="w-30 sm:w-32 md:w-68 h-1 bg-[#3b3bb7] mb-6 md:mb-8" />
+            <div className="mr-20 w-30 md:w-50 h-1 bg-[#3b3bb7] mb-6 md:mb-8" />
 
             {/* Tagline */}
             <h3 className="text-base sm:text-lg md:text-xl font-semibold italic text-black/80 mb-5 md:mb-6">

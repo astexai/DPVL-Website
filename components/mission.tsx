@@ -73,10 +73,10 @@ export default function MissionFounder() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Mission / Vision */}
         <div className="flex flex-col items-center mb-12">
-          <h2 className="text-3xl md:text-5xl text-center font-bold uppercase text-white mb-2">
+          <h2 className="text-5xl md:text-7xl text-center font-norch tracking-wide uppercase text-white mb-2">
             Our Mission & Vision
           </h2>
-          <div className="md:w-100 w-40 h-1 bg-[#D159A3]" />
+          <div className="md:w-90 w-55 h-1 bg-[#D159A3]" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-20">
@@ -96,19 +96,19 @@ export default function MissionFounder() {
         {/* Founder Header */}
         <div className="flex flex-col items-center md:items-start mb-8">
           <div className="flex items-center gap-2">
-            <h2 className="text-3xl md:text-5xl font-bold uppercase text-white italic">
+            <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide text-white ">
               Founder’s Note
             </h2>
             <FaChevronRight className="text-[#d66095] text-3xl" />
           </div>
-          <div className="md:w-88 w-40 h-1 bg-[#d66095] mt-2 " />
+          <div className="md:w-60 w-40 h-1 bg-[#d66095] mt-2 " />
         </div>
 
         {/* Founder Card */}
         <div className="relative bg-gradient-to-br from-[#d66095] via-[#a259e6] to-[#7b1fa2] rounded-[30px] p-6 md:p-10 shadow-2xl overflow-hidden">
           <div className="absolute inset-0 opacity-10 pointer-events-none">
             <Image
-              src="/assets/footerimg.jpg"
+              src="/assets/bg/footerimg.jpg"
               alt="Texture"
               fill
               className="object-cover"

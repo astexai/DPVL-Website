@@ -59,11 +59,11 @@ export default function ShowStoppersAndGallery() {
   {/* Content */}
   <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
     <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
-      <h2 className="text-4xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2 text-white">
+      <h2 className="text-5xl sm:text-3xl md:text-7xl font-norch uppercase mb-2 text-white tracking-wide">
         Show Stoppers of the Mega Auction
       </h2>
 
-      <div className="w-40 md:w-190 h-1 bg-[#D159A3] mb-6 md:mb-8" />
+      <div className="w-60 md:w-140 h-1 bg-[#D159A3] mb-6 md:mb-8" />
 
       <p className="text-white/90 mb-4 font-robo text-sm md:text-base max-w-xl text-left md:text-justify">
         The Mega Auction of the Delhi Pro Volleyball League delivered
@@ -94,10 +94,10 @@ export default function ShowStoppersAndGallery() {
         />
       <div className="relative max-w-7xl mx-auto">
         <div className="flex flex-col items-center md:items-start mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase italic tracking-tighter mb-2">
+            <h2 className="text-5xl md:text-7xl font-norch uppercase mb-2 tracking-wide">
               Auction Gallery
             </h2>
-            <div className="md:w-90 w-56 h-1 bg-[#D159A3]" />
+            <div className="md:w-70 w-50 h-1 bg-[#D159A3]" />
           </div>
 
 

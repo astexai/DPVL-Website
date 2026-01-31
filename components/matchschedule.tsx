@@ -32,11 +32,11 @@ export default function MatchSchedule() {
       <div className="relative z-10 max-w-6xl mx-auto">
 
         <div className="flex flex-col items-center mb-10">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase text-white mb-2 tracking-tighter" style={{ fontFamily: 'sans-serif' }}>
+          <h2 className="text-5xl md:text-7xl font-norch tracking-wide uppercase text-white mb-2" style={{ fontFamily: 'sans-serif' }}>
             Match Schedule
           </h2>
  
-          <div className="w-75 h-1 bg-[#D159A3] shadow-lg" />
+          <div className="md:w-75 w-50 h-1 bg-[#D159A3]" />
         </div>
 
      
@@ -78,7 +78,7 @@ export default function MatchSchedule() {
                 width={40}
                 height={40}
                 alt='Vs'
-                className='object-cover'
+                className='object-cover '
                 />
 
              
@@ -106,7 +106,7 @@ export default function MatchSchedule() {
 
 
               <div className="w-full md:w-[15%] flex justify-center md:justify-end items-center">
-  <div className="relative w-16 h-8 md:w-36 md:h-10 flex items-center">
+  <div className="relative w-16 h-8 md:w-36 md:h-10 flex items-center hidden md:block">
     <Image 
       src="/assets/logos/Logo-final-1.png" 
       alt="League Logo" 

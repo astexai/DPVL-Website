@@ -17,10 +17,10 @@ const page = () => {
 
       <section className="relative w-full py-10 px-5 md:px-12 bg-[#d66095]">
         <div className="flex flex-col items-center">
-          <h1 className="text-3xl md:text-5xl text-center font-bold uppercase tracking-tight mb-2">
+          <h1 className="text-5xl md:text-7xl text-center font-norch uppercase mb-2 tracking-wide">
             DPVL Mega Auction 2025
           </h1>
-          <div className="w-50 md:w-140 h-1 bg-[#3B2DCD]" />
+          <div className="w-50 md:w-100 h-1 bg-[#3B2DCD]" />
         </div>
       </section>
 
@@ -104,10 +104,10 @@ const page = () => {
         <div className="relative z-10 max-w-7xl mx-auto text-white">
           <div className="flex flex-col md:flex-row items-center md:justify-between mb-10 gap-6 md:gap-0">
             <div className="flex flex-col items-center md:items-start">
-              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-2">
+              <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide">
                 Top Picks
                  </h2>
-                <div className="w-30 md:w-50 h-1 bg-[#3B2DCD] mt-2 " />
+                <div className="w-25 md:w-45 h-1 bg-[#3B2DCD] " />
              
               <div className="w-24 h-1 bg]" />
             </div>

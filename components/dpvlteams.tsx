@@ -29,11 +29,11 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
       {/* Header Section */}
       <section className="relative w-full py-12 px-6 bg-[#f5f5f5] text-center border-b border-gray-200">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase text-black mb-2 tracking-tight">
+          <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide text-black mb-2 ">
             DPVL TEAMS
           </h2>
           <div className="md:w-55 w-30 h-1 bg-[#D159A3] mb-6" />
-          <p className="text-gray-700 text-sm md:text-xl font-semibold ">
+          <p className="text-gray-700 text-sm md:text-lg font-semibold italic">
             Skilled. United. Competitive.
           </p>
         </div>

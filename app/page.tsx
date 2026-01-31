@@ -60,7 +60,7 @@ export default function Home() {
               alt="Hero Background"
               fill
               priority
-              className="object-cover"
+              className="object-cover scale-101"
             />
 
 <MobileSvg/>

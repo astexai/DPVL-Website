@@ -43,10 +43,10 @@ export default function PointsTable(): JSX.Element {
 
       <div className="relative z-20 max-w-7xl mx-auto w-full flex flex-col items-center">
         <div className="flex flex-col items-center mb-10">
-          <h2 className="text-4xl md:text-5xl text-white font-bold uppercase tracking-tight mb-2">
+          <h2 className="text-5xl md:text-7xl text-white font-norch uppercase mb-2 tracking-wide">
             Points Table
           </h2>
-          <div className="md:w-65 w-45 h-1 bg-[#d66095] rounded-full" />
+          <div className="md:w-50 w-38 h-1 bg-[#d66095] rounded-full" />
         </div>
 
         <div className="w-full overflow-x-auto pb-4">

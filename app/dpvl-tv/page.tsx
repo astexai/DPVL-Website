@@ -117,8 +117,8 @@ const Page = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="flex flex-col items-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase text-white mb-2 tracking-tight">DPVL TV</h2>
-            <div className="w-30 h-1 bg-[#D159A3]" />
+            <h2 className="text-5xl md:text-7xl font-norch uppercase text-white mb-2 tracking-wide">DPVL TV</h2>
+            <div className="md:w-30 w-20 h-1 bg-[#D159A3]" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center max-w-5xl mx-auto">

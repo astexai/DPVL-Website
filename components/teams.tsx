@@ -68,10 +68,10 @@ export default function TeamsCarousel() {
       <div className="relative z-10 max-w-[1600px] mx-auto px-4">
         {/* Heading */}
         <div className="flex flex-col items-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-black mb-2">
+          <h2 className="text-5xl md:text-7xl font-norch uppercase text-black mb-2 tracking-wide">
             TEAMS
           </h2>
-          <div className="w-20 h-1 bg-purple-900" />
+          <div className="md:w-20 w-15 h-1 bg-purple-900" />
         </div>
 
         {/* Carousel */}

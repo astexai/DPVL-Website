@@ -2,14 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight, FaArrowRight } from 'react-icons/fa';
-
-const newsData = [
-  { id: 1, title: "DPVL Set for Biggest Season Yet as Teams Gear Up for Action.", image: "/assets/bg/footerimg.jpg" },
-  { id: 2, title: "Championship Finals: A Historic Showdown Awaits.", image: "/assets/bg/footerimg.jpg" },
-  { id: 3, title: "New Talent Emerges in the League Qualifiers.", image: "/assets/bg/footerimg.jpg" },
-  { id: 4, title: "Behind the Scenes: Training with the Champions.", image: "/assets/bg/footerimg.jpg" },
-  { id: 5, title: "DPVL Announces New Venues for 2026 Season.", image: "/assets/bg/footerimg.jpg" },
-];
+import { newsItems } from '@/data/news';
 
 export default function LatestNews() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,7 +21,7 @@ export default function LatestNews() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const maxIndex = newsData.length - cardsPerView;
+  const maxIndex = newsItems.length - cardsPerView;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -51,10 +44,10 @@ export default function LatestNews() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Heading */}
         <div className="flex flex-col items-center md:items-start mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase italic text-white mb-2">
+          <h2 className="text-5xl md:text-7xl tracking-wide font-norch uppercase text-white mb-2">
             Latest News
           </h2>
-          <div className="md:w-72 w-50 h-1 bg-[#d66095]" />
+          <div className="md:w-60 w-40 h-1 bg-[#d66095]" />
         </div>
 
         {/* Carousel */}
@@ -67,7 +60,7 @@ export default function LatestNews() {
                 transform: `translateX(-${currentIndex * translatePercent}%)`,
               }}
             >
-              {newsData.map((news, index) => (
+              {newsItems.map((news, index) => (
                 <div
                   key={index}
                   className="flex-shrink-0 px-3"
@@ -79,7 +72,7 @@ export default function LatestNews() {
                       alt={news.title}
                       fill
                       loading='lazy'
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 scale-112"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
