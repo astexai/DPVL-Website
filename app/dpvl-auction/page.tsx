@@ -15,7 +15,7 @@ const page = () => {
         subtitle="The league that fuels ambition, celebrates skills and brings Volleyball to life."
       />
 
-      <section className="relative w-full py-10 px-5 md:px-12 bg-[#d66095]">
+      <section className="relative w-full py-10 px-5 md:px-12 bg-[#9C3C97]">
         <div className="flex flex-col items-center">
           <h1 className="text-5xl md:text-7xl text-center font-norch uppercase mb-2 tracking-wide">
             DPVL Mega Auction 2025

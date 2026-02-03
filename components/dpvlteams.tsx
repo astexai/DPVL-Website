@@ -69,14 +69,6 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
                     className="object-fit" /* Changed to object-cover to fill the card space */
                   />
                 </div>
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
-                  <span className="text-white font-norch uppercase tracking-wider text-xs md:text-4xl mb-2">
-                    {team.name}
-                  </span>
-                  
-                </div>
               </div>
             ))}
           </div>

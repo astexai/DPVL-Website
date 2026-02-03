@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const teams = [
   { id: 1, name: 'Team Eastern Eagles', bgImage: '/assets/teams/EasternEagles.jpeg' },
@@ -14,6 +14,9 @@ export default function TeamsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(4);
   const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const startXRef = useRef<number | null>(null);
+  const isDraggingRef = useRef(false);
 
   const extendedTeams = [...teams, ...teams.slice(0, cardsPerView)];
 
@@ -50,6 +53,31 @@ export default function TeamsCarousel() {
     }
   }, [currentIndex]);
 
+  /* -------------------- Drag / Swipe logic -------------------- */
+  const swipeThreshold = 50;
+
+  const onDragStart = (x: number) => {
+    startXRef.current = x;
+    isDraggingRef.current = true;
+  };
+
+  const onDragEnd = (x: number) => {
+    if (!isDraggingRef.current || startXRef.current === null) return;
+
+    const diff = x - startXRef.current;
+
+    if (diff > swipeThreshold) {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    } else if (diff < -swipeThreshold) {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
+    }
+
+    startXRef.current = null;
+    isDraggingRef.current = false;
+  };
+
   /* -------------------- Translate logic -------------------- */
   const translatePercent = 100 / cardsPerView;
 
@@ -61,7 +89,7 @@ export default function TeamsCarousel() {
           src="/assets/bg/TeamBg.png"
           alt="Background"
           className="w-full h-full object-cover"
-          loading='lazy'
+          loading="lazy"
         />
       </div>
 
@@ -76,7 +104,14 @@ export default function TeamsCarousel() {
 
         {/* Carousel */}
         <div className="flex justify-center w-full">
-          <div className="relative overflow-hidden w-full max-w-[1200px]">
+          <div
+            className="relative overflow-hidden w-full max-w-[1200px] cursor-grab active:cursor-grabbing"
+            onMouseDown={(e) => onDragStart(e.clientX)}
+            onMouseUp={(e) => onDragEnd(e.clientX)}
+            onMouseLeave={(e) => onDragEnd(e.clientX)}
+            onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
+            onTouchEnd={(e) => onDragEnd(e.changedTouches[0].clientX)}
+          >
             <div
               className="flex"
               style={{
@@ -98,6 +133,7 @@ export default function TeamsCarousel() {
                       src={team.bgImage}
                       alt={team.name}
                       className="w-full h-full object-cover"
+                      draggable={false}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                       <p className="text-white font-bold uppercase text-sm">

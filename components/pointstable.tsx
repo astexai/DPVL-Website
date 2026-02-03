@@ -30,7 +30,7 @@ export default function PointsTable(): JSX.Element {
   ];
 
   return (
-    <section className="relative w-full z-10 mt-[-5rem] min-h-[70vh] py-32 px-4 overflow-hidden ">
+    <section className="relative w-full z-10 mt-[-5rem] min-h-[70vh] py-32 px-4 overflow-hidden bg-[#2634C8]">
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/bg/PointsTable.png"

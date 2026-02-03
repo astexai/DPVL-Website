@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 export default function WhoWeAre() {
   return (
-    <section className="relative w-full py-12 md:py-20 px-5 md:px-12 overflow-hidden">
+    <section className="relative w-full py-12 md:py-20 px-5 md:px-12 overflow-hidden bg-[#B8D0EA]">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image

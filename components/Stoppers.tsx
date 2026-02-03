@@ -104,11 +104,14 @@ export default function ShowStoppersAndGallery() {
         <div className="relative px-8 md:px-12">
           {/* Left */}
           <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white hover:scale-125 transition-all"
-          >
-            <FaChevronLeft size={30} />
-          </button>
+  onClick={prevSlide}
+  className="absolute left-0 top-1/2 -translate-y-1/2 z-20 cursor-pointer
+             w-10 h-10 rounded-full bg-white/90 flex items-center justify-center
+             text-black hover:bg-white hover:scale-110 transition-all shadow-lg"
+>
+  <FaChevronLeft size={22} />
+</button>
+
 
           {/* Carousel */}
           <div className="overflow-hidden">
@@ -139,12 +142,15 @@ export default function ShowStoppersAndGallery() {
           </div>
 
           {/* Right */}
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white hover:scale-125 transition-all"
-          >
-            <FaChevronRight size={30} />
-          </button>
+       <button
+  onClick={nextSlide}
+  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 cursor-pointer
+             w-10 h-10 rounded-full bg-white/90 flex items-center justify-center
+             text-black hover:bg-white hover:scale-110 transition-all shadow-lg"
+>
+  <FaChevronRight size={22} />
+</button>
+
         </div>
       </div>
     </section>

@@ -125,12 +125,14 @@ export default function MissionFounder() {
             {/* Image */}
             <div className="w-full md:w-5/12 aspect-[3/4] md:h-[450px] relative rounded-lg overflow-hidden border-4 border-white/10 shadow-xl">
               <Image
-                src={founders[founderIndex].image}
-                alt="Founder"
-                fill
-                loading="lazy"
-                className="object-cover"
-              />
+  key={founders[founderIndex].image}
+  src={founders[founderIndex].image}
+  alt="Founder"
+  fill
+  loading="lazy"
+  className="object-cover"
+/>
+
             </div>
 
             {/* Text */}

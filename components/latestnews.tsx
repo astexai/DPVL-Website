@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight, FaArrowRight } from 'react-icons/fa';
 import { newsItems } from '@/data/news';
+import Link from 'next/link';
 
 export default function LatestNews() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,34 +62,43 @@ export default function LatestNews() {
               }}
             >
               {newsItems.map((news, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 px-3"
-                  style={{ width: `${100 / cardsPerView}%`, height: '350px' }}
-                >
-                  <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10">
-                    <Image
-                      src={news.image}
-                      alt={news.title}
-                      fill
-                      loading='lazy'
-                      className="object-cover transition-transform duration-700 group-hover:scale-110 scale-112"
-                    />
+  <div
+    key={index}
+    className="flex-shrink-0 px-3"
+    style={{ width: `${100 / cardsPerView}%`, height: '350px' }}
+  >
+    <Link
+      href={news.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full"
+    >
+      <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10">
+        <Image
+          src={news.image}
+          alt={news.title}
+          fill
+          loading="lazy"
+          className="object-cover transition-transform duration-700 group-hover:scale-110 scale-112"
+        />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
-                    <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col gap-2">
-                      <p className="text-white text-lg leading-snug font-medium">
-                        <span className="font-bold text-xl">DPVL</span>{' '}
-                        {news.title.replace('DPVL ', '')}
-                      </p>
-                      <div className="self-end mt-2 opacity-80 group-hover:translate-x-2 transition-transform">
-                        <FaArrowRight className="text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+        <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col gap-2">
+          <p className="text-white text-lg leading-snug font-medium">
+            <span className="font-bold text-xl">DPVL</span>{' '}
+            {news.title.replace('DPVL ', '')}
+          </p>
+
+          <div className="self-end mt-2 opacity-80 group-hover:translate-x-2 transition-transform">
+            <FaArrowRight className="text-white" />
+          </div>
+        </div>
+      </div>
+    </Link>
+  </div>
+))}
+
             </div>
           </div>
 
