@@ -5,12 +5,12 @@ import FooterGrad from "../components/footergrad";
 import { useState } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { FaCalendarAlt, FaMapMarkerAlt, FaPlay } from "react-icons/fa";
+
 import Pointstable from "../components/pointstable";
 import TeamsCarousel from "@/components/teams";
 import LatestNews from "@/components/latestnews";
 import PartnersSponsors from "@/components/partners";
-import LatestVideos from "@/components/latestvideos";
+
 import Socials from "@/components/socials";
 import ScheduleCard from "@/components/ScheduleCard";
 import MobileSvg from "@/components/MobileSvg";
@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <main className="min-h-screen font-sans">
       <Navbar />
-      <section className="relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[725px] flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[550px] md:min-h-[600px] lg:min-h-[725px] flex items-center overflow-hidden bg-[#4531D3]">
         {/* BACKGROUND WRAPPER */}
         <div className="absolute inset-0 z-0">
           {/* 1. IMAGE: Visible on sm and up, hidden on mobile */}
