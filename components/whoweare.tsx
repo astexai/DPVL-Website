@@ -8,7 +8,7 @@ export default function WhoWeAre() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/bg/WhoAre.png"
+          src="/assets/bg/Partners.png"
           alt="Court Texture"
           fill
           className="object-cover"
@@ -17,12 +17,25 @@ export default function WhoWeAre() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16">
-          {/* Left spacer / image placeholder (hidden on mobile) */}
-          <div className="hidden md:block md:w-1/3" />
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 lg:gap-16">
+          
+          {/* Left Logo Container - Increased size to fill the gap */}
+          <div className="hidden md:flex md:w-2/5 items-center justify-center pt-4">
+            <div className="relative w-full">
+              <Image
+                src="/assets/logos/Logo-final-1.png"
+                alt="Delhi Pro Volleyball League Logo"
+                // Increased width and height to match the wide aspect ratio of the logo
+                width={400} 
+                height={200}
+                className="object-contain w-full h-auto"
+                priority
+              />
+            </div>
+          </div>
 
           {/* Content */}
-          <div className="w-full md:w-2/3 flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="w-full md:w-3/5 flex flex-col items-center md:items-start text-center md:text-left">
             {/* Heading */}
             <div className="flex items-center justify-center md:justify-start gap-2 md:gap-4 mb-2 flex-wrap">
               <h2 className="text-5xl sm:text-3xl md:text-7xl font-norch tracking-wide uppercase text-black">
@@ -32,7 +45,7 @@ export default function WhoWeAre() {
             </div>
 
             {/* Divider */}
-            <div className="mr-20 w-30 md:w-50 h-1 bg-[#3b3bb7] mb-6 md:mb-8" />
+            <div className="md:w-50 w-32 h-1 bg-[#3b3bb7] mb-6 md:mb-8" />
 
             {/* Tagline */}
             <h3 className="text-base sm:text-lg md:text-xl font-semibold italic text-black/80 mb-5 md:mb-6">

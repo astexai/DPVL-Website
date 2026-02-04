@@ -135,11 +135,7 @@ export default function TeamsCarousel() {
                       className="w-full h-full object-cover"
                       draggable={false}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                      <p className="text-white font-bold uppercase text-sm">
-                        {team.name}
-                      </p>
-                    </div>
+                    
                   </div>
                 </div>
               ))}

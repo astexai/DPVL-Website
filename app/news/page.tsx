@@ -46,17 +46,9 @@ const page = () => {
           </div>
 
           {/* Card Wrapper */}
-          <div className="relative w-full rounded-3xl p-6 md:p-10 overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative w-full rounded-3xl p-6 md:p-10 overflow-hidden ">
 
-            {/* Inner Texture */}
-            <div className="absolute inset-0 z-0">
-              <Image
-                src="/assets/bg/LatestNews.png"
-                alt="Inner Texture"
-                fill
-                className="object-cover"
-              />
-            </div>
+            
 
             {/* News Grid */}
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

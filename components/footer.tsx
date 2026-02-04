@@ -52,17 +52,25 @@ export default function Footer() {
                 className="object-contain"
               />
             </div>
-          <span className="text-lg italic absolute top-40">&quot;Where Delhi Rises.<br/> Where Champions Play.&quot;</span>
+            <span className="text-lg italic absolute top-40">
+              &quot;Where Delhi Rises.
+              <br /> Where Champions Play.&quot;
+            </span>
             <div className="flex flex-col items-center md:items-start w-full">
               <span className="text-lg font-medium border-b-2 border-white/30 pb-1 mb-4 inline-block">
                 Follow us on
               </span>
               <div className="flex gap-3 justify-center md:justify-start">
+                <Link href={"https://instagram.com/delhiprovolleyball"}>
                 <SocialIcon icon={<FaInstagram />} />
+                </Link>
+                <Link href={"https://www.facebook.com/profile.php?id=61585847188129"}>
                 <SocialIcon icon={<FaFacebookF />} />
-                <SocialIcon icon={<FaTwitter />} />
+                </Link>
+                 <Link href={"https://www.youtube.com/@DPVLofficial"}>
                 <SocialIcon icon={<FaYoutube />} />
-                <SocialIcon icon={<FaWhatsapp />} />
+                </Link>
+       
               </div>
             </div>
           </div>
@@ -91,64 +99,41 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-6.5">
+          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-9.5">
             <div>
-            <h3 className="text-xl font-medium mb-3 relative inline-block">
-              Contact Info
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
-            </h3>
+              <h3 className="text-xl font-medium mb-3 relative inline-block">
+                Contact Info
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
+              </h3>
 
-            <div className="flex flex-col gap-2  text-white/90 text-sm md:text-base">
-              <a
-                
-                className="hover:text-pink-200 transition-colors"
-              >
-                +91-XXXXXXXXXX
-              </a>
-              <a
-               
-                className="hover:text-pink-200 transition-colors"
-              >
-                +91-XXXXXXXXXX
-              </a>
-            </div>
+              <div className="flex flex-col gap-2  text-white/90 text-sm md:text-base">
+                <a className="hover:text-pink-200 transition-colors">
+                  +91-XXXXXXXXXX
+                </a>
+                <a className="hover:text-pink-200 transition-colors">
+                  +91-XXXXXXXXXX
+                </a>
+              </div>
             </div>
             <div>
-            <h3 className="text-xl font-medium mb-3 relative inline-block">
-              Address
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
-            </h3>
+              <h3 className="text-xl font-medium mb-3 relative inline-block">
+                Address
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
+              </h3>
 
-            <div className="flex flex-col gap-2 text-white/90 text-sm md:text-base md:pb-0 pb-2">
-              <a
-                
-                className="hover:text-pink-200 transition-colors"
-              >
-                123, Demo Apartments, Test Road, Sector 10, New Delhi – 110001,
-                Delhi, India
-              </a>
+              <div className="flex flex-col gap-2 text-white/90 text-sm md:text-base md:pb-0 pb-2">
+                <a className="hover:text-pink-200 transition-colors">
+                  Delhi Pro Volleyball League Headquarters, New Delhi, India
+                </a>
+              </div>
             </div>
-</div>
-<div>
-            <h3 className="text-xl font-medium mb-4 relative">
-              Email Address
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
-            </h3>
-
-            <form className="w-full max-w-sm flex items-center bg-[#d66095] rounded-full p-1 shadow-lg">
-              <input
-                type="email"
-                placeholder="example@gmail.com"
-                className="flex-1 bg-transparent px-6 py-2 text-white placeholder-white/80 outline-none text-sm"
-              />
-              <button
-                type="submit"
-                className="bg-white text-[#d66095] w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shrink-0"
-              >
-                <HiArrowRight size={20} />
-              </button>
-            </form>
-          </div>
+            <div>
+              <h3 className="text-xl font-medium mb-4 relative">
+                Email Address
+                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
+              </h3>
+              <a className="hover:text-pink-200 transition-colors">info@delhiprovolleyball.com</a>
+            </div>
           </div>
         </div>
 

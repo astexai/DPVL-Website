@@ -2,6 +2,7 @@
 
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import Image from 'next/image';
+import { FaInstagram, FaYoutube, FaFacebookF } from 'react-icons/fa';
 
 interface FormData {
   fullName: string;
@@ -42,7 +43,7 @@ const ContactSection: React.FC = () => {
           {/* Background Image */}
           <div className="absolute inset-0 h-250 md:h-150 z-0 ">
             <Image
-              src="/assets/bg/ContactUs.png"
+              src="/assets/bg/AucGallery.png"
               alt="Contact Background"
               fill
               className="object-cover"
@@ -65,10 +66,81 @@ const ContactSection: React.FC = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                   Contact With Us!
                 </h1>
-                <p className="text-white/90 text-base leading-relaxed max-w-lg">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                  incididunt ut labore et dolore magna aliqua.
-                </p>
+                <p className="text-white/90 text-[17px] leading-relaxed max-w-lg">
+  Get in touch with the Delhi Pro Volleyball League for inquiries related to teams,
+  partnerships, media, or general information. Our team is always ready to connect
+  and support you.
+</p>
+
+{/* Contact Info */}
+<div className="pt-2 space-y-4 max-w-lg">
+  <div>
+    <p className="text-white/60 text-sm uppercase tracking-widest mb-1">
+      Contact Info
+    </p>
+    <p className="text-white text-lg font-medium">
+      +91-9839238292
+    </p>
+    <p className="text-white text-lg font-medium">
+      info@delhiprovolleyball.com
+    </p>
+  </div>
+
+  <div>
+    <p className="text-white/60 text-sm uppercase tracking-widest mb-1">
+      Address
+    </p>
+    <p className="text-white/90 text-lg leading-relaxed">
+      Delhi Pro Volleyball League Headquarters,<br />
+      New Delhi, India
+    </p>
+  </div>
+</div>
+
+
+
+{/* Social Links */}
+{/* Follow Us */}
+<div className="pt-2">
+  <p className="text-white/60 text-sm uppercase tracking-widest mb-3">
+    Follow Us On
+  </p>
+
+  <div className="flex items-center gap-4">
+    <a
+      href="https://www.instagram.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-12 h-12 flex items-center justify-center rounded-full border border-white/40 text-white hover:bg-white hover:text-[#C04493] transition-all duration-300"
+      aria-label="Instagram"
+    >
+      <FaInstagram size={22} />
+    </a>
+
+    <a
+      href="https://www.youtube.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-12 h-12 flex items-center justify-center rounded-full border border-white/40 text-white hover:bg-white hover:text-[#C04493] transition-all duration-300"
+      aria-label="YouTube"
+    >
+      <FaYoutube size={22} />
+    </a>
+
+    <a
+      href="https://www.facebook.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-12 h-12 flex items-center justify-center rounded-full border border-white/40 text-white hover:bg-white hover:text-[#C04493] transition-all duration-300"
+      aria-label="Facebook"
+    >
+      <FaFacebookF size={20} />
+    </a>
+  </div>
+</div>
+
+
+
               </div>
 
               {/* Right Form */}

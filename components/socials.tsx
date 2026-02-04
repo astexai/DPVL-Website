@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Socials()
@@ -13,10 +13,12 @@ export default function Socials()
   <Link href={"https://instagram.com/delhiprovolleyball"}>
     <FaInstagram/>
   </Link>
+<Link href={"https://www.facebook.com/profile.php?id=61585847188129"}>
+ <FaFacebook /></Link>
 
-  <FaFacebook />
-  <FaWhatsapp />
-  <FaXTwitter />
+ <Link href={"https://www.youtube.com/@DPVLofficial"}><FaYoutube /></Link>
+
+
 </div>
     </div>
 }

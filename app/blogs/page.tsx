@@ -5,22 +5,14 @@ import FooterGrad from "@/components/footergrad"
 import Heroo from "@/components/herosection"
 import Image from "next/image"
 import Link from "next/link"
+import { blogPosts } from "@/data/blogs"
 
 const page = () => {
-
-const blogPosts = [
-  { id: 1, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 2, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 3, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 4, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 5, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-  { id: 6, image: "/assets/bg/footerimg.jpg", text: "The league that fuels ambition, celebrates skill, and brings volleyball to life." },
-];
 
   return (
     <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
-       <Heroo title="BLOGS" subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life." />
+       <Heroo title="BLOGS"/>
       <section className="relative w-full py-20 px-4 md:px-8 overflow-hidden bg-[#d66095]">
       
   
@@ -60,12 +52,18 @@ const blogPosts = [
                 />
               </div>
 
-              <p className="text-white text-lg font-medium leading-snug mb-8 px-2">
-                {post.text}
-              </p>
+              <p className="
+  text-white text-lg font-medium leading-snug px-2
+  line-clamp-3
+  min-h-[4.5rem]
+  mb-8
+">
+  {post.title}
+</p>
+
 
            
-              <Link href="/detailed-blog">
+              <Link href={`/blogs/${post.slug}`}>
               <button className="bg-[#d66095] hover:bg-[#c2185b] text-white text-sm font-bold uppercase py-2 px-8 rounded-full shadow-lg transition-colors duration-300 tracking-wider">
                 Read Here
               </button>

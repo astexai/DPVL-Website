@@ -79,7 +79,7 @@ export default function ScheduleCard() {
               </div>
 <Link href={"/fixtures"}>
               {/* Button */}
-              <button className="bg-[#d66095] hover:bg-[#b54a7b] text-white px-6 py-2 rounded text-sm uppercase tracking-wide font-medium shadow-lg transition-colors">
+              <button className="bg-[#d159a3] hover:bg-[#b54a7b] text-white px-6 py-2 rounded text-sm uppercase tracking-wide font-medium shadow-lg transition-colors">
                 Match schedule
               </button>
               </Link>

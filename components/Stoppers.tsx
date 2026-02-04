@@ -127,15 +127,23 @@ export default function ShowStoppersAndGallery() {
                   className="flex-shrink-0 px-2"
                   style={{ width: `${100 / cardsPerView}%` }}
                 >
-                  <div className="relative rounded-xl overflow-hidden shadow-xl border border-white/10 aspect-[3/4]">
-                    <Image
-                      src={img.src}
-                      alt={`Gallery ${index}`}
-                      fill
-                      className="object-cover hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  </div>
+                 <div className="relative rounded-xl overflow-hidden shadow-xl border border-white/10 aspect-[3/4] bg-black/40 flex items-center justify-center">
+  
+  {/* Soft overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+
+  {/* Coming Soon Text */}
+  <div className="relative z-10 text-center px-4">
+    <p className="text-white font-norch text-3xl md:text-4xl tracking-wide mb-2">
+      Coming Soon
+    </p>
+    <p className="text-white/70 text-xs md:text-sm">
+      Auction moments will be revealed shortly
+    </p>
+  </div>
+
+</div>
+
                 </div>
               ))}
             </div>

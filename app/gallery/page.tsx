@@ -19,13 +19,19 @@ type GalleryImage = {
 
 /* -------------------- Data -------------------- */
 const galleryImages: GalleryImage[] = [
-  { id: 1, category: 'Opening Ceremony', src: '/assets/opening/image1.jpg' },
-  { id: 2, category: 'Opening Ceremony', src: '/assets/opening/image2.jpg' },
-  { id: 3, category: 'Opening Ceremony', src: '/assets/opening/image3.jpg' },
-  { id: 4, category: 'Opening Ceremony', src: '/assets/opening/image4.jpg' },
-  { id: 5, category: 'Opening Ceremony', src: '/assets/opening/image5.jpg' },
-  { id: 6, category: 'Opening Ceremony', src: '/assets/opening/image6.jpg' },
-  { id: 7, category: 'Opening Ceremony', src: '/assets/opening/image7.jpg' },
+  { id: 1, category: 'Opening Ceremony', src: '/assets/bg/opening/image1.jpg' },
+  { id: 2, category: 'Opening Ceremony', src: '/assets/bg/opening/image2.jpg' },
+  { id: 3, category: 'Opening Ceremony', src: '/assets/bg/opening/image3.jpg' },
+  { id: 4, category: 'Opening Ceremony', src: '/assets/bg/opening/image4.jpg' },
+  { id: 5, category: 'Opening Ceremony', src: '/assets/bg/opening/image5.jpg' },
+  { id: 6, category: 'Opening Ceremony', src: '/assets/bg/opening/image6.jpg' },
+  { id: 7, category: 'Opening Ceremony', src: '/assets/bg/opening/image7.jpg' },
+  { id: 8, category: 'Opening Ceremony', src: '/assets/bg/opening/image8.jpg' },
+  { id: 9, category: 'Opening Ceremony', src: '/assets/bg/opening/image9.jpg' },
+  { id: 10, category: 'Opening Ceremony', src: '/assets/bg/opening/image10.jpg' },
+  { id: 11, category: 'Opening Ceremony', src: '/assets/bg/opening/image11.jpg' },
+  { id: 12, category: 'Opening Ceremony', src: '/assets/bg/opening/image12.jpg' },
+  { id: 13, category: 'Opening Ceremony', src: '/assets/bg/opening/image13.jpg' },
 ]
 
 const categories: Category[] = [
@@ -56,7 +62,7 @@ export default function Page() {
 
       <Heroo
         title="GALLERY"
-        subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
+        
       />
 
       <section className="relative w-full min-h-screen pt-12 pb-20">
@@ -95,20 +101,20 @@ export default function Page() {
             {filteredImages.map((image) => (
               <div
                 key={image.id}
-                className="relative group w-full aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border border-white/10"
+                className="relative group w-full aspect-[3/2] rounded-xl overflow-hidden shadow-2xl border border-white/10"
               >
                 <Image
                   src={image.src}
                   alt={image.category}
                   fill
-                  loading='lazy'
+                  loading="lazy"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+                <div className="absolute inset-0  group-hover:bg-black/0 transition-colors duration-300" />
               </div>
             ))}
 
-            {/* Auto Empty State */}
+            {/* Empty State */}
             {filteredImages.length === 0 && (
               <div className="col-span-full mt-20 flex items-center justify-center py-16">
                 <div className="w-full max-w-3xl flex flex-col items-center text-center px-6">
