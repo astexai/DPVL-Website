@@ -51,133 +51,147 @@ const Navbar: React.FC = () => {
   const closeMenu = (): void => setOpen(false);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-white border-t-4 border-[#3b3bb7] ${
-        scrolled ? "shadow-lg" : "shadow-sm"
-      }`}
-    >
-      <Headline />
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-white border-t-4 border-[#3b3bb7] ${
+          scrolled ? "shadow-xl" : "shadow-md"
+        }`}
+      >
+        <Headline />
 
-      <div className="w-full px-4 md:px-6 lg:px-10">
-        <div className="flex items-center justify-between h-16 md:h-20 lg:h-22 w-full">
-          
-          {/* LEFT: Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/assets/logos/Logo-final-1.png"
-                alt="DPVL Logo"
-                width={350}
-                height={120}
-                className="h-10 md:h-14 lg:h-16 xl:h-18 w-auto object-contain"
-                priority
-              />
-            </Link>
-          </div>
-
-          {/* CENTER: Navigation Links */}
-          <div className="hidden lg:flex items-center justify-center flex-1 mx-8 xl:mx-12">
-            <div className="flex items-center justify-center gap-x-2 xl:gap-x-3 2xl:gap-x-4">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`
-                    group relative 
-                    text-[15px] xl:text-[16px] 2xl:text-[17px]
-                    font-roboto font-bold 
-                    transition-all duration-200 
-                    whitespace-nowrap
-                    py-1 px-1.5 tracking-tight
-                    ${isActive(item.href) 
-                      ? "text-[#3b3bb7]" 
-                      : "text-gray-900 hover:text-[#3b3bb7]"
-                    }
-                  `}
-                >
-                  {item.name}
-                  <span
-                    className={`
-                      absolute -bottom-1 left-0 right-0
-                      h-[2.5px] bg-[#D159A3] rounded-full 
-                      transition-transform duration-300 origin-left
-                      ${isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
-                    `}
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT: Register Button - REDUCED SIZE */}
-          <div className="flex-shrink-0 flex items-center">
-            <div className="hidden lg:flex">
-              <Link href="/register">
-                <button
-                  type="button"
-                  className="
-                    relative overflow-hidden
-                    h-9 xl:h-10
-                    px-5 xl:px-6
-                    font-roboto font-bold
-                    rounded-lg shadow-md
-                    transition-all duration-200
-                    text-[14px] xl:text-[15px]
-                    bg-[#3b3bb7] text-white
-                    hover:bg-[#2a2a8a] hover:shadow-lg active:scale-[0.98] cursor-pointer
-                  "
-                >
-                  <span className="relative z-10">Register Now</span>
-                </button>
+        <div className="w-full px-4 md:px-6 lg:px-8 xl:px-10">
+          <div className="flex items-center justify-between h-16 md:h-20 lg:h-20 w-full">
+            
+            {/* LEFT: Logo - Adjusted size and spacing */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/assets/logos/Logo-final-1.png"
+                  alt="DPVL Logo"
+                  width={350}
+                  height={120}
+                  className="h-10 md:h-14 lg:h-16 xl:h-18 w-auto object-contain"
+                  priority
+                />
               </Link>
             </div>
 
-            {/* BURGER ICON */}
-            <button
-              type="button"
-              className="lg:hidden flex flex-col gap-1 w-10 h-10 items-center justify-center focus:outline-none"
-              onClick={toggleMenu}
-            >
-              <span className={`w-7 h-0.5 bg-[#3b3bb7] rounded-full transition-all ${open ? "rotate-45 translate-y-1.5" : ""}`} />
-              <span className={`w-7 h-0.5 bg-[#3b3bb7] rounded-full ${open ? "opacity-0" : ""}`} />
-              <span className={`w-7 h-0.5 bg-[#3b3bb7] rounded-full transition-all ${open ? "-rotate-45 -translate-y-1.5" : ""}`} />
-            </button>
+            {/* CENTER: Navigation Links - Optimized font sizes and spacing */}
+            <div className="hidden lg:flex items-center justify-center flex-1 mx-4 xl:mx-8">
+              <div className="flex items-center justify-center gap-x-2 xl:gap-x-3 2xl:gap-x-4">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`
+                      group relative 
+                      text-[15px] xl:text-[16px] 2xl:text-[17px]
+                      font-roboto font-bold 
+                      transition-all duration-200 
+                      whitespace-nowrap
+                      py-1 px-1.5 tracking-tight
+                      ${isActive(item.href) 
+                        ? "text-[#3b3bb7]" 
+                        : "text-gray-900 hover:text-[#3b3bb7]"
+                      }
+                    `}
+                  >
+                    {item.name}
+                    <span
+                      className={`
+                        absolute -bottom-1 left-0 right-0
+                        h-[2.5px] bg-[#D159A3] rounded-full 
+                        transition-transform duration-300 origin-left
+                        ${isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
+                      `}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT: Register Button - Better proportioned */}
+            <div className="flex-shrink-0 flex items-center">
+              <div className="hidden lg:flex">
+                <Link href="/register">
+                  <button
+                    type="button"
+                    className="
+                      relative overflow-hidden
+                      h-10 xl:h-11
+                      px-6 xl:px-7
+                      font-roboto font-bold
+                      rounded-lg shadow-md
+                      transition-all duration-200
+                      text-[15px] xl:text-[16px]
+                      bg-[#3b3bb7] text-white
+                      hover:bg-[#2a2a8a] hover:shadow-lg active:scale-[0.98]
+                      border-2 border-transparent hover:border-[#1a1a6a]/20
+                    "
+                  >
+                    <span className="relative z-10">Register Now</span>
+                  </button>
+                </Link>
+              </div>
+
+              {/* BURGER ICON - Improved styling */}
+              <button
+                type="button"
+                className="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center focus:outline-none hover:bg-gray-50 rounded-lg transition-colors"
+                onClick={toggleMenu}
+                aria-label={open ? "Close menu" : "Open menu"}
+              >
+                <span className={`w-6 h-0.5 bg-[#3b3bb7] rounded-full transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
+                <span className={`w-6 h-0.5 bg-[#3b3bb7] rounded-full transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+                <span className={`w-6 h-0.5 bg-[#3b3bb7] rounded-full transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* MOBILE MENU */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-b-2 border-gray-100 overflow-hidden"
-          >
-            <div className="px-8 py-6 flex flex-col gap-4 font-roboto">
-              {menuItems.map((item) => (
+        {/* MOBILE MENU - Enhanced styling */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden bg-white border-t border-gray-200 overflow-hidden shadow-xl"
+            >
+              <div className="px-6 py-8 flex flex-col gap-4 font-roboto">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className={`
+                      text-lg px-4 py-3 rounded-lg transition-all duration-200
+                      ${isActive(item.href) 
+                        ? "text-[#3b3bb7] font-bold bg-blue-50 border-l-4 border-[#3b3bb7]" 
+                        : "text-gray-800 font-medium hover:bg-gray-50 hover:pl-6"
+                      }
+                    `}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
                 <Link
-                  key={item.name}
-                  href={item.href}
+                  href="/register"
                   onClick={closeMenu}
-                  className={`text-xl ${isActive(item.href) ? "text-[#3b3bb7] font-bold" : "text-gray-800 font-medium"}`}
+                  className="mt-4 bg-[#3b3bb7] text-white py-3.5 rounded-lg text-center font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:bg-[#2a2a8a]"
                 >
-                  {item.name}
+                  Register Now
                 </Link>
-              ))}
-              <Link
-                href="/register"
-                onClick={closeMenu}
-                className="bg-[#3b3bb7] text-white py-3 rounded-lg text-center font-bold text-xl"
-              >
-                Register Now
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+      
+      {/* Spacer to prevent content overlap - Adjusted to match navbar height */}
+      <div className="h-16 md:h-20 lg:h-24" />
+    </>
   );
 };
 

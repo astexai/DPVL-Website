@@ -33,7 +33,7 @@ export default function Home() {
       {/* HERO */}
       <section className="
         relative w-full
-        mt-[120px] md:mt-[140px] lg:mt-[132px]
+        mt-[120px] md:mt-[140px] lg:mt-[30px]
         min-h-[550px] md:min-h-[600px] lg:min-h-[690px]
         flex items-center overflow-hidden
       ">

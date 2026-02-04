@@ -21,9 +21,9 @@ export default function WhoWeAre() {
           
           {/* Left Logo Container - Increased size to fill the gap */}
           <div className="hidden md:flex md:w-2/5 items-center justify-center pt-4">
-            <div className="relative w-full">
+            <div className="relative w-full mt-20">
               <Image
-                src="/assets/logos/Logo-final-1.png"
+                src="/assets/logos/BigLogo.png"
                 alt="Delhi Pro Volleyball League Logo"
                 // Increased width and height to match the wide aspect ratio of the logo
                 width={400} 
