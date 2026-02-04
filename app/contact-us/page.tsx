@@ -11,7 +11,7 @@ export default function ContactUs()
         <div>
             <Heroo
         title="Contact us"
-        subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
+      
         />
         <ContactSection/>
         <FooterGrad/>

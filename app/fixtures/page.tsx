@@ -9,7 +9,7 @@ const page = () => {
   return (
      <main className="min-h-screen bg-zinc-50 font-sans">
      <Navbar />
-      <Heroo title="FIXTURES" subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life." />
+      <Heroo title="FIXTURES"  />
       <FooterGrad variant="cropped" height={20}/>
       <MatchSchedule />
       <FooterGrad />

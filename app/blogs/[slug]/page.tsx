@@ -8,6 +8,14 @@ import Heroo from "@/components/herosection";
 import FooterGrad from "@/components/footergrad";
 import "./blog-post.css";
 
+// Define the proper type for your blog posts
+type BlogPost = {
+  title: string;
+  slug: string;
+  image: string;
+  content: string;
+};
+
 export async function generateStaticParams() {
   if (!Array.isArray(blogPosts)) return [];
 
@@ -24,16 +32,37 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug) as BlogPost | undefined;
+  
   if (!post) return notFound();
 
-  const htmlContent = typeof post.content === "string" ? post.content : (typeof post.title === "string" ? post.text : "");
+  // FIXED: Use only post.content since that's the property that exists
+  const htmlContent = typeof post.content === "string" ? post.content : "";
 
-  // Split content to insert image after the first 2 h2 sections
-  const contentParts = htmlContent.split('<h2>');
-  const beforeImage = contentParts[0]; // Introduction
-  const afterFirstH2 = '<h2>' + contentParts.slice(1, 3).join('<h2>'); // First 2 sections
-  const afterImage = '<h2>' + contentParts.slice(3).join('<h2>'); // Rest
+  // Check if content has enough h2 sections before splitting
+  let beforeImage = "";
+  let afterFirstH2 = "";
+  let afterImage = "";
+
+  if (htmlContent.includes('<h2>')) {
+    const contentParts = htmlContent.split('<h2>');
+    
+    // Introduction (content before first h2)
+    beforeImage = contentParts[0] || "";
+    
+    // First 2 h2 sections (indices 1 and 2)
+    if (contentParts.length >= 3) {
+      afterFirstH2 = '<h2>' + contentParts.slice(1, 3).join('<h2>');
+      afterImage = contentParts.length > 3 ? '<h2>' + contentParts.slice(3).join('<h2>') : "";
+    } else {
+      // If fewer than 3 h2 sections, just show all after first h2
+      afterFirstH2 = '<h2>' + contentParts.slice(1).join('<h2>');
+      afterImage = "";
+    }
+  } else {
+    // If no h2 tags at all, use the full content
+    beforeImage = htmlContent;
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white font-sans">
@@ -46,16 +75,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <article className="max-w-4xl mx-auto px-6 py-16">
         
         {/* Introduction */}
-        <div 
-          className="blog-content intro-section" 
-          dangerouslySetInnerHTML={{ __html: beforeImage }} 
-        />
+        {beforeImage && (
+          <div 
+            className="blog-content intro-section" 
+            dangerouslySetInnerHTML={{ __html: beforeImage }} 
+          />
+        )}
 
         {/* First sections */}
-        <div 
-          className="blog-content" 
-          dangerouslySetInnerHTML={{ __html: afterFirstH2 }} 
-        />
+        {afterFirstH2 && (
+          <div 
+            className="blog-content" 
+            dangerouslySetInnerHTML={{ __html: afterFirstH2 }} 
+          />
+        )}
 
         {/* Featured Image with Caption */}
         {post.image && (
@@ -75,10 +108,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         )}
 
         {/* Remaining content */}
-        <div 
-          className="blog-content" 
-          dangerouslySetInnerHTML={{ __html: afterImage }} 
-        />
+        {afterImage && (
+          <div 
+            className="blog-content" 
+            dangerouslySetInnerHTML={{ __html: afterImage }} 
+          />
+        )}
         
         {/* Back button with nice styling */}
         <div className="mt-16 pt-10 border-t-2 border-gray-200">

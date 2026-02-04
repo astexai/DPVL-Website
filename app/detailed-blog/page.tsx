@@ -12,7 +12,7 @@ const page = () => {
       <Navbar />
       <Heroo
         title="DETAILED BLOG"
-        subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
+        
       />
       <section className="relative w-full min-h-screen bg-white overflow-hidden font-sans text-gray-800">
         <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#d66095]/10 to-transparent z-0 pointer-events-none" />

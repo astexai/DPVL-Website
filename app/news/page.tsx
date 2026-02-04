@@ -15,7 +15,7 @@ const page = () => {
 
       <Heroo
         title="NEWS"
-        subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
+        
       />
 
       <FooterGrad variant="cropped" height={20} />

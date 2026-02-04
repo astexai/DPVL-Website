@@ -170,7 +170,7 @@ const Page = () => {
 
       <Heroo
         title="DPVL TV"
-        subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
+
       />
 
       <FooterGrad variant="cropped" height={20} />

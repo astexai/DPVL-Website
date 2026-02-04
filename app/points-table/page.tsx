@@ -25,7 +25,7 @@ export default function Page() {
 
       <Heroo
         title="POINTS TABLE"
-        subtitle="The league that fuels ambition, celebrates skill, and brings volleyball to life."
+        
       />
       <AutoScrollComponent/>
       <Pointstable />
