@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Headline from "./headline";
 import { AnimatePresence, motion } from "framer-motion";
+import { HoverBorderGradient } from "./ui/hover-border-gradient";
 
 type MenuItem = {
   name: string;
@@ -20,7 +21,7 @@ const Navbar: React.FC = () => {
   const menuItems: MenuItem[] = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
-    { name: "Our Teams", href: "/teams" },
+    { name: "Our Teams", href: "/teams-stats" },
     { name: "Fixtures", href: "/fixtures" },
     { name: "Auction", href: "/dpvl-auction" },
     { name: "Points Table", href: "/points-table" },
@@ -78,59 +79,73 @@ const Navbar: React.FC = () => {
 
             {/* CENTER: Navigation Links - Optimized font sizes and spacing */}
             <div className="hidden lg:flex items-center justify-center flex-1 mx-4 xl:mx-8">
-              <div className="flex items-center justify-center gap-x-2 xl:gap-x-3 2xl:gap-x-4">
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`
-                      group relative 
-                      text-[15px] xl:text-[16px] 2xl:text-[17px]
-                      font-roboto font-bold 
-                      transition-all duration-200 
-                      whitespace-nowrap
-                      py-1 px-1.5 tracking-tight
-                      ${isActive(item.href) 
-                        ? "text-[#3b3bb7]" 
-                        : "text-gray-900 hover:text-[#3b3bb7]"
-                      }
-                    `}
-                  >
-                    {item.name}
-                    <span
-                      className={`
-                        absolute -bottom-1 left-0 right-0
-                        h-[2.5px] bg-[#D159A3] rounded-full 
-                        transition-transform duration-300 origin-left
-                        ${isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
-                      `}
-                    />
-                  </Link>
-                ))}
-              </div>
-            </div>
+  <div className="flex items-center justify-center gap-x-2 xl:gap-x-3 2xl:gap-x-4">
+    {menuItems.map((item) => (
+      <Link
+        key={item.name}
+        href={item.href}
+        className={`
+          group relative 
+          text-[15px] xl:text-[16px] 2xl:text-[17px]
+          font-roboto font-bold 
+          transition-all duration-200 
+          whitespace-nowrap
+          py-1 px-1.5 tracking-tight
+          ${isActive(item.href) 
+            ? "text-[#3b3bb7]" 
+            : "text-gray-900 hover:text-[#3b3bb7]"
+          }
+        `}
+      >
+        {item.name}
+        {/* Pink underline - ONLY when active */}
+        {isActive(item.href) && (
+          <span
+            className={`
+              absolute -bottom-1 left-0 right-0
+              h-[2.5px] bg-[#D159A3] rounded-full 
+              transition-transform duration-300 origin-left
+              scale-x-100
+            `}
+          />
+        )}
+      </Link>
+    ))}
+  </div>
+</div>
 
             {/* RIGHT: Register Button - Better proportioned */}
             <div className="flex-shrink-0 flex items-center">
               <div className="hidden lg:flex">
                 <Link href="/register">
-                  <button
-                    type="button"
-                    className="
-                      relative overflow-hidden
-                      h-10 xl:h-11
-                      px-6 xl:px-7
-                      font-roboto font-bold
-                      rounded-lg shadow-md
-                      transition-all duration-200
-                      text-[15px] xl:text-[16px]
-                      bg-[#3b3bb7] text-white
-                      hover:bg-[#2a2a8a] hover:shadow-lg active:scale-[0.98]
-                      border-2 border-transparent hover:border-[#1a1a6a]/20
-                    "
-                  >
-                    <span className="relative z-10">Register Now</span>
-                  </button>
+               <button
+  type="button"
+  className="
+    relative overflow-visible
+    h-10 xl:h-11
+    px-4 xl:px-5
+    font-roboto font-bold
+    rounded-lg
+    transition-all duration-200
+    text-[15px] xl:text-[16px]
+    bg-[#3b3bb7] text-white
+    hover:bg-[#2a2a8a] hover:shadow-lg active:scale-[0.98]
+    group
+  "
+>
+  <span className="relative z-10">Register Now</span>
+  
+  {/* Single compact pulse effect */}
+  <div className="
+    absolute -inset-1 rounded-lg  /* Reduced spread */
+    border border-[#d66095]  /* Single border */
+    opacity-0
+    animate-pulse-outborder
+  "></div>
+</button>
+   
+    
+
                 </Link>
               </div>
 
@@ -189,8 +204,9 @@ const Navbar: React.FC = () => {
         </AnimatePresence>
       </nav>
       
-      {/* Spacer to prevent content overlap - Adjusted to match navbar height */}
-      <div className="h-16 md:h-20 lg:h-24" />
+      {/* FIXED: Spacer with correct height calculation */}
+      {/* Navbar height (h-16 md:h-20) + Headline height (estimated h-8) */}
+      <div className="h-24 md:h-28 lg:h-31" />
     </>
   );
 };

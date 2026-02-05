@@ -2,7 +2,7 @@ export const blogPosts = [
   {
     title: "Delhi Pro Volleyball League — Where Delhi Rises. Where Champions Play.",
     slug: "delhi-pro-volleyball-league-where-delhi-rises",
-    image: "/assets/blogs/blog1.jpg",
+    image: "/assets/blogs/blog1.png",
     content: `
       <p>The Delhi Pro Volleyball League (DPVL) marks a historic moment for the capital — the arrival of Delhi's first-ever professional volleyball league designed to transform how the sport is played, watched, and celebrated across Delhi & NCR.</p>
 
@@ -70,7 +70,7 @@ export const blogPosts = [
       <p>To make Delhi the epicenter of India's volleyball revolution and set national benchmarks in professionalism, fan experience, talent development, and sports storytelling.</p>
 
       <h2>The Beginning of a New Era</h2>
-      <p>The Delhi Pro Volleyball League 2025 is not a one-time spectacle. It is the start of a long-term movement to elevate volleyball into a major sport in the capital.</p>
+      <p>The Delhi Pro Volleyball League 2026 is not a one-time spectacle. It is the start of a long-term movement to elevate volleyball into a major sport in the capital.</p>
 
       <p>For players, it is a dream platform.<br/>
       For fans, it is a new passion.<br/>
@@ -179,6 +179,125 @@ export const blogPosts = [
       <p>DPVL is a milestone for Delhi sports culture and a strategic step for Indian volleyball.</p>
 
       <p>By combining institutional support, player-led vision, and transparent systems, the league promises to set a new benchmark for how state-level professional volleyball should be organised.</p>
+    `,
+  },
+  {
+    title: "Spartan Sports Powers DPVL as Official Kit & Ball Partner",
+    slug: "spartan-sports-official-kit-ball-partner-dpvl",
+    image: "/assets/blogs/blog3.jpg",
+    content: `
+      <p>When a league sets out to build a professional standard from day one, the choice of equipment partner is never incidental—it's foundational. The Delhi Pro Volleyball League proudly announces Spartan Sports as its Official Kit and Ball Partner, a collaboration designed to elevate performance, ensure consistency, and deliver a world-class playing experience across every match, trial, and training session.</p>
+
+      <h2>Why the Right Ball and Kit Matter</h2>
+      <p>Volleyball is a game of precision. The grip of the ball, the responsiveness of its surface, the balance in flight, and the comfort of a player's kit directly influence performance on court. From powerful serves to lightning-fast rallies and accurate sets, elite play demands equipment engineered for reliability.</p>
+
+      <p>Spartan Sports brings years of sports engineering expertise to the league with:</p>
+
+      <ul>
+        <li>Match balls crafted for true flight, superior grip, and consistent bounce</li>
+        <li>High-performance kits built with breathable, sweat-wicking, flexible fabrics</li>
+        <li>Professional finish and durability suited for intense indoor competition</li>
+        <li>A uniform standard that ensures fairness and familiarity for every team</li>
+      </ul>
+
+      <h2>A Professional Feel for a Professional League</h2>
+      <p>For players stepping into the Delhi Pro Volleyball League trials and season fixtures, the experience begins the moment they touch the ball and wear the jersey. The look, the feel, and the performance of the kit set the tone for professionalism.</p>
+
+      <p>This partnership ensures that:</p>
+
+      <ul>
+        <li>Every team competes with international-standard equipment</li>
+        <li>Players experience comfort without distraction</li>
+        <li>The visual identity of the league looks sharp, unified, and broadcast-ready</li>
+        <li>The court environment reflects the seriousness of a pro platform</li>
+      </ul>
+
+      <p>A league's kit is more than apparel—it's identity in motion. With Spartan's technical fabrics and modern sports aesthetics, team jerseys, shorts, and socks are designed to withstand long rallies, dives, jumps, and high-intensity movement while maintaining a crisp, professional look.</p>
+
+      <p>Meanwhile, the official match ball becomes the common language of the league—recognizable, reliable, and ready for peak performance.</p>
+
+      <h2>Raising the Bar for Indian Volleyball</h2>
+      <p>By partnering with Spartan Sports, the Delhi Pro Volleyball League signals its intent clearly: to match global standards and give Indian volleyball athletes the environment they deserve. Professional equipment is not a luxury; it's a necessity for serious sport.</p>
+
+      <p>This collaboration is a step toward:</p>
+
+      <ul>
+        <li>Standardizing quality across the league</li>
+        <li>Enhancing player confidence and comfort</li>
+        <li>Delivering a premium visual and gameplay experience for fans</li>
+        <li>Setting a new benchmark for emerging volleyball platforms in India</li>
+      </ul>
+
+      <h2>The Game Begins with the Right Gear</h2>
+      <p>Before the whistle blows and the crowd roars, performance starts with preparation. With Spartan as the Official Kit and Ball Partner, every serve, set, spike, and save in the Delhi Pro Volleyball League is backed by equipment built for excellence.</p>
+
+      <p><strong>Because when the gear is right, the game rises.</strong></p>
+    `,
+  },
+
+  {
+    title: "Dr. Sanjana Bardhan Fuels DPVL as Official Nutrition & Diet Partner",
+    slug: "dr-sanjana-bardhan-nutrition-diet-partner-dpvl",
+    image: "/assets/blogs/blog4.jpg",
+    content: `
+      <p>High-performance sport is not powered by training alone. It's powered by what fuels the athlete before the match, sustains them during play, and helps them recover after the final point. The Delhi Pro Volleyball League proudly welcomes Dr. Sanjana Bardhan as the Official Nutrition & Diet Partner—bringing scientific, athlete-first nutrition planning to the heart of the competition.</p>
+
+      <h2>Performance Begins on the Plate</h2>
+      <p>Volleyball is a game of explosive jumps, sharp reflexes, and relentless rallies. Such intensity demands a nutrition strategy that supports:</p>
+
+      <ul>
+        <li>Sustained energy across long matches</li>
+        <li>Faster muscle recovery between games</li>
+        <li>Proper hydration and electrolyte balance</li>
+        <li>Lean strength without fatigue or heaviness</li>
+      </ul>
+
+      <p>With Dr. Bardhan's expertise in sports nutrition, players receive structured dietary guidance tailored to the real demands of indoor volleyball.</p>
+
+      <h2>From Training to Tournament: A Complete Nutrition Approach</h2>
+      <p>Nutrition is not a one-day fix before a match. It's a disciplined routine that starts in training camp and continues through trials, league fixtures, and recovery days.</p>
+
+      <p>Her approach for the league focuses on:</p>
+
+      <ul>
+        <li>Pre-match fueling for optimal stamina and alertness</li>
+        <li>In-match hydration strategies to prevent performance dips</li>
+        <li>Post-match recovery meals to repair muscle stress</li>
+        <li>Daily diet structuring to maintain peak athletic condition throughout the season</li>
+      </ul>
+
+      <p>This ensures that athletes don't just play hard—they recover smart and return stronger.</p>
+
+      <h2>Scientific Guidance for Consistent Performance</h2>
+      <p>Every athlete's body responds differently to stress, exertion, and recovery. Through professional assessment and personalized recommendations, Dr. Bardhan helps players understand what to eat, when to eat, and why it matters.</p>
+
+      <p>This scientific involvement brings:</p>
+
+      <ul>
+        <li>Reduced risk of cramps, fatigue, and dehydration</li>
+        <li>Better endurance and on-court sharpness</li>
+        <li>Improved recovery time between matches</li>
+        <li>Long-term athletic wellness beyond the league</li>
+      </ul>
+
+      <h2>Building a Professional Sports Ecosystem</h2>
+      <p>By integrating an Official Nutrition & Diet Partner into the league structure, the Delhi Pro Volleyball League moves beyond matches and scoreboards. It builds a complete professional ecosystem where athlete care is prioritized as much as competition.</p>
+
+      <p>This partnership highlights the league's commitment to:</p>
+
+      <ul>
+        <li>Player well-being and longevity</li>
+        <li>Professional standards aligned with global sports practices</li>
+        <li>Educating athletes on the importance of disciplined nutrition</li>
+        <li>Creating a support system that enhances performance naturally</li>
+      </ul>
+
+      <h2>Fuel Right. Play Right.</h2>
+      <p>Before the serve, before the spike, before the dive—there is preparation. And preparation begins with the right nutrition.</p>
+
+      <p>With Dr. Sanjana Bardhan guiding the nutritional backbone of the league, every athlete steps onto the court better fueled, better prepared, and better equipped to perform at their highest level.</p>
+
+      <p><strong>Because in professional volleyball, what you eat is as important as how you play.</strong></p>
     `,
   },
 ];

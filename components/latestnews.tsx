@@ -82,17 +82,26 @@ export default function LatestNews() {
           className="object-cover transition-transform duration-700 group-hover:scale-110 scale-112"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
 
         <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col gap-2">
-          <p className="text-white text-lg leading-snug font-medium">
-            <span className="font-bold text-xl">DPVL</span>{' '}
-            {news.title.replace('DPVL ', '')}
-          </p>
+          
 
-          <div className="self-end mt-2 opacity-80 group-hover:translate-x-2 transition-transform">
-            <FaArrowRight className="text-white" />
-          </div>
+          <div className="self-end mt-2 transition-transform group-hover:translate-x-2">
+  <div
+    className="
+      w-9 h-9 rounded-full
+      flex items-center justify-center
+      bg-white/20 backdrop-blur-md
+      border border-white/40
+      shadow-lg
+      opacity-90
+    "
+  >
+    <FaArrowRight className="text-[#3B3BB7]" />
+  </div>
+</div>
+
         </div>
       </div>
     </Link>

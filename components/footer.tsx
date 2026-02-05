@@ -32,7 +32,7 @@ export default function Footer() {
           src="/assets/bg/Footer.png"
           alt="Footer Background"
           fill
-          className="object-cover"
+          className="object-cover opacity-120"
           loading="lazy"
         />
 
@@ -108,10 +108,12 @@ export default function Footer() {
 
               <div className="flex flex-col gap-2  text-white/90 text-sm md:text-base">
                 <a className="hover:text-pink-200 transition-colors">
-                  +91-XXXXXXXXXX
+                  +91 77999 88500
+
+
                 </a>
                 <a className="hover:text-pink-200 transition-colors">
-                  +91-XXXXXXXXXX
+                  +91 98119 79075
                 </a>
               </div>
             </div>
@@ -140,7 +142,7 @@ export default function Footer() {
         <div className="w-full h-0.5 bg-[#D35CA7] my-6" />
 
         <div className="text-center text-xs md:text-sm font-light text-white/80">
-          Copyright 2025 GoodLayers, All Right Reserved
+          Copyright 2026 Delhi Pro Volleyball League, All Right Reserved
         </div>
       </div>
     </footer>

@@ -41,7 +41,7 @@ export default function WhoWeAre() {
               <h2 className="text-5xl sm:text-3xl md:text-7xl font-norch tracking-wide uppercase text-black">
                 Who We Are
               </h2>
-              <FaChevronRight className="text-[#3b3bb7] text-4xl sm:text-2xl md:text-4xl shrink-0" />
+              
             </div>
 
             {/* Divider */}

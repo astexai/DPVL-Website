@@ -6,7 +6,7 @@ export default function AutoScrollComponent() {
   const items = Array(5).fill("POINTS TABLE");
 
   return (
-    <div className="relative z-30 w-full overflow-hidden bg-white py-8">
+    <div className="relative z-30 w-full overflow-hidden bg-white py-6">
       <motion.div
         className="flex w-max gap-20"
         animate={{ x: ["0%", "-50%"] }}
@@ -19,7 +19,7 @@ export default function AutoScrollComponent() {
         {items.concat(items).map((text, i) => (
           <span
             key={i}
-            className="text-4xl font-bold text-pink-500 whitespace-nowrap"
+            className="text-2xl font-bold text-pink-500 whitespace-nowrap"
           >
             {text}
           </span>

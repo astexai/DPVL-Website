@@ -111,7 +111,7 @@ export default function LatestVideos() {
         <h2 className="text-5xl md:text-7xl uppercase text-white font-norch mb-2 tracking-wide">
           Latest Videos
         </h2>
-        <div className="md:w-60 w-40 h-1 bg-white rounded-full" />
+        <div className="md:w-60 w-40 h-1 bg-[#3B3BB7] rounded-full" />
       </div>
 
       {/* Carousel */}
@@ -166,7 +166,7 @@ export default function LatestVideos() {
       {/* View More */}
       <div className="flex justify-center mt-12">
         <Link href="/dpvl-tv">
-          <button className="bg-[#2a2a8a] text-white px-10 py-3 rounded-full font-bold uppercase tracking-widest text-sm transition-all shadow-lg hover:scale-105 active:scale-95">
+          <button className="bg-[#3B3BB7] hover:bg-[#2A2A8A] text-white px-10 py-3 rounded-lg font-bold tracking-widest text-sm transition-all shadow-lg hover:scale-105 active:scale-95">
             View More
           </button>
         </Link>

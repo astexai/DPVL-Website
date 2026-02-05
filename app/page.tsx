@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export default function Home() {
   const [current, setCurrent] = useState(0);
-  const totalSlides = 3;
+  const totalSlides = 4; // Correct: You have 4 banners
 
   // Auto-scroll effect
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Home() {
       {/* HERO */}
       <section className="
         relative w-full
-        mt-[120px] md:mt-[140px] lg:mt-[30px]
+        mt-[120px] md:mt-[140px] lg:mt-[2px]
         min-h-[550px] md:min-h-[600px] lg:min-h-[690px]
         flex items-center overflow-hidden
       ">
@@ -82,6 +82,12 @@ export default function Home() {
               <span className="block text-lg md:text-2xl lg:text-5xl opacity-80">Powering The Game</span>
             </h2>
           </div>
+        </div>
+
+        {/* --- BANNER 4 (MISSING IN ORIGINAL CODE) --- */}
+        <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${current === 3 ? "opacity-100 z-10" : "opacity-0 z-0"}`}>
+          <Image src="/assets/Banners/4.png" alt="Hero 4" fill className="object-fit" />
+          
         </div>
 
         {/* Social Icons & Mobile SVG remain constant */}

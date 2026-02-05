@@ -1,77 +1,111 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
+import PlayerStats from './PlayerStats';
+import MVPStatsBoard from './DetailedStat';
+import Link from 'next/link';
 
 // Updated interface to remove bgColor
 interface Team {
   id: number;
   name: string;
+  slug: string; // Added slug field
   bgImage: string;
 }
 
 interface DpvlTeamsProps {
-  teamsData?: Team[]; 
+  teamsData?: Team[];
 }
 
 export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
-  // Default data without bgColor
+  const [activeTab, setActiveTab] = useState<'teams' | 'player-stats'>('teams');
+  
   const teams = teamsData || [
-    { id: 1, name: 'Team Eastern Eagles', bgImage: '/assets/teams/EasternEagles.jpeg' },
-    { id: 2, name: 'Team New Delhi Titans', bgImage: '/assets/teams/NewDelhi.jpeg' },
-    { id: 3, name: 'Team Northern Ninjas', bgImage: '/assets/teams/NorthernNinjas.jpeg' },
-    { id: 4, name: 'Team Purani Dilli Panthers', bgImage: '/assets/teams/PuraniDilli.jpeg' },
-    { id: 5, name: 'Team Southern Spikers', bgImage: '/assets/teams/SouthernSpiker.jpeg' },
-    { id: 6, name: 'Team Western Warriors', bgImage: '/assets/teams/WesternWarriors.jpeg' },
+    { id: 1, name: 'Team Eastern Eagles', slug: 'eastern-eagles', bgImage: '/assets/teams/EasternEagles.jpg' },
+    { id: 2, name: 'Team New Delhi Titans', slug: 'new-delhi-titans', bgImage: '/assets/teams/Delhi.jpg' },
+    { id: 3, name: 'Team Northern Ninjas', slug: 'northern-ninjas', bgImage: '/assets/teams/NorthernNinjas.jpg' },
+    { id: 4, name: 'Team Purani Dilli Panthers', slug: 'purani-dilli-panthers', bgImage: '/assets/teams/PuraniDilli.jpg' },
+    { id: 5, name: 'Team Southern Spikers', slug: 'southern-spikers', bgImage: '/assets/teams/SouthernSpikers.jpg' },
+    { id: 6, name: 'Team Western Warriors', slug: 'western-warriors', bgImage: '/assets/teams/WesternWarriors.jpg' },
   ];
+
+  // quick debug: confirm teams array and image paths
+  // remove or comment out in production
+  if (typeof window !== 'undefined') console.log('DPVL teams:', teams);
 
   return (
     <div className="w-full font-sans">
-      {/* Header Section */}
-      <section className="relative w-full py-12 px-6 bg-[#f5f5f5] text-center border-b border-gray-200">
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide text-black mb-2 ">
-            DPVL TEAMS
-          </h2>
-          <div className="md:w-55 w-30 h-1 bg-[#D159A3] mb-6" />
-          <p className="text-gray-700 text-sm md:text-lg font-semibold italic">
-            Skilled. United. Competitive.
-          </p>
-        </div>
-      </section>
-
       {/* Teams Grid Section */}
       <section className="relative w-full py-16 px-4 md:px-8 overflow-hidden">
         {/* Main Background Texture */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          <Image
-            src="/assets/bg/Teams.png" 
-            alt="Texture"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+        <div className="absolute inset-0 w-full h-full z-0 bg-white"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 justify-items-center">
-            {teams.map((team) => (
-              <div 
-                key={team.id}
-                className="relative w-full aspect-square rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105 group cursor-pointer"
-                /* Removed inline style background color */
-              >
-                {/* Team Mascot/Logo as the primary visual */}
-                <div className="absolute inset-0">
-                  <Image 
-                    src={team.bgImage} 
-                    alt={team.name}
-                    fill
-                    className="object-fit" /* Changed to object-cover to fill the card space */
-                  />
-                </div>
-              </div>
-            ))}
+          {/* Pink Buttons for Tabs - Added above the grid */}
+          <div className="flex justify-center gap-4 mb-8 md:mb-12">
+            <button
+              onClick={() => setActiveTab('teams')}
+              className={`
+                px-6 py-2.5 md:px-8 md:py-3 rounded-2xl text-base md:text-lg font-medium 
+                tracking-wide transition-all duration-300
+                ${activeTab === 'teams' 
+                  ? 'bg-[#D159A3] text-white shadow-lg border border-white/30 scale-105' 
+                  : 'bg-[#D159A3]/80 text-white/90 hover:bg-[#D159A3] hover:scale-[1.02]'
+                }
+              `}
+            >
+              Teams
+            </button>
+            <button
+              onClick={() => setActiveTab('player-stats')}
+              className={`
+                px-6 py-2.5 md:px-8 md:py-3 rounded-2xl text-base md:text-lg font-medium 
+                tracking-wide transition-all duration-300
+                ${activeTab === 'player-stats' 
+                  ? 'bg-[#D159A3] text-white shadow-lg border border-white/30 scale-105' 
+                  : 'bg-[#D159A3]/80 text-white/90 hover:bg-[#D159A3] hover:scale-[1.02]'
+                }
+              `}
+            >
+              Player Statistics
+            </button>
           </div>
+
+          {/* Conditional Content Rendering */}
+          {activeTab === 'teams' ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 justify-items-center">
+              {teams.map((team) => (
+                <Link
+                  key={team.id}
+                  href={`/teams-stats/${team.slug}`}
+                  className="block w-full"
+                >
+                  <div
+                    className="relative w-full aspect-square min-h-[220px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105 group cursor-pointer bg-gray-100"
+                  >
+                    {/* Image (fills if available) */}
+                    <div className="absolute inset-0">
+                      <Image
+                        src={team.bgImage}
+                        alt={team.name}
+                        fill
+                        className="object-cover"
+                        // fallback: keep even if image fails
+                        onError={() => console.warn('Image load failed:', team.bgImage)}
+                      />
+                    </div>
+                    {/* Visible overlay so card is obvious even if image missing */}
+                   
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center">
+              <PlayerStats/>
+            </div>
+          )}
         </div>
       </section>
     </div>

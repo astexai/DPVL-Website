@@ -28,10 +28,10 @@ const galleryImages: GalleryImage[] = [
   { id: 7, category: 'Opening Ceremony', src: '/assets/bg/opening/image7.jpg' },
   { id: 8, category: 'Opening Ceremony', src: '/assets/bg/opening/image8.jpg' },
   { id: 9, category: 'Opening Ceremony', src: '/assets/bg/opening/image9.jpg' },
-  { id: 10, category: 'Opening Ceremony', src: '/assets/bg/opening/image10.jpg' },
+
   { id: 11, category: 'Opening Ceremony', src: '/assets/bg/opening/image11.jpg' },
   { id: 12, category: 'Opening Ceremony', src: '/assets/bg/opening/image12.jpg' },
-  { id: 13, category: 'Opening Ceremony', src: '/assets/bg/opening/image13.jpg' },
+  
 ]
 
 const categories: Category[] = [
@@ -97,7 +97,7 @@ export default function Page() {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full animate-fadeIn">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full animate-fadeIn">
             {filteredImages.map((image) => (
               <div
                 key={image.id}

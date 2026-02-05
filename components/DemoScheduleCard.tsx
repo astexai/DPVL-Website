@@ -68,7 +68,7 @@ priority
 <div className="absolute flex flex-col items-center top-33 gap-1 text-md md:text-lg tracking-wide text-center mt-3">
 <div className="flex items-center gap-2">
 <FaCalendarAlt className="text-md" />
-<span>JUNE 13, 2025</span>
+<span>JUNE 13, 2026</span>
 </div>
 <div className="flex items-center gap-2">
 <FaMapMarkerAlt className="text-md" />

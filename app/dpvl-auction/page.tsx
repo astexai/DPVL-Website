@@ -31,7 +31,7 @@ const page = () => {
   {/* Content */}
   <div className="relative z-10 flex flex-col items-center">
     <h1 className="text-5xl md:text-7xl text-center font-norch uppercase mb-2 tracking-wide text-white">
-      DPVL Mega Auction 2025
+      DPVL Mega Auction 2026
     </h1>
     <div className="w-50 md:w-100 h-1 bg-[#3B2DCD]" />
   </div>

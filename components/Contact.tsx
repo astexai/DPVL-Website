@@ -79,7 +79,7 @@ const ContactSection: React.FC = () => {
       Contact Info
     </p>
     <p className="text-white text-lg font-medium">
-      +91-9839238292
+      +91 77999 88500
     </p>
     <p className="text-white text-lg font-medium">
       info@delhiprovolleyball.com

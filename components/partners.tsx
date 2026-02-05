@@ -3,27 +3,28 @@ import Image from 'next/image';
 
 const sponsors = [
   {
-    role: "BALL & KIT PARTNER",
+    role: "ORGANISING PARTNER",
+    image: "/assets/sponsors/aces.png",
+    alt: "Velvet",
+    size: "large",
+  },
+  {
+    role: "OFFICIAL BALL & KIT PARTNER",
     image: "/assets/sponsors/spartan.png",
     alt: "Spartan",
-    size: "normal",
+    size: "small",
   },
+  
   {
-    role: "ORGANISING PARTNER",
-    image: "/assets/sponsors/varnix.png",
-    alt: "Varnix",
-    size: "normal",
-  },
-  {
-    role: "NUTRITION & DIET PARTNER",
+    role: "OFFICIAL NUTRITION & DIET PARTNER",
     image: "/assets/sponsors/dt_sanjana.png",
     alt: "DT Sanjana",
     size: "large",
   },
   {
     role: "MARKETING & MEDIA PARTNER",
-    image: "/assets/sponsors/aces.png",
-    alt: "Aces",
+    image: "/assets/sponsors/varnix.png",
+    alt: "Varnix",
     size: "large",
   },
 ];
@@ -78,7 +79,11 @@ export default function PartnersSponsors() {
       ${
         sponsor.size === "large"
           ? "max-h-28 md:max-h-50"
-          : "max-h-20 md:max-h-24"
+          : "max-h-20 md:max-h-35"
+      },${
+        sponsor.size === "small"
+          ? "max-h-28 md:max-h-35"
+          : "max-h-20 md:max-h-55"
       }
     `}
   />

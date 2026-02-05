@@ -21,12 +21,12 @@ interface TeamData {
 export default function PointsTable(): JSX.Element {
   // Integrated your real team names and images
   const teams: TeamData[] = [
-    { pos: 1, name: 'Eastern Eagles', logo: '/assets/teams/EasternEagles.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 2, name: 'New Delhi Titans', logo: '/assets/teams/NewDelhi.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 3, name: 'Northern Ninjas', logo: '/assets/teams/NorthernNinjas.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 4, name: 'Purani Dilli Panthers', logo: '/assets/teams/PuraniDilli.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 5, name: 'Southern Spikers', logo: '/assets/teams/SouthernSpiker.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 6, name: 'Western Warriors', logo: '/assets/teams/WesternWarriors.jpeg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 1, name: 'Eastern Eagles', logo: '/assets/teams/EasternEagles.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 2, name: 'New Delhi Titans', logo: '/assets/teams/Delhi.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 3, name: 'Northern Ninjas', logo: '/assets/teams/NorthernNinjas.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 4, name: 'Purani Dilli Panthers', logo: '/assets/teams/PuraniDilli.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 5, name: 'Southern Spikers', logo: '/assets/teams/SouthernSpikers.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
+    { pos: 6, name: 'Western Warriors', logo: '/assets/teams/WesternWarriors.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
   ];
 
   return (
@@ -50,18 +50,20 @@ export default function PointsTable(): JSX.Element {
         </div>
 
         <div className="w-full overflow-x-auto pb-4">
-          <table className="w-full min-w-[900px] border-separate border-spacing-y-3">
+          <table className="w-full min-w-[1000px] border-separate border-spacing-y-3">
             <thead>
-              <tr className="bg-[#d66095] text-black uppercase text-sm md:text-base font-bold tracking-wider shadow-md">
-                <th className="py-3 px-4 w-16 rounded-l-md text-center">POS</th>
-                <th className="py-3 px-4 text-left">TEAM</th>
-                <th className="py-3 px-2 w-16 text-center">P</th>
-                <th className="py-3 px-2 w-16 text-center">W</th>
-                <th className="py-3 px-2 w-16 text-center">L</th>
-                <th className="py-3 px-2 w-20 text-center">NRR</th>
-                <th className="py-3 px-2 w-16 text-center">FOR</th>
-                <th className="py-3 px-4 w-40 text-center">AGAINST</th>
-                <th className="py-3 px-4 w-20 rounded-r-md text-center">PTS</th>
+              <tr className="bg-[#d66095] text-black uppercase text-sm md:text-md font-bold tracking-wider shadow-md">
+                <th className="py-3 px-6 w-20 rounded-l-md text-center">POS</th>
+                <th className="py-3 px-6 text-left min-w-[200px]">TEAM</th>
+                
+                <th className="py-3 px-6 w-24 text-center">P</th>
+                <th className="py-3 px-6 w-24 text-center">W</th>
+                <th className="py-3 px-6 w-24 text-center">L</th>
+                <th className="py-3 px-6 w-24 text-center">PTS</th>
+                <th className="py-3 px-6 w-28 text-center whitespace-nowrap">SET RATIO</th>
+                <th className="py-3 px-6 w-28 text-center whitespace-nowrap">POINTS RATIO</th>
+                {/* <th className="py-3 px-6 w-40 text-center">AGAINST</th> */}
+                <th className="py-3 px-6 w-24 rounded-r-md text-center">NRR</th>
               </tr>
             </thead>
 
@@ -71,13 +73,13 @@ export default function PointsTable(): JSX.Element {
                   key={team.pos}
                   className="bg-white transition-all duration-200 shadow-sm hover:shadow-lg group"
                 >
-                  <td className="py-3 px-4 text-center font-bold md:text-xl text-md border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
+                  <td className="py-4 px-6 text-center font-bold md:text-xl text-lg border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
                     {team.pos}
                   </td>
 
-                  <td className="py-3 px-4">
+                  <td className="py-4 px-6">
                     <div className="flex items-center gap-4">
-                      <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#d66095] flex-shrink-0">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#d66095] flex-shrink-0">
                         <Image
                           src={team.logo}
                           alt={team.name}
@@ -85,19 +87,20 @@ export default function PointsTable(): JSX.Element {
                           className="object-cover"
                         />
                       </div>
-                      <span className="font-bold md:text-lg text-sm uppercase tracking-tight text-black">
+                      <span className="font-bold md:text-lg text-base uppercase tracking-tight text-black whitespace-nowrap">
                         {team.name}
                       </span>
                     </div>
                   </td>
 
-                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.p}</td>
-                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.w}</td>
-                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.l}</td>
-                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.nrr}</td>
-                  <td className="py-3 px-2 text-center font-semibold md:text-lg text-sm text-black">{team.forRuns}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.p}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.w}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.l}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.pts}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.nrr}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.forRuns}</td>
 
-                  <td className="py-3 px-4">
+                  {/* <td className="py-4 px-6">
                     <div className="flex items-center justify-center gap-1">
                       {team.against && team.against.length > 0 ? (
                         team.against.map((result, i) => (
@@ -111,7 +114,7 @@ export default function PointsTable(): JSX.Element {
                           </div>
                         ))
                       ) : (
-                        /* Default slots when no matches have been played */
+                        
                         [...Array(4)].map((_, i) => (
                           <div
                             key={i}
@@ -122,11 +125,11 @@ export default function PointsTable(): JSX.Element {
                         ))
                       )}
                     </div>
-                  </td>
+                  </td> */}
 
-                  <td className="py-3 px-4 text-center rounded-r-md relative">
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[2px] bg-gray-300" />
-                    <span className="font-bold md:text-xl text-sm text-black">{team.pts}</span>
+                  <td className="py-4 px-6 text-center rounded-r-md relative">
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-10 w-[2px] bg-gray-300" />
+                    <span className="font-bold md:text-xl text-lg text-black">{team.nrr}</span>
                   </td>
                 </tr>
               ))}

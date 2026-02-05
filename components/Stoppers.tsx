@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import FooterGrad from "./footergrad";
 
 // Mock Data for Gallery
 const galleryImages = [
@@ -48,7 +49,7 @@ export default function ShowStoppersAndGallery() {
   {/* Background */}
   <div className="absolute inset-0 z-0">
     <Image
-      src="/assets/bg/Stopper.png"
+      src="/assets/bg/Stoppers.jpg"
       alt="Venue"
       fill
       className="object-cover"
@@ -85,7 +86,7 @@ export default function ShowStoppersAndGallery() {
     </div>
   </div>
 </section>
-
+<FooterGrad variant="cropped" height={20} />
 <section className="relative w-full py-16 px-6 md:px-12 overflow-hidden">
   <Image
         src={"/assets/bg/AucGallery.png"}

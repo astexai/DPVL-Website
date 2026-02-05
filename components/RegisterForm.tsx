@@ -54,14 +54,13 @@ const RegisterForm: React.FC = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-[#3b3bb7] mb-2">
-            Player Registration
-          </h1>
-          <p className="text-gray-600">
-            Join the Delhi Pro Volleyball League 2025
-          </p>
-        </div>
+        <div className="flex flex-col items-center mb-12">
+            <h2 className="text-5xl md:text-7xl font-norch uppercase text-[#3B3BB7] mb-2 tracking-wide">
+              Player Registration
+            </h2>
+            <div className="md:w-90 w-20 h-1 bg-[#D159A3]" />
+          </div>
+
 
         {/* Main Container */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -69,7 +68,7 @@ const RegisterForm: React.FC = () => {
 
             {/* LEFT - Form */}
             <div className="p-6 md:p-10">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-[#3B3BB7] mb-6">
                 Registration Form
               </h2>
 
@@ -88,7 +87,7 @@ const RegisterForm: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="Enter first name"
-                      className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-gray-300 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                      className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                     />
                   </div>
 
@@ -103,7 +102,7 @@ const RegisterForm: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="Enter last name"
-                      className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-gray-300 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                      className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                     />
                   </div>
                 </div>
@@ -120,7 +119,7 @@ const RegisterForm: React.FC = () => {
                     onChange={handleChange}
                     required
                     placeholder="Enter father's name"
-                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-gray-300 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                   />
                 </div>
 
@@ -136,7 +135,7 @@ const RegisterForm: React.FC = () => {
                     onChange={handleChange}
                     required
                     placeholder="Enter email address"
-                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-gray-300 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                   />
                 </div>
 
@@ -152,13 +151,13 @@ const RegisterForm: React.FC = () => {
                     onChange={handleChange}
                     required
                     placeholder="Enter mobile number"
-                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-gray-300 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                   />
                 </div>
 
                 {/* State */}
                 <div>
-  <label className="block text-sm font-semibold text-black/40 mb-1">
+  <label className="block text-sm font-semibold text-black mb-1">
     Select State *
   </label>
 
@@ -168,7 +167,7 @@ const RegisterForm: React.FC = () => {
     onChange={handleChange}
     required
     className={`
-      w-full px-4 py-2.5 border-2 border-gray-300 rounded-lg
+      w-full px-4 py-2.5 border-2 border-black rounded-lg
       focus:border-[#3b3bb7] focus:outline-none
       ${formData.state === "" ? "text-black/40" : "text-black"}
     `}
@@ -176,11 +175,51 @@ const RegisterForm: React.FC = () => {
     <option value="" disabled hidden>
       Choose your state
     </option>
-    <option value="Delhi">Delhi</option>
-    <option value="UP">Uttar Pradesh</option>
+
+    {/* States */}
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
     <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+
+    {/* Union Territories */}
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">
+      Dadra and Nagar Haveli and Daman and Diu
+    </option>
+    <option value="Delhi">Delhi</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+    <option value="Ladakh">Ladakh</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Puducherry">Puducherry</option>
   </select>
 </div>
+
 
 
                 {/* District */}
@@ -195,7 +234,7 @@ const RegisterForm: React.FC = () => {
                     onChange={handleChange}
                     required
                     placeholder="Enter district"
-                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-gray-300 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                   />
                 </div>
 
@@ -204,7 +243,7 @@ const RegisterForm: React.FC = () => {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Attach Aadhaar Card *
                   </label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                  <div className="border-2 border-dashed border-black rounded-lg p-6 text-center">
                     <input
                       type="file"
                       accept="image/*,application/pdf"
@@ -256,7 +295,7 @@ const RegisterForm: React.FC = () => {
             {/* RIGHT - Image */}
             <div className="relative bg-gradient-to-br from-[#3b3bb7] to-[#D159A3] min-h-[400px] lg:min-h-full">
               <Image
-                src="/assets/bg/Dpvl.png"
+                src="/assets/bg/Register.webp"
                 alt="DPVL"
                 fill
                 className="object-cover"

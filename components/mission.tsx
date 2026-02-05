@@ -23,11 +23,11 @@ export default function MissionFounder() {
       name: "Ms. Neeti Rawat",
       image: "/assets/others/Founder2.jpg",
       text1:
-        "A former Gold Medalist at the European Masters Games and a trusted national sports anchor, Neeti brings unparalleled authenticity to DPVL. Her voice has shaped Indian sports storytelling for years.",
+        "A former Gold Medalist at the European Masters Games and a respected national sports anchor, Neeti brings unmatched authenticity and credibility to DPVL through her deep-rooted connection with Indian sports.",
       text2:
-        "With a Postgraduate degree in Physical Education & Sports Science, she blends athletic insight with broadcast expertise to set national benchmarks in sports presentation.",
+        "With a Postgraduate degree in Physical Education & Sports Science, she combines elite athletic understanding with broadcast excellence to define new national standards in sports presentation.",
       text3:
-        "She is dedicated to creating a professional platform that honors the legacy of volleyball while inspiring the next generation of athletes.",
+        "She is committed to building a professional platform that honors volleyball’s legacy while inspiring future athletes. Her vision focuses on elevating Indian volleyball globally through credibility, storytelling, and athlete-first values.",
       tagline: "“Building an authentic legacy for Indian Volleyball.”",
       role: "Director & Co-Founder | Sports Presenter",
     },
@@ -35,11 +35,11 @@ export default function MissionFounder() {
       name: "Ms. Jasoda Gulliya",
       image: "/assets/others/Founder1.jpg",
       text1:
-        "A powerhouse in sports and corporate strategy, Jasoda has represented Delhi in 20+ national tournaments and won Gold at the European Masters Games, Torino.",
+        "A leader in sports performance and corporate strategy, Jasoda has represented Delhi in over 20 national tournaments, bringing first-hand experience of elite competition into DPVL’s foundation.",
       text2:
-        "Recognized as Women Leader of the Year 2024 and a CIO Trendsetter, she applies executive discipline to build a sustainable, world-class sports property.",
+        "Recognized as Women Leader of the Year 2024 and a CIO Trendsetter, she applies executive discipline and strategic rigor to develop a sustainable, transparent, and world-class sports league.",
       text3:
-        "Her leadership ensures DPVL bridges the gap between professional corporate standards and raw athletic excellence.",
+        "Her leadership bridges professional corporate governance with high-performance sport. She is driven to create long-term institutional strength while empowering athletes through structured growth and opportunity.",
       tagline: "“Where professional discipline meets athletic excellence.”",
       role: "Director & Co-Founder | Corporate Leader",
     },
@@ -47,7 +47,6 @@ export default function MissionFounder() {
 
   const toggleFounder = (direction = "next") => {
     setIsVisible(false);
-
     setTimeout(() => {
       setFounderIndex((prev) =>
         direction === "next"
@@ -83,7 +82,7 @@ export default function MissionFounder() {
           {content.map((item) => (
             <div
               key={item.title}
-              className="bg-[#1a237e]/40 backdrop-blur-sm border border-[#D159A3] rounded-xl p-8 text-center shadow-lg"
+              className="bg-[#1a237e]/40 backdrop-blur-sm border border-[#D159A3] rounded-xl p-8 text-center shadow-lg transition-all duration-300 hover:shadow-[0_0_25px_5px_rgba(209,89,163,0.4)]"
             >
               <h3 className="text-2xl font-bold font-robo uppercase text-white mb-4">
                 {item.title}
@@ -96,12 +95,12 @@ export default function MissionFounder() {
         {/* Founder Header */}
         <div className="flex flex-col items-center md:items-start mb-8">
           <div className="flex items-center gap-2">
-            <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide text-white ">
+            <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide text-white">
               Founder’s Note
             </h2>
-            <FaChevronRight className="text-[#d66095] text-3xl" />
+            
           </div>
-          <div className="md:w-60 w-40 h-1 bg-[#d66095] mt-2 " />
+          <div className="md:w-60 w-40 h-1 bg-[#d66095] mt-2" />
         </div>
 
         {/* Founder Card */}
@@ -125,30 +124,32 @@ export default function MissionFounder() {
             {/* Image */}
             <div className="w-full md:w-5/12 aspect-[3/4] md:h-[450px] relative rounded-lg overflow-hidden border-4 border-white/10 shadow-xl">
               <Image
-  key={founders[founderIndex].image}
-  src={founders[founderIndex].image}
-  alt="Founder"
-  fill
-  loading="lazy"
-  className="object-cover"
-/>
-
+                key={founders[founderIndex].image}
+                src={founders[founderIndex].image}
+                alt="Founder"
+                fill
+                loading="lazy"
+                className="object-cover "
+              />
             </div>
 
             {/* Text */}
-            <div className="flex-1 text-white text-center md:text-left space-y-6">
-              <p className="font-robo">{founders[founderIndex].text1}</p>
-              <p className="font-robo">{founders[founderIndex].text2}</p>
-              <p className="font-robo">{founders[founderIndex].text3}</p>
+            <div className="flex-1 text-white text-center md:text-left flex flex-col">
+              <div className="space-y-6">
+                <p className="font-robo">{founders[founderIndex].text1}</p>
+                <p className="font-robo">{founders[founderIndex].text2}</p>
+                <p className="font-robo">{founders[founderIndex].text3}</p>
+              </div>
 
-              <div className="mt-4">
+              {/* Bottom-aligned Name */}
+              <div className="mt-auto pt-8">
                 <p className="italic text-lg mb-4">
                   {founders[founderIndex].tagline}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-bold uppercase">
+                <h3 className=" text-2xl md:text-3xl font-bold uppercase">
                   {founders[founderIndex].name}
                 </h3>
-                <p className="text-[#2a2a72] font-bold text-lg">
+                <p className="text-[#3b3bb7] font-bold text-lg">
                   Director & Co-Founder, DPVL
                 </p>
               </div>
@@ -159,7 +160,7 @@ export default function MissionFounder() {
           <div className="relative z-20 flex justify-center md:justify-end gap-4 mt-8">
             <button
               onClick={() => toggleFounder("prev")}
-              className=" inline-flex justify-center items-center w-12 h-12 rounded-full border-2 border-white/50 text-white hover:bg-white/20 transition"
+              className="inline-flex justify-center items-center w-12 h-12 rounded-full border-2 border-white/50 text-white hover:bg-white/20 transition"
             >
               <FaChevronLeft />
             </button>

@@ -40,7 +40,7 @@ export default function ScheduleCard() {
               {/* Teams */}
               <div className="flex items-center justify-center gap-6 w-full mb-6">
                 <div className="flex flex-col items-center gap-3 text-center">
-                  <span className="text-lg md:text-2xl uppercase tracking-wider font-bebas">
+                  <span className="text-lg md:text-3xl uppercase tracking-wider font-norch">
                     Team 1
                   </span>
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xs shadow-lg">
@@ -57,7 +57,7 @@ export default function ScheduleCard() {
                 />
 
                 <div className="flex flex-col items-center gap-3 text-center">
-                  <span className="text-lg md:text-2xl uppercase tracking-wider font-bebas">
+                  <span className="text-lg md:text-3xl uppercase tracking-wider font-norch">
                     Team 2
                   </span>
                   <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xs shadow-lg">
@@ -67,19 +67,19 @@ export default function ScheduleCard() {
               </div>
 
               {/* Date & Venue */}
-              <div className="flex flex-col md:flex-row gap-3 md:gap-8 text-sm md:text-lg font-bebas text-white mb-6 text-center">
+              <div className="flex flex-col md:flex-row gap-3 md:gap-8 text-sm md:text-lg font-bold font-roboto text-white mb-6 text-center">
                 <div className="flex items-center gap-2">
                   <FaCalendarAlt />
-                  <span>JUNE 13, 2025</span>
+                  <span>TBD</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaMapMarkerAlt />
-                  <span>VENUE EXAMPLE</span>
+                  <span>TBD</span>
                 </div>
               </div>
 <Link href={"/fixtures"}>
               {/* Button */}
-              <button className="bg-[#d159a3] hover:bg-[#b54a7b] text-white px-6 py-2 rounded text-sm uppercase tracking-wide font-medium shadow-lg transition-colors">
+              <button className="bg-[#d159a3] hover:bg-[#b54a7b] text-white px-6 py-2 rounded-lg text-sm tracking-wide font-medium shadow-lg transition-colors">
                 Match schedule
               </button>
               </Link>

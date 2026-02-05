@@ -8,8 +8,7 @@ export default function Heroo({
   className = ""
 }) {
   return (
-    <section className={`relative w-full h-[300px] md:h-[430px] overflow-hidden ${className}`}>
-      
+    <section className={`relative w-full h-[300px] md:h-[430px] overflow-hidden mt-0 ${className}`}>
       {/* Mobile background */}
       <div className="absolute inset-0 w-full h-full z-0 md:hidden">
         <Image
@@ -24,7 +23,7 @@ export default function Heroo({
       {/* Desktop background */}
       <div className="absolute inset-0 w-full h-full z-0 hidden md:block">
         <Image
-          src="/assets/bg/Banner.png"
+          src="/assets/bg/Banner.jpg"
           alt="Background desktop"
           fill
           priority
@@ -32,7 +31,7 @@ export default function Heroo({
         />
       </div>
 
-      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-center">
+      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-center pt-0">
         <div className="text-left w-full">
           <h1 className={`text-white font-norch ${titleClassName || "text-7xl sm:text-5xl md:text-9xl"} tracking-wide`}>
             {title}
