@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 // --- Types ---
 interface SquadPlayer {
@@ -11,7 +12,7 @@ interface SquadPlayer {
 }
 
 type Player = { id: number; name: string; number?: number; position?: string; photo?: string };
-type Team = { id: number; name: string; slug: string; logo?: string; squad: Player[] };
+type Team = { id: number; name: string; slug: string; logo?: string | StaticImageData; squad: Player[] };
 
 // --- Mock Data ---
 const squadData: SquadPlayer[] = [
@@ -106,8 +107,8 @@ export default function SquadPage({ slug }: { slug: string }) {
     relative z-10 overflow-hidden
   ">
     <Image
-      src={team?.logo}
-      alt="Team Logo"
+      src={team?.logo ?? "/assets/teams/default-logo.png"} // fallback ensures non-undefined
+      alt={team?.name ?? "Team Logo"}
       fill
       className="object-cover scale-130"
       priority
