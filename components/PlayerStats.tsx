@@ -43,7 +43,7 @@ const StatCard = ({ title, statLabel, players }: StatCategory) => {
       
       {/* Header */}
       <div className="pt-6 pb-2 flex justify-center">
-        <div className="bg-[#d159a3] text-white px-6 py-2 rounded-2xl text-base font-bold tracking-wide shadow-md">
+        <div className="bg-[#3B3BB7] text-white px-6 py-2 rounded-2xl text-base font-bold tracking-wide shadow-md">
           {title}
         </div>
       </div>
@@ -61,7 +61,7 @@ const StatCard = ({ title, statLabel, players }: StatCategory) => {
             </span>
           </div>
           <div className="relative">
-             <div className="w-20 h-20 rounded-full border-[3px] border-orange-300 p-[3px]">
+             <div className="w-20 h-20 rounded-full border-[3px] border-[#d159a3] p-[3px]">
                 <div className="w-full h-full rounded-full flex items-center justify-center shadow-inner">
                    <span className="text-xs font-bold text-gray-400">Logo</span>
                 </div>
@@ -110,7 +110,7 @@ const DetailedStatCard = ({ title, mainStatLabel, players }: DetailedStatCategor
       
       {/* Header */}
       <div className="pt-6 pb-2 flex justify-center">
-        <div className="bg-[#d159a3] text-white px-6 py-2 rounded-2xl text-base font-bold tracking-wide shadow-md">
+        <div className="bg-[#3B3BB7] text-white px-6 py-2 rounded-2xl text-base font-bold tracking-wide shadow-md">
           {title}
         </div>
       </div>
@@ -128,7 +128,7 @@ const DetailedStatCard = ({ title, mainStatLabel, players }: DetailedStatCategor
             </span>
           </div>
           <div className="relative -mt-2">
-             <div className="w-20 h-20 rounded-full border-[3px] border-[#fbbf24] p-[2px] bg-white shadow-sm flex items-center justify-center">
+             <div className="w-20 h-20 rounded-full border-[3px] border-[#d159a3] p-[2px] bg-white shadow-sm flex items-center justify-center">
                 <div className="flex items-center justify-center gap-1">
                    <div className="w-2 h-2 bg-gray-200 rounded-full"></div> 
                    <span className="text-[10px] font-bold text-orange-400">Logo</span>

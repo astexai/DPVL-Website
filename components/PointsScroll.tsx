@@ -13,7 +13,7 @@ export default function AutoScrollComponent() {
         transition={{
           repeat: Infinity,
           ease: "linear",
-          duration: 12,
+          duration: 18,
         }}
       >
         {items.concat(items).map((text, i) => (

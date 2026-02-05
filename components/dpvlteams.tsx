@@ -44,33 +44,36 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
         <div className="relative z-10 max-w-6xl mx-auto">
           {/* Pink Buttons for Tabs - Added above the grid */}
           <div className="flex justify-center gap-4 mb-8 md:mb-12">
-            <button
-              onClick={() => setActiveTab('teams')}
-              className={`
-                px-6 py-2.5 md:px-8 md:py-3 rounded-2xl text-base md:text-lg font-medium 
-                tracking-wide transition-all duration-300
-                ${activeTab === 'teams' 
-                  ? 'bg-[#D159A3] text-white shadow-lg border border-white/30 scale-105' 
-                  : 'bg-[#D159A3]/80 text-white/90 hover:bg-[#D159A3] hover:scale-[1.02]'
-                }
-              `}
-            >
-              Teams
-            </button>
-            <button
-              onClick={() => setActiveTab('player-stats')}
-              className={`
-                px-6 py-2.5 md:px-8 md:py-3 rounded-2xl text-base md:text-lg font-medium 
-                tracking-wide transition-all duration-300
-                ${activeTab === 'player-stats' 
-                  ? 'bg-[#D159A3] text-white shadow-lg border border-white/30 scale-105' 
-                  : 'bg-[#D159A3]/80 text-white/90 hover:bg-[#D159A3] hover:scale-[1.02]'
-                }
-              `}
-            >
-              Player Statistics
-            </button>
-          </div>
+  <button
+    onClick={() => setActiveTab('teams')}
+    className={`
+      px-6 py-2.5 md:px-8 md:py-3 rounded-2xl text-base md:text-lg font-medium 
+      tracking-wide transition-all duration-300 border-3
+      ${activeTab === 'teams' 
+        ? 'bg-[#3B3BB7] text-white shadow-lg border-[#3B3BB7] scale-105' 
+        : 'bg-[#d159a3] text-white border-[#3B3BB7] hover:bg-[#d159a3] hover:scale-[1.02]'
+      }
+    `}
+  >
+    Teams
+  </button>
+
+  <button
+    onClick={() => setActiveTab('player-stats')}
+    className={`
+      px-6 py-2.5 md:px-8 md:py-3 rounded-2xl text-base md:text-lg font-medium 
+      tracking-wide transition-all duration-300 border-3
+      ${activeTab === 'player-stats' 
+        ? 'bg-[#3B3BB7] text-white shadow-lg border-[#3B3BB7] scale-105' 
+        : 'bg-[#d159a3] text-white/90 border-[#3B3BB7] hover:bg-[#d159a3] hover:scale-[1.02]'
+      }
+    `}
+  >
+    Player Statistics
+  </button>
+</div>
+
+            
 
           {/* Conditional Content Rendering */}
           {activeTab === 'teams' ? (
