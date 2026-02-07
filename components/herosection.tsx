@@ -12,7 +12,7 @@ export default function Heroo({
       {/* Mobile background */}
       <div className="absolute inset-0 w-full h-full z-0 md:hidden">
         <Image
-          src="/assets/bg/MobileBanner.png"
+          src="/assets/bg/mobile-hero.png"
           alt="Background mobile"
           fill
           priority

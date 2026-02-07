@@ -168,7 +168,7 @@ const RegisterForm: React.FC = () => {
     required
     className={`
       w-full px-4 py-2.5 border-2 border-black rounded-lg
-      focus:border-[#3b3bb7] focus:outline-none
+      focus:border-[#3b3bb7] focus:outline-none 
       ${formData.state === "" ? "text-black/40" : "text-black"}
     `}
   >
@@ -177,34 +177,34 @@ const RegisterForm: React.FC = () => {
     </option>
 
     {/* States */}
-    <option value="Andhra Pradesh">Andhra Pradesh</option>
-    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-    <option value="Assam">Assam</option>
-    <option value="Bihar">Bihar</option>
-    <option value="Chhattisgarh">Chhattisgarh</option>
-    <option value="Goa">Goa</option>
-    <option value="Gujarat">Gujarat</option>
-    <option value="Haryana">Haryana</option>
-    <option value="Himachal Pradesh">Himachal Pradesh</option>
-    <option value="Jharkhand">Jharkhand</option>
-    <option value="Karnataka">Karnataka</option>
-    <option value="Kerala">Kerala</option>
-    <option value="Madhya Pradesh">Madhya Pradesh</option>
-    <option value="Maharashtra">Maharashtra</option>
-    <option value="Manipur">Manipur</option>
-    <option value="Meghalaya">Meghalaya</option>
-    <option value="Mizoram">Mizoram</option>
-    <option value="Nagaland">Nagaland</option>
-    <option value="Odisha">Odisha</option>
-    <option value="Punjab">Punjab</option>
-    <option value="Rajasthan">Rajasthan</option>
-    <option value="Sikkim">Sikkim</option>
-    <option value="Tamil Nadu">Tamil Nadu</option>
-    <option value="Telangana">Telangana</option>
-    <option value="Tripura">Tripura</option>
-    <option value="Uttar Pradesh">Uttar Pradesh</option>
-    <option value="Uttarakhand">Uttarakhand</option>
-    <option value="West Bengal">West Bengal</option>
+    <option value="Andhra Pradesh" className='text-black'>Andhra Pradesh</option>
+    <option value="Arunachal Pradesh" className='text-black'>Arunachal Pradesh</option>
+    <option value="Assam" className='text-black'>Assam</option>
+    <option value="Bihar" className='text-black'>Bihar</option>
+    <option value="Chhattisgarh" className='text-black'>Chhattisgarh</option>
+    <option value="Goa" className='text-black'>Goa</option>
+    <option value="Gujarat" className='text-black'>Gujarat</option>
+    <option value="Haryana" className='text-black'>Haryana</option>
+    <option value="Himachal Pradesh" className='text-black'>Himachal Pradesh</option>
+    <option value="Jharkhand" className='text-black'>Jharkhand</option>
+    <option value="Karnataka" className='text-black'>Karnataka</option>
+    <option value="Kerala" className='text-black'>Kerala</option>
+    <option value="Madhya Pradesh" className='text-black'>Madhya Pradesh</option>
+    <option value="Maharashtra" className='text-black'>Maharashtra</option>
+    <option value="Manipur" className='text-black'>Manipur</option>
+    <option value="Meghalaya" className='text-black'>Meghalaya</option>
+    <option value="Mizoram" className='text-black'>Mizoram</option>
+    <option value="Nagaland" className='text-black'>Nagaland</option>
+    <option value="Odisha" className='text-black'>Odisha</option>
+    <option value="Punjab" className='text-black'>Punjab</option>
+    <option value="Rajasthan" className='text-black'>Rajasthan</option>
+    <option value="Sikkim" className='text-black'>Sikkim</option>
+    <option value="Tamil Nadu" className='text-black'>Tamil Nadu</option>
+    <option value="Telangana" className='text-black'>Telangana</option>
+    <option value="Tripura" className='text-black'>Tripura</option>
+    <option value="Uttar Pradesh" className='text-black'>Uttar Pradesh</option>
+    <option value="Uttarakhand" className='text-black'>Uttarakhand</option>
+    <option value="West Bengal" className='text-black'>West Bengal</option>
 
     {/* Union Territories */}
     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>

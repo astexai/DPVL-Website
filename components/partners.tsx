@@ -21,12 +21,7 @@ const sponsors = [
     alt: "DT Sanjana",
     size: "large",
   },
-  {
-    role: "MARKETING & MEDIA PARTNER",
-    image: "/assets/sponsors/varnix.png",
-    alt: "Varnix",
-    size: "large",
-  },
+
 ];
 
 
@@ -55,7 +50,7 @@ export default function PartnersSponsors() {
         </div>
 
         {/* Sponsors Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 text-center">
           {sponsors.map((sponsor, index) => (
             <div
               key={index}

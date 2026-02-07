@@ -1,33 +1,78 @@
 'use client';
 
 import Image from 'next/image';
-import { JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 
-type MatchResult = 'W' | 'L';
-
+// Define the TeamData interface
 interface TeamData {
   pos: number;
   name: string;
   logo: string;
-  p: number;
-  w: number;
-  l: number;
-  nrr: number;
-  forRuns: number;
-  against?: MatchResult[];
-  pts: number;
+  p: number; // matches played
+  w: number; // wins
+  l: number; // losses
+  nrr: number; // set ratio
+  forRuns: number; // points ratio
+  pts: number; // points
+  against: any[]; // against teams or matches
 }
 
 export default function PointsTable(): JSX.Element {
-  // Integrated your real team names and images
-  const teams: TeamData[] = [
-    { pos: 1, name: 'Eastern Eagles', logo: '/assets/teams/EasternEagles.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 2, name: 'New Delhi Titans', logo: '/assets/teams/Delhi.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 3, name: 'Northern Ninjas', logo: '/assets/teams/NorthernNinjas.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 4, name: 'Purani Dilli Panthers', logo: '/assets/teams/PuraniDilli.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 5, name: 'Southern Spikers', logo: '/assets/teams/SouthernSpikers.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-    { pos: 6, name: 'Western Warriors', logo: '/assets/teams/WesternWarriors.jpg', p: 0, w: 0, l: 0, nrr: 0, forRuns: 0, pts: 0, against: [] },
-  ];
+  const [teams, setTeams] = useState<TeamData[] | null>(null);
+
+  const load = () => {
+    let mounted = true;
+    fetch('/api/admin/points')
+      .then((r) => r.json())
+      .then((data) => {
+        if (!mounted) return;
+        if (data?.teams && Array.isArray(data.teams)) {
+          const adapted = data.teams.map((t: any, idx: number) => ({
+            pos: idx + 1,
+            name: t.name,
+            logo: t.logo ?? `/assets/teams/${t.name.replace(/\s+/g, "")}.jpg`,
+            p: t.matches ?? 0,
+            w: t.wins ?? 0,
+            l: t.losses ?? 0,
+            nrr: t.setRatio ?? 0,
+            forRuns: t.pointRatio ?? 0,
+            pts: t.points ?? 0,
+            against: t.against ?? [],
+          }));
+          setTeams(adapted);
+        } else {
+          setTeams(null);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to load points table', err);
+      });
+    return () => { mounted = false; };
+  };
+
+  useEffect(() => {
+    const cleanup = load();
+    // react to storage events from admin tab
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === 'pointsUpdated') {
+        load();
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => {
+      if (cleanup) cleanup();
+      window.removeEventListener('storage', onStorage);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!teams) {
+    return (
+      <div className="min-h-[40vh] flex items-center justify-center">
+        <div>Loading points table...</div>
+      </div>
+    );
+  }
 
   return (
     <section className="relative w-full z-10 mt-[-5rem] min-h-[70vh] py-32 px-4 overflow-hidden bg-[#2634C8]">
@@ -55,15 +100,12 @@ export default function PointsTable(): JSX.Element {
               <tr className="bg-[#d66095] text-black uppercase text-sm md:text-md font-bold tracking-wider shadow-md">
                 <th className="py-3 px-6 w-20 rounded-l-md text-center">POS</th>
                 <th className="py-3 px-6 text-left min-w-[200px]">TEAM</th>
-                
-                <th className="py-3 px-6 w-24 text-center">P</th>
-                <th className="py-3 px-6 w-24 text-center">W</th>
-                <th className="py-3 px-6 w-24 text-center">L</th>
-                <th className="py-3 px-6 w-24 text-center">PTS</th>
+                <th className="py-3 px-6 w-24 text-center">Matches</th>
+                <th className="py-3 px-6 w-24 text-center">Win</th>
+                <th className="py-3 px-6 w-24 text-center">Loss</th>
+                <th className="py-3 px-6 w-24 text-center">Points</th>
                 <th className="py-3 px-6 w-28 text-center whitespace-nowrap">SET RATIO</th>
-                <th className="py-3 px-6 w-28 text-center whitespace-nowrap">POINTS RATIO</th>
-                {/* <th className="py-3 px-6 w-40 text-center">AGAINST</th> */}
-                <th className="py-3 px-6 w-24 rounded-r-md text-center">NRR</th>
+                <th className="py-3 px-6 w-28 text-center rounded-r-md whitespace-nowrap">POINTS RATIO</th>
               </tr>
             </thead>
 
@@ -97,40 +139,8 @@ export default function PointsTable(): JSX.Element {
                   <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.w}</td>
                   <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.l}</td>
                   <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.pts}</td>
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.nrr}</td>
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.forRuns}</td>
-
-                  {/* <td className="py-4 px-6">
-                    <div className="flex items-center justify-center gap-1">
-                      {team.against && team.against.length > 0 ? (
-                        team.against.map((result, i) => (
-                          <div
-                            key={i}
-                            className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${
-                              result === 'W' ? 'bg-[#2ca045]' : 'bg-[#dc3545]'
-                            }`}
-                          >
-                            {result}
-                          </div>
-                        ))
-                      ) : (
-                        
-                        [...Array(4)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-8 h-8 rounded-full bg-black/5 border border-gray-200 flex items-center justify-center"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-gray-300" />
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </td> */}
-
-                  <td className="py-4 px-6 text-center rounded-r-md relative">
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-10 w-[2px] bg-gray-300" />
-                    <span className="font-bold md:text-xl text-lg text-black">{team.nrr}</span>
-                  </td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.nrr.toFixed(2)}</td>
+                  <td className="py-4 px-6 text-center font-semibold rounded-r-md md:text-xl text-lg text-black">{team.forRuns.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>

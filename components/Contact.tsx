@@ -243,7 +243,7 @@ const ContactSection: React.FC = () => {
         {/* Downside: Map Section */}
         <section className="relative w-full h-[350px] md:h-[500px] bg-gray-100">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2175112053654!2d-73.98784368459395!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+          src="https://www.google.com/maps?q=28.6139,77.2090&z=15&output=embed"
             className="w-full h-full"
             style={{ border: 0 }}
             allowFullScreen

@@ -15,7 +15,7 @@ export default function Footer() {
   const footerLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
-    { name: "Our Teams", href: "/teams" },
+    { name: "Teams & Stats", href: "/teams-stats" },
     { name: "Fixtures", href: "/fixtures" },
     { name: "Auction", href: "/dpvl-auction" },
     { name: "Points Table", href: "/points-table" },

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   FaPlay,
   FaPause,
@@ -35,17 +34,28 @@ const InlineVideoCard = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!videoRef.current) return;
-    isActive
-      ? videoRef.current.play().catch(() => onPlay(null))
-      : videoRef.current.pause();
+    
+    if (isActive) {
+      videoRef.current.play().catch(() => onPlay(null));
+    } else {
+      videoRef.current.pause();
+    }
   }, [isActive, onPlay]);
 
   return (
     <div
-      className="relative w-full h-full rounded-2xl overflow-hidden bg-black group cursor-pointer"
+      className="relative w-full h-full rounded-xl overflow-hidden bg-black group cursor-pointer"
       onClick={() => (isActive ? onPlay(null) : onPlay(video.id))}
     >
       <video
@@ -60,8 +70,12 @@ const InlineVideoCard = ({
 
       {/* Play / Pause */}
       <div className={`absolute inset-0 flex items-center justify-center transition-opacity ${isActive ? "opacity-0 hover:opacity-100" : "opacity-100"}`}>
-        <div className="w-14 h-14 bg-white/20 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center">
-          {isActive ? <FaPause className="text-white text-xl" /> : <FaPlay className="text-white text-xl ml-1" />}
+        <div className={`${isMobile ? 'w-12 h-12' : 'w-16 h-16'} bg-white/20 backdrop-blur-md border border-white/40 rounded-full flex items-center justify-center`}>
+          {isActive ? (
+            <FaPause className={`text-white ${isMobile ? 'text-base' : 'text-xl'}`} />
+          ) : (
+            <FaPlay className={`text-white ${isMobile ? 'text-base ml-1' : 'text-xl ml-1'}`} />
+          )}
         </div>
       </div>
 
@@ -72,14 +86,18 @@ const InlineVideoCard = ({
           setIsMuted(!isMuted);
           if (videoRef.current) videoRef.current.muted = !isMuted;
         }}
-        className="absolute bottom-4 right-4 z-30 w-9 h-9 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20"
+        className={`absolute ${isMobile ? 'bottom-3 right-3 w-8 h-8' : 'bottom-4 right-4 w-10 h-10'} z-30 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20`}
       >
-        {isMuted ? <FaVolumeMute size={14} /> : <FaVolumeUp size={14} />}
+        {isMobile ? (
+          isMuted ? <FaVolumeMute size={12} /> : <FaVolumeUp size={12} />
+        ) : (
+          isMuted ? <FaVolumeMute size={16} /> : <FaVolumeUp size={16} />
+        )}
       </button>
 
       {/* Title */}
-      <div className={`absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-black/70 to-transparent transition-opacity ${isActive ? "opacity-0" : "opacity-100"}`}>
-        <p className="text-white text-xs font-semibold uppercase tracking-wider">
+      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'p-3' : 'p-4'} bg-gradient-to-t from-black/70 to-transparent transition-opacity ${isActive ? "opacity-0" : "opacity-100"}`}>
+        <p className={`text-white ${isMobile ? 'text-xs font-medium' : 'text-sm font-semibold'} uppercase tracking-wider line-clamp-2`}>
           {video.title}
         </p>
       </div>
@@ -90,8 +108,17 @@ const InlineVideoCard = ({
 export default function LatestVideos() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeVideoId, setActiveVideoId] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const visibleCards = 3;
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Show 3 videos on desktop, 1 on mobile (same as reference)
+  const visibleCards = isMobile ? 1 : 3;
   const maxIndex = videos.length - visibleCards;
 
   const nextSlide = () => {
@@ -105,61 +132,63 @@ export default function LatestVideos() {
   };
 
   return (
-    <div className="pt-48 md:pt-40 max-w-7xl mx-auto px-6 md:px-10 relative">
+    <div className="pt-48 md:pt-40 max-w-[1400px] mx-auto px-6 relative">
       {/* Heading */}
-      <div className="flex flex-col items-center md:items-start mb-12 pt-10">
+      <div className="flex flex-col items-center mb-12">
         <h2 className="text-5xl md:text-7xl uppercase text-white font-norch mb-2 tracking-wide">
           Latest Videos
         </h2>
         <div className="md:w-60 w-40 h-1 bg-[#3B3BB7] rounded-full" />
       </div>
 
-      {/* Carousel */}
+      {/* Carousel Container */}
       <div className="relative">
-        {/* Left */}
+        {/* Left Arrow - At start of video box */}
         <button
           onClick={prevSlide}
-          className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 items-center justify-center text-white/50 hover:text-white"
+          className="absolute -left-6 md:-left-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-black/70 transition-all"
         >
-          <FaChevronLeft size={30} />
+          <FaChevronLeft size={isMobile ? 18 : 24} />
         </button>
 
         <div className="overflow-hidden">
-  <motion.div
-    animate={{ x: `-${(100 / visibleCards) * currentIndex}%` }}
-    transition={{ duration: 0.45, ease: "easeInOut" }}
-    className="flex"
-  >
-    {videos.map((video) => (
-      <div
-        key={video.id}
-        className="flex-shrink-0 px-3 md:px-4"
-        style={{
-          width: `${100 / visibleCards}%`,
-        }}
-      >
-        <div
-          className="rounded-2xl "
-          style={{ aspectRatio: "599 / 336.95" }}
-        >
-          <InlineVideoCard
-            video={video}
-            isActive={activeVideoId === video.id}
-            onPlay={(id) => setActiveVideoId(id)}
-          />
+          <motion.div
+            animate={{ x: `-${(100 / visibleCards) * currentIndex}%` }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+            className="flex"
+          >
+            {videos.map((video) => (
+              <div
+                key={video.id}
+                className="flex-shrink-0 px-3 md:px-4"
+                style={{
+                  width: `${100 / visibleCards}%`,
+                }}
+              >
+                {/* Video Container with exact same size as reference */}
+                <div
+                  className="relative group w-full bg-gradient-to-br from-[#d66095] to-[#7b1fa2] p-[3px] rounded-xl shadow-xl transition-transform duration-300 hover:scale-[1.02]"
+                  style={{ aspectRatio: '599 / 336.95' }}
+                >
+                  <div className="relative w-full h-full rounded-xl overflow-hidden bg-black">
+                    <InlineVideoCard
+                      video={video}
+                      isActive={activeVideoId === video.id}
+                      onPlay={(id) => setActiveVideoId(id)}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
-      </div>
-    ))}
-  </motion.div>
-</div>
 
-
-        {/* Right */}
+        {/* Right Arrow - At end of video box */}
         <button
           onClick={nextSlide}
-          className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 items-center justify-center text-white/50 hover:text-white"
+          className="absolute -right-6 md:-right-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-black/70 transition-all"
         >
-          <FaChevronRight size={30} />
+          <FaChevronRight size={isMobile ? 18 : 24} />
         </button>
       </div>
 

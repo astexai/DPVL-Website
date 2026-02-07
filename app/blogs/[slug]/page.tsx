@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <div className="mt-16 pt-10 border-t-2 border-gray-200">
           <Link 
             href="/blogs" 
-            className="inline-flex items-center gap-3 px-6 py-3 bg-[#3B3BB7] text-white font-semibold rounded-lg hover:bg-[#6a1b9a] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-[#3B3BB7] text-white font-semibold rounded-lg hover:bg-[#2A2A8A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

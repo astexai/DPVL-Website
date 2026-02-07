@@ -66,7 +66,7 @@ export default function ShowStoppersAndGallery() {
 
       <div className="w-60 md:w-140 h-1 bg-[#D159A3] mb-6 md:mb-8" />
 
-      <p className="text-white/90 mb-4 font-robo text-sm md:text-base max-w-xl text-left md:text-justify">
+      <p className="text-white/90 mb-4 font-robo text-sm md:text-base max-w-xl text-left md:text-left">
         The Mega Auction of the Delhi Pro Volleyball League delivered
         several show-stopping moments, with franchises locking horns over
         proven Indian attackers and dynamic all-rounders. Intense bidding
@@ -75,7 +75,7 @@ export default function ShowStoppersAndGallery() {
         volleyball and raise the competition’s overall quality.
       </p>
 
-      <p className="text-white/90 font-robo text-sm md:text-base max-w-xl text-left md:text-justify">
+      <p className="text-white/90 font-robo text-sm md:text-base max-w-xl text-left ">
         Another major attraction of the auction was the smart acquisition
         of marquee and emerging players who can change the course of a
         match. These high-impact signings not only strengthened team
