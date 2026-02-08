@@ -7,7 +7,7 @@ export default function ScheduleCard() {
   return (
     <div>
       <section
-        className="relative z-30 w-full rounded-xl md:rounded-[85px] pb-16 px-4 md:px-0"
+        className="relative z-30 w-full rounded-xl md:rounded-[85px] pb-16 px-4 md:px-0 "
         style={{
           backgroundImage: "url('/assets/bg/LatestVideo.png')",
           backgroundSize: "cover",
@@ -16,7 +16,7 @@ export default function ScheduleCard() {
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none " />
 
         {/* CARD WRAPPER */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-4xl z-20 md:pt-0 pt-20">
