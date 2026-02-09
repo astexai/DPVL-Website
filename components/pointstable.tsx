@@ -115,7 +115,7 @@ export default function PointsTable(): JSX.Element {
                   key={team.pos}
                   className="bg-white transition-all duration-200 shadow-sm hover:shadow-lg group"
                 >
-                  <td className="py-4 px-6 text-center font-bold md:text-xl text-lg border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
+                  <td className="py-4 px-6 text-center font-bold md:text-xl text-sm border-l-4 border-transparent group-hover:border-[#d66095] rounded-l-md text-black">
                     {team.pos}
                   </td>
 
@@ -129,18 +129,18 @@ export default function PointsTable(): JSX.Element {
                           className="object-cover"
                         />
                       </div>
-                      <span className="font-bold md:text-lg text-base uppercase tracking-tight text-black whitespace-nowrap">
+                      <span className="font-bold md:text-lg text-sm uppercase tracking-tight text-black whitespace-nowrap">
                         {team.name}
                       </span>
                     </div>
                   </td>
 
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.p}</td>
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.w}</td>
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.l}</td>
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.pts}</td>
-                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-lg text-black">{team.nrr.toFixed(2)}</td>
-                  <td className="py-4 px-6 text-center font-semibold rounded-r-md md:text-xl text-lg text-black">{team.forRuns.toFixed(2)}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-sm text-black">{team.p}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-sm text-black">{team.w}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-sm text-black">{team.l}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-sm text-black">{team.pts}</td>
+                  <td className="py-4 px-6 text-center font-semibold md:text-xl text-sm text-black">{team.nrr.toFixed(2)}</td>
+                  <td className="py-4 px-6 text-center font-semibold rounded-r-md md:text-xl text-sm text-black">{team.forRuns.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
