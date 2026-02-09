@@ -175,7 +175,7 @@ export default function Home() {
                   alt="Desktop Banner"
                   fill
                   priority={index === 0}
-                  className="object-cover object-bottom"
+                  className="object-cover"
                   quality={95}
                   sizes="100vw"
                 />

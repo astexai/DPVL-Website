@@ -33,7 +33,7 @@ export default function Heroo({
 
       <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-center pt-0">
         <div className="text-left w-full">
-          <h1 className={`text-white font-norch ${titleClassName || "text-7xl sm:text-5xl md:text-9xl"} tracking-wide`}>
+          <h1 className={`text-white font-norch ${titleClassName || "text-5xl sm:text-5xl md:text-9xl"} tracking-wide`}>
             {title}
           </h1>
         </div>

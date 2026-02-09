@@ -149,7 +149,7 @@ export default function MissionFounder() {
                 <h3 className=" text-2xl md:text-3xl font-bold uppercase">
                   {founders[founderIndex].name}
                 </h3>
-                <p className="text-[#3b3bb7] font-bold text-lg">
+                <p className="text-white font-bold text-lg">
                   Director & Co-Founder, DPVL
                 </p>
               </div>

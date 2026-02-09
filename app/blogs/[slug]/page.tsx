@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <Navbar />
       <Heroo
         title={post.title ?? "Blog"}
-        titleClassName="text-3xl md:text-4xl lg:text-6xl max-w-2xl leading-tight mx-auto -ml-4"
+        titleClassName="text-xl md:text-4xl lg:text-6xl md:max-w-2xl max-w-xl  leading-tight mx-auto -ml-2 md:-mr-0 mr-25 md:-ml-4"
       />
 
       <article className="max-w-4xl mx-auto px-6 py-16">

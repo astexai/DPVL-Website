@@ -51,7 +51,7 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
       tracking-wide transition-all duration-300 border-3
       ${activeTab === 'teams' 
         ? 'bg-[#3B3BB7] text-white shadow-lg border-[#3B3BB7] scale-105' 
-        : 'bg-[#d159a3] text-white border-[#3B3BB7] hover:bg-[#d159a3] hover:scale-[1.02]'
+        : ' text-black/90 border-[#3B3BB7] hover:bg-[#d159a3] hover:scale-[1.02]'
       }
     `}
   >
@@ -65,7 +65,7 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
       tracking-wide transition-all duration-300 border-3
       ${activeTab === 'player-stats' 
         ? 'bg-[#3B3BB7] text-white shadow-lg border-[#3B3BB7] scale-105' 
-        : 'bg-[#] text-black/90 border-[#3B3BB7] hover:bg-[#d159a3] hover:scale-[1.02]'
+        : ' text-black/90 border-[#3B3BB7] hover:bg-[#d159a3] hover:scale-[1.02]'
       }
     `}
   >
