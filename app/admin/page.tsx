@@ -4,6 +4,8 @@ import Navbar from "@/components/navbar";
 import BannersAdmin from "@/components/admin/BannersAdmin";
 import PointsTableee from "@/components/admin/PointsTableAdmin";
 import UpdateWinners from "@/components/admin/WinnersGrid";
+import DetailsRegister from "@/components/admin/RegisterDetails";
+import CandidateDashboard from "@/components/admin/RegisterDetails";
 
 // Define types for Sidebar props
 interface SidebarProps {
@@ -25,6 +27,7 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
     { id: "banners", label: "Manage Banners" },
     { id: "points", label: "Points Table" },
     { id: "winners", label: "Update Winners" },
+    { id: "details", label: "Register Details" },
   ];
 
   return (
@@ -145,7 +148,7 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
       </div>
 
       {/* Desktop Sidebar */}
-      <div className="hidden lg:flex w-64 bg-white border-r border-gray-200 min-h-screen flex-col">
+      <div className="hidden lg:flex w-64 bg-white border-r border-gray-200 h-[675px] overflow-hidden flex-col">
         <div className="p-6 flex-1">
           {menuItems.map((item) => (
             <button
@@ -379,6 +382,7 @@ const App = () => {
           {currentRoute === "banners" && <BannersAdmin />}
           {currentRoute === "points" && <PointsTableee />}
           {currentRoute === "winners" && <UpdateWinners />}
+          {currentRoute === "details" && <CandidateDashboard />}
         </div>
       </div>
     </div>

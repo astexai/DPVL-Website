@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
                       h-10 xl:h-11
                       px-4 xl:px-5
                       font-roboto font-bold
-                      rounded-lg
+                      rounded-lg cursor-pointer
                       transition-all duration-200
                       text-[15px] xl:text-[16px]
                       bg-[#3b3bb7] text-white

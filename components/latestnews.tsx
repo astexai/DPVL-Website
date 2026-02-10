@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight, FaArrowRight } from 'react-icons/fa';
-import { newsItems } from '@/data/news';
+import { Latestnews } from '@/data/news';
 import Link from 'next/link';
 
 export default function LatestNews() {
@@ -22,7 +22,7 @@ export default function LatestNews() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const maxIndex = newsItems.length - cardsPerView;
+  const maxIndex = Latestnews.length - cardsPerView;
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -61,7 +61,7 @@ export default function LatestNews() {
                 transform: `translateX(-${currentIndex * translatePercent}%)`,
               }}
             >
-              {newsItems.map((news, index) => (
+              {Latestnews.map((news, index) => (
   <div
     key={index}
     className="flex-shrink-0 px-3"
@@ -79,7 +79,7 @@ export default function LatestNews() {
           alt={news.title}
           fill
           loading="lazy"
-          className="object-cover transition-transform duration-700 group-hover:scale-110 scale-112"
+          className="object-cover transition-transform duration-700 group-hover:scale-110 scale-100"
         />
 
 
@@ -98,7 +98,7 @@ export default function LatestNews() {
       opacity-90
     "
   >
-    <FaArrowRight className="text-[#3B3BB7]" />
+    <FaArrowRight className="text-white" />
   </div>
 </div>
 

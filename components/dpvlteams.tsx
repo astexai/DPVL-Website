@@ -22,12 +22,12 @@ export default function DpvlTeams({ teamsData }: DpvlTeamsProps) {
   const [activeTab, setActiveTab] = useState<'teams' | 'player-stats'>('teams');
   
   const teams = teamsData || [
-    { id: 1, name: 'Team Eastern Eagles', slug: 'eastern-eagles', bgImage: '/assets/teams/EasternEagles.jpg' },
-    { id: 2, name: 'Team New Delhi Titans', slug: 'new-delhi-titans', bgImage: '/assets/teams/Delhi.jpg' },
-    { id: 3, name: 'Team Northern Ninjas', slug: 'northern-ninjas', bgImage: '/assets/teams/NorthernNinjas.jpg' },
-    { id: 4, name: 'Team Purani Dilli Panthers', slug: 'purani-dilli-panthers', bgImage: '/assets/teams/PuraniDilli.jpg' },
-    { id: 5, name: 'Team Southern Spikers', slug: 'southern-spikers', bgImage: '/assets/teams/SouthernSpikers.jpg' },
-    { id: 6, name: 'Team Western Warriors', slug: 'western-warriors', bgImage: '/assets/teams/WesternWarriors.jpg' },
+    { id: 1, name: 'Eastern Eagles', slug: 'eastern-eagles', bgImage: '/assets/teams/EasternEagles.jpg' },
+    { id: 2, name: 'New Delhi Titans', slug: 'new-delhi-titans', bgImage: '/assets/teams/Delhi.jpg' },
+    { id: 3, name: 'Northern Ninjas', slug: 'northern-ninjas', bgImage: '/assets/teams/NorthernNinjas.jpg' },
+    { id: 4, name: 'Purani Dilli Panthers', slug: 'purani-dilli-panthers', bgImage: '/assets/teams/PuraniDilli.jpg' },
+    { id: 5, name: 'Southern Spikers', slug: 'southern-spikers', bgImage: '/assets/teams/SouthernSpikers.jpg' },
+    { id: 6, name: 'Western Warriors', slug: 'western-warriors', bgImage: '/assets/teams/WesternWarriors.jpg' },
   ];
 
   // quick debug: confirm teams array and image paths

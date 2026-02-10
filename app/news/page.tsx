@@ -57,7 +57,7 @@ const page = () => {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-700 scale-110 opacity-90"
+                    className="object-cover transition-transform duration-700 scale-100"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 379px"
                   />
 

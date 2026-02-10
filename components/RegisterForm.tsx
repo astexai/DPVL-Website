@@ -21,6 +21,17 @@ const RegisterForm: React.FC = () => {
     terms: false,
   });
 
+  // OTP related states
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [otpVerified, setOtpVerified] = useState(false);
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+  const [otpError, setOtpError] = useState('');
+  const [otpSuccessMessage, setOtpSuccessMessage] = useState('');
+  const [formSubmitMessage, setFormSubmitMessage] = useState('');
+  const [otpToken, setOtpToken] = useState<string | null>(null); // JWT from verify
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -32,6 +43,21 @@ const RegisterForm: React.FC = () => {
           ? (e.target as HTMLInputElement).checked
           : value,
     }));
+    
+    // Reset OTP verification if email changes
+    if (name === 'email' && otpSent) {
+      setOtpSent(false);
+      setOtpVerified(false);
+      setOtp('');
+      setOtpError('');
+      setOtpSuccessMessage('');
+      setOtpToken(null);
+    }
+    
+    // Clear form submit message when form is edited
+    if (formSubmitMessage) {
+      setFormSubmitMessage('');
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,10 +69,162 @@ const RegisterForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleOtpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 6);
+    setOtp(value);
+    if (otpError) setOtpError('');
+  };
+
+  // call backend to send OTP
+  const sendOtp = async () => {
+    if (!formData.email) {
+      setOtpError('Please enter email address first');
+      return;
+    }
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setOtpError('Please enter a valid email address');
+      return;
+    }
+
+    setIsSendingOtp(true);
+    setOtpError('');
+    setOtpSuccessMessage('');
+
+    try {
+      const res = await fetch('/api/otp/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: formData.email.trim().toLowerCase() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || 'Failed to send OTP');
+      }
+      setOtpSent(true);
+      setOtpSuccessMessage(data?.message || `OTP sent to ${formData.email}`);
+      setTimeout(() => setOtpSuccessMessage(''), 5000);
+    } catch (err: any) {
+      setOtpError(err?.message || 'Failed to send OTP. Please try again.');
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  // call backend to verify OTP — receives token on success
+  const verifyOtp = async () => {
+    if (!otp || otp.length !== 6) {
+      setOtpError('Please enter a valid 6-digit OTP');
+      return;
+    }
+
+    setIsVerifyingOtp(true);
+    setOtpError('');
+    setOtpSuccessMessage('');
+
+    try {
+      const res = await fetch('/api/otp/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email.trim().toLowerCase(),
+          otp: otp,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || 'OTP verification failed');
+      }
+
+      // server returns token
+      const token = data?.token;
+      if (!token) throw new Error('No token returned from server');
+      setOtpToken(token);
+      setOtpVerified(true);
+      setOtpSuccessMessage('✓ Email verified successfully!');
+      setTimeout(() => setOtpSuccessMessage(''), 3000);
+    } catch (err: any) {
+      setOtpError(err?.message || 'Verification failed. Please try again.');
+    } finally {
+      setIsVerifyingOtp(false);
+    }
+  };
+
+  const resendOtp = () => {
+    setOtpError('');
+    setOtpSuccessMessage('');
+    sendOtp();
+  };
+
+  // submit registration form to backend with FormData (multipart)
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Registration submitted!');
+    
+    if (!otpVerified || !otpToken) {
+      setFormSubmitMessage('Please verify your email address before submitting');
+      return;
+    }
+    if (!formData.aadhaar) {
+      setFormSubmitMessage('Please attach Aadhaar file');
+      return;
+    }
+
+    setFormSubmitMessage('');
+    try {
+      const fd = new FormData();
+      fd.append('token', otpToken);
+      fd.append('email', formData.email.trim().toLowerCase());
+      fd.append('firstName', formData.firstName);
+      fd.append('lastName', formData.lastName);
+      fd.append('fatherName', formData.fatherName);
+      fd.append('phone', formData.phone);
+      fd.append('state', formData.state);
+      fd.append('district', formData.district);
+      fd.append('age', formData.age);
+      fd.append('gender', formData.gender);
+      fd.append('position', formData.position);
+      fd.append('experience', formData.experience);
+      fd.append('terms', String(formData.terms));
+      fd.append('aadhaar', formData.aadhaar);
+
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        body: fd, // don't set Content-Type — browser will set multipart boundary
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || 'Registration failed');
+      }
+
+      setFormSubmitMessage('Registration submitted successfully!');
+      // reset form after success
+      setTimeout(() => {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          fatherName: '',
+          email: '',
+          phone: '',
+          state: '',
+          district: '',
+          aadhaar: null,
+          age: '',
+          gender: '',
+          position: '',
+          experience: '',
+          terms: false,
+        });
+        setOtpSent(false);
+        setOtp('');
+        setOtpVerified(false);
+        setOtpToken(null);
+        setFormSubmitMessage('');
+      }, 3000);
+    } catch (err: any) {
+      setFormSubmitMessage(err?.message || 'Registration failed. Please try again.');
+    }
   };
 
   return (
@@ -55,12 +233,11 @@ const RegisterForm: React.FC = () => {
 
         {/* Header */}
         <div className="flex flex-col items-center mb-12">
-            <h2 className="text-5xl md:text-7xl font-norch uppercase text-[#3B3BB7] mb-2 tracking-wide">
-              Player Registration
-            </h2>
-            <div className="md:w-90 w-20 h-1 bg-[#D159A3]" />
-          </div>
-
+          <h2 className="text-5xl md:text-7xl font-norch uppercase text-[#3B3BB7] mb-2 tracking-wide">
+            Player Registration
+          </h2>
+          <div className="md:w-90 w-20 h-1 bg-[#D159A3]" />
+        </div>
 
         {/* Main Container */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -71,6 +248,17 @@ const RegisterForm: React.FC = () => {
               <h2 className="text-3xl font-bold text-[#3B3BB7] mb-6">
                 Registration Form
               </h2>
+
+              {/* Form Submission Message */}
+              {formSubmitMessage && (
+                <div className={`mb-4 p-3 rounded-lg ${
+                  formSubmitMessage.includes('Please verify') 
+                    ? 'bg-yellow-50 border border-yellow-200 text-yellow-800'
+                    : 'bg-green-50 border border-green-200 text-green-800'
+                }`}>
+                  <p className="text-sm font-medium">{formSubmitMessage}</p>
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -110,7 +298,7 @@ const RegisterForm: React.FC = () => {
                 {/* Father Name */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    Father’s Name *
+                    Father's Name *
                   </label>
                   <input
                     type="text"
@@ -123,21 +311,129 @@ const RegisterForm: React.FC = () => {
                   />
                 </div>
 
-                {/* Email */}
+                {/* Email with OTP */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter email address"
-                    className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
-                  />
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-sm font-semibold text-gray-700">
+                      Email Address *
+                    </label>
+                    {otpVerified && (
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">
+                        ✓ Verified
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      disabled={otpVerified}
+                      placeholder="Enter email address"
+                      className={`flex-1 px-4 py-2.5 border-2 placeholder:text-black/40 rounded-lg focus:border-[#3b3bb7] focus:outline-none ${
+                        otpVerified 
+                          ? 'bg-gray-50 border-gray-300 text-gray-700' 
+                          : 'border-black'
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={sendOtp}
+                      disabled={!formData.email || otpVerified || isSendingOtp}
+                      className={`px-4 py-2.5 rounded-lg font-semibold transition-colors min-w-[100px] ${
+                        !formData.email || otpVerified
+                          ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                          : 'bg-[#3b3bb7] text-white hover:bg-[#2a2a8a] active:scale-95'
+                      }`}
+                    >
+                      {isSendingOtp ? (
+                        <span className="flex items-center justify-center">
+                          <svg className="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Sending
+                        </span>
+                      ) : otpVerified ? 'Verified' : 'Send OTP'}
+                    </button>
+                  </div>
+                  
+                  {/* OTP Success Message */}
+                  {otpSuccessMessage && !otpError && (
+                    <div className="mt-2 p-2 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-sm text-green-800 font-medium">{otpSuccessMessage}</p>
+                    </div>
+                  )}
                 </div>
+
+                {/* OTP Input Section */}
+                {otpSent && !otpVerified && (
+                  <div className="p-4 border-2 border-[#3b3bb7]/20 rounded-lg bg-blue-50/50">
+                    <div className="flex items-center justify-between mb-3">
+                      <label className="block text-sm font-semibold text-gray-700">
+                        Enter Verification Code *
+                      </label>
+                      <button
+                        type="button"
+                        onClick={resendOtp}
+                        disabled={isSendingOtp}
+                        className="text-sm text-[#3b3bb7] font-semibold hover:text-[#2a2a8a] hover:underline disabled:text-gray-400 disabled:cursor-not-allowed"
+                      >
+                        {isSendingOtp ? 'Resending...' : 'Resend Code'}
+                      </button>
+                    </div>
+                    
+                    <div className="flex gap-2">
+                      <div className="relative flex-1">
+                        <input
+                          type="text"
+                          value={otp}
+                          onChange={handleOtpChange}
+                          placeholder="Enter 6-digit code"
+                          maxLength={6}
+                          className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                        />
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
+                          {otp.length}/6
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={verifyOtp}
+                        disabled={!otp || otp.length !== 6 || isVerifyingOtp}
+                        className={`px-4 py-2.5 rounded-lg font-semibold transition-colors min-w-[100px] ${
+                          !otp || otp.length !== 6
+                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                            : 'bg-green-600 text-white hover:bg-green-700 active:scale-95'
+                        }`}
+                      >
+                        {isVerifyingOtp ? (
+                          <span className="flex items-center justify-center">
+                            <svg className="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Verifying
+                          </span>
+                        ) : 'Verify'}
+                      </button>
+                    </div>
+                    
+                    {/* OTP Error Message */}
+                    {otpError && (
+                      <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-sm text-red-800 font-medium">{otpError}</p>
+                      </div>
+                    )}
+                    
+                    <p className="text-xs text-gray-600 mt-3">
+                      A 6-digit verification code has been sent to <span className="font-semibold">{formData.email}</span>
+                    </p>
+                  </div>
+                )}
 
                 {/* Mobile */}
                 <div>
@@ -157,70 +453,27 @@ const RegisterForm: React.FC = () => {
 
                 {/* State */}
                 <div>
-  <label className="block text-sm font-semibold text-black mb-1">
-    Select State *
-  </label>
-
-  <select
-    name="state"
-    value={formData.state}
-    onChange={handleChange}
-    required
-    className={`
-      w-full px-4 py-2.5 border-2 border-black rounded-lg
-      focus:border-[#3b3bb7] focus:outline-none 
-      ${formData.state === "" ? "text-black/40" : "text-black"}
-    `}
-  >
-    <option value="" disabled hidden>
-      Choose your state
-    </option>
-
-    {/* States */}
-    <option value="Andhra Pradesh" className='text-black'>Andhra Pradesh</option>
-    <option value="Arunachal Pradesh" className='text-black'>Arunachal Pradesh</option>
-    <option value="Assam" className='text-black'>Assam</option>
-    <option value="Bihar" className='text-black'>Bihar</option>
-    <option value="Chhattisgarh" className='text-black'>Chhattisgarh</option>
-    <option value="Goa" className='text-black'>Goa</option>
-    <option value="Gujarat" className='text-black'>Gujarat</option>
-    <option value="Haryana" className='text-black'>Haryana</option>
-    <option value="Himachal Pradesh" className='text-black'>Himachal Pradesh</option>
-    <option value="Jharkhand" className='text-black'>Jharkhand</option>
-    <option value="Karnataka" className='text-black'>Karnataka</option>
-    <option value="Kerala" className='text-black'>Kerala</option>
-    <option value="Madhya Pradesh" className='text-black'>Madhya Pradesh</option>
-    <option value="Maharashtra" className='text-black'>Maharashtra</option>
-    <option value="Manipur" className='text-black'>Manipur</option>
-    <option value="Meghalaya" className='text-black'>Meghalaya</option>
-    <option value="Mizoram" className='text-black'>Mizoram</option>
-    <option value="Nagaland" className='text-black'>Nagaland</option>
-    <option value="Odisha" className='text-black'>Odisha</option>
-    <option value="Punjab" className='text-black'>Punjab</option>
-    <option value="Rajasthan" className='text-black'>Rajasthan</option>
-    <option value="Sikkim" className='text-black'>Sikkim</option>
-    <option value="Tamil Nadu" className='text-black'>Tamil Nadu</option>
-    <option value="Telangana" className='text-black'>Telangana</option>
-    <option value="Tripura" className='text-black'>Tripura</option>
-    <option value="Uttar Pradesh" className='text-black'>Uttar Pradesh</option>
-    <option value="Uttarakhand" className='text-black'>Uttarakhand</option>
-    <option value="West Bengal" className='text-black'>West Bengal</option>
-
-    {/* Union Territories */}
-    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-    <option value="Chandigarh">Chandigarh</option>
-    <option value="Dadra and Nagar Haveli and Daman and Diu">
-      Dadra and Nagar Haveli and Daman and Diu
-    </option>
-    <option value="Delhi">Delhi</option>
-    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-    <option value="Ladakh">Ladakh</option>
-    <option value="Lakshadweep">Lakshadweep</option>
-    <option value="Puducherry">Puducherry</option>
-  </select>
-</div>
-
-
+                  <label className="block text-sm font-semibold text-black mb-1">
+                    Select State *
+                  </label>
+                  <select
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    required
+                    className={`
+                      w-full px-4 py-2.5 border-2 border-black rounded-lg
+                      focus:border-[#3b3bb7] focus:outline-none 
+                      ${formData.state === "" ? "text-black/40" : "text-black"}
+                    `}
+                  >
+                    <option value="" disabled hidden>
+                      Choose your state
+                    </option>
+                    <option value="Andhra Pradesh" className='text-black'>Andhra Pradesh</option>
+                    {/* ... other states ... */}
+                  </select>
+                </div>
 
                 {/* District */}
                 <div>
@@ -243,7 +496,7 @@ const RegisterForm: React.FC = () => {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Attach Aadhaar Card *
                   </label>
-                  <div className="border-2 border-dashed border-black rounded-lg p-6 text-center">
+                  <div className="border-2 border-dashed border-black rounded-lg p-6 text-center hover:bg-gray-50 transition-colors">
                     <input
                       type="file"
                       accept="image/*,application/pdf"
@@ -254,41 +507,59 @@ const RegisterForm: React.FC = () => {
                     />
                     <label
                       htmlFor="aadhaarUpload"
-                      className="cursor-pointer text-[#3b3bb7] font-semibold"
+                      className="cursor-pointer text-[#3b3bb7] font-semibold hover:text-[#2a2a8a]"
                     >
                       Click to upload
                     </label>
                     <p className="text-sm text-gray-500 mt-1">
                       Aadhaar Card (MAX. 5MB)
                     </p>
+                    {formData.aadhaar && (
+                      <p className="text-sm text-green-600 mt-2">
+                        ✓ {formData.aadhaar.name} selected
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 {/* Terms */}
-                <div className="flex items-start gap-2">
+                <div className="flex items-start gap-2 pt-2">
                   <input
                     type="checkbox"
                     name="terms"
                     checked={formData.terms}
                     onChange={handleChange}
                     required
-                    className="mt-1 w-4 h-4"
+                    className="mt-1 w-4 h-4 text-[#3b3bb7] focus:ring-[#3b3bb7] border-gray-300 rounded"
                   />
                   <label className="text-sm text-gray-700">
                     I agree to the{' '}
-                    <Link href="/terms" className="text-[#3b3bb7] font-semibold">
+                    <Link href="/terms" className="text-[#3b3bb7] font-semibold hover:text-[#2a2a8a] hover:underline">
                       Terms and Conditions
                     </Link>
                   </label>
                 </div>
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  className="w-full bg-[#3b3bb7] text-white py-3 rounded-lg font-bold hover:bg-[#2a2a8a] transition-colors"
-                >
-                  Complete Registration
-                </button>
+                {/* Submit Button with Status */}
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={!otpVerified || !formData.terms}
+                    className={`w-full py-3.5 rounded-lg font-bold transition-all duration-200 ${
+                      otpVerified && formData.terms
+                        ? 'bg-[#3b3bb7] text-white hover:bg-[#2a2a8a] active:scale-[0.99] shadow-md hover:shadow-lg'
+                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                    }`}
+                  >
+                    {otpVerified ? 'Complete Registration' : 'Verify Email to Continue'}
+                  </button>
+                  
+                  {(!otpVerified || !formData.terms) && (
+                    <p className="text-sm text-gray-500 mt-2 text-center">
+                      {!otpVerified ? 'Email verification required' : 'Please accept terms and conditions'}
+                    </p>
+                  )}
+                </div>
               </form>
             </div>
 
@@ -299,6 +570,7 @@ const RegisterForm: React.FC = () => {
                 alt="DPVL"
                 fill
                 className="object-cover"
+                priority
               />
             </div>
 

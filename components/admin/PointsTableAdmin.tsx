@@ -20,7 +20,7 @@ export default function PointsTableee() {
   const [teams, setTeams] = useState<Team[]>([
     { 
       id: 1, 
-      name: 'Red Dragons', 
+      name: 'Southern Spikers', 
       matches: 0, 
       wins: 0, 
       losses: 0, 
@@ -34,7 +34,7 @@ export default function PointsTableee() {
     },
     { 
       id: 2, 
-      name: 'Blue Sharks', 
+      name: 'Eastern Eagles', 
       matches: 0, 
       wins: 0, 
       losses: 0, 
@@ -48,7 +48,7 @@ export default function PointsTableee() {
     },
     { 
       id: 3, 
-      name: 'Green Eagles', 
+      name: 'Western Warriors', 
       matches: 0, 
       wins: 0, 
       losses: 0, 
@@ -62,7 +62,35 @@ export default function PointsTableee() {
     },
     { 
       id: 4, 
-      name: 'Purple Kings', 
+      name: 'Northern Ninjas', 
+      matches: 0, 
+      wins: 0, 
+      losses: 0, 
+      points: 0, 
+      setRatio: 0.0, 
+      pointRatio: 0.0,
+      setsWon: 0,
+      setsLost: 0,
+      pointsFor: 0,
+      pointsAgainst: 0
+    },
+    { 
+      id: 5, 
+      name: 'Purani Dilli Panthers', 
+      matches: 0, 
+      wins: 0, 
+      losses: 0, 
+      points: 0, 
+      setRatio: 0.0, 
+      pointRatio: 0.0,
+      setsWon: 0,
+      setsLost: 0,
+      pointsFor: 0,
+      pointsAgainst: 0
+    },
+    { 
+      id: 6, 
+      name: 'New Delhi Titans', 
       matches: 0, 
       wins: 0, 
       losses: 0, 
@@ -76,8 +104,8 @@ export default function PointsTableee() {
     },
   ]);
 
-  const [team1, setTeam1] = useState('Red Dragons');
-  const [team2, setTeam2] = useState('Blue Sharks');
+  const [team1, setTeam1] = useState('Southern Spikers');
+  const [team2, setTeam2] = useState('Eastern Eagles');
   const [team1Sets, setTeam1Sets] = useState({ s1: '', s2: '', s3: '' });
   const [team2Sets, setTeam2Sets] = useState({ s1: '', s2: '', s3: '' });
   const [loading, setLoading] = useState(false);

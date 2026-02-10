@@ -57,7 +57,7 @@ export default function PartnersSponsors() {
               className="flex flex-col items-center group"
             >
               {/* Role */}
-              <span className="text-[9px] md:text-[10px] uppercase font-medium text-black uppercase tracking-widest mb-3 h-6 flex items-end">
+              <span className="text-[9px] md:text-[12px] uppercase font-medium text-black uppercase tracking-widest mb-3 h-6 flex items-end">
                 {sponsor.role}
               </span>
 
