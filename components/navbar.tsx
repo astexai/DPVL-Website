@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
     { name: "Auction", href: "/dpvl-auction" },
     { name: "Points Table", href: "/points-table" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Dpvl TV", href: "/dpvl-tv" },
+    { name: "DPVL TV", href: "/dpvl-tv" },
     { name: "News", href: "/news" },
     { name: "Blogs", href: "/blogs" },
     { name: "Contact Us", href: "/contact-us" },
