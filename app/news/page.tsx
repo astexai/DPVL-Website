@@ -75,7 +75,7 @@ const page = () => {
                           opacity-90
                         "
                       >
-                        <FaArrowRight className="text-[#3B3BB7]" />
+                        <FaArrowRight className="text-white" />
                       </div>
                     </div>
                   </div>

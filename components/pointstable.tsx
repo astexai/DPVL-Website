@@ -30,7 +30,7 @@ export default function PointsTable(): JSX.Element {
           const adapted = data.teams.map((t: any, idx: number) => ({
             pos: idx + 1,
             name: t.name,
-            logo: t.logo ?? `/assets/teams/${t.name.replace(/\s+/g, "")}.jpg`,
+            logo: t.logo || `/assets/teams/${t.name.replace(/^Team\s+/i, '').replace(/\s+/g, "")}.jpg`,
             p: t.matches ?? 0,
             w: t.wins ?? 0,
             l: t.losses ?? 0,

@@ -61,16 +61,9 @@ export default function Footer() {
                 Follow us on
               </span>
               <div className="flex gap-3 justify-center md:justify-start">
-                <Link href={"https://instagram.com/delhiprovolleyball"}>
-                <SocialIcon icon={<FaInstagram />} />
-                </Link>
-                <Link href={"https://www.facebook.com/profile.php?id=61585847188129"}>
-                <SocialIcon icon={<FaFacebookF />} />
-                </Link>
-                 <Link href={"https://www.youtube.com/@DPVLofficial"}>
-                <SocialIcon icon={<FaYoutube />} />
-                </Link>
-       
+                <SocialIcon href="https://instagram.com/delhiprovolleyball" icon={<FaInstagram />} />
+                <SocialIcon href="https://www.facebook.com/profile.php?id=61585847188129" icon={<FaFacebookF />} />
+                <SocialIcon href="https://www.youtube.com/@DPVLofficial" icon={<FaYoutube />} />
               </div>
             </div>
           </div>
@@ -107,12 +100,10 @@ export default function Footer() {
               </h3>
 
               <div className="flex flex-col gap-2  text-white/90 text-sm md:text-base">
-                <a className="hover:text-pink-200 transition-colors">
+                <a href="tel:+917799988500" className="hover:text-pink-200 transition-colors">
                   +91 77999 88500
-
-
                 </a>
-                <a className="hover:text-pink-200 transition-colors">
+                <a href="tel:+919811979075" className="hover:text-pink-200 transition-colors">
                   +91 98119 79075
                 </a>
               </div>
@@ -124,9 +115,9 @@ export default function Footer() {
               </h3>
 
               <div className="flex flex-col gap-2 text-white/90 text-sm md:text-base md:pb-0 pb-2">
-                <a className="hover:text-pink-200 transition-colors">
+                <span className="hover:text-pink-200 transition-colors">
                   Delhi Pro Volleyball League Headquarters, New Delhi, India
-                </a>
+                </span>
               </div>
             </div>
             <div>
@@ -134,7 +125,7 @@ export default function Footer() {
                 Email Address
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
               </h3>
-              <a className="hover:text-pink-200 transition-colors">info@delhiprovolleyball.com</a>
+              <a href="mailto:info@delhiprovolleyball.com" className="hover:text-pink-200 transition-colors">info@delhiprovolleyball.com</a>
             </div>
           </div>
         </div>
@@ -149,10 +140,12 @@ export default function Footer() {
   );
 }
 
-function SocialIcon({ icon }: { icon: React.ReactNode }) {
+function SocialIcon({ icon, href }: { icon: React.ReactNode; href: string }) {
   return (
     <a
-      href="#"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="w-9 h-9 rounded-full bg-white text-[#d66095] flex items-center justify-center hover:bg-[#d66095] hover:text-white transition-all duration-300 shadow-sm"
     >
       <span className="text-base">{icon}</span>

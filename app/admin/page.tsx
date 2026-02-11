@@ -148,7 +148,7 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
       </div>
 
       {/* Desktop Sidebar */}
-      <div className="hidden lg:flex w-64 bg-white border-r border-gray-200 h-[675px] overflow-hidden flex-col">
+      <div className="hidden lg:flex w-64 bg-white border-r border-gray-200 fixed left-0 top-[124px] bottom-0 overflow-hidden flex-col z-40">
         <div className="p-6 flex-1">
           {menuItems.map((item) => (
             <button
@@ -378,7 +378,7 @@ const App = () => {
           onNavigate={handleNavigate} 
           onLogout={handleLogout} 
         />
-        <div className="flex-1">
+        <div className="flex-1 lg:ml-64">
           {currentRoute === "banners" && <BannersAdmin />}
           {currentRoute === "points" && <PointsTableee />}
           {currentRoute === "winners" && <UpdateWinners />}

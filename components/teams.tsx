@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const teams = [
   { id: 1, name: 'Team Eastern Eagles', bgImage: '/assets/teams/EasternEagles.jpg' },
-  { id: 2, name: 'Team New Delhi Titans', bgImage: '/assets/teams/Delhi.jpg' },
+  { id: 2, name: 'Team New Delhi Titans', bgImage: '/assets/teams/NewDelhiTitans.jpg' },
   { id: 3, name: 'Team Northern Ninjas', bgImage: '/assets/teams/NorthernNinjas.jpg' },
-  { id: 4, name: 'Team Purani Dilli Panthers', bgImage: '/assets/teams/PuraniDilli.jpg' },
+  { id: 4, name: 'Team Purani Dilli Panthers', bgImage: '/assets/teams/PuraniDilliPanthers.jpg' },
   { id: 5, name: 'Team Southern Spikers', bgImage: '/assets/teams/SouthernSpikers.jpg' },
   { id: 6, name: 'Team Western Warriors', bgImage: '/assets/teams/WesternWarriors.jpg' },
 ];
