@@ -1,5 +1,5 @@
 import User from '@/app/models/User';
-import { connectToDatabase } from '@/lib/mongo';
+import { connectToDatabase } from '@/lib/db/mongodb';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 

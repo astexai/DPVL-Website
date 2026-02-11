@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { generateToken } from '@/lib/auth';
-import { connectToDatabase } from '@/lib/mongo';
+import { connectToDatabase } from '@/lib/db/mongodb';
 import User from '@/app/models/User';
 
 export default async function handler(

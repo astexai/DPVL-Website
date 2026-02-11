@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from '@/lib/mongo';
+import { connectToDatabase } from '@/lib/db/mongodb';
 import Banners from "@/app/models/Banners";
 
 
