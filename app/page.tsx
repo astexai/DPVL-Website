@@ -14,6 +14,9 @@ import PartnersSponsors from "@/components/partners";
 import Socials from "@/components/socials";
 import ScheduleCard from "@/components/ScheduleCard";
 import MobileSvg from "@/components/MobileSvg";
+import DelhiExcellence from "@/components/DelhiExcellence";
+import Philosophy from "@/components/Philosophy";
+import LeagueInfoSection from "@/components/Leagueinfo";
 
 // --- CONFIGURATION FOR STATIC BANNERS ---
 // You can easily change images and text here
@@ -23,72 +26,35 @@ const STATIC_SLIDES = [
     desktopImg: "/assets/Banners/1.png",
     mobileImg: "/assets/Banners/mobile1.png",
     position: "center", // Options: 'center' | 'bottom'
-    content: (
-      <>
-        <h2 className="text-white font-norch text-3xl md:text-5xl lg:text-7xl xl:text-8xl leading-tight text-center drop-shadow-2xl">
-          A Movement Shaping The <br /> Future Of Volleyball.
-        </h2>
-        <Link href={"/about-us"}>
-          <button className="mt-8 md:mt-10 px-3 md:px-10 py-2 md:py-3 border-2 border-white text-white backdrop-blur-sm font-norch text-lg md:text-2xl rounded-xl shadow-lg hover:scale-105 transition-transform active:scale-95">
-            Explore Now
-          </button>
-        </Link>
-      </>
-    ),
+    
   },
   {
     id: "static-2",
     desktopImg: "/assets/Banners/2.png",
     mobileImg: "/assets/Banners/mobile2.png",
     position: "bottom",
-    content: (
-      <div className="absolute bottom-4 md:bottom-6 lg:bottom-10 left-1/2 transform -translate-x-1/2 w-full px-4">
-        <h2 className="text-white font-norch text-3xl md:text-5xl lg:text-7xl xl:text-8xl leading-tight text-center drop-shadow-2xl">
-          The Minds Behind The Movement.
-        </h2>
-      </div>
-    ),
+   
   },
   {
     id: "static-3",
     desktopImg: "/assets/Banners/3.png",
     mobileImg: "/assets/Banners/mobile3.png",
     position: "bottom",
-    content: (
-      <div className="absolute bottom-4 md:bottom-6 lg:bottom-10 left-1/2 transform -translate-x-1/2 w-full px-4">
-        <div className="flex flex-col items-center text-center drop-shadow-2xl">
-          <h2 className="text-white font-norch text-4xl md:text-6xl lg:text-8xl">
-            SPARTAN
-          </h2>
-          <span className="block text-white font-norch text-xl md:text-3xl lg:text-5xl opacity-90 mt-2">
-            Official Ball & Kit Partner
-          </span>
-          <span className="block text-white font-norch text-lg md:text-2xl lg:text-4xl opacity-80 mt-1">
-            Powering The Game
-          </span>
-        </div>
-      </div>
-    ),
+    
   },
   {
     id: "static-4",
     desktopImg: "/assets/Banners/5.png",
     mobileImg: "/assets/Banners/mobile4.png",
     position: "bottom",
-    content: (
-      <div className="absolute bottom-4 md:bottom-6 lg:bottom-10 left-1/2 transform -translate-x-1/2 w-full px-4">
-        <h2 className="text-white font-norch text-3xl md:text-5xl lg:text-7xl xl:text-8xl leading-tight text-center drop-shadow-2xl">
-          Official Nutrition & Diet Partner
-        </h2>
-      </div>
-    ),
+    
   },
   {
     id: "static-5",
     desktopImg: "/assets/Banners/4.png",
     mobileImg: "/assets/Banners/mobile5.png",
     position: "center",
-    content: null, // No text for this slide
+    
   },
 ];
 export default function Home() {
@@ -144,7 +110,7 @@ export default function Home() {
         2. h-[550px] on mobile (good height, not too small).
         3. h-[80vh] on Desktop (Big but not full screen, allows footer peek).
       */}
-      <section className="relative w-full overflow-hidden mt-0 md:mt-[100px] lg:mt-0 h-[300px] md:h-[650px] lg:h-[80vh] xl:h-[85vh]">
+      <section className="relative w-full overflow-hidden h-[300px] md:h-[650px] lg:h-[80vh] xl:h-[85vh]">
 
         {allSlides.map((slide, index) => {
           const isActive = current === index;
@@ -175,7 +141,7 @@ export default function Home() {
                   alt="Desktop Banner"
                   fill
                   priority={index === 0}
-                  className="object-cover"
+                  className="object-cover object-top"
                   quality={95}
                   sizes="100vw"
                 />
@@ -194,15 +160,8 @@ export default function Home() {
                 />
               </div>
 
-              {/* Dark Gradient Overlay (Improves text readability) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute inset-0 " />
 
-              {/* --- TEXT CONTENT --- */}
-              {slide.content && (
-                <div className={`absolute inset-0 z-20 flex flex-col w-full px-4 md:px-12 ${textContainerClass}`}>
-                  {slide.content}
-                </div>
-              )}
             </div>
           );
         })}
@@ -221,7 +180,10 @@ export default function Home() {
         </div>
 
       </section>
-
+      <LeagueInfoSection/>
+<Philosophy/>
+<FooterGrad variant="cropped" height={20} />
+      <DelhiExcellence />
       {/* PAGE CONTENT */}
       <div className="w-full bg-gray-50 pt-20">
         <div className="w-full h-12 md:h-24 bg-gray-50" />
@@ -232,6 +194,7 @@ export default function Home() {
       <FooterGrad />
       <TeamsCarousel />
       <LatestNews />
+      <DelhiExcellence/>
       <PartnersSponsors />
       <FooterGrad />
       <Footer />

@@ -74,25 +74,25 @@ export const newsItems = [
   
 ];
 export const Latestnews = [
-  
-    {
+  {
     id: 1,
+    title: "Neeti Rawat and Jasoda Gulliya share their vision for Delhi Pro Volleyball League",
+    image: "/assets/news/news12.png",
+    link: "https://www.instagram.com/p/DUfdGJxAB7k/",
+  },
+    {
+    id: 2,
     title: "Neeti Rawat and Jasoda Gulliya share their vision for Delhi Pro Volleyball League",
     image: "/assets/news/news10.png",
     link: "https://www.jagran.com/other-sports/headlines-delhi-pro-volleyball-league-unveiled-first-season-to-be-played-in-2026-40125628.html",
   },
   {
-    id: 2,
+    id: 3,
     title: "Neeti Rawat and Jasoda Gulliya share their vision for Delhi Pro Volleyball League",
     image: "/assets/news/news9.png",
     link: "https://www.thehansindia.com/sports/delhi-pro-volleyball-league-set-to-debut-this-year-1044066",
   },
-  {
-    id: 3,
-    title: "Neeti Rawat and Jasoda Gulliya share their vision for Delhi Pro Volleyball League",
-    image: "/assets/news/news12.png",
-    link: "https://www.instagram.com/p/DUfdGJxAB7k/",
-  },
+  
   {
     id: 4,
     title: "Delhi to launch its first Pro Volleyball League (DPVL) in 2026",

@@ -28,6 +28,7 @@ const Navbar: React.FC = () => {
     { name: "DPVL TV", href: "/dpvl-tv" },
     { name: "News", href: "/news" },
     { name: "Blogs", href: "/blogs" },
+    { name: "Partners", href: "/partners" },
     { name: "Contact Us", href: "/contact-us" },
   ];
 
@@ -78,15 +79,15 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* CENTER: Navigation Links (Desktop) */}
-            <div className="hidden lg:flex items-center justify-center flex-1 mx-4 xl:mx-8">
-              <div className="flex items-center justify-center gap-x-2 xl:gap-x-3 2xl:gap-x-4">
+            <div className="hidden xl:flex items-center justify-center flex-1 mx-2 xl:mx-4">
+              <div className="flex items-center justify-center gap-x-1 xl:gap-x-2 2xl:gap-x-4">
                 {menuItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     className={`
                       group relative 
-                      text-[15px] xl:text-[16px] 2xl:text-[17px]
+                      text-[13px] xl:text-[16px] 2xl:text-[16px]
                       font-roboto font-bold 
                       transition-all duration-200 
                       whitespace-nowrap
@@ -115,7 +116,7 @@ const Navbar: React.FC = () => {
 
             {/* RIGHT: Register Button & Burger */}
             <div className="flex-shrink-0 flex items-center">
-              <div className="hidden lg:flex">
+              <div className="hidden xl:flex">
                 <Link href="/register">
                   <button
                     type="button"
@@ -126,7 +127,7 @@ const Navbar: React.FC = () => {
                       font-roboto font-bold
                       rounded-lg cursor-pointer
                       transition-all duration-200
-                      text-[15px] xl:text-[16px]
+                      text-[14px] xl:text-[15px]
                       bg-[#3b3bb7] text-white
                       hover:bg-[#2a2a8a] hover:shadow-lg active:scale-[0.98]
                       group
@@ -146,7 +147,7 @@ const Navbar: React.FC = () => {
               {/* BURGER ICON */}
               <button
                 type="button"
-                className="lg:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center focus:outline-none hover:bg-gray-50 rounded-lg transition-colors"
+                className="xl:hidden flex flex-col gap-1.5 w-10 h-10 items-center justify-center focus:outline-none hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={toggleMenu}
                 aria-label={open ? "Close menu" : "Open menu"}
               >
@@ -166,7 +167,7 @@ const Navbar: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white border-t border-gray-200 shadow-xl"
+              className="xl:hidden bg-white border-t border-gray-200 shadow-xl"
             >
               {/* Changes here for Mobile: 
                   1. max-h-[80vh] and overflow-y-auto enable scrolling 
@@ -205,7 +206,7 @@ const Navbar: React.FC = () => {
       </nav>
       
       {/* Spacer */}
-      <div className="h-24 md:h-28 lg:h-31" />
+      <div className="h-24 md:h-28 lg:h-[128px]" />
     </>
   );
 };

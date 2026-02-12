@@ -52,9 +52,9 @@ export default function Footer() {
                 className="object-contain"
               />
             </div>
-            <span className="text-lg italic absolute top-40">
-              &quot;Where Delhi Rises.
-              <br /> Where Champions Play.&quot;
+            <span className="text-md italic absolute top-40">
+              Delhi Pro Volleyball League (DPVL) is the Capital’s<br/> first professional volleyball league, dedicated to<br/> promoting talent and reviving grassroots volleyball.
+
             </span>
             <div className="flex flex-col items-center md:items-start w-full">
               <span className="text-lg font-medium border-b-2 border-white/30 pb-1 mb-4 inline-block">
@@ -116,7 +116,7 @@ export default function Footer() {
 
               <div className="flex flex-col gap-2 text-white/90 text-sm md:text-base md:pb-0 pb-2">
                 <span className="hover:text-pink-200 transition-colors">
-                  Delhi Pro Volleyball League Headquarters, New Delhi, India
+                  358-D, Pocket J&K, Dilshad Garden, Delhi 110095
                 </span>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function Footer() {
         <div className="w-full h-0.5 bg-[#D35CA7] my-6" />
 
         <div className="text-center text-xs md:text-sm font-light text-white/80">
-          Copyright 2026 Delhi Pro Volleyball League, All Right Reserved
+          Copyright 2026 Velvet Aces, All Right Reserved
         </div>
       </div>
     </footer>

@@ -5,7 +5,7 @@ import FooterGrad from "@/components/footergrad"
 import Heroo from "@/components/herosection"
 import { FaChevronRight, FaArrowRight } from "react-icons/fa"
 import Image from "next/image"
-import { newsItems } from "@/data/news"
+import { Latestnews, newsItems } from "@/data/news"
 import Link from "next/link"
 
 const page = () => {
@@ -45,7 +45,7 @@ const page = () => {
           <div className="relative w-full rounded-3xl p-6 md:p-10 overflow-hidden">
             {/* News Grid - Using aspect ratio and max dimensions */}
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {newsItems.map((item) => (
+              {Latestnews.map((item) => (
                 <Link
                   key={item.id}
                   href={item.link}
