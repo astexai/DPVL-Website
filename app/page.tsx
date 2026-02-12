@@ -23,37 +23,37 @@ import LeagueInfoSection from "@/components/Leagueinfo";
 const STATIC_SLIDES = [
   {
     id: "static-1",
-    desktopImg: "/assets/Banners/1.png",
-    mobileImg: "/assets/Banners/mobile1.png",
+    desktopImg: "/assets/banner/1.png",
+    mobileImg: "/assets/banner/mobile1.png",
     position: "center", // Options: 'center' | 'bottom'
     
   },
   {
     id: "static-2",
-    desktopImg: "/assets/Banners/2.png",
-    mobileImg: "/assets/Banners/mobile2.png",
-   
+    desktopImg: "/assets/banner/2.png",
+    mobileImg: "/assets/banner/mobile2.png",
+    position: "bottom",
    
   },
   {
     id: "static-3",
-    desktopImg: "/assets/Banners/3.png",
-    mobileImg: "/assets/Banners/mobile3.png",
-   
+    desktopImg: "/assets/banner/3.png",
+    mobileImg: "/assets/banner/mobile3.png",
+    position: "bottom",
     
   },
   {
     id: "static-4",
-    desktopImg: "/assets/Banners/5.png",
-    mobileImg: "/assets/Banners/mobile4.png",
-   
+    desktopImg: "/assets/banner/5.png",
+    mobileImg: "/assets/banner/mobile4.png",
+    position: "bottom",
     
   },
   {
     id: "static-5",
-    desktopImg: "/assets/Banners/4.png",
-    mobileImg: "/assets/Banners/mobile5.png",
-    
+    desktopImg: "/assets/banner/4.png",
+    mobileImg: "/assets/banner/mobile5.png",
+    position: "center",
     
   },
 ];
