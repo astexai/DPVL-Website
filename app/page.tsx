@@ -32,28 +32,28 @@ const STATIC_SLIDES = [
     id: "static-2",
     desktopImg: "/assets/Banners/2.png",
     mobileImg: "/assets/Banners/mobile2.png",
-    position: "bottom",
+   
    
   },
   {
     id: "static-3",
     desktopImg: "/assets/Banners/3.png",
     mobileImg: "/assets/Banners/mobile3.png",
-    position: "bottom",
+   
     
   },
   {
     id: "static-4",
     desktopImg: "/assets/Banners/5.png",
     mobileImg: "/assets/Banners/mobile4.png",
-    position: "bottom",
+   
     
   },
   {
     id: "static-5",
     desktopImg: "/assets/Banners/4.png",
     mobileImg: "/assets/Banners/mobile5.png",
-    position: "center",
+    
     
   },
 ];
@@ -104,12 +104,6 @@ export default function Home() {
     <main className="min-h-screen font-sans bg-gray-50">
       <Navbar />
 
-      {/*
-        HERO SECTION WRAPPER
-        1. Fixed heights for stability.
-        2. h-[550px] on mobile (good height, not too small).
-        3. h-[80vh] on Desktop (Big but not full screen, allows footer peek).
-      */}
       <section className="relative w-full overflow-hidden h-[300px] md:h-[650px] lg:h-[80vh] xl:h-[85vh]">
 
         {allSlides.map((slide, index) => {
@@ -127,13 +121,7 @@ export default function Home() {
                 isActive ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             >
-              {/*
-                --- IMAGE DISPLAY LOGIC ---
-                Key Class: 'object-bottom'
-                This ensures the bottom of the image (players/ground) is NEVER cut off.
-                If the screen size is weird, it will cut the TOP (sky) instead.
-              */}
-
+              
               {/* Desktop Image (Hidden on Mobile) */}
               <div className="hidden md:block absolute inset-0 w-full h-full">
                 <Image
