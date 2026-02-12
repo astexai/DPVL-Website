@@ -30,7 +30,7 @@ const Philosophy = () => {
             </div>
 
             {/* Intro Text */}
-            <div className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl leading-relaxed font-medium mb-10">
+            <div className="max-w-3xl mx-auto space-y-6 text-lg md:text-xl leading-relaxed font-medium mb-10">
                 <p>
                     Delhi has always been a melting pot of talent, ambition, and spirit. Yet, despite the city’s
                     passion for sports, volleyball has remained on the sidelines.
