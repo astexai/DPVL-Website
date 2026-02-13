@@ -182,7 +182,7 @@ export default function Home() {
       <FooterGrad />
       <TeamsCarousel />
       <LatestNews />
-      <DelhiExcellence/>
+
       <PartnersSponsors />
       <FooterGrad />
       <Footer />

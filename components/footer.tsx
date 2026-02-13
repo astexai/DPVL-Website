@@ -92,14 +92,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-9.5">
+          <div className="md:col-span-4 flex flex-col items-center md:items-start gap-9">
             <div>
               <h3 className="text-xl font-medium mb-3 relative inline-block">
                 Contact Info
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
               </h3>
 
-              <div className="flex flex-col gap-2  text-white/90 text-sm md:text-base">
+              <div className="flex flex-col gap-2 text-white/90 text-sm md:text-base">
                 <a href="tel:+917799988500" className="hover:text-pink-200 transition-colors">
                   +91 77999 88500
                 </a>
@@ -107,7 +107,18 @@ export default function Footer() {
                   +91 98119 79075
                 </a>
               </div>
+              
+              <div className="mt-4">
+                <h4 className="text-md font-medium text-white mb-2">Landline Number
+                  
+                </h4>
+                
+                <a href="tel:01143051858" className="text-white/90 text-sm md:text-base hover:text-pink-200 transition-colors">
+                  011-43051858
+                </a>
+              </div>
             </div>
+            
             <div>
               <h3 className="text-xl font-medium mb-3 relative inline-block">
                 Address
@@ -120,6 +131,7 @@ export default function Footer() {
                 </span>
               </div>
             </div>
+            
             <div>
               <h3 className="text-xl font-medium mb-4 relative">
                 Email Address

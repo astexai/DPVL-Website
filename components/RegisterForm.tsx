@@ -566,7 +566,7 @@ const RegisterForm: React.FC = () => {
             {/* RIGHT - Image */}
             <div className="relative bg-gradient-to-br from-[#3b3bb7] to-[#D159A3] min-h-[400px] lg:min-h-full">
               <Image
-                src="/assets/bg/Register.webp"
+                src="/assets/bg/Register.jpg"
                 alt="DPVL"
                 fill
                 className="object-cover"

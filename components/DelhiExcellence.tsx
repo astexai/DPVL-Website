@@ -24,7 +24,7 @@ const DelhiVolleyball = () => {
          <div className="flex flex-row md:flex-row gap-3 md:gap-3 mb-2 items-center md:items-stretch">
   {/* 'DEHLI' - Mobile: text-6xl (safer for phones) | Laptop: text-8xl (preserved) */}
   <h1 className="font-norch text-6xl sm:text-7xl md:text-8xl uppercase leading-[0.8] tracking-wide text-center md:text-left">
-    DEHLI
+    DELHI
   </h1>
   
   {/* Tagline - Mobile: Bigger & Centered | Laptop: Matches Height (preserved) */}
@@ -56,8 +56,8 @@ const DelhiVolleyball = () => {
                 Thriving Ecosystem
               </h3>
               <p className="text-lg font-medium leading-relaxed opacity-90">
-                Delhi is emerging as the epicenter of India’s volleyball transformation, 
-                uniting professional ambition with raw street-level passion.
+                Delhi’s volleyball scene is booming with school championships, college tournaments, and professional training programs.
+
               </p>
             </div>
             <div className="flex flex-col gap-3">
