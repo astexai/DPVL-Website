@@ -14,11 +14,8 @@ const RegisterForm: React.FC = () => {
     state: '',
     district: '',
     aadhaar: null as File | null,
-    age: '',
-    gender: '',
-    position: '',
-    experience: '',
     terms: false,
+
   });
 
   // OTP related states
@@ -181,10 +178,6 @@ const RegisterForm: React.FC = () => {
       fd.append('phone', formData.phone);
       fd.append('state', formData.state);
       fd.append('district', formData.district);
-      fd.append('age', formData.age);
-      fd.append('gender', formData.gender);
-      fd.append('position', formData.position);
-      fd.append('experience', formData.experience);
       fd.append('terms', String(formData.terms));
       fd.append('aadhaar', formData.aadhaar);
 
@@ -210,10 +203,6 @@ const RegisterForm: React.FC = () => {
           state: '',
           district: '',
           aadhaar: null,
-          age: '',
-          gender: '',
-          position: '',
-          experience: '',
           terms: false,
         });
         setOtpSent(false);
@@ -357,7 +346,7 @@ const RegisterForm: React.FC = () => {
                           </svg>
                           Sending
                         </span>
-                      ) : otpVerified ? 'Verified' : 'Send OTP'}
+                      ) : otpVerified ? 'Verified' : 'Verify'}
                     </button>
                   </div>
                   

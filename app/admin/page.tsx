@@ -4,8 +4,8 @@ import Navbar from "@/components/navbar";
 import BannersAdmin from "@/components/admin/BannersAdmin";
 import PointsTableee from "@/components/admin/PointsTableAdmin";
 import UpdateWinners from "@/components/admin/WinnersGrid";
-import DetailsRegister from "@/components/admin/RegisterDetails";
 import CandidateDashboard from "@/components/admin/RegisterDetails";
+
 
 // Define types for Sidebar props
 interface SidebarProps {

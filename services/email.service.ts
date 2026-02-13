@@ -1,31 +1,27 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-const host = process.env.EMAIL_HOST;
-const port = Number(process.env.EMAIL_PORT || 587);
-const user = process.env.EMAIL_USER;
-const pass = process.env.EMAIL_PASS;
-
-if (!host || !user || !pass) {
-  console.warn("Email config missing: set EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS");
-}
-
-export const transporter = nodemailer.createTransport({
-  host,
-  port,
-  secure: port === 465,
-  auth: {
-    user,
-    pass,
-  },
-});
+const resend = new Resend(process.env.Resend_API);
 
 export async function sendOtpEmail(to: string, otp: string) {
-  const mail = {
-    from: process.env.EMAIL_FROM || user,
-    to,
-    subject: "Your verification code",
-    text: `Your verification code is ${otp}. It expires in ${process.env.OTP_EXPIRY || "10"} minutes.`,
-    html: `<p>Your verification code is <strong>${otp}</strong>. It expires in ${process.env.OTP_EXPIRY || "10"} minutes.</p>`,
-  };
-  return transporter.sendMail(mail);
+  const fromEmail = process.env.EMAIL_FROM!;
+  
+  try {
+    const { data, error } = await resend.emails.send({
+      from: fromEmail,
+      to,
+      subject: "Your verification code",
+      text: `Your verification code is ${otp}. It expires in ${process.env.OTP_EXPIRY || "30"} minutes.`,
+      html: `<p>Your verification code is <strong>${otp}</strong>. It expires in ${process.env.OTP_EXPIRY || "30"} minutes.</p>`,
+    });
+
+    if (error) {
+      console.error("Resend error:", error);
+      throw new Error(error.message);
+    }
+
+    return data;
+  } catch (err: any) {
+    console.error("Failed to send OTP email via Resend:", err);
+    throw err;
+  }
 }

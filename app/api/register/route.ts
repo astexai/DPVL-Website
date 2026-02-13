@@ -1,7 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 import { connectToDatabase } from "@/lib/db/mongodb";
-import { User } from "@/models/User.model";
+import { Candidate } from "@/models/Candidate.model";
 import jwt from "jsonwebtoken";
+
 import fs from "fs";
 import path from "path";
 
@@ -41,12 +42,11 @@ export async function POST(req: NextRequest) {
       phone: validateAndSanitizeString(form.get("phone")),
       state: validateAndSanitizeString(form.get("state")),
       district: validateAndSanitizeString(form.get("district")),
-      age: validateAndSanitizeString(form.get("age")),
-      gender: validateAndSanitizeString(form.get("gender")),
-      position: validateAndSanitizeString(form.get("position")),
-      experience: validateAndSanitizeString(form.get("experience")),
       emailVerified: true,
+      status: "pending",
     };
+
+
 
     // Aadhaar file handling (FormData File)
     const aadhaarFile = form.get("aadhaar") as File | null;
@@ -74,12 +74,12 @@ export async function POST(req: NextRequest) {
     payload.aadhaarPath = `/uploads/${filename}`;
 
     // Save user (unique email)
-    const existing = await User.findOne({ email });
+    const existing = await Candidate.findOne({ email });
     if (existing) {
       return NextResponse.json({ error: "Email already registered" }, { status: 409 });
     }
 
-    const user = new User(payload);
+    const user = new Candidate(payload);
     await user.save();
 
     return NextResponse.json({ ok: true, userId: user._id });

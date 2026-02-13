@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IUser extends Document {
+export interface ICandidate extends Document {
   firstName: string;
   lastName: string;
   fatherName: string;
@@ -9,15 +9,12 @@ export interface IUser extends Document {
   state?: string;
   district?: string;
   aadhaarPath?: string;
-  age?: string;
-  gender?: string;
-  position?: string;
-  experience?: string;
   emailVerified: boolean;
+  status: "pending" | "accepted" | "rejected";
   createdAt: Date;
 }
 
-const UserSchema = new Schema<IUser>({
+const CandidateSchema = new Schema<ICandidate>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   fatherName: { type: String, required: true },
@@ -26,12 +23,13 @@ const UserSchema = new Schema<IUser>({
   state: String,
   district: String,
   aadhaarPath: String,
-  age: String,
-  gender: String,
-  position: String,
-  experience: String,
   emailVerified: { type: Boolean, default: false },
+  status: { 
+    type: String, 
+    enum: ["pending", "accepted", "rejected"], 
+    default: "pending" 
+  },
   createdAt: { type: Date, default: () => new Date() },
 });
 
-export const User = (mongoose.models.User as mongoose.Model<IUser>) || mongoose.model<IUser>("User", UserSchema);
+export const Candidate = (mongoose.models.Candidate as mongoose.Model<ICandidate>) || mongoose.model<ICandidate>("Candidate", CandidateSchema);
