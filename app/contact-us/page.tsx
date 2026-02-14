@@ -10,7 +10,7 @@ export default function ContactUs()
         <Navbar/>
         <div>
             <Heroo
-        title="Contact us"
+        title="CONTACT US"
       
         />
         <ContactSection/>

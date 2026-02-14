@@ -84,7 +84,7 @@ export default function MissionFounder() {
         <div className="flex flex-col items-center md:items-start mb-8">
           <div className="flex items-center gap-2">
             <h2 className="text-5xl md:text-7xl font-norch uppercase tracking-wide text-white">
-              About Founder's
+              About The Founders
             </h2>
             
           </div>

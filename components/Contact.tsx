@@ -78,10 +78,17 @@ const ContactSection: React.FC = () => {
     <p className="text-white/60 text-sm uppercase tracking-widest mb-1">
       Contact Info
     </p>
-    <p className="text-white text-lg font-medium">
+    <p className="text-white text-md font-medium">
       +91 77999 88500
     </p>
-    <p className="text-white text-lg font-medium">
+    <p className="text-white text-md font-medium">
+      +91 98119 79075
+    </p>
+    
+    <p className="text-white text-md font-medium">
+      011-43051858
+    </p>
+    <p className="text-white text-md font-medium">
       info@delhiprovolleyball.com
     </p>
   </div>
@@ -91,8 +98,7 @@ const ContactSection: React.FC = () => {
       Address
     </p>
     <p className="text-white/90 text-lg leading-relaxed">
-      Delhi Pro Volleyball League Headquarters,<br />
-      New Delhi, India
+      358-D, Pocket J&K, Dilshad Garden, Delhi 110095
     </p>
   </div>
 </div>

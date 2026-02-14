@@ -35,7 +35,7 @@ const Philosophy = () => {
                     Delhi has always been a melting pot of talent, ambition, and spirit. Yet, despite the city’s
                     passion for sports, volleyball has remained on the sidelines.
                     <br />
-                    DPVL is here to change that narrative.
+                    DPVL is committed to transforming this narrative.
                 </p>
                 <p className="italic text-white/90">
                     We believe sports is not just recreation — it is culture, career, and community.

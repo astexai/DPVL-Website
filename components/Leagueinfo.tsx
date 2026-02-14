@@ -33,7 +33,7 @@ const LeagueInfoSection = () => {
             
             <div className="space-y-4 text-gray-900 font-medium text-base md:text-lg font-sans">
               <p>
-                Delhi Pro Volleyball League (DPVL) is Capital's first ever professional volleyball league created to build a strong platform for emerging and elite players.
+                Delhi Pro Volleyball League (DPVL) is Capital's first-ever professional volleyball league created to build a strong platform for emerging and elite players.
               </p>
               
               <p>

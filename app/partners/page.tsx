@@ -30,7 +30,7 @@ export default function FullPartners() {
     return (
         <div>
             <Navbar/>
-            <Heroo title="Partners & Sponsors"/>
+            <Heroo title="PARTNERS & SPONSORS"/>
             <section className="relative w-full py-16 bg-white overflow-hidden">
                   {/* Background */}
                   <div className="absolute inset-0 z-0">

@@ -36,6 +36,8 @@ export default function MatchSchedule() {
           stadium: m.stadium || 'Stadium Name',
           time: m.time || '00:00 - 00:00',
           winner: m.winner || '',
+          phase: m.phase || 'League Stage',
+          label: m.label || '',
         }));
         setMatches(normalized);
       } catch (err) {
@@ -45,6 +47,8 @@ export default function MatchSchedule() {
     load();
     return () => { mounted = false; };
   }, []);
+
+  const phases = ['League Stage', 'Playoffs', 'Grand Finale'];
 
   return (
     <section className="relative w-full py-10 md:py-12 px-4 md:px-6 bg-[#3b3bb7] min-h-screen">
@@ -59,117 +63,129 @@ export default function MatchSchedule() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto space-y-4">
-        <div className="flex flex-col items-center mb-6">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-12">
+        {phases.map((phase) => {
+          const phaseMatches = matches.filter(m => (m as any).phase === phase);
+          if (phaseMatches.length === 0 && phase !== 'League Stage') return null;
 
-<h2 className="text-2xl md:text-7xl font-norch tracking-wide uppercase text-white mb-1 text-center">
-
-Match Schedule
-
-</h2>
-
-<div className="w-20 md:w-32 h-0.5 bg-[#D159A3] mt-1" />
-
-</div>
-        {matches.map((match, index) => (
-          <div 
-            key={index} 
-            className="w-full bg-white rounded-xl shadow-lg p-3 md:py-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0"
-          >
-            
-            {/* LEFT SECTION: MATCH ID */}
-            <div className="flex items-center justify-center md:justify-start flex-shrink-0">
-              <span className=" text-xl md:text-xl  tracking-tighter">
-                {match.id}
-              </span>
-            </div>
-
-            {/* SEPARATOR 1 (Desktop) */}
-            <div className="hidden md:block h-12 w-1.5 bg-[#3b3bb7] rounded-full mx-8"></div>
-
-            {/* CENTER SECTION: TEAMS */}
-            <div className="flex-1 flex items-center justify-center gap-2 md:gap-6 w-full">
-              
-              {/* Team 1 Group */}
-              <div className="flex items-center gap-3 justify-end flex-1">
-                <div className="flex flex-col items-end">
-                  <span className="font-bold text-lg md:text-md uppercase text-gray-800 leading-tight mb-1">
-                    {match.t1}
-                  </span>
-                  {/* Winner Badge Logic */}
-                  {match.winner === match.t1 && (
-                    <span className="text-[10px] bg-green-500 text-white px-1 rounded uppercase font-bold">Winner</span>
-                  )}
-                </div>
-                {/* TBD Circle */}
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
-                   <span className="text-[10px] font-bold text-gray-500">TBD</span>
-                </div>
+          return (
+            <div key={phase} className="space-y-6">
+              <div className="flex flex-col items-center mb-6">
+                <h2 className="text-2xl md:text-7xl font-norch tracking-wide uppercase text-white mb-1 text-center">
+                  {phase}
+                </h2>
+                <div className="w-20 md:w-32 h-0.5 bg-[#D159A3] mt-1" />
               </div>
 
-              {/* VS Logo */}
-              <div className="flex-shrink-0 px-2">
-                 <Image
-                    src="/assets/bg/PurpleVs.png"
-                    width={40}
-                    height={40}
-                    alt="VS"
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                  />
-              </div>
+              <div className="space-y-4">
+                {phaseMatches.map((match, index) => (
+                  <div 
+                    key={index} 
+                    className="w-full bg-white rounded-xl shadow-lg p-3 md:py-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0"
+                  >
+                    
+                    {/* LEFT SECTION: MATCH ID & LABEL */}
+                    <div className="flex flex-col items-center md:items-start justify-center flex-shrink-0">
+                      <span className=" text-xl md:text-xl  tracking-tighter">
+                        {match.id}
+                      </span>
+                      {(match as any).label && (
+                        <span className="bg-[#D159A3] text-white px-2 py-0.5 rounded-md text-[10px] md:text-xs uppercase font-bold mt-1 tracking-wider whitespace-nowrap">
+                          {(match as any).label}
+                        </span>
+                      )}
+                    </div>
 
-              {/* Team 2 Group */}
-              <div className="flex items-center gap-3 justify-start flex-1">
-                 {/* TBD Circle */}
-                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
-                   <span className="text-[10px] font-bold text-gray-500">TBD</span>
-                </div>
-                <div className="flex flex-col items-start">
-                  <span className="font-bold text-lg md:text-lg uppercase text-gray-800 leading-tight mb-1">
-                    {match.t2}
-                  </span>
-                   {/* Winner Badge Logic */}
-                   {match.winner === match.t2 && (
-                    <span className="text-[10px] bg-green-500 text-white px-1 rounded uppercase font-bold">Winner</span>
-                  )}
-                </div>
-              </div>
-            </div>
+                    {/* SEPARATOR 1 (Desktop) */}
+                    <div className="hidden md:block h-12 w-1.5 bg-[#3b3bb7] rounded-full mx-8"></div>
 
-            {/* SEPARATOR 2 (Desktop) */}
-            <div className="hidden md:block h-12 w-1.5 bg-[#3b3bb7] rounded-full mx-6"></div>
+                    {/* CENTER SECTION: TEAMS */}
+                    <div className="flex-1 flex items-center justify-center gap-2 md:gap-6 w-full">
+                      
+                      {/* Team 1 Group */}
+                      <div className="flex items-center gap-3 justify-end flex-1">
+                        <div className="flex flex-col items-end">
+                          <span className="font-bold text-lg md:text-md uppercase text-gray-800 leading-tight mb-1">
+                            {match.t1}
+                          </span>
+                          {/* Winner Badge Logic */}
+                          {match.winner === match.t1 && (
+                            <span className="text-[10px] bg-green-500 text-white px-1 rounded uppercase font-bold">Winner</span>
+                          )}
+                        </div>
+                        {/* TBD Circle */}
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+                           <span className="text-[10px] font-bold text-gray-500">TBD</span>
+                        </div>
+                      </div>
 
-            {/* RIGHT SECTION: STADIUM & LOGO */}
-            <div className="flex items-center justify-center md:justify-between w-full md:w-auto gap-4 md:gap-8">
-  
-  {/* Stadium Info */}
-  <div className="flex flex-col text-center md:text-left min-w-[140px]">
-    <span className="font-bold text-base md:text-lg text-gray-900 leading-tight">
-      {match.stadium}
-    </span>
-    <span className="text-gray-500 text-sm font-medium">
-      (Match: {match.time})
-    </span>
-  </div>
+                      {/* VS Logo */}
+                      <div className="flex-shrink-0 px-2">
+                         <Image
+                            src="/assets/bg/PurpleVs.png"
+                            width={40}
+                            height={40}
+                            alt="VS"
+                            className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                          />
+                      </div>
 
-  {/* DPVL Logo */}
-  <div className="flex-shrink-0 hidden md:block">
-    <Image 
-      src="/assets/logos/Logo-final-1.png" 
-      alt="DPVL" 
-      width={80}
-      height={40}
-      className="object-contain h-10 w-auto"
-    />
-  </div>
+                      {/* Team 2 Group */}
+                      <div className="flex items-center gap-3 justify-start flex-1">
+                         {/* TBD Circle */}
+                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+                           <span className="text-[10px] font-bold text-gray-500">TBD</span>
+                        </div>
+                        <div className="flex flex-col items-start">
+                          <span className="font-bold text-lg md:text-lg uppercase text-gray-800 leading-tight mb-1">
+                            {match.t2}
+                          </span>
+                           {/* Winner Badge Logic */}
+                           {match.winner === match.t2 && (
+                            <span className="text-[10px] bg-green-500 text-white px-1 rounded uppercase font-bold">Winner</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
 
-</div>
+                    {/* SEPARATOR 2 (Desktop) */}
+                    <div className="hidden md:block h-12 w-1.5 bg-[#3b3bb7] rounded-full mx-6"></div>
 
-
+                    {/* RIGHT SECTION: STADIUM & LOGO */}
+                    <div className="flex items-center justify-center md:justify-between w-full md:w-auto gap-4 md:gap-8">
+          
+          {/* Stadium Info */}
+          <div className="flex flex-col text-center md:text-left min-w-[140px]">
+            <span className="font-bold text-base md:text-lg text-gray-900 leading-tight">
+              {match.stadium}
+            </span>
+            <span className="text-gray-500 text-sm font-medium">
+              (Match: {match.time})
+            </span>
           </div>
-        ))}
 
+          {/* DPVL Logo */}
+          <div className="flex-shrink-0 hidden md:block">
+            <Image 
+              src="/assets/logos/Logo-final-1.png" 
+              alt="DPVL" 
+              width={80}
+              height={40}
+              className="object-contain h-10 w-auto"
+            />
+          </div>
+
+        </div>
+
+
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
+
 }

@@ -19,23 +19,23 @@ type GalleryImage = {
 
 /* -------------------- Data -------------------- */
 const galleryImages: GalleryImage[] = [
-  { id: 1, category: 'Opening Ceremony', src: '/assets/bg/opening/image1.jpg' },
-  { id: 2, category: 'Opening Ceremony', src: '/assets/bg/opening/image2.jpg' },
-  { id: 3, category: 'Opening Ceremony', src: '/assets/bg/opening/image3.jpg' },
-  { id: 4, category: 'Opening Ceremony', src: '/assets/bg/opening/image4.jpg' },
-  { id: 5, category: 'Opening Ceremony', src: '/assets/bg/opening/image5.jpg' },
-  { id: 6, category: 'Opening Ceremony', src: '/assets/bg/opening/image6.jpg' },
-  { id: 7, category: 'Opening Ceremony', src: '/assets/bg/opening/image7.jpg' },
-  { id: 8, category: 'Opening Ceremony', src: '/assets/bg/opening/image8.jpg' },
-  { id: 9, category: 'Opening Ceremony', src: '/assets/bg/opening/image9.jpg' },
+  { id: 1, category: 'Announcement Event', src: '/assets/bg/opening/image1.jpg' },
+  { id: 2, category: 'Announcement Event', src: '/assets/bg/opening/image2.jpg' },
+  { id: 3, category: 'Announcement Event', src: '/assets/bg/opening/image3.jpg' },
+  { id: 4, category: 'Announcement Event', src: '/assets/bg/opening/image4.jpg' },
+  { id: 5, category: 'Announcement Event', src: '/assets/bg/opening/image5.jpg' },
+  { id: 6, category: 'Announcement Event', src: '/assets/bg/opening/image6.jpg' },
+  { id: 7, category: 'Announcement Event', src: '/assets/bg/opening/image7.jpg' },
+  { id: 8, category: 'Announcement Event', src: '/assets/bg/opening/image8.jpg' },
+  { id: 9, category: 'Announcement Event', src: '/assets/bg/opening/image9.jpg' },
 
-  { id: 11, category: 'Opening Ceremony', src: '/assets/bg/opening/image11.jpg' },
-  { id: 12, category: 'Opening Ceremony', src: '/assets/bg/opening/image12.jpg' },
+  { id: 11, category: 'Announcement Event', src: '/assets/bg/opening/image11.jpg' },
+  { id: 12, category: 'Announcement Event', src: '/assets/bg/opening/image12.jpg' },
   
 ]
 
 const categories: Category[] = [
-  'Opening Ceremony',
+  'Announcement Event',
   'Auction',
   'Trophy Launch',
   'Match Day',
@@ -50,7 +50,7 @@ const getEmptyStateText = (category: string) => ({
 /* -------------------- Component -------------------- */
 export default function Page() {
   const [activeFilter, setActiveFilter] =
-    useState<Category>('Opening Ceremony')
+    useState<Category>('Announcement Event')
 
   const filteredImages = galleryImages.filter(
     (img) => img.category === activeFilter

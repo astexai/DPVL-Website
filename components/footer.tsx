@@ -52,7 +52,7 @@ export default function Footer() {
                 className="object-contain"
               />
             </div>
-            <span className="text-md italic absolute top-40">
+            <span className="md:text-md text-sm italic absolute top-40">
               Delhi Pro Volleyball League (DPVL) is the Capital’s<br/> first professional volleyball league, dedicated to<br/> promoting talent and reviving grassroots volleyball.
 
             </span>
@@ -137,16 +137,32 @@ export default function Footer() {
                 Email Address
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
               </h3>
-              <a href="mailto:info@delhiprovolleyball.com" className="hover:text-pink-200 transition-colors">info@delhiprovolleyball.com</a>
+              <a 
+  href="mailto:info@delhiprovolleyball.com"
+  className="hover:text-pink-200 transition-colors"
+>
+  info@delhiprovolleyball.com
+</a>
+
+             
             </div>
           </div>
         </div>
 
         <div className="w-full h-0.5 bg-[#D35CA7] my-6" />
 
-        <div className="text-center text-xs md:text-sm font-light text-white/80">
-          Copyright 2026 Velvet Aces, All Right Reserved
+        <div className="flex flex-col items-center justify-center gap-2 text-xs md:text-sm font-light text-white/80">
+          <span className="text-[15px]">Copyright 2026 Velvet Aces, All Rights Reserved.</span>
+          <div className="flex gap-4 md:gap-4">
+            <Link href="/privacy-policy" className="hover:text-white hover:underline transition-all">
+              Privacy Policy
+            </Link>
+            <Link href="/refund-policy" className="hover:text-white hover:underline transition-all">
+              Refund and Cancellation Policy
+            </Link>
+          </div>
         </div>
+        
       </div>
     </footer>
   );

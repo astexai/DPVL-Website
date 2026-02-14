@@ -217,12 +217,12 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 py-8 px-3 md:px-4">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="flex flex-col items-center mb-12">
-          <h2 className="text-5xl md:text-7xl font-norch uppercase text-[#3B3BB7] mb-2 tracking-wide">
+          <h2 className="text-4xl md:text-7xl font-norch uppercase text-[#3B3BB7] mb-2 tracking-wide text-center">
             Player Registration
           </h2>
           <div className="md:w-90 w-20 h-1 bg-[#D159A3]" />
@@ -233,7 +233,7 @@ const RegisterForm: React.FC = () => {
           <div className="grid lg:grid-cols-2">
 
             {/* LEFT - Form */}
-            <div className="p-6 md:p-10">
+            <div className="p-4 md:p-10">
               <h2 className="text-3xl font-bold text-[#3B3BB7] mb-6">
                 Registration Form
               </h2>
@@ -252,7 +252,7 @@ const RegisterForm: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
 
                 {/* First & Last Name */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1">
                       First Name *
@@ -332,7 +332,7 @@ const RegisterForm: React.FC = () => {
                       type="button"
                       onClick={sendOtp}
                       disabled={!formData.email || otpVerified || isSendingOtp}
-                      className={`px-4 py-2.5 rounded-lg font-semibold transition-colors min-w-[100px] ${
+                      className={`px-3 md:px-4 py-2.5 rounded-lg font-semibold transition-colors min-w-[80px] md:min-w-[100px] text-sm md:text-base ${
                         !formData.email || otpVerified
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           : 'bg-[#3b3bb7] text-white hover:bg-[#2a2a8a] active:scale-95'
@@ -360,7 +360,7 @@ const RegisterForm: React.FC = () => {
 
                 {/* OTP Input Section */}
                 {otpSent && !otpVerified && (
-                  <div className="p-4 border-2 border-[#3b3bb7]/20 rounded-lg bg-blue-50/50">
+                  <div className="p-3 md:p-4 border-2 border-[#3b3bb7]/20 rounded-lg bg-blue-50/50">
                     <div className="flex items-center justify-between mb-3">
                       <label className="block text-sm font-semibold text-gray-700">
                         Enter Verification Code *
@@ -393,7 +393,7 @@ const RegisterForm: React.FC = () => {
                         type="button"
                         onClick={verifyOtp}
                         disabled={!otp || otp.length !== 6 || isVerifyingOtp}
-                        className={`px-4 py-2.5 rounded-lg font-semibold transition-colors min-w-[100px] ${
+                        className={`px-3 md:px-4 py-2.5 rounded-lg font-semibold transition-colors min-w-[80px] md:min-w-[100px] text-sm md:text-base ${
                           !otp || otp.length !== 6
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                             : 'bg-green-600 text-white hover:bg-green-700 active:scale-95'
@@ -485,7 +485,7 @@ const RegisterForm: React.FC = () => {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Attach Aadhaar Card *
                   </label>
-                  <div className="border-2 border-dashed border-black rounded-lg p-6 text-center hover:bg-gray-50 transition-colors">
+                  <div className="border-2 border-dashed border-black rounded-lg p-4 md:p-6 text-center hover:bg-gray-50 transition-colors">
                     <input
                       type="file"
                       accept="image/*,application/pdf"
@@ -553,7 +553,7 @@ const RegisterForm: React.FC = () => {
             </div>
 
             {/* RIGHT - Image */}
-            <div className="relative bg-gradient-to-br from-[#3b3bb7] to-[#D159A3] min-h-[400px] lg:min-h-full">
+            <div className="relative bg-gradient-to-br from-[#3b3bb7] to-[#D159A3] min-h-[400px] lg:min-h-full hidden md:block">
               <Image
                 src="/assets/bg/Register.jpg"
                 alt="DPVL"
