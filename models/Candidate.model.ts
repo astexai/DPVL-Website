@@ -9,6 +9,8 @@ export interface ICandidate extends Document {
   state?: string;
   district?: string;
   aadhaarPath?: string;
+  aadhaarData?: Buffer;
+  aadhaarContentType?: string;
   emailVerified: boolean;
   status: "pending" | "accepted" | "rejected";
   createdAt: Date;
@@ -23,13 +25,22 @@ const CandidateSchema = new Schema<ICandidate>({
   state: String,
   district: String,
   aadhaarPath: String,
+  aadhaarData: Buffer,
+  aadhaarContentType: String,
   emailVerified: { type: Boolean, default: false },
-  status: { 
-    type: String, 
-    enum: ["pending", "accepted", "rejected"], 
-    default: "pending" 
+  status: {
+    type: String,
+    enum: ["pending", "accepted", "rejected"],
+    default: "pending",
   },
   createdAt: { type: Date, default: () => new Date() },
 });
 
-export const Candidate = (mongoose.models.Candidate as mongoose.Model<ICandidate>) || mongoose.model<ICandidate>("Candidate", CandidateSchema);
+// Ensure we pick up schema changes in development by deleting the cached model
+if (process.env.NODE_ENV !== "production") {
+  delete mongoose.models.Candidate;
+}
+
+export const Candidate =
+  (mongoose.models.Candidate as mongoose.Model<ICandidate>) ||
+  mongoose.model<ICandidate>("Candidate", CandidateSchema);

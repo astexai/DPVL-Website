@@ -157,7 +157,7 @@ export default function UpdateWinners() {
           {matches.map((match) => (
             <div key={match._id ?? match.matchNumber} className="bg-white rounded-lg shadow p-4">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xs font-bold text-purple-600 uppercase tracking-wide">
+                <h3 className="text-xs font-bold text-[#3B3BB7] uppercase tracking-wide">
                   Match #{match.matchNumber}
                 </h3>
                 <span className={`text-xs px-2 py-1 rounded ${
@@ -205,7 +205,7 @@ export default function UpdateWinners() {
                           onClick={() => handleWinnerSelect(match.team1)}
                           className={`px-3 py-1.5 text-xs rounded-md transition-colors ${
                             editData.winner === match.team1
-                              ? 'bg-purple-600 text-white'
+                              ? 'bg-[#3B3BB7] text-white'
                               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                           }`}
                         >
@@ -216,7 +216,7 @@ export default function UpdateWinners() {
                           onClick={() => handleWinnerSelect(match.team2)}
                           className={`px-3 py-1.5 text-xs rounded-md transition-colors ${
                             editData.winner === match.team2
-                              ? 'bg-purple-600 text-white'
+                              ? 'bg-[#3B3BB7] text-white'
                               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                           }`}
                         >
@@ -234,7 +234,7 @@ export default function UpdateWinners() {
                       </button>
                       <button
                         onClick={() => handleSaveWinner(match.matchNumber)}
-                        className="px-3 py-1.5 text-xs text-white bg-purple-600 rounded hover:bg-purple-700 transition-colors"
+                        className="px-3 py-1.5 text-xs text-white bg-[#3B3BB7] rounded hover:bg-purple-700 transition-colors"
                         disabled={loading}
                       >
                         {loading ? "Saving..." : "Save"}
@@ -253,7 +253,7 @@ export default function UpdateWinners() {
                         </div>
                         <button
                           onClick={() => handleEditClick(match)}
-                          className="ml-auto text-gray-400 hover:text-purple-600 transition-colors p-1"
+                          className="ml-auto text-gray-400 hover:text-[#3B3BB7] transition-colors p-1"
                           title="Edit winner"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -266,7 +266,7 @@ export default function UpdateWinners() {
                         <div className="text-xs text-gray-500 mb-2">No winner declared</div>
                         <button
                           onClick={() => handleEditClick(match)}
-                          className="px-3 py-1.5 text-xs text-white bg-purple-600 rounded hover:bg-purple-700 transition-colors"
+                          className="px-3 py-1.5 text-xs text-white bg-[#3B3BB7] rounded hover:bg-purple-700 transition-colors"
                         >
                           Declare Winner
                         </button>

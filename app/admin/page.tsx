@@ -6,7 +6,6 @@ import PointsTableee from "@/components/admin/PointsTableAdmin";
 import UpdateWinners from "@/components/admin/WinnersGrid";
 import CandidateDashboard from "@/components/admin/RegisterDetails";
 
-
 // Define types for Sidebar props
 interface SidebarProps {
   currentPage: string;
@@ -22,7 +21,7 @@ interface MenuItem {
 
 const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   const menuItems: MenuItem[] = [
     { id: "banners", label: "Manage Banners" },
     { id: "points", label: "Points Table" },
@@ -32,44 +31,48 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
 
   return (
     <>
-      {/* Mobile Hamburger Menu Button (fixed position) */}
-      <div className="lg:hidden flex top-4 left-4 pt-5">
+      {/* Mobile Hamburger Menu Button (fixed position for accessibility) */}
+      <div className="lg:hidden fixed top-24 left-4 z-50">
         <button
           onClick={() => setIsMobileMenuOpen(true)}
-          className="w-12 h-12 text-black rounded-lg flex items-center justify-center shadow-lg hover:bg-purple-700 transition-colors"
+          className="w-10 h-10 bg-white border border-gray-200 text-[#3B3BB7] rounded-lg flex items-center justify-center shadow-lg hover:bg-gray-50 transition-colors"
           aria-label="Open menu"
         >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M4 6h16M4 12h16M4 18h16" 
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
         </button>
       </div>
 
       {/* Mobile Sidebar Overlay */}
-      <div className={`lg:hidden fixed inset-0 z-50 transition-all duration-300 ${
-        isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-      }`}>
+      <div
+        className={`lg:hidden fixed inset-0 z-50 transition-all duration-300 ${
+          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
         {/* Dark Overlay */}
-        <div 
+        <div
           className="absolute inset-0 bg-black/50"
           onClick={() => setIsMobileMenuOpen(false)}
         />
-        
+
         {/* Mobile Sidebar */}
-        <div className={`absolute top-0 left-0 h-full w-72 bg-white shadow-xl transform transition-transform duration-300 ${
-          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}>
+        <div
+          className={`absolute top-0 left-0 h-full w-72 bg-white shadow-xl transform transition-transform duration-300 ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
           {/* Mobile Sidebar Header */}
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center justify-between">
@@ -79,18 +82,18 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
                 className="w-10 h-10 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg flex items-center justify-center transition-colors"
                 aria-label="Close menu"
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-6 w-6" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M6 18L18 6M6 6l12 12" 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               </button>
@@ -109,7 +112,7 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
                 }}
                 className={`w-full text-left px-4 py-3 rounded-lg mb-2 transition-colors flex items-center ${
                   currentPage === item.id
-                    ? "bg-purple-600 text-white"
+                    ? "bg-[#3B3BB7] text-white"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
@@ -117,7 +120,7 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
               </button>
             ))}
           </div>
-          
+
           {/* Mobile Logout Button */}
           <div className="p-4 border-t border-gray-200">
             <button
@@ -127,21 +130,23 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
               }}
               className="w-full px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors flex items-center justify-center group border border-gray-300 hover:border-red-300"
             >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-5 w-5 mr-2 text-gray-500 group-hover:text-red-500" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-2 text-gray-500 group-hover:text-red-500"
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                 />
               </svg>
-              <span className="group-hover:text-red-600 font-medium">Logout</span>
+              <span className="group-hover:text-red-600 font-medium">
+                Logout
+              </span>
             </button>
           </div>
         </div>
@@ -156,7 +161,7 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
               onClick={() => onNavigate(item.id)}
               className={`w-full text-left px-4 py-3 rounded-lg mb-2 transition-colors flex items-center ${
                 currentPage === item.id
-                  ? "bg-purple-600 text-white"
+                  ? "bg-[#3B3BB7] text-white"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
@@ -164,25 +169,25 @@ const Sidebar = ({ currentPage, onNavigate, onLogout }: SidebarProps) => {
             </button>
           ))}
         </div>
-        
+
         {/* Logout button at the bottom */}
         <div className="p-6 border-t border-gray-200">
           <button
             onClick={onLogout}
             className="w-full px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors flex items-center justify-center group"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-5 w-5 mr-2 text-gray-500 group-hover:text-red-500" 
-              fill="none" 
-              viewBox="0 0 24 24" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 mr-2 text-gray-500 group-hover:text-red-500"
+              fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
               />
             </svg>
             <span className="group-hover:text-red-600">Logout</span>
@@ -211,10 +216,10 @@ const AdminLogin = ({ onLogin }: AdminLoginProps) => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
@@ -223,19 +228,22 @@ const AdminLogin = ({ onLogin }: AdminLoginProps) => {
 
       if (response.ok) {
         // Store token in localStorage
-        localStorage.setItem('adminToken', data.token);
-        localStorage.setItem('adminUser', JSON.stringify({
-          id: data.id,
-          username: data.username,
-          role: data.role,
-        }));
-        
+        localStorage.setItem("adminToken", data.token);
+        localStorage.setItem(
+          "adminUser",
+          JSON.stringify({
+            id: data.id,
+            username: data.username,
+            role: data.role,
+          }),
+        );
+
         onLogin();
       } else {
-        setError(data.error || 'Login failed');
+        setError(data.error || "Login failed");
       }
     } catch (err) {
-      setError('Network error. Please try again.');
+      setError("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -264,7 +272,7 @@ const AdminLogin = ({ onLogin }: AdminLoginProps) => {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B3BB7] focus:border-transparent"
                   placeholder="Enter username"
                   required
                   disabled={loading}
@@ -287,9 +295,9 @@ const AdminLogin = ({ onLogin }: AdminLoginProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#3B3BB7] text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Logging in...' : 'Login'}
+                {loading ? "Logging in..." : "Login"}
               </button>
             </form>
           </div>
@@ -310,30 +318,36 @@ const App = () => {
   }, []);
 
   const checkAuth = async () => {
-    const token = localStorage.getItem('adminToken');
-    
+    const token = localStorage.getItem("adminToken");
+
     if (!token) {
       setLoading(false);
       return;
     }
 
     try {
-      const response = await fetch('/api/auth/verify', {
+      const response = await fetch("/api/auth/verify", {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (response.ok) {
         setIsLoggedIn(true);
-        setCurrentRoute("banners");
+        // Restore saved route if it exists
+        const savedRoute = localStorage.getItem("adminActiveRoute");
+        if (savedRoute && savedRoute !== "login") {
+          setCurrentRoute(savedRoute);
+        } else {
+          setCurrentRoute("banners");
+        }
       } else {
         // Token invalid, clear storage
-        localStorage.removeItem('adminToken');
-        localStorage.removeItem('adminUser');
+        localStorage.removeItem("adminToken");
+        localStorage.removeItem("adminUser");
       }
     } catch (error) {
-      console.error('Auth check failed:', error);
+      console.error("Auth check failed:", error);
     } finally {
       setLoading(false);
     }
@@ -341,18 +355,24 @@ const App = () => {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    setCurrentRoute("banners");
+    const savedRoute = localStorage.getItem("adminActiveRoute");
+    if (savedRoute && savedRoute !== "login") {
+      setCurrentRoute(savedRoute);
+    } else {
+      setCurrentRoute("banners");
+    }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUser');
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminUser");
     setIsLoggedIn(false);
     setCurrentRoute("login");
   };
 
   const handleNavigate = (page: string) => {
     setCurrentRoute(page);
+    localStorage.setItem("adminActiveRoute", page);
   };
 
   if (loading) {
@@ -373,16 +393,18 @@ const App = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="flex">
-        <Sidebar 
-          currentPage={currentRoute} 
-          onNavigate={handleNavigate} 
-          onLogout={handleLogout} 
+        <Sidebar
+          currentPage={currentRoute}
+          onNavigate={handleNavigate}
+          onLogout={handleLogout}
         />
-        <div className="flex-1 lg:ml-64">
-          {currentRoute === "banners" && <BannersAdmin />}
-          {currentRoute === "points" && <PointsTableee />}
-          {currentRoute === "winners" && <UpdateWinners />}
-          {currentRoute === "details" && <CandidateDashboard />}
+        <div className="flex-1 lg:ml-64 w-full overflow-x-hidden">
+          <div className="p-4 md:p-8 pt-20 lg:pt-8 w-full">
+            {currentRoute === "banners" && <BannersAdmin />}
+            {currentRoute === "points" && <PointsTableee />}
+            {currentRoute === "winners" && <UpdateWinners />}
+            {currentRoute === "details" && <CandidateDashboard />}
+          </div>
         </div>
       </div>
     </div>
