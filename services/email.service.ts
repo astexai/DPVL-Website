@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.Resend_API);
+const resend = new Resend(process.env.RESEND_API);
 
 export async function sendOtpEmail(to: string, otp: string) {
   const fromEmail = process.env.EMAIL_FROM!;

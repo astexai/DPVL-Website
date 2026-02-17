@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.Mongodb_otp;
+const MONGODB_URI = process.env.MONGODB_OTP;
 
 if (!MONGODB_URI) {
   throw new Error("MONGODB_URI is not set");

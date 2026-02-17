@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
-const resend = new Resend(process.env.Resend_API);
+const resend = new Resend(process.env.RESEND_API);
 
 // Middleware-like helper for admin auth
 async function isAdmin(req: NextRequest) {
