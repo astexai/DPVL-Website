@@ -138,10 +138,10 @@ export default function Footer() {
                 <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white/40"></span>
               </h3>
               <a 
-  href="mailto:info@delhiprovolleyball.com"
+  href="mailto:founder@delhiprovolleyballleague.com"
   className="hover:text-pink-200 transition-colors"
 >
-  info@delhiprovolleyball.com
+  founder@delhiprovolleyballleague.com
 </a>
 
              

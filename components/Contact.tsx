@@ -89,7 +89,7 @@ const ContactSection: React.FC = () => {
       011-43051858
     </p>
     <p className="text-white text-md font-medium">
-      info@delhiprovolleyball.com
+     founder@delhiprovolleyballleague.com
     </p>
   </div>
 
