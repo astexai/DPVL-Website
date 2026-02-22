@@ -26,7 +26,10 @@ export async function GET(req: NextRequest) {
 
   try {
     await connectToDatabase();
-    const users = await Candidate.find({}, { aadhaarData: 0 }).sort({
+    const users = await Candidate.find(
+      { paymentStatus: "success" },
+      { aadhaarData: 0 },
+    ).sort({
       createdAt: -1,
     });
     return NextResponse.json(users);

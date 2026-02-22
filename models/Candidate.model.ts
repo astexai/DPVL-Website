@@ -13,6 +13,9 @@ export interface ICandidate extends Document {
   aadhaarContentType?: string;
   emailVerified: boolean;
   status: "pending" | "accepted" | "rejected";
+  paymentOrderId?: string;
+  paymentSessionId?: string;
+  paymentStatus: "pending" | "success" | "failed";
   createdAt: Date;
 }
 
@@ -31,6 +34,13 @@ const CandidateSchema = new Schema<ICandidate>({
   status: {
     type: String,
     enum: ["pending", "accepted", "rejected"],
+    default: "pending",
+  },
+  paymentOrderId: String,
+  paymentSessionId: String,
+  paymentStatus: {
+    type: String,
+    enum: ["pending", "success", "failed"],
     default: "pending",
   },
   createdAt: { type: Date, default: () => new Date() },

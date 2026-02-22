@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
-const resend = new Resend(process.env.RESEND_API);
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 // Middleware-like helper for admin auth
 async function isAdmin(req: NextRequest) {
@@ -28,22 +35,23 @@ export async function POST(req: NextRequest) {
     const { emails, subject, content } = body;
 
     if (!emails || !Array.isArray(emails) || emails.length === 0 || !content) {
-      return NextResponse.json({ error: "Missing emails or content" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing emails or content" },
+        { status: 400 },
+      );
     }
 
-    const fromEmail = process.env.EMAIL_FROM!;
-
-    // Resend batch sending
+    // Nodemailer batch sending
     const results = await Promise.all(
       emails.map((to: string) =>
-        resend.emails.send({
-          from: fromEmail,
+        transporter.sendMail({
+          from: process.env.EMAIL_USER,
           to,
           subject: subject || "Participation Update",
           text: content,
           html: `<p>${content.replace(/\n/g, "<br>")}</p>`,
-        })
-      )
+        }),
+      ),
     );
 
     return NextResponse.json({ ok: true, results });

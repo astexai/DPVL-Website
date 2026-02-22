@@ -1,5 +1,5 @@
 import { OTP } from "@/models/OTP.model";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { sendOtpEmail } from "./email.service";
 import { connectToDatabase } from "@/lib/db/mongodb";
 

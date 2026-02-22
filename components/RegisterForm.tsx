@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+// @ts-ignore
+import { load } from "@cashfreepayments/cashfree-js";
 
 const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +30,10 @@ const RegisterForm: React.FC = () => {
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
   const [otpToken, setOtpToken] = useState<string | null>(null); // JWT from verify
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
+  const [paymentError, setPaymentError] = useState("");
+  const [persistedOrderId, setPersistedOrderId] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -36,7 +42,11 @@ const RegisterForm: React.FC = () => {
     setFormData((prev) => ({
       ...prev,
       [name]:
-        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+        type === "checkbox"
+          ? (e.target as HTMLInputElement).checked
+          : name === "phone"
+            ? value.replace(/\D/g, "").slice(0, 10)
+            : value,
     }));
 
     // Reset OTP verification if email changes
@@ -168,55 +178,124 @@ const RegisterForm: React.FC = () => {
     }
 
     setFormSubmitMessage("");
+    setPaymentError("");
+
     try {
-      const fd = new FormData();
-      fd.append("token", otpToken);
-      fd.append("email", formData.email.trim().toLowerCase());
-      fd.append("firstName", formData.firstName);
-      fd.append("lastName", formData.lastName);
-      fd.append("fatherName", formData.fatherName);
-      fd.append("phone", formData.phone);
-      fd.append("state", formData.state);
-      fd.append("district", formData.district);
-      fd.append("terms", String(formData.terms));
-      fd.append("aadhaar", formData.aadhaar);
+      if (!isPaid) {
+        setFormSubmitMessage("Initializing payment...");
+        setIsProcessingPayment(true);
 
-      const res = await fetch("/api/register", {
-        method: "POST",
-        body: fd, // don't set Content-Type — browser will set multipart boundary
-      });
+        // 1. Create order first (un-persisted)
+        const orderRes = await fetch("/api/payment/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email.trim().toLowerCase(),
+            phone: formData.phone,
+          }),
+        });
+        const orderData = await orderRes.json();
 
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data?.error || "Registration failed");
+        if (!orderRes.ok) {
+          throw new Error(orderData?.error || "Failed to initialize payment");
+        }
+
+        // 2. Load Cashfree SDK
+        const cashfree = await load({
+          mode:
+            process.env.NEXT_PUBLIC_CASHFREE_ENV === "PRODUCTION"
+              ? "production"
+              : "sandbox",
+        });
+
+        // 3. Trigger checkout modal
+        let checkoutOptions = {
+          paymentSessionId: orderData.payment_session_id,
+          redirectTarget: "_modal",
+        };
+
+        cashfree?.checkout(checkoutOptions).then(async (result: any) => {
+          if (result.error) {
+            setPaymentError("Payment failed. Please try again.");
+            setIsProcessingPayment(false);
+          }
+          if (result.redirect) {
+            console.log("Redirection handled by cashfree");
+          }
+          if (result.paymentDetails) {
+            setIsPaid(true);
+            setPersistedOrderId(orderData.order_id);
+            setFormSubmitMessage(
+              "Payment Successful! You can now complete your registration.",
+            );
+            setIsProcessingPayment(false);
+          }
+        });
+      } else {
+        // Final Registration Step
+        setIsProcessingPayment(true);
+        setFormSubmitMessage("Completing registration...");
+
+        const fd = new FormData();
+        fd.append("token", otpToken);
+        fd.append("email", formData.email.trim().toLowerCase());
+        fd.append("firstName", formData.firstName);
+        fd.append("lastName", formData.lastName);
+        fd.append("fatherName", formData.fatherName);
+        fd.append("phone", formData.phone);
+        fd.append("state", formData.state);
+        fd.append("district", formData.district);
+        fd.append("terms", String(formData.terms));
+        fd.append("aadhaar", formData.aadhaar!);
+        fd.append("orderId", persistedOrderId);
+
+        const res = await fetch("/api/register", {
+          method: "POST",
+          body: fd,
+        });
+
+        const data = await res.json();
+        setIsProcessingPayment(false);
+
+        if (res.ok && data.ok) {
+          setShowSuccessModal(true);
+          resetForm();
+        } else {
+          setFormSubmitMessage(
+            data.error || "Registration failed. Please contact support.",
+          );
+        }
       }
-
-      setFormSubmitMessage("Registration submitted successfully!");
-      setShowSuccessModal(true);
-
-      // reset form after success
-      setFormData({
-        firstName: "",
-        lastName: "",
-        fatherName: "",
-        email: "",
-        phone: "",
-        state: "",
-        district: "",
-        aadhaar: null,
-        terms: false,
-      });
-      setOtpSent(false);
-      setOtp("");
-      setOtpVerified(false);
-      setOtpToken(null);
-      // Let the success message stay for a while or until modal closed
-      setTimeout(() => setFormSubmitMessage(""), 5000);
     } catch (err: any) {
+      setIsProcessingPayment(false);
       setFormSubmitMessage(
         err?.message || "Registration failed. Please try again.",
       );
     }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      fatherName: "",
+      email: "",
+      phone: "",
+      state: "",
+      district: "",
+      aadhaar: null,
+      terms: false,
+    });
+    setOtpSent(false);
+    setOtp("");
+    setOtpVerified(false);
+    setOtpToken(null);
+    setIsPaid(false);
+    setPaymentError("");
+    setPersistedOrderId("");
+    setTimeout(() => setFormSubmitMessage(""), 5000);
   };
 
   return (
@@ -481,6 +560,8 @@ const RegisterForm: React.FC = () => {
                     onChange={handleChange}
                     required
                     placeholder="Enter mobile number"
+                    maxLength={10}
+                    pattern="[0-9]{10}"
                     className="w-full px-4 py-2.5 border-2 placeholder:text-black/40 border-black rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                   />
                 </div>
@@ -587,30 +668,53 @@ const RegisterForm: React.FC = () => {
 
                 {/* Registration Fee Display */}
                 <div className="pt-2">
-                  <div className="flex items-center justify-between p-3 bg-indigo-50 rounded-lg border border-indigo-100">
-                    <span className="text-sm font-semibold text-gray-700 font-roboto tracking-wider">
-                      REGISTRATION FEE :
-                    </span>
-                    <span className="text-lg font-bold text-[#3b3bb7]">
-                      ₹299
-                    </span>
-                  </div>
+                  {!isPaid ? (
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between p-3 bg-indigo-50 rounded-lg border border-indigo-100">
+                        <span className="text-sm font-semibold text-gray-700 font-roboto tracking-wider">
+                          REGISTRATION FEE :
+                        </span>
+                        <span className="text-lg font-bold text-[#3b3bb7]">
+                          ₹499
+                        </span>
+                      </div>
+                      {paymentError && (
+                        <p className="text-sm text-red-600 font-medium text-center">
+                          {paymentError}
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center p-3 bg-white rounded-lg border-2 border-green-500">
+                      <span className="text-base font-bold text-green-600">
+                        Payment Successful
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Submit Button with Status */}
                 <div className="pt-4">
                   <button
                     type="submit"
-                    disabled={!otpVerified || !formData.terms}
+                    disabled={
+                      !otpVerified || !formData.terms || isProcessingPayment
+                    }
                     className={`w-full py-3.5 rounded-lg font-bold transition-all duration-200 ${
-                      otpVerified && formData.terms
+                      otpVerified && formData.terms && !isProcessingPayment
                         ? "bg-[#3b3bb7] text-white hover:bg-[#2a2a8a] active:scale-[0.99] shadow-md hover:shadow-lg"
                         : "bg-gray-200 text-gray-500 cursor-not-allowed"
                     }`}
                   >
-                    {otpVerified
-                      ? "Complete Registration"
-                      : "Verify Email to Continue"}
+                    {isProcessingPayment
+                      ? isPaid
+                        ? "Completing Registration..."
+                        : "Processing Payment..."
+                      : isPaid
+                        ? "Complete Registration"
+                        : otpVerified
+                          ? "Complete Registration & Pay ₹499"
+                          : "Verify Email to Continue"}
                   </button>
 
                   {(!otpVerified || !formData.terms) && (
@@ -657,10 +761,12 @@ const RegisterForm: React.FC = () => {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">
-              Registration successful!
+              You have successfully registered for DPVL.
             </h3>
             <p className="text-gray-600 mb-8">
-              Our team will contact you shortly.
+              Thank you for registering for the Delhi Pro Volleyball League
+              (DPVL). Your registration has been successfully submitted and is
+              currently under review by our team.
             </p>
             <button
               onClick={() => setShowSuccessModal(false)}
