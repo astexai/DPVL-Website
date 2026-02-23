@@ -90,9 +90,9 @@ const ContactSection: React.FC = () => {
                       +91 98119 79075
                     </p> */}
 
-                    <p className="text-white text-md font-medium">
+                    {/* <p className="text-white text-md font-medium">
                       011-43051858
-                    </p>
+                    </p> */}
                     <p className="text-white text-md font-medium">
                       founder@delhiprovolleyballleague.com
                     </p>
