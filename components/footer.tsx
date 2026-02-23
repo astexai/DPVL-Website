@@ -110,12 +110,12 @@ export default function Footer() {
                 </a>
               </div> */}
               
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <h4 className="text-md font-medium text-white mb-2">Landline Number</h4>
                 <a href="tel:01143051858" className="text-white/90 text-sm md:text-base hover:text-pink-200 transition-colors">
                   011-43051858
                 </a>
-              </div>
+              </div> */}
             </div>
             
             <div>
