@@ -6,6 +6,48 @@ import Link from "next/link";
 // @ts-ignore
 import { load } from "@cashfreepayments/cashfree-js";
 
+const INDIAN_REGIONS: readonly string[] = [
+  // States
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+
+  // Union Territories
+  "Andaman and Nicobar Islands",
+  "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi",
+  "Jammu and Kashmir",
+  "Ladakh",
+  "Lakshadweep",
+  "Puducherry",
+] as const;
+
 const RegisterForm: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -577,18 +619,24 @@ const RegisterForm: React.FC = () => {
                     onChange={handleChange}
                     required
                     className={`
-                      w-full px-4 py-2.5 border-2 border-black rounded-lg
-                      focus:border-[#3b3bb7] focus:outline-none 
-                      ${formData.state === "" ? "text-black/40" : "text-black"}
-                    `}
+    w-full px-4 py-2.5 border-2 border-black rounded-lg
+    focus:border-[#3b3bb7] focus:outline-none 
+    ${formData.state === "" ? "text-black/40" : "text-black"}
+  `}
                   >
                     <option value="" disabled hidden>
                       Choose your state
                     </option>
-                    <option value="Andhra Pradesh" className="text-black">
-                      Andhra Pradesh
-                    </option>
-                    {/* ... other states ... */}
+
+                    {INDIAN_REGIONS.map((region) => (
+                      <option
+                        key={region}
+                        value={region}
+                        className="text-black"
+                      >
+                        {region}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
