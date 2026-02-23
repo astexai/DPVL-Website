@@ -270,9 +270,46 @@ const RegisterForm: React.FC = () => {
             setIsPaid(true);
             setPersistedOrderId(orderData.order_id);
             setFormSubmitMessage(
-              "Payment Successful! You can now complete your registration.",
+              "Payment Successful! Completing registration...",
             );
-            setIsProcessingPayment(false);
+
+            // Auto-submit the form
+            try {
+              const fd = new FormData();
+              fd.append("token", otpToken);
+              fd.append("email", formData.email.trim().toLowerCase());
+              fd.append("firstName", formData.firstName);
+              fd.append("lastName", formData.lastName);
+              fd.append("fatherName", formData.fatherName);
+              fd.append("phone", formData.phone);
+              fd.append("state", formData.state);
+              fd.append("district", formData.district);
+              fd.append("terms", String(formData.terms));
+              fd.append("aadhaar", formData.aadhaar!);
+              fd.append("orderId", orderData.order_id);
+
+              const res = await fetch("/api/register", {
+                method: "POST",
+                body: fd,
+              });
+
+              const data = await res.json();
+              setIsProcessingPayment(false);
+
+              if (res.ok && data.ok) {
+                setShowSuccessModal(true);
+                resetForm();
+              } else {
+                setFormSubmitMessage(
+                  data.error || "Registration failed. Please contact support.",
+                );
+              }
+            } catch (err: any) {
+              setIsProcessingPayment(false);
+              setFormSubmitMessage(
+                err?.message || "Registration failed. Please try again.",
+              );
+            }
           }
         });
       } else {
