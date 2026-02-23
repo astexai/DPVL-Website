@@ -7,6 +7,7 @@ import {
   FaTwitter,
   FaYoutube,
   FaWhatsapp,
+  FaLinkedin,
 } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
 import Link from "next/link";
@@ -64,6 +65,7 @@ export default function Footer() {
                 <SocialIcon href="https://instagram.com/delhiprovolleyball" icon={<FaInstagram />} />
                 <SocialIcon href="https://www.facebook.com/profile.php?id=61585847188129" icon={<FaFacebookF />} />
                 <SocialIcon href="https://www.youtube.com/@DPVLofficial" icon={<FaYoutube />} />
+                <SocialIcon href="https://www.linkedin.com/company/dpvl/" icon={<FaLinkedin/>}/>
               </div>
             </div>
           </div>

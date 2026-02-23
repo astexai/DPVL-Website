@@ -2,7 +2,7 @@
 
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import Image from "next/image";
-import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaFacebookF, FaLinkedin } from "react-icons/fa";
 
 interface FormData {
   fullName: string;
@@ -144,6 +144,15 @@ const ContactSection: React.FC = () => {
                       aria-label="Facebook"
                     >
                       <FaFacebookF size={20} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/dpvl/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex items-center justify-center rounded-full border border-white/40 text-white hover:bg-white hover:text-[#C04493] transition-all duration-300"
+                      aria-label="Facebook"
+                    >
+                      <FaLinkedin size={20} />
                     </a>
                   </div>
                 </div>

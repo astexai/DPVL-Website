@@ -22,10 +22,36 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
-  title: "Delhi Pro Volleyball League (DPVL) | Delhi’s First Professional Volleyball League",
-  description: "Delhi Pro Volleyball League (DPVL) is Delhi’s first-ever professional volleyball league, promoting grassroots talent, elite competition, and a vibrant sports ecosystem for players, fans, and brands.",
+  title:
+    "Delhi Pro Volleyball League (DPVL) | Official Volleyball League of Delhi",
+
+  description:
+    "Delhi Pro Volleyball League (DPVL) is India's emerging professional volleyball league featuring franchise teams, player trials, fixtures, and elite competition. Join the future of volleyball in Delhi.",
+
+  keywords: [
+    "Delhi Pro Volleyball League",
+    "DPVL",
+    "volleyball league Delhi",
+    "professional volleyball India",
+    "volleyball franchise league",
+    "Delhi volleyball tournament",
+    "volleyball trials India",
+    "DPVL teams",
+    "sports league Delhi",
+    "volleyball championship India",
+  ],
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  authors: [
+    {
+      name: "Delhi Pro Volleyball League",
+    },
+  ],
 };
 
 export default function RootLayout({
