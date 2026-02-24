@@ -2,12 +2,13 @@
 import React from 'react';
 
 const messages = [
-	'Welcome to the Official Website of Delhi Pro Volleyball League (DPVL)',
-	'Welcome to the Official Website of Delhi Pro Volleyball League (DPVL)',
-	'Welcome to the Official Website of Delhi Pro Volleyball League (DPVL)',
-	'Welcome to the Official Website of Delhi Pro Volleyball League (DPVL)',
-	'Welcome to the Official Website of Delhi Pro Volleyball League (DPVL)',
-	'Welcome to the Official Website of Delhi Pro Volleyball League (DPVL)',
+	'DPVL Season 1 - Registration Open Now!',
+	'DPVL Season 1 - Registration Open Now!',
+	'DPVL Season 1 - Registration Open Now!',
+	'DPVL Season 1 - Registration Open Now!',
+	'DPVL Season 1 - Registration Open Now!',
+	'DPVL Season 1 - Registration Open Now!',
+	'DPVL Season 1 - Registration Open Now!',
 ];
 
 const Headline: React.FC = () => {

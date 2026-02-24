@@ -22,6 +22,13 @@ import LeagueInfoSection from "@/components/Leagueinfo";
 // You can easily change images and text here
 const STATIC_SLIDES = [
   {
+    id: "static-5",
+    desktopImg: "/assets/banner/4.png",
+    mobileImg: "/assets/banner/mobile5.png",
+    position: "center",
+    
+  },
+  {
     id: "static-1",
     desktopImg: "/assets/banner/1.png",
     mobileImg: "/assets/banner/mobile1.png",
@@ -49,13 +56,7 @@ const STATIC_SLIDES = [
     position: "bottom",
     
   },
-  {
-    id: "static-5",
-    desktopImg: "/assets/banner/4.png",
-    mobileImg: "/assets/banner/mobile5.png",
-    position: "center",
-    
-  },
+  
 ];
 export default function Home() {
   const [current, setCurrent] = useState(0);

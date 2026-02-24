@@ -55,8 +55,7 @@ export async function sendOtpEmail(to: string, otp: string) {
       <p>
         📧 <a href="mailto:founder@delhiprovolleyballleague.com">
         founder@delhiprovolleyballleague.com</a><br/>
-        📞 +91 77999 88500<br/>
-        📞 +91 98119 79075
+    
       </p>
 
       <p style="margin-top: 30px;">
@@ -103,8 +102,7 @@ export async function sendOtpEmail(to: string, otp: string) {
       <p>
         📧 <a href="mailto:founder@delhiprovolleyballleague.com">
         founder@delhiprovolleyballleague.com</a><br/>
-        📞 +91 77999 88500<br/>
-        📞 +91 98119 79075
+     
       </p>
 
       <p style="margin-top: 30px;">
@@ -158,8 +156,7 @@ Our team will contact you soon regarding match schedules, player guidelines, and
 <p>
 📧 <a href="mailto:founder@delhiprovolleyballleague.com">
 founder@delhiprovolleyballleague.com</a><br/>
-📞 +91 77999 88500<br/>
-📞 +91 98119 79075
+
 </p>
 
 <p>
@@ -190,8 +187,7 @@ Best wishes,<br/>
 <p>
 📧 <a href="mailto:founder@delhiprovolleyballleague.com">
 founder@delhiprovolleyballleague.com</a><br/>
-📞 +91 77999 88500<br/>
-📞 +91 98119 79075
+
 </p>
 
 <p>
@@ -224,8 +220,7 @@ If you believe this is a mistake or want clarification, you may contact us:
 <p>
 📧 <a href="mailto:founder@delhiprovolleyballleague.com">
 founder@delhiprovolleyballleague.com</a><br/>
-📞 +91 77999 88500<br/>
-📞 +91 98119 79075
+
 </p>
 
 <p>
@@ -263,8 +258,7 @@ Best regards,<br/>
 <p>
 📧 <a href="mailto:founder@delhiprovolleyballleague.com">
 founder@delhiprovolleyballleague.com</a><br/>
-📞 +91 77999 88500<br/>
-📞 +91 98119 79075
+
 </p>
 
 <p>
@@ -318,8 +312,7 @@ Once the review process is completed, you will be notified via email regarding a
         <p>
           📧 <a href="mailto:founder@delhiprovolleyballleague.com">
           founder@delhiprovolleyballleague.com</a><br/>
-          📞 +91 77999 88500<br/>
-          📞 +91 98119 79075
+        
         </p>
   
         <p style="margin-top: 30px;">
@@ -345,8 +338,7 @@ Once the review process is completed, you will be notified via email regarding a
         <p>
           📧 <a href="mailto:founder@delhiprovolleyballleague.com">
           founder@delhiprovolleyballleague.com</a><br/>
-          📞 +91 77999 88500<br/>
-          📞 +91 98119 79075
+       
         </p>
   
         <p style="margin-top: 30px;">

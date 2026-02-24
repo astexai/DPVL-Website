@@ -11,6 +11,12 @@ import {
   Mail,
   X,
   Eye,
+  User,
+  MapPin,
+  Calendar,
+  FileText,
+  Phone,
+  ArrowRight,
 } from "lucide-react";
 
 const TABS = [
@@ -25,9 +31,11 @@ export default function CandidateDashboard() {
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedAadhaar, setSelectedAadhaar] = useState<string | null>(null);
-  const [aadhaarUrl, setAadhaarUrl] = useState<string | null>(null);
-  const [isViewingAadhaar, setIsViewingAadhaar] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState<any | null>(null);
+  const [viewingImage, setViewingImage] = useState<{
+    url: string;
+    title: string;
+  } | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -73,6 +81,9 @@ export default function CandidateDashboard() {
       if (res.ok) {
         alert(`Status updated to ${newStatus}`);
         fetchUsers();
+        if (selectedCandidate?._id === id) {
+          setSelectedCandidate({ ...selectedCandidate, status: newStatus });
+        }
       } else {
         const data = await res.json();
         alert("Failed to update status: " + (data.error || "Unknown error"));
@@ -82,35 +93,13 @@ export default function CandidateDashboard() {
     }
   };
 
-  const handleViewAadhaar = async (path: string) => {
-    if (!path) return;
-    setIsViewingAadhaar(true);
-    try {
-      const token = localStorage.getItem("adminToken");
-      const res = await fetch(path, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!res.ok) throw new Error("Failed to fetch Aadhaar file");
-
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      setAadhaarUrl(url);
-    } catch (err) {
-      console.error("Error fetching Aadhaar:", err);
-      alert("Could not load Aadhaar file");
-    } finally {
-      setIsViewingAadhaar(false);
-    }
+  const handleViewImage = (url: string, title: string) => {
+    if (!url) return;
+    setViewingImage({ url, title });
   };
 
-  const closeAadhaarModal = () => {
-    if (aadhaarUrl) {
-      URL.revokeObjectURL(aadhaarUrl);
-    }
-    setAadhaarUrl(null);
+  const closeImageModal = () => {
+    setViewingImage(null);
   };
 
   const handleDeleteCandidate = async (id: string) => {
@@ -184,39 +173,34 @@ export default function CandidateDashboard() {
         ))}
       </div>
 
-      {/* --- Main Content Area --- */}
-      {activeTab === "email" ? (
-        <EmailComposer data={filteredData} />
-      ) : (
-        <TableLayout
-          data={filteredData}
-          loading={loading}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
+      {/* Candidate Detail Modal */}
+      {selectedCandidate && (
+        <CandidateDetailModal
+          candidate={selectedCandidate}
+          onClose={() => setSelectedCandidate(null)}
+          onViewImage={handleViewImage}
           onStatusUpdate={handleStatusUpdate}
-          onViewAadhaar={handleViewAadhaar}
-          onDeleteCandidate={(id) => setDeleteConfirmId(id)}
-          activeTab={activeTab}
         />
       )}
 
-      {/* Aadhaar Modal */}
-      {aadhaarUrl && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="relative bg-white rounded-xl shadow-2xl max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col">
+      {/* Image View Modal (Cloudinary) */}
+      {viewingImage && (
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="relative bg-white rounded-xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col">
             <div className="p-4 border-b border-gray-100 flex items-center justify-between">
-              <h3 className="font-bold text-gray-800">Aadhaar Card View</h3>
+              <h3 className="font-bold text-gray-800">{viewingImage.title}</h3>
               <div className="flex items-center gap-2">
                 <a
-                  href={aadhaarUrl}
-                  download="aadhaar-card.png"
+                  href={viewingImage.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 bg-[#3B3BB7] text-white text-sm font-medium rounded-lg hover:bg-indigo-800 transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  Download
+                  Full View
                 </a>
                 <button
-                  onClick={closeAadhaarModal}
+                  onClick={closeImageModal}
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5 text-gray-500" />
@@ -225,28 +209,19 @@ export default function CandidateDashboard() {
             </div>
             <div className="flex-1 overflow-auto p-4 md:p-8 flex items-start justify-center bg-gray-100/50">
               <img
-                src={aadhaarUrl}
-                alt="Aadhaar Card"
+                src={viewingImage.url}
+                alt={viewingImage.title}
                 className="max-w-full w-auto h-auto object-contain rounded-lg shadow-xl border border-gray-200"
               />
             </div>
             <div className="p-4 border-t border-gray-100 flex justify-end">
               <button
-                onClick={closeAadhaarModal}
+                onClick={closeImageModal}
                 className="px-6 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors"
               >
                 Close
               </button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {isViewingAadhaar && (
-        <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/20">
-          <div className="bg-white p-4 rounded-lg shadow-lg flex items-center gap-3">
-            <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#3B3BB7] border-t-transparent" />
-            <span className="text-sm font-medium">Loading Aadhaar...</span>
           </div>
         </div>
       )}
@@ -284,6 +259,24 @@ export default function CandidateDashboard() {
           </div>
         </div>
       )}
+
+      {/* Main Content */}
+      {activeTab === "email" ? (
+        <EmailComposer data={filteredData} />
+      ) : (
+        <TableLayout
+          data={filteredData}
+          loading={loading}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          onStatusUpdate={handleStatusUpdate}
+          onDeleteCandidate={setDeleteConfirmId}
+          setSelectedCandidate={setSelectedCandidate}
+          activeTab={activeTab}
+        />
+      )}
+
+      {/* Modals remain here... */}
     </div>
   );
 }
@@ -294,8 +287,8 @@ function TableLayout({
   searchTerm,
   setSearchTerm,
   onStatusUpdate,
-  onViewAadhaar,
   onDeleteCandidate,
+  setSelectedCandidate,
   activeTab,
 }: {
   data: any[];
@@ -303,8 +296,8 @@ function TableLayout({
   searchTerm: string;
   setSearchTerm: (s: string) => void;
   onStatusUpdate: (id: string, status: string) => void;
-  onViewAadhaar: (url: string) => void;
   onDeleteCandidate: (id: string) => void;
+  setSelectedCandidate: (candidate: any) => void;
   activeTab: string;
 }) {
   return (
@@ -328,9 +321,10 @@ function TableLayout({
             <div className="sticky top-0 z-20 bg-[#F9FAFB] border-b border-gray-100">
               <div className="grid grid-cols-12 gap-3 px-6 py-3 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
                 <div className="col-span-3">Candidate</div>
-                <div className="col-span-3">Contact</div>
-                <div className="col-span-2">Location</div>
-                <div className="col-span-1 text-center">Aadhar</div>
+                <div className="col-span-1">Age</div>
+                <div className="col-span-2">District</div>
+                <div className="col-span-2">State</div>
+                <div className="col-span-1 text-center">Status</div>
                 <div className="col-span-3 text-right">Actions</div>
               </div>
             </div>
@@ -354,23 +348,40 @@ function TableLayout({
                     className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50 transition-colors"
                   >
                     <div className="col-span-3">
-                      <p className="text-sm font-medium text-gray-900 leading-tight">
-                        {item.firstName} {item.lastName}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        Father: {item.fatherName}
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gray-100 shrink-0 border-2 border-white shadow-sm overflow-hidden">
+                          {item.photoUrl ? (
+                            <img
+                              src={item.photoUrl}
+                              alt="Profile"
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-xs font-bold text-gray-400">
+                              IMG
+                            </div>
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-sm font-bold text-gray-900 leading-tight truncate">
+                            {item.firstName} {item.lastName}
+                          </p>
+                          <p className="text-[10px] text-gray-500 mt-0.5 truncate italic">
+                            {item.playingPosition?.join(", ") || "No position"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="col-span-1">
+                      <p className="text-sm text-gray-700 font-bold">
+                        {item.age || "N/A"}
                       </p>
                     </div>
 
-                    <div className="col-span-3 overflow-hidden">
-                      <p
-                        className="text-sm text-gray-700 truncate"
-                        title={item.email}
-                      >
-                        {item.email}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {item.phone}
+                    <div className="col-span-2">
+                      <p className="text-xs text-gray-700 font-medium">
+                        {item.district}
                       </p>
                     </div>
 
@@ -378,22 +389,30 @@ function TableLayout({
                       <p className="text-xs text-gray-700 font-medium">
                         {item.state}
                       </p>
-                      <p className="text-[10px] text-gray-500">
-                        {item.district}
-                      </p>
                     </div>
 
                     <div className="col-span-1 flex justify-center">
-                      <button
-                        onClick={() => onViewAadhaar(item.aadhaarPath)}
-                        className="text-[#3B3BB7] hover:bg-indigo-50 p-2 rounded-lg transition-colors group"
-                        title="View Aadhaar"
+                      <span
+                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                          item.status === "accepted"
+                            ? "bg-green-100 text-green-700"
+                            : item.status === "rejected"
+                              ? "bg-red-100 text-red-700"
+                              : "bg-yellow-100 text-yellow-700"
+                        }`}
                       >
-                        <Eye className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      </button>
+                        {item.status || "pending"}
+                      </span>
                     </div>
 
                     <div className="col-span-3 flex items-center justify-end gap-2">
+                      <button
+                        onClick={() => setSelectedCandidate(item)}
+                        className="flex items-center gap-1 px-3 py-1.5 bg-indigo-50 text-[#3B3BB7] text-xs font-bold rounded-lg hover:bg-indigo-100 transition-colors"
+                      >
+                        <Eye className="w-3 h-3" />
+                        View
+                      </button>
                       <div className="flex bg-gray-50 p-1 rounded-lg border border-gray-100">
                         {item.status !== "accepted" && (
                           <button
@@ -544,30 +563,289 @@ function EmailComposer({ data }: { data: any[] }) {
           <div className="col-span-7">Email</div>
         </div>
 
-        <div className="divide-y divide-gray-100">
-          {data.map((item) => (
+        <div className="divide-y divide-gray-100 max-h-[400px] overflow-auto">
+          {data.map((u) => (
             <div
-              key={item._id}
-              className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-gray-50"
+              key={u.email}
+              className="grid grid-cols-12 gap-4 px-6 py-3 items-center hover:bg-gray-50 transition-colors"
             >
               <div className="col-span-1">
                 <input
                   type="checkbox"
-                  checked={selectedEmails.includes(item.email)}
-                  onChange={() => toggleSelect(item.email)}
+                  checked={selectedEmails.includes(u.email)}
+                  onChange={() => toggleSelect(u.email)}
                   className="w-4 h-4 rounded border-gray-300 text-indigo-900 focus:ring-indigo-500 cursor-pointer"
                 />
               </div>
               <div className="col-span-4">
-                <p className="text-sm text-gray-900">
-                  {item.firstName} {item.lastName}
+                <p className="text-sm font-bold text-gray-900 truncate">
+                  {u.firstName} {u.lastName}
                 </p>
               </div>
               <div className="col-span-7">
-                <p className="text-sm text-gray-600">{item.email}</p>
+                <p className="text-sm text-gray-600 truncate">{u.email}</p>
               </div>
             </div>
           ))}
+          {data.length === 0 && (
+            <div className="p-8 text-center text-gray-400 text-sm italic">
+              No verified candidates available to email
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CandidateDetailModal({
+  candidate,
+  onClose,
+  onViewImage,
+  onStatusUpdate,
+}: {
+  candidate: any;
+  onClose: () => void;
+  onViewImage: (url: string, title: string) => void;
+  onStatusUpdate: (id: string, status: string) => void;
+}) {
+  const Section = ({ title, children, icon: Icon }: any) => (
+    <div className="bg-gray-50/50 rounded-2xl p-5 border border-gray-100">
+      <h4 className="text-sm font-black text-gray-900 mb-4 flex items-center gap-2 uppercase tracking-wider">
+        <Icon className="w-4 h-4 text-[#3B3BB7]" />
+        {title}
+      </h4>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{children}</div>
+    </div>
+  );
+
+  const InfoItem = ({ label, value }: { label: string; value: any }) => (
+    <div>
+      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+        {label}
+      </p>
+      <p className="text-sm font-semibold text-gray-700">
+        {value || <span className="text-gray-300 italic">Not provided</span>}
+      </p>
+    </div>
+  );
+
+  return (
+    <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+      <div className="bg-white rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-white/20 animate-in zoom-in-95 duration-300">
+        {/* Header */}
+        <div className="p-6 md:p-8 bg-linear-to-r from-[#1e1b4b] to-[#3B3BB7] text-white flex items-center justify-between">
+          <div className="flex items-center gap-4 md:gap-6">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 overflow-hidden shadow-lg">
+              {candidate.photoUrl ? (
+                <img
+                  src={candidate.photoUrl}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-xl font-black">
+                  {candidate.firstName?.[0]}
+                </div>
+              )}
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-black tracking-tighter leading-none">
+                {candidate.firstName} {candidate.lastName}
+              </h2>
+              <p className="text-white/60 text-xs md:text-sm font-bold mt-1 uppercase tracking-widest flex items-center gap-2">
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    candidate.status === "accepted"
+                      ? "bg-green-400"
+                      : candidate.status === "rejected"
+                        ? "bg-red-400"
+                        : "bg-yellow-400"
+                  }`}
+                />
+                {candidate.status || "Pending Review"}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-auto p-6 md:p-8 space-y-8 scrollbar-hide">
+          <Section title="Basic Details" icon={User}>
+            <InfoItem
+              label="Full Name"
+              value={`${candidate.firstName} ${candidate.lastName}`}
+            />
+
+            <InfoItem
+              label="Date of Birth"
+              value={
+                candidate.dob
+                  ? new Date(candidate.dob).toLocaleDateString()
+                  : "N/A"
+              }
+            />
+            <InfoItem label="Age" value={candidate.age} />
+          </Section>
+
+          <Section title="Physical & Playing Info" icon={Calendar}>
+            <InfoItem
+              label="Height"
+              value={candidate.height ? `${candidate.height} cm` : "N/A"}
+            />
+            <InfoItem label="Leading Hand" value={candidate.leadingHand} />
+            <div className="col-span-1 md:col-span-2">
+              <InfoItem
+                label="Playing Positions"
+                value={candidate.playingPosition?.join(", ")}
+              />
+            </div>
+            <div className="col-span-1 md:col-span-2">
+              <InfoItem label="Experience" value={candidate.experience} />
+            </div>
+            <div className="col-span-1 md:col-span-2">
+              <InfoItem
+                label="Leagues Played"
+                value={candidate.leaguesPlayed}
+              />
+            </div>
+            <div className="col-span-1 md:col-span-2">
+              <InfoItem label="Achievements" value={candidate.achievements} />
+            </div>
+          </Section>
+
+          <Section title="Medical & Association" icon={FileText}>
+            <InfoItem
+              label="Dept Representation"
+              value={candidate.departmentRepresentation}
+            />
+            <InfoItem label="Dept Name" value={candidate.departmentName} />
+            <InfoItem label="Injury History" value={candidate.injuryHistory} />
+            <InfoItem
+              label="Injury Specification"
+              value={candidate.injurySpecification}
+            />
+          </Section>
+
+          <Section title="Contact & Identity" icon={Phone}>
+            <InfoItem label="Phone Number" value={candidate.phone} />
+            <InfoItem
+              label="WhatsApp Number"
+              value={candidate.whatsappNumber}
+            />
+            <InfoItem label="Email ID" value={candidate.email} />
+            <InfoItem label="Aadhar Number" value={candidate.aadharNumber} />
+          </Section>
+
+          <Section title="Residential Address" icon={MapPin}>
+            <div className="col-span-1 md:col-span-2">
+              <InfoItem label="Complete Address" value={candidate.address} />
+            </div>
+            <InfoItem label="District" value={candidate.district} />
+            <InfoItem label="State" value={candidate.state} />
+          </Section>
+
+          {/* Documents */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-black text-gray-900 flex items-center gap-2 uppercase tracking-wider">
+              <FileText className="w-4 h-4 text-[#3B3BB7]" />
+              Submitted Documents
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button
+                onClick={() =>
+                  onViewImage(candidate.photoUrl, "Passport Photo")
+                }
+                className="group relative h-40 rounded-2xl border-2 border-dashed border-gray-200 hover:border-[#3B3BB7] hover:bg-indigo-50 transition-all overflow-hidden flex flex-col items-center justify-center gap-2"
+              >
+                {candidate.photoUrl ? (
+                  <img
+                    src={candidate.photoUrl}
+                    alt="Photo"
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity"
+                  />
+                ) : null}
+                <User className="w-6 h-6 text-[#3B3BB7]" />
+                <span className="text-[10px] font-black uppercase tracking-tighter">
+                  Passport Photo
+                </span>
+                <span className="text-[9px] text-gray-400">Click to view</span>
+              </button>
+
+              <button
+                onClick={() =>
+                  onViewImage(candidate.aadharFrontUrl, "Aadhar Front")
+                }
+                className="group relative h-40 rounded-2xl border-2 border-dashed border-gray-200 hover:border-[#3B3BB7] hover:bg-indigo-50 transition-all overflow-hidden flex flex-col items-center justify-center gap-2"
+              >
+                {candidate.aadharFrontUrl ? (
+                  <img
+                    src={candidate.aadharFrontUrl}
+                    alt="Aadhar Front"
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity"
+                  />
+                ) : null}
+                <FileText className="w-6 h-6 text-[#3B3BB7]" />
+                <span className="text-[10px] font-black uppercase tracking-tighter">
+                  Aadhar Front
+                </span>
+                <span className="text-[9px] text-gray-400">Click to view</span>
+              </button>
+
+              <button
+                onClick={() =>
+                  onViewImage(candidate.aadharBackUrl, "Aadhar Back")
+                }
+                className="group relative h-40 rounded-2xl border-2 border-dashed border-gray-200 hover:border-[#3B3BB7] hover:bg-indigo-50 transition-all overflow-hidden flex flex-col items-center justify-center gap-2"
+              >
+                {candidate.aadharBackUrl ? (
+                  <img
+                    src={candidate.aadharBackUrl}
+                    alt="Aadhar Back"
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity"
+                  />
+                ) : null}
+                <FileText className="w-6 h-6 text-[#3B3BB7]" />
+                <span className="text-[10px] font-black uppercase tracking-tighter">
+                  Aadhar Back
+                </span>
+                <span className="text-[9px] text-gray-400">Click to view</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Actions */}
+        <div className="p-6 md:p-8 bg-gray-50 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4 w-full md:w-auto">
+            {candidate.status !== "accepted" && (
+              <button
+                onClick={() => onStatusUpdate(candidate._id, "accepted")}
+                className="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-3 bg-green-600 text-white font-black rounded-2xl hover:bg-green-700 transition-all shadow-lg active:scale-95"
+              >
+                <CheckCircle className="w-5 h-5" />
+                APPROVE
+              </button>
+            )}
+            {candidate.status !== "rejected" && (
+              <button
+                onClick={() => onStatusUpdate(candidate._id, "rejected")}
+                className="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-3 bg-red-50 text-red-600 font-black rounded-2xl hover:bg-red-100 transition-all border-2 border-red-100 active:scale-95"
+              >
+                <XCircle className="w-5 h-5" />
+                REJECT
+              </button>
+            )}
+          </div>
+          <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center md:text-right">
+            Candidate ID: {candidate._id}
+          </div>
         </div>
       </div>
     </div>
