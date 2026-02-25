@@ -210,7 +210,7 @@ const ContactSection: React.FC = () => {
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder="9998188832"
+                        placeholder="+91 XXXXX-XXXXX"
                         value={formData.phone}
                         onChange={handleChange}
                         required
