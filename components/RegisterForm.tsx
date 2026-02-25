@@ -1157,12 +1157,13 @@ const RegisterForm: React.FC = () => {
                   <span className="text-sm text-gray-700">
                     I agree to the{" "}
                     <Link
-                      href="/terms"
+                     target="_blank"
+                      href="/terms-and-condition"
                       className="text-[#3B3BB7] font-bold hover:underline"
                     >
                       Terms and Conditions
                     </Link>{" "}
-                    and privacy policy.
+                    and <span> <Link target="_blank" href="/privacy-policy" className="text-[#3B3BB7] font-bold hover:underline">Privacy Policy</Link></span>
                   </span>
                 </label>
               </div>
