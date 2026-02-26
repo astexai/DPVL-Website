@@ -206,10 +206,12 @@ export async function POST(req: NextRequest) {
         order_amount: 499,
         order_currency: "INR",
         customer_details: {
-          customer_id: candidate.email,
-          customer_email: candidate.email,
-          customer_phone: candidate.phone || "9999999999"
-        }
+  customer_id: candidate.email
+    .replace(/[^a-zA-Z0-9]/g, "_")
+    .toLowerCase(),
+  customer_email: candidate.email.toLowerCase(),
+  customer_phone: candidate.phone || "9999999999",
+}
       })
     });
 
