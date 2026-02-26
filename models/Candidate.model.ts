@@ -79,13 +79,13 @@ const CandidateSchema = new Schema<ICandidate>({
     enum: ["pending", "accepted", "rejected"],
     default: "pending",
   },
-  paymentOrderId: String,
-  paymentSessionId: String,
-  paymentStatus: {
-    type: String,
-    enum: ["pending", "success", "failed"],
-    default: "pending",
-  },
+  paymentOrderId: { type: String, index: true },
+paymentSessionId: String,
+paymentStatus: {
+  type: String,
+  enum: ["pending", "success", "failed"],
+  default: "pending"
+},
   createdAt: { type: Date, default: () => new Date() },
 });
 
