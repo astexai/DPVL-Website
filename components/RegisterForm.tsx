@@ -245,216 +245,345 @@ const RegisterForm: React.FC = () => {
   };
 
   // submit registration form to backend with FormData (multipart)
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   if (!otpVerified || !otpToken) {
+  //     setFormSubmitMessage(
+  //       "Please verify your email address before submitting",
+  //     );
+  //     return;
+  //   }
+  //   if (!formData.aadharFront || !formData.aadharBack || !formData.photo) {
+  //     setFormSubmitMessage(
+  //       "Please attach all required files (Aadhar Front, Back, and Photograph)",
+  //     );
+  //     return;
+  //   }
+  //   if (!formData.basePriceAgreement || !formData.declarationAgreement) {
+  //     setFormSubmitMessage("Please accept all declarations and agreements");
+  //     return;
+  //   }
+
+  //   setFormSubmitMessage("");
+  //   setPaymentError("");
+
+  //   try {
+  //     if (!isPaid) {
+  //       setFormSubmitMessage("Initializing payment...");
+  //       setIsProcessingPayment(true);
+
+  //       // 1. Create order first (un-persisted)
+  //       const orderRes = await fetch("/api/payment/create-order", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           firstName: formData.firstName,
+  //           lastName: formData.lastName,
+  //           email: formData.email.trim().toLowerCase(),
+  //           phone: formData.phone,
+  //         }),
+  //       });
+  //       const orderData = await orderRes.json();
+
+  //       if (!orderRes.ok) {
+  //         throw new Error(orderData?.error || "Failed to initialize payment");
+  //       }
+
+  //       // 2. Load Cashfree SDK
+  //       const cashfree = await load({
+  //         mode:
+  //           process.env.NEXT_PUBLIC_CASHFREE_ENV === "PRODUCTION"
+  //             ? "production"
+  //             : "sandbox",
+  //       });
+
+  //       // 3. Trigger checkout modal
+  //       let checkoutOptions = {
+  //         paymentSessionId: orderData.payment_session_id,
+  //         redirectTarget: "_modal",
+  //       };
+
+  //       cashfree?.checkout(checkoutOptions).then(async (result: any) => {
+  //         if (result.error) {
+  //           setPaymentError("Payment failed. Please try again.");
+  //           setIsProcessingPayment(false);
+  //         }
+  //         if (result.redirect) {
+  //           console.log("Redirection handled by cashfree");
+  //         }
+  //         if (result.paymentDetails) {
+  //           setIsPaid(true);
+  //           setPersistedOrderId(orderData.order_id);
+  //           setFormSubmitMessage(
+  //             "Payment Successful! Completing registration...",
+  //           );
+
+  //           // Auto-submit the form
+  //           try {
+  //             const fd = new FormData();
+  //             fd.append("token", otpToken);
+  //             fd.append("email", formData.email.trim().toLowerCase());
+  //             fd.append("firstName", formData.firstName);
+  //             fd.append("lastName", formData.lastName);
+  //             fd.append("fatherName", formData.fatherName);
+  //             fd.append("dob", formData.dob);
+  //             fd.append("age", formData.age);
+  //             fd.append("height", formData.height);
+  //             fd.append("leadingHand", formData.leadingHand);
+  //             formData.playingPosition.forEach((p) =>
+  //               fd.append("playingPosition", p),
+  //             );
+  //             fd.append("experience", formData.experience);
+  //             fd.append("leaguesPlayed", formData.leaguesPlayed);
+  //             fd.append("achievements", formData.achievements);
+  //             fd.append(
+  //               "departmentRepresentation",
+  //               formData.departmentRepresentation,
+  //             );
+  //             fd.append("departmentName", formData.departmentName);
+  //             fd.append("injuryHistory", formData.injuryHistory);
+  //             fd.append("injurySpecification", formData.injurySpecification);
+  //             fd.append("address", formData.address);
+  //             fd.append("district", formData.district);
+  //             fd.append("state", formData.state);
+  //             fd.append("aadharNumber", formData.aadharNumber);
+  //             fd.append("aadharFront", formData.aadharFront!);
+  //             fd.append("aadharBack", formData.aadharBack!);
+  //             fd.append("photo", formData.photo!);
+  //             fd.append("phone", formData.phone);
+  //             fd.append("whatsappNumber", formData.whatsappNumber);
+  //             fd.append(
+  //               "basePriceAgreement",
+  //               String(formData.basePriceAgreement),
+  //             );
+  //             fd.append(
+  //               "declarationAgreement",
+  //               String(formData.declarationAgreement),
+  //             );
+  //             fd.append("orderId", orderData.order_id);
+
+  //             const res = await fetch("/api/register", {
+  //               method: "POST",
+  //               body: fd,
+  //             });
+
+  //             const data = await res.json();
+  //             setIsProcessingPayment(false);
+
+  //             if (res.ok && data.ok) {
+  //               setShowSuccessModal(true);
+  //               resetForm();
+  //             } else {
+  //               setFormSubmitMessage(
+  //                 data.error || "Registration failed. Please contact support.",
+  //               );
+  //             }
+  //           } catch (err: any) {
+  //             setIsProcessingPayment(false);
+  //             setFormSubmitMessage(
+  //               err?.message || "Registration failed. Please try again.",
+  //             );
+  //           }
+  //         }
+  //       });
+  //     } else {
+  //       // Final Registration Step
+  //       setIsProcessingPayment(true);
+  //       setFormSubmitMessage("Completing registration...");
+
+  //       const fd = new FormData();
+  //       fd.append("token", otpToken);
+  //       fd.append("email", formData.email.trim().toLowerCase());
+  //       fd.append("firstName", formData.firstName);
+  //       fd.append("lastName", formData.lastName);
+  //       fd.append("fatherName", formData.fatherName);
+  //       fd.append("dob", formData.dob);
+  //       fd.append("age", formData.age);
+  //       fd.append("height", formData.height);
+  //       fd.append("leadingHand", formData.leadingHand);
+  //       formData.playingPosition.forEach((p) =>
+  //         fd.append("playingPosition", p),
+  //       );
+  //       fd.append("experience", formData.experience);
+  //       fd.append("leaguesPlayed", formData.leaguesPlayed);
+  //       fd.append("achievements", formData.achievements);
+  //       fd.append(
+  //         "departmentRepresentation",
+  //         formData.departmentRepresentation,
+  //       );
+  //       fd.append("departmentName", formData.departmentName);
+  //       fd.append("injuryHistory", formData.injuryHistory);
+  //       fd.append("injurySpecification", formData.injurySpecification);
+  //       fd.append("address", formData.address);
+  //       fd.append("district", formData.district);
+  //       fd.append("state", formData.state);
+  //       fd.append("aadharNumber", formData.aadharNumber);
+  //       fd.append("aadharFront", formData.aadharFront!);
+  //       fd.append("aadharBack", formData.aadharBack!);
+  //       fd.append("photo", formData.photo!);
+  //       fd.append("phone", formData.phone);
+  //       fd.append("whatsappNumber", formData.whatsappNumber);
+  //       fd.append("basePriceAgreement", String(formData.basePriceAgreement));
+  //       fd.append(
+  //         "declarationAgreement",
+  //         String(formData.declarationAgreement),
+  //       );
+  //       fd.append("orderId", persistedOrderId);
+
+  //       const res = await fetch("/api/register", {
+  //         method: "POST",
+  //         body: fd,
+  //       });
+
+  //       const data = await res.json();
+  //       setIsProcessingPayment(false);
+
+  //       if (res.ok && data.ok) {
+  //         setShowSuccessModal(true);
+  //         resetForm();
+  //       } else {
+  //         setFormSubmitMessage(
+  //           data.error || "Registration failed. Please contact support.",
+  //         );
+  //       }
+  //     }
+  //   } catch (err: any) {
+  //     setIsProcessingPayment(false);
+  //     setFormSubmitMessage(
+  //       err?.message || "Registration failed. Please try again.",
+  //     );
+  //   }
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!otpVerified || !otpToken) {
-      setFormSubmitMessage(
-        "Please verify your email address before submitting",
-      );
-      return;
+  if (!otpVerified || !otpToken) {
+    setFormSubmitMessage("Please verify your email before submitting");
+    return;
+  }
+
+  if (!formData.aadharFront || !formData.aadharBack || !formData.photo) {
+    setFormSubmitMessage("Please upload all required documents");
+    return;
+  }
+
+  if (!formData.basePriceAgreement || !formData.declarationAgreement) {
+    setFormSubmitMessage("Please accept all declarations");
+    return;
+  }
+
+  try {
+    setIsProcessingPayment(true);
+    setFormSubmitMessage("Saving registration...");
+
+    // 🔹 STEP 1 — REGISTER FIRST
+    const fd = new FormData();
+    fd.append("token", otpToken);
+    fd.append("email", formData.email.trim().toLowerCase());
+    fd.append("firstName", formData.firstName);
+    fd.append("lastName", formData.lastName);
+    fd.append("fatherName", formData.fatherName);
+    fd.append("dob", formData.dob);
+    fd.append("age", formData.age);
+    fd.append("height", formData.height);
+    fd.append("leadingHand", formData.leadingHand);
+    formData.playingPosition.forEach((p) =>
+      fd.append("playingPosition", p)
+    );
+    fd.append("experience", formData.experience);
+    fd.append("leaguesPlayed", formData.leaguesPlayed);
+    fd.append("achievements", formData.achievements);
+    fd.append(
+      "departmentRepresentation",
+      formData.departmentRepresentation
+    );
+    fd.append("departmentName", formData.departmentName);
+    fd.append("injuryHistory", formData.injuryHistory);
+    fd.append("injurySpecification", formData.injurySpecification);
+    fd.append("address", formData.address);
+    fd.append("district", formData.district);
+    fd.append("state", formData.state);
+    fd.append("aadharNumber", formData.aadharNumber);
+    fd.append("aadharFront", formData.aadharFront);
+    fd.append("aadharBack", formData.aadharBack);
+    fd.append("photo", formData.photo);
+    fd.append("phone", formData.phone);
+    fd.append("whatsappNumber", formData.whatsappNumber);
+    fd.append("basePriceAgreement", String(formData.basePriceAgreement));
+    fd.append("declarationAgreement", String(formData.declarationAgreement));
+
+    const regRes = await fetch("/api/register", {
+      method: "POST",
+      body: fd,
+    });
+
+    const regData = await regRes.json();
+
+    if (!regRes.ok) {
+      throw new Error(regData.error || "Registration failed");
     }
-    if (!formData.aadharFront || !formData.aadharBack || !formData.photo) {
-      setFormSubmitMessage(
-        "Please attach all required files (Aadhar Front, Back, and Photograph)",
-      );
-      return;
-    }
-    if (!formData.basePriceAgreement || !formData.declarationAgreement) {
-      setFormSubmitMessage("Please accept all declarations and agreements");
-      return;
+
+    const candidateId = regData.candidateId;
+
+    if (!candidateId) {
+      throw new Error("Registration ID missing");
     }
 
-    setFormSubmitMessage("");
-    setPaymentError("");
+    // 🔹 STEP 2 — CREATE ORDER USING candidateId
+    setFormSubmitMessage("Initializing payment...");
 
-    try {
-      if (!isPaid) {
-        setFormSubmitMessage("Initializing payment...");
-        setIsProcessingPayment(true);
+    const orderRes = await fetch("/api/payment/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ candidateId }),
+    });
 
-        // 1. Create order first (un-persisted)
-        const orderRes = await fetch("/api/payment/create-order", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email.trim().toLowerCase(),
-            phone: formData.phone,
-          }),
-        });
-        const orderData = await orderRes.json();
+    const orderData = await orderRes.json();
 
-        if (!orderRes.ok) {
-          throw new Error(orderData?.error || "Failed to initialize payment");
-        }
-
-        // 2. Load Cashfree SDK
-        const cashfree = await load({
-          mode:
-            process.env.NEXT_PUBLIC_CASHFREE_ENV === "PRODUCTION"
-              ? "production"
-              : "sandbox",
-        });
-
-        // 3. Trigger checkout modal
-        let checkoutOptions = {
-          paymentSessionId: orderData.payment_session_id,
-          redirectTarget: "_modal",
-        };
-
-        cashfree?.checkout(checkoutOptions).then(async (result: any) => {
-          if (result.error) {
-            setPaymentError("Payment failed. Please try again.");
-            setIsProcessingPayment(false);
-          }
-          if (result.redirect) {
-            console.log("Redirection handled by cashfree");
-          }
-          if (result.paymentDetails) {
-            setIsPaid(true);
-            setPersistedOrderId(orderData.order_id);
-            setFormSubmitMessage(
-              "Payment Successful! Completing registration...",
-            );
-
-            // Auto-submit the form
-            try {
-              const fd = new FormData();
-              fd.append("token", otpToken);
-              fd.append("email", formData.email.trim().toLowerCase());
-              fd.append("firstName", formData.firstName);
-              fd.append("lastName", formData.lastName);
-              fd.append("fatherName", formData.fatherName);
-              fd.append("dob", formData.dob);
-              fd.append("age", formData.age);
-              fd.append("height", formData.height);
-              fd.append("leadingHand", formData.leadingHand);
-              formData.playingPosition.forEach((p) =>
-                fd.append("playingPosition", p),
-              );
-              fd.append("experience", formData.experience);
-              fd.append("leaguesPlayed", formData.leaguesPlayed);
-              fd.append("achievements", formData.achievements);
-              fd.append(
-                "departmentRepresentation",
-                formData.departmentRepresentation,
-              );
-              fd.append("departmentName", formData.departmentName);
-              fd.append("injuryHistory", formData.injuryHistory);
-              fd.append("injurySpecification", formData.injurySpecification);
-              fd.append("address", formData.address);
-              fd.append("district", formData.district);
-              fd.append("state", formData.state);
-              fd.append("aadharNumber", formData.aadharNumber);
-              fd.append("aadharFront", formData.aadharFront!);
-              fd.append("aadharBack", formData.aadharBack!);
-              fd.append("photo", formData.photo!);
-              fd.append("phone", formData.phone);
-              fd.append("whatsappNumber", formData.whatsappNumber);
-              fd.append(
-                "basePriceAgreement",
-                String(formData.basePriceAgreement),
-              );
-              fd.append(
-                "declarationAgreement",
-                String(formData.declarationAgreement),
-              );
-              fd.append("orderId", orderData.order_id);
-
-              const res = await fetch("/api/register", {
-                method: "POST",
-                body: fd,
-              });
-
-              const data = await res.json();
-              setIsProcessingPayment(false);
-
-              if (res.ok && data.ok) {
-                setShowSuccessModal(true);
-                resetForm();
-              } else {
-                setFormSubmitMessage(
-                  data.error || "Registration failed. Please contact support.",
-                );
-              }
-            } catch (err: any) {
-              setIsProcessingPayment(false);
-              setFormSubmitMessage(
-                err?.message || "Registration failed. Please try again.",
-              );
-            }
-          }
-        });
-      } else {
-        // Final Registration Step
-        setIsProcessingPayment(true);
-        setFormSubmitMessage("Completing registration...");
-
-        const fd = new FormData();
-        fd.append("token", otpToken);
-        fd.append("email", formData.email.trim().toLowerCase());
-        fd.append("firstName", formData.firstName);
-        fd.append("lastName", formData.lastName);
-        fd.append("fatherName", formData.fatherName);
-        fd.append("dob", formData.dob);
-        fd.append("age", formData.age);
-        fd.append("height", formData.height);
-        fd.append("leadingHand", formData.leadingHand);
-        formData.playingPosition.forEach((p) =>
-          fd.append("playingPosition", p),
-        );
-        fd.append("experience", formData.experience);
-        fd.append("leaguesPlayed", formData.leaguesPlayed);
-        fd.append("achievements", formData.achievements);
-        fd.append(
-          "departmentRepresentation",
-          formData.departmentRepresentation,
-        );
-        fd.append("departmentName", formData.departmentName);
-        fd.append("injuryHistory", formData.injuryHistory);
-        fd.append("injurySpecification", formData.injurySpecification);
-        fd.append("address", formData.address);
-        fd.append("district", formData.district);
-        fd.append("state", formData.state);
-        fd.append("aadharNumber", formData.aadharNumber);
-        fd.append("aadharFront", formData.aadharFront!);
-        fd.append("aadharBack", formData.aadharBack!);
-        fd.append("photo", formData.photo!);
-        fd.append("phone", formData.phone);
-        fd.append("whatsappNumber", formData.whatsappNumber);
-        fd.append("basePriceAgreement", String(formData.basePriceAgreement));
-        fd.append(
-          "declarationAgreement",
-          String(formData.declarationAgreement),
-        );
-        fd.append("orderId", persistedOrderId);
-
-        const res = await fetch("/api/register", {
-          method: "POST",
-          body: fd,
-        });
-
-        const data = await res.json();
-        setIsProcessingPayment(false);
-
-        if (res.ok && data.ok) {
-          setShowSuccessModal(true);
-          resetForm();
-        } else {
-          setFormSubmitMessage(
-            data.error || "Registration failed. Please contact support.",
-          );
-        }
-      }
-    } catch (err: any) {
-      setIsProcessingPayment(false);
-      setFormSubmitMessage(
-        err?.message || "Registration failed. Please try again.",
-      );
+    if (!orderRes.ok) {
+      throw new Error(orderData.error || "Payment initialization failed");
     }
-  };
+
+    // 🔹 STEP 3 — OPEN CASHFREE
+    const cashfree = await load({
+      mode:
+        process.env.NEXT_PUBLIC_CASHFREE_ENV === "PRODUCTION"
+          ? "production"
+          : "sandbox",
+    });
+
+    if (!cashfree) {
+      throw new Error("Cashfree SDK failed to load");
+    }
+
+    setFormSubmitMessage("Opening payment window...");
+
+    await cashfree.checkout({
+      paymentSessionId: orderData.payment_session_id,
+      redirectTarget: "_modal",
+    });
+
+    // ⚠️ IMPORTANT
+    // After payment success, webhook will update DB.
+    // We do NOT call /api/register again.
+
+    setFormSubmitMessage(
+      "Payment completed. Your application is being processed."
+    );
+
+    setShowSuccessModal(true);
+    resetForm();
+    setIsProcessingPayment(false);
+
+  } catch (err: any) {
+    console.error("Submit error:", err);
+    setFormSubmitMessage(
+      err?.message || "Something went wrong. Please try again."
+    );
+    setIsProcessingPayment(false);
+  }
+};
 
   const resetForm = () => {
     setFormData({

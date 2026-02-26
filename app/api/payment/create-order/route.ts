@@ -86,6 +86,79 @@
 
 
 
+// import { NextResponse, NextRequest } from "next/server";
+// import { connectToDatabase } from "@/lib/db/mongodb";
+// import { Candidate } from "@/models/Candidate.model";
+
+// export async function POST(req: NextRequest) {
+//   try {
+//     await connectToDatabase();
+//     const { candidateId } = await req.json();
+
+//     const candidate = await Candidate.findById(candidateId);
+//     if (!candidate) {
+//       return NextResponse.json(
+//         { error: "Candidate not found" },
+//         { status: 404 }
+//       );
+//     }
+
+//     const environment = process.env.CASHFREE_ENVIRONMENT || "SANDBOX";
+//     const baseUrl =
+//       environment === "PRODUCTION"
+//         ? "https://api.cashfree.com/pg/orders"
+//         : "https://sandbox.cashfree.com/pg/orders";
+
+//     const orderId = `order_reg_${Date.now()}`;
+
+//     const response = await fetch(baseUrl, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "x-api-version": "2023-08-01",
+//         "x-client-id": process.env.CASHFREE_APP_ID!,
+//         "x-client-secret": process.env.CASHFREE_SECRET_KEY!
+//       },
+//       body: JSON.stringify({
+//         order_id: orderId,
+//         order_amount: 499,
+//         order_currency: "INR",
+//         customer_details: {
+//           customer_id: candidate.email,
+//           customer_email: candidate.email,
+//           customer_phone: candidate.phone || "9999999999"
+//         }
+//       })
+//     });
+
+//     const data = await response.json();
+
+//     if (!response.ok) {
+//       return NextResponse.json(
+//         { error: data.message || "Order creation failed" },
+//         { status: 400 }
+//       );
+//     }
+
+//     candidate.paymentOrderId = orderId;
+//     candidate.paymentSessionId = data.payment_session_id;
+//     candidate.paymentStatus = "pending";
+//     await candidate.save();
+
+//     return NextResponse.json({
+//       payment_session_id: data.payment_session_id,
+//       order_id: orderId
+//     });
+//   } catch (err: any) {
+//     console.error("Create order error:", err);
+//     return NextResponse.json(
+//       { error: "Internal server error" },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
 import { NextResponse, NextRequest } from "next/server";
 import { connectToDatabase } from "@/lib/db/mongodb";
 import { Candidate } from "@/models/Candidate.model";
@@ -93,9 +166,19 @@ import { Candidate } from "@/models/Candidate.model";
 export async function POST(req: NextRequest) {
   try {
     await connectToDatabase();
-    const { candidateId } = await req.json();
+    const body = await req.json();
+
+    const candidateId = body?.candidateId;
+
+    if (!candidateId) {
+      return NextResponse.json(
+        { error: "Missing candidateId" },
+        { status: 400 }
+      );
+    }
 
     const candidate = await Candidate.findById(candidateId);
+
     if (!candidate) {
       return NextResponse.json(
         { error: "Candidate not found" },
@@ -103,13 +186,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const environment = process.env.CASHFREE_ENVIRONMENT || "SANDBOX";
+    const orderId = `order_reg_${Date.now()}`;
+
     const baseUrl =
-      environment === "PRODUCTION"
+      process.env.CASHFREE_ENVIRONMENT === "PRODUCTION"
         ? "https://api.cashfree.com/pg/orders"
         : "https://sandbox.cashfree.com/pg/orders";
-
-    const orderId = `order_reg_${Date.now()}`;
 
     const response = await fetch(baseUrl, {
       method: "POST",
@@ -135,7 +217,7 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: data.message || "Order creation failed" },
+        { error: data.message || "Cashfree error" },
         { status: 400 }
       );
     }
@@ -149,6 +231,7 @@ export async function POST(req: NextRequest) {
       payment_session_id: data.payment_session_id,
       order_id: orderId
     });
+
   } catch (err: any) {
     console.error("Create order error:", err);
     return NextResponse.json(
