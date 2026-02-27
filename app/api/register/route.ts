@@ -190,10 +190,10 @@ function sanitize(v: any) {
 
 async function handleFileUpload(file: File | null, folder: string): Promise<string | undefined> {
   if (!file) return undefined;
-  const maxBytes = 5 * 1024 * 1024;
+  const maxBytes = 15 * 1024 * 1024;
   const arrayBuf = await file.arrayBuffer();
   if (arrayBuf.byteLength > maxBytes) {
-    throw new Error(`${file.name} too large (max 10MB)`);
+    throw new Error(`${file.name} too large (max 15MB)`);
   }
   const buffer = Buffer.from(arrayBuf);
   const result = await uploadToCloudinary(buffer, folder);
