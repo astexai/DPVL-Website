@@ -193,7 +193,7 @@ async function handleFileUpload(file: File | null, folder: string): Promise<stri
   const maxBytes = 5 * 1024 * 1024;
   const arrayBuf = await file.arrayBuffer();
   if (arrayBuf.byteLength > maxBytes) {
-    throw new Error(`${file.name} too large (max 5MB)`);
+    throw new Error(`${file.name} too large (max 10MB)`);
   }
   const buffer = Buffer.from(arrayBuf);
   const result = await uploadToCloudinary(buffer, folder);
