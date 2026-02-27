@@ -559,10 +559,27 @@ const RegisterForm: React.FC = () => {
 
     setFormSubmitMessage("Opening payment window...");
 
-    await cashfree.checkout({
-      paymentSessionId: orderData.payment_session_id,
-      redirectTarget: "_modal",
-    });
+   const result = await cashfree.checkout({
+  paymentSessionId: orderData.payment_session_id,
+  redirectTarget: "_modal",
+});
+
+if (result?.paymentDetails) {
+  // ✅ CALL VERIFY API AFTER SUCCESS
+  await fetch("/api/payment/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      orderId: orderData.order_id,
+    }),
+  });
+
+  setIsPaid(true);
+  setFormSubmitMessage("Payment successful! Registration completed.");
+
+  setShowSuccessModal(true);
+  resetForm();
+}
 
     // ⚠️ IMPORTANT
     // After payment success, webhook will update DB.
