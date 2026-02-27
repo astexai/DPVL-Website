@@ -1152,8 +1152,8 @@ if (result?.paymentDetails) {
                     </div>
                   )}
 
-                  <label className="flex items-start gap-3 p-4 border-2 border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
-                    <input
+                  <label className="flex items-start bg-red-50 border border-red-200 text-red-800 gap-3 p-4 rounded-xl transition-colors">
+                    {/* <input
                       type="checkbox"
                       checked={formData.terms}
                       onChange={(e) =>
@@ -1163,8 +1163,8 @@ if (result?.paymentDetails) {
                         }))
                       }
                       className="mt-1 w-5 h-5 text-[#3B3BB7] rounded focus:ring-0"
-                    />
-                    <span className="text-sm text-gray-700">
+                    /> */}
+                    <span className="text-sm text-center">
                       भुगतान होने के बाद कृपया 2 मिनट तक प्रतीक्षा करें जब तक
                       कन्फर्मेशन मैसेज प्राप्त न हो जाए।
                     </span>
@@ -1179,7 +1179,7 @@ if (result?.paymentDetails) {
                       !formData.declarationAgreement ||
                       isProcessingPayment
                     }
-                    className={`w-full py-4 rounded-xl font-black text-lg transition-all shadow-lg active:scale-[0.98] ${
+                    className={`w-full py-4 px-2 md:px-0 rounded-xl font-black text-sm md:text-lg transition-all shadow-lg active:scale-[0.98] ${
                       otpVerified &&
                       formData.terms &&
                       formData.basePriceAgreement &&
@@ -1195,7 +1195,7 @@ if (result?.paymentDetails) {
                         : "Processing Payment..."
                       : isPaid
                         ? "Submit Application"
-                        : "Complete Registration & Pay ₹499"}
+                        : "Pay ₹499 & Complete Registration"}
                   </button>
 
                   {!otpVerified && (
@@ -1250,17 +1250,16 @@ if (result?.paymentDetails) {
               </svg>
             </div>
             <h3 className="text-2xl font-black text-gray-900 mb-4 uppercase tracking-tighter">
-              Registration Success
+              Registration Successfull
             </h3>
             <p className="text-gray-600 mb-8 text-sm leading-relaxed">
-              Your application has been successfully submitted and is currently
-              under review. We will contact you soon.
+              Thank you for registering for the Delhi Pro Volleyball League. Our verification team will carefully review your profile and submitted details. Once the review process is completed, you will be notified via email regarding approval or rejection.
             </p>
             <button
               onClick={() => setShowSuccessModal(false)}
               className="w-full py-4 bg-[#3B3BB7] text-white font-black rounded-2xl hover:bg-indigo-800 transition-all shadow-lg active:scale-95"
             >
-              PROCEED
+              Close
             </button>
           </div>
         </div>
