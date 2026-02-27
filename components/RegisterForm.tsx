@@ -823,7 +823,7 @@ if (result?.paymentDetails) {
                 {/* File Uploads */}
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-gray-700">
-                    Aadhar Card - Front Side *
+                    Aadhar Card - Front Side * ( max image size 1 MB)
                   </label>
                   <div className="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center hover:bg-gray-50 transition-colors">
                     <input
@@ -853,7 +853,7 @@ if (result?.paymentDetails) {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-gray-700">
-                    Aadhar Card - Back Side *
+                    Aadhar Card - Back Side * ( max image size 1 MB)
                   </label>
                   <div className="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center hover:bg-gray-50 transition-colors">
                     <input
@@ -883,7 +883,7 @@ if (result?.paymentDetails) {
 
                 <div className="md:col-span-2 space-y-2">
                   <label className="block text-sm font-semibold text-gray-700">
-                    Recent Passport Size Photograph *
+                    Recent Passport Size Photograph * ( max image size 1 MB)
                   </label>
                   <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:bg-gray-50 transition-colors">
                     <input
@@ -910,6 +910,12 @@ if (result?.paymentDetails) {
                     )}
                   </div>
                 </div>
+                <div className="md:col-span-2 bg-red-50 border border-red-200 rounded-lg p-3">
+  <p className="text-xs md:text-sm text-red-700 font-semibold leading-relaxed">
+    महत्वपूर्ण सूचना: प्रत्येक अपलोड की जाने वाली फोटो/दस्तावेज़ की साइज 1 MB से कम होना अनिवार्य है। 
+    अधिक साइज होने पर फॉर्म सबमिट नहीं होगा।
+  </p>
+</div>
               </div>
             </section>
 
