@@ -133,15 +133,25 @@ const RegisterForm: React.FC = () => {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (files?.[0]) {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: files[0],
-      }));
-    }
-  };
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, files } = e.target;
+
+  if (!files?.[0]) return;
+
+  const file = files[0];
+
+  // 🔴 1MB Validation
+  if (file.size > 1 * 1024 * 1024) {
+    alert("Image size must be under 1MB");
+    e.target.value = ""; // reset input
+    return;
+  }
+
+  setFormData((prev) => ({
+    ...prev,
+    [name]: file,
+  }));
+};
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
