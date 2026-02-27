@@ -89,6 +89,7 @@ const RegisterForm: React.FC = () => {
   const [otpError, setOtpError] = useState("");
   const [otpSuccessMessage, setOtpSuccessMessage] = useState("");
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
+  const [isSubmitError, setIsSubmitError] = useState(false);
   const [otpToken, setOtpToken] = useState<string | null>(null); // JWT from verify
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
@@ -248,22 +249,26 @@ const RegisterForm: React.FC = () => {
   e.preventDefault();
 
   if (!otpVerified || !otpToken) {
+    setIsSubmitError(true);
     setFormSubmitMessage("Please verify your email before submitting");
     return;
   }
 
   if (!formData.aadharFront || !formData.aadharBack || !formData.photo) {
+    setIsSubmitError(true);
     setFormSubmitMessage("Please upload all required documents");
     return;
   }
 
   if (!formData.basePriceAgreement || !formData.declarationAgreement) {
+    setIsSubmitError(true);
     setFormSubmitMessage("Please accept all declarations");
     return;
   }
 
   try {
     setIsProcessingPayment(true);
+    setIsSubmitError(false);
     setFormSubmitMessage("Saving registration...");
 
     // 🔹 STEP 1 — REGISTER FIRST
@@ -364,12 +369,14 @@ if (result?.paymentDetails) {
   });
 
   setIsPaid(true);
+  setIsSubmitError(false);
   setFormSubmitMessage("Payment successful! Registration completed.");
 
   setShowSuccessModal(true);
   resetForm();
 }
 
+    setIsSubmitError(false);
     setFormSubmitMessage(
       "Payment completed. Your application is being processed."
     );
@@ -380,6 +387,7 @@ if (result?.paymentDetails) {
 
   } catch (err: any) {
     console.error("Submit error:", err);
+    setIsSubmitError(true);
     setFormSubmitMessage(
       err?.message || "Something went wrong. Please try again."
     );
@@ -958,7 +966,7 @@ if (result?.paymentDetails) {
                       </span>
                     )}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2 w-full">
                     <input
                       type="email"
                       name="email"
@@ -967,7 +975,7 @@ if (result?.paymentDetails) {
                       required
                       disabled={otpVerified}
                       placeholder="Enter active email address"
-                      className={`flex-1 px-4 py-2.5 border-2 rounded-lg focus:border-[#3b3bb7] focus:outline-none ${
+                      className={`w-full sm:flex-1 px-4 py-2.5 border-2 rounded-lg focus:border-[#3b3bb7] focus:outline-none ${
                         otpVerified
                           ? "bg-gray-50 border-gray-300"
                           : "border-gray-200"
@@ -977,10 +985,10 @@ if (result?.paymentDetails) {
                       type="button"
                       onClick={sendOtp}
                       disabled={!formData.email || otpVerified || isSendingOtp}
-                      className={`px-6 py-2.5 rounded-lg font-bold transition-all min-w-[100px] ${
+                      className={`w-full sm:w-auto px-4 py-2.5 rounded-lg font-bold transition-all ${
                         !formData.email || otpVerified
                           ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                          : "bg-[#3B3BB7] text-white hover:bg-[#2a2a8a] shadow-md hover:shadow-lg active:scale-95"
+                          : "bg-[#3B3BB7] text-white hover:bg-[#2a2a8a]"
                       }`}
                     >
                       {isSendingOtp
@@ -1004,19 +1012,19 @@ if (result?.paymentDetails) {
                           Resend Code
                         </button>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex flex-col sm:flex-row gap-2">
                         <input
                           type="text"
                           value={otp}
                           onChange={handleOtpChange}
                           placeholder="6-digit OTP"
-                          className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
+                          className="w-full sm:flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:border-[#3b3bb7] focus:outline-none"
                         />
                         <button
                           type="button"
                           onClick={verifyOtp}
                           disabled={isVerifyingOtp || otp.length !== 6}
-                          className="px-6 py-2.5 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 active:scale-95"
+                          className="w-full sm:w-auto px-4 py-2.5 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700"
                         >
                           {isVerifyingOtp ? "..." : "Verify"}
                         </button>
@@ -1144,13 +1152,39 @@ if (result?.paymentDetails) {
                     </div>
                   )}
 
+                  <label className="flex items-start gap-3 p-4 border-2 border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={formData.terms}
+                      onChange={(e) =>
+                        setFormData((p) => ({
+                          ...p,
+                          terms: e.target.checked,
+                        }))
+                      }
+                      className="mt-1 w-5 h-5 text-[#3B3BB7] rounded focus:ring-0"
+                    />
+                    <span className="text-sm text-gray-700">
+                      भुगतान होने के बाद कृपया 2 मिनट तक प्रतीक्षा करें जब तक
+                      कन्फर्मेशन मैसेज प्राप्त न हो जाए।
+                    </span>
+                  </label>
+
                   <button
                     type="submit"
                     disabled={
-                      !otpVerified || !formData.terms || isProcessingPayment
+                      !otpVerified ||
+                      !formData.terms ||
+                      !formData.basePriceAgreement ||
+                      !formData.declarationAgreement ||
+                      isProcessingPayment
                     }
                     className={`w-full py-4 rounded-xl font-black text-lg transition-all shadow-lg active:scale-[0.98] ${
-                      otpVerified && formData.terms && !isProcessingPayment
+                      otpVerified &&
+                      formData.terms &&
+                      formData.basePriceAgreement &&
+                      formData.declarationAgreement &&
+                      !isProcessingPayment
                         ? "bg-[#3B3BB7] text-white hover:bg-indigo-800 shadow-indigo-200"
                         : "bg-gray-200 text-gray-500 cursor-not-allowed"
                     }`}
@@ -1173,18 +1207,17 @@ if (result?.paymentDetails) {
               </div>
 
               {/* Form Submission Message */}
-          {formSubmitMessage && (
-            <div
-              className={`mb-6 p-4 rounded-xl ${
-                formSubmitMessage.includes("Please verify") ||
-                formSubmitMessage.includes("failed")
-                  ? "bg-green-50 border border-green-200 text-green-800"
-                  : "bg-red-50 border border-red-200 text-red-800"
-              }`}
-            >
-              <p className="text-sm font-medium">{formSubmitMessage}</p>
-            </div>
-          )}
+              {formSubmitMessage && (
+                <div
+                  className={`mt-6 p-4 rounded-xl ${
+                    isSubmitError
+                      ? "bg-red-50 border border-red-200 text-red-800"
+                      : "bg-green-50 border border-green-200 text-green-800"
+                  }`}
+                >
+                  <p className="text-sm font-semibold">{formSubmitMessage}</p>
+                </div>
+              )}
 
               <div className="mt-8 text-center bg-yellow-50 p-4 rounded-xl border border-yellow-100">
                 <p className="text-[11px] md:text-xs text-yellow-800 leading-relaxed font-bold uppercase tracking-tight">
