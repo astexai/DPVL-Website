@@ -451,7 +451,7 @@ if (result?.paymentDetails) {
           </h2>
 
           {/* Form Submission Message */}
-          {formSubmitMessage && (
+          {/* {formSubmitMessage && (
             <div
               className={`mb-6 p-4 rounded-xl ${
                 formSubmitMessage.includes("Please verify") ||
@@ -462,7 +462,7 @@ if (result?.paymentDetails) {
             >
               <p className="text-sm font-medium">{formSubmitMessage}</p>
             </div>
-          )}
+          )} */}
 
           <form onSubmit={handleSubmit} className="space-y-12">
             {/* Section 1: Player Basic Details */}
@@ -1178,7 +1178,7 @@ if (result?.paymentDetails) {
               className={`mb-6 p-4 rounded-xl ${
                 formSubmitMessage.includes("Please verify") ||
                 formSubmitMessage.includes("failed")
-                  ? "bg-red-50 border border-red-200 text-red-800"
+                  ? "bg-green-50 border border-green-200 text-green-800"
                   : "bg-red-50 border border-red-200 text-red-800"
               }`}
             >
